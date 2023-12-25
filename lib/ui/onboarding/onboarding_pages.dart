@@ -84,14 +84,7 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               title: "Streamline Your Health and Wellness: Book appointments, consult doctors online, manage events - all in one app.",
               img: AppIcons.onBoarding4,
               onTap: () async {
-                pageIndex+=1;
-                setState(() {
-                  pageController.animateToPage(
-                    pageIndex,
-                    duration: const Duration(milliseconds: 1),
-                    curve: Curves.linear,
-                  );
-                });
+
               },
               pageIndex: pageIndex,
             ),
