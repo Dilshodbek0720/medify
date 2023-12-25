@@ -2,8 +2,13 @@ import 'package:medify/data/models/icon/icon_type.dart';
 
 class AppIcons {
 
-  // images
-
+  // images - others
+  static const String splash = "assets/images/others/splash.png";
+  static const String welcome = "assets/images/others/welcome.png";
+  static const String onBoarding1 = "assets/images/others/on_boarding1.png";
+  static const String onBoarding2 = "assets/images/others/on_boarding2.png";
+  static const String onBoarding3 = "assets/images/others/on_boarding3.png";
+  static const String onBoarding4 = "assets/images/others/on_boarding4.jpg";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {
