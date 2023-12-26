@@ -9,6 +9,9 @@ class AppIcons {
   static const String onBoarding2 = "assets/images/others/on_boarding2.png";
   static const String onBoarding3 = "assets/images/others/on_boarding3.png";
   static const String onBoarding4 = "assets/images/others/on_boarding4.jpg";
+  static const String forgotPasswordImage = "assets/images/others/forgot_password_image.png";
+  static const String newPassword = "assets/images/others/new_password.png";
+  static const String success = "assets/images/others/success.png";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {

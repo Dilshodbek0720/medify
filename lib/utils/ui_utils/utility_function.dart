@@ -142,7 +142,11 @@ IconButton getIcon(
         ),
         width: 24.w,
         colorFilter: ColorFilter.mode(
-            color ?? (getTheme(context) ? AppColors.white : AppColors.c_900),
+            color ?? (
+                // getTheme(context) ?
+                AppColors.c_900
+                    // : AppColors.c_900
+                ),
             BlendMode.srcIn),
       ),
     );
