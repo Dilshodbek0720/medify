@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/onboarding/widgets/page_view_item.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -84,7 +85,7 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               title: "Streamline Your Health and Wellness: Book appointments, consult doctors online, manage events - all in one app.",
               img: AppIcons.onBoarding4,
               onTap: () async {
-
+                Navigator.pushNamed(context, RouteNames.letsInScreen);
               },
               pageIndex: pageIndex,
             ),
