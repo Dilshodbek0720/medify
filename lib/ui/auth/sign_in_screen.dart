@@ -184,12 +184,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
-              20.ph,
-              20.ph,
+              40.ph,
               GlobalButton(title: "Sign in", onTap: () {},color: AppColors.primary, textColor: Colors.white,),
               20.ph,
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, RouteNames.forgotPassword);
+                  },
                   child: Text(
                     "Forgot the password?",
                     style: TextStyle(
