@@ -7,6 +7,7 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 

@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:lottie/lottie.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
-import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/ui_utils/error_message_dialog.dart';
 
 class SetBiometricsScreen extends StatefulWidget {
@@ -24,7 +22,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
     bool authenticated = false;
     try {
       authenticated = await auth.authenticate(
-        localizedReason: 'scanner_to_get_started',
+        localizedReason: "Поместите палец на сканер отпечатков пальцев, чтобы начать",
         options: const AuthenticationOptions(
           biometricOnly: true,
         ),
