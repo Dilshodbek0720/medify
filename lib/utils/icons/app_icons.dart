@@ -12,6 +12,7 @@ class AppIcons {
   static const String forgotPasswordImage = "assets/images/others/forgot_password_image.png";
   static const String newPassword = "assets/images/others/new_password.png";
   static const String success = "assets/images/others/success.png";
+  static const String avatar = "assets/images/others/avatar.png";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {
@@ -167,6 +168,7 @@ class AppIcons {
   static const String copyTransaction = "assets/svg/others/copy_transaction.svg";
   static const String letsYouIn = "assets/svg/others/lets_you_in.svg";
   static const String signLogo = "assets/svg/others/sign_logo.svg";
+  static const String fingerPrintSvg = "assets/svg/others/fingerPrint.svg";
 
   //help_screen_social_icons
   static const String head = "assets/svg/others/help_screen_head.svg";

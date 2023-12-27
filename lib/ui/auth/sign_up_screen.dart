@@ -168,7 +168,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               50.ph,
-              GlobalButton(title: "Sign up", onTap: (){}, color: AppColors.primary, textColor: Colors.white,),
+              GlobalButton(title: "Sign up", onTap: (){
+                Navigator.pushNamed(context, RouteNames.fillYourProfile);
+              }, color: AppColors.primary, textColor: Colors.white,),
               20.ph,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
