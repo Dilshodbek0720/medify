@@ -6,6 +6,9 @@ import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart'
 import 'package:medify/ui/forgot_password/create_password/create_password_screen.dart';
 import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
 import 'package:medify/ui/onboarding/onboarding_pages.dart';
+import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
+import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
+import 'package:medify/ui/register/register_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/welcome/welcome_screen.dart';
 
@@ -19,6 +22,9 @@ class RouteNames {
   static const String forgotPassword = "/forgot_password";
   static const String confirmCodeScreen = "/confirm_code_screen";
   static const String createPassword = "/create_password";
+  static const String fillYourProfile = "/fill_your_profile";
+  static const String enterPinScreen = "/enter_pin_screen";
+  static const String fingerPrintScreen = "/finger_print_screen";
 }
 
 class AppRoutes {
@@ -59,6 +65,18 @@ class AppRoutes {
       case RouteNames.createPassword:
         return MaterialPageRoute(
           builder: (context) => const CreatePasswordScreen(),
+        );
+      case RouteNames.fillYourProfile:
+        return MaterialPageRoute(
+          builder: (context) => const RegisterScreen(navigateFromAuth: true),
+        );
+      case RouteNames.enterPinScreen:
+        return MaterialPageRoute(
+          builder: (context) => const EnterPinScreen(),
+        );
+      case RouteNames.fingerPrintScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SetBiometricsScreen(),
         );
       default:
         return MaterialPageRoute(
