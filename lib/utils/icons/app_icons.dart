@@ -12,6 +12,7 @@ class AppIcons {
   static const String forgotPasswordImage = "assets/images/others/forgot_password_image.png";
   static const String newPassword = "assets/images/others/new_password.png";
   static const String success = "assets/images/others/success.png";
+  static const String successReg = "assets/images/others/success_reg.png";
   static const String avatar = "assets/images/others/avatar.png";
 
   static String getSvg({required String name, IconType? iconType}) {

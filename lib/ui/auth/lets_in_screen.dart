@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -11,16 +11,14 @@ import 'package:medify/utils/size/size_extension.dart';
 class LetsYouInScreen extends StatelessWidget {
   const LetsYouInScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: AppColors.c_900),
+      appBar: GlobalAppBar(
+        onTap: () {
+          Navigator.pop(context);
+        },
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -29,10 +27,10 @@ class LetsYouInScreen extends StatelessWidget {
           children: [
             Center(
                 child: SvgPicture.asset(
-                  AppIcons.letsYouIn,
-                  width: 237.w,
-                  height: 200.h,
-                )),
+              AppIcons.letsYouIn,
+              width: 237.w,
+              height: 200.h,
+            )),
             20.ph,
             Text(
               "Let’s you in",
@@ -43,10 +41,15 @@ class LetsYouInScreen extends StatelessWidget {
                   fontSize: 48.sp,
                   fontWeight: FontWeight.w700),
             ),
-            40.ph,
-            GlobalButton(title: "Create account", onTap: () {
-              Navigator.pushNamed(context, RouteNames.signUpScreen);
-            }, color: AppColors.primary, textColor: Colors.white,),
+            100.ph,
+            GlobalButton(
+              title: "Create account",
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.signUpScreen);
+              },
+              color: AppColors.primary,
+              textColor: Colors.white,
+            ),
             20.ph,
             Row(
               children: [
@@ -66,9 +69,14 @@ class LetsYouInScreen extends StatelessWidget {
               ],
             ),
             20.ph,
-            GlobalButton(title: "Sign in with password", onTap: () {
-              Navigator.pushNamed(context, RouteNames.signInScreen);
-            }, color: AppColors.primary, textColor: Colors.white,),
+            GlobalButton(
+              title: "Sign in with password",
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.signInScreen);
+              },
+              color: AppColors.primary,
+              textColor: Colors.white,
+            ),
             const Spacer()
           ],
         ),

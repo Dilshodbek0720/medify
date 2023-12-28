@@ -86,6 +86,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
         message: 'error_pin_code',
         context: context,
       );
+      pinController.text="";
     }
   }
 }

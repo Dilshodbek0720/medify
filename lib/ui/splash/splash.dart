@@ -36,6 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: AppColors.white,

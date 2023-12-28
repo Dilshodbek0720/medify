@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/fonts/text_styles.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -21,6 +22,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white),
       backgroundColor: Colors.white,
       scrolledUnderElevation: 0,
       actions: action,

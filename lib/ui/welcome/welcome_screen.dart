@@ -16,16 +16,15 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
-
   @override
   void initState() {
     _init();
     super.initState();
   }
-  _init()async{
+
+  _init() async {
     await Future.delayed(const Duration(seconds: 3));
-    if(context.mounted){
+    if (context.mounted) {
       Navigator.pushReplacementNamed(context, RouteNames.onBoardingPages);
     }
   }
@@ -35,6 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: AppColors.white,
@@ -47,20 +47,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         child: Column(
           children: [
             75.ph,
-            Image.asset(AppIcons.welcome,
+            Image.asset(
+              AppIcons.welcome,
               width: MediaQuery.of(context).size.width,
             ),
             70.ph,
-            Text("Welcome to\n Medify! 👋",
+            Text(
+              "Welcome to\n Medify! 👋",
               style: AppTextStyle.h1Bold.copyWith(color: AppColors.primary),
             ),
             32.ph,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Text("Your grin lights up our day, keep health close. Can't wait for your family joyfest!",
+              child: Text(
+                "Your grin lights up our day, keep health close. Can't wait for your family joyfest!",
                 style: AppTextStyle.h6Bold.copyWith(
                   color: AppColors.c_900,
-                    fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w500,
                   letterSpacing: 0.2,
                 ),
               ),

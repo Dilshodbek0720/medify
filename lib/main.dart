@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/cubits/code_input_cubit.dart';
+import 'package:medify/cubits/register/register_cubit.dart';
+import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -18,7 +20,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => CodeInputCubit())
+      BlocProvider(create: (context) => CodeInputCubit()),
+      BlocProvider(create: (context) => SignUpCubit()),
+      BlocProvider(create: (context) => RegisterCubit()),
     ],
     child: const MyApp(),
     );
