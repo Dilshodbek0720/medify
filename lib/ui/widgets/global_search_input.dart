@@ -86,7 +86,7 @@ class GlobalSearchTextFieldWidget extends State<GlobalSearchTextField> {
                       padding: EdgeInsets.all(20.w),
                       child: SvgPicture.asset(
                         widget.rightImage!,
-                        colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(widget.controller!.text.isNotEmpty?AppColors.c_900:AppColors.c_500, BlendMode.srcIn),
                       ),
                     ))
                 : null,

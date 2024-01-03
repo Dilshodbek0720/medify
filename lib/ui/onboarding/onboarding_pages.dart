@@ -21,10 +21,11 @@ class _OnboardingPagesState extends State<OnboardingPages> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         toolbarHeight: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.white
-        ),
+            statusBarColor: AppColors.white,
+            statusBarIconBrightness: Brightness.dark),
       ),
       body: SafeArea(
         child: PageView(
@@ -40,7 +41,7 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               title: "Thousands of doctors & experts to help your health!",
               img: AppIcons.onBoarding1,
               onTap: () async {
-                pageIndex+=1;
+                pageIndex += 1;
                 setState(() {
                   pageController.animateToPage(
                     pageIndex,
@@ -55,7 +56,7 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               title: "Health checks & consultations easily anywhere anytime",
               img: AppIcons.onBoarding2,
               onTap: () async {
-                pageIndex+=1;
+                pageIndex += 1;
                 setState(() {
                   pageController.animateToPage(
                     pageIndex,
@@ -70,7 +71,7 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               title: "Let's start living healthy and well with us right now!",
               img: AppIcons.onBoarding3,
               onTap: () async {
-                pageIndex+=1;
+                pageIndex += 1;
                 setState(() {
                   pageController.animateToPage(
                     pageIndex,
@@ -82,7 +83,8 @@ class _OnboardingPagesState extends State<OnboardingPages> {
               pageIndex: pageIndex,
             ),
             PageViewItem(
-              title: "Streamline Your Health and Wellness: Book appointments, consult doctors online, manage events - all in one app.",
+              title:
+                  "Streamline Your Health and Wellness: Book appointments, consult doctors online, manage events - all in one app.",
               img: AppIcons.onBoarding4,
               onTap: () async {
                 Navigator.pushNamed(context, RouteNames.letsInScreen);

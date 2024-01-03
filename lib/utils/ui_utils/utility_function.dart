@@ -131,6 +131,7 @@ IconButton getIcon(
   required BuildContext context,
   required VoidCallback? onTap,
   Color? color,
+  int width = 28,
   IconType? iconType,
 }) =>
     IconButton(
@@ -140,7 +141,7 @@ IconButton getIcon(
           name: iconName,
           iconType: iconType ?? IconType.lightOutline,
         ),
-        width: 24.w,
+        width: width.w,
         colorFilter: ColorFilter.mode(
             color ?? (
                 // getTheme(context) ?

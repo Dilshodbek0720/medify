@@ -1,13 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/ui/app_routes.dart';
-// import 'package:local_auth/local_auth.dart';
-// import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/register/local_auth/widgets/local_auth_pinput.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
-import 'package:medify/utils/size/screen_size.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/error_message_dialog.dart';
 
@@ -79,13 +77,18 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   }
 
   void validatePin(String pin) {
-    if (pin == "0000") {
-      // Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-    } else {
-      showErrorMessage(
-        message: 'error_pin_code',
-        context: context,
-      );
+    if(StorageRepository.getString(StorageKeys.pinCode)!=""){
+      if (pin == StorageRepository.getString(StorageKeys.pinCode)) {
+        // Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+      } else {
+        showErrorMessage(
+          message: 'error_pin_code',
+          context: context,
+        );
+        pinController.text = "";
+      }
+    }else{
+      StorageRepository.putString(StorageKeys.pinCode, pin);
     }
   }
 }

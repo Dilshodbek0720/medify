@@ -22,7 +22,7 @@ class GlobalTextField extends StatefulWidget {
   final TextCapitalization textCapitalization;
 
   const GlobalTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.textCapitalization = TextCapitalization.none,
     this.keyboardType = TextInputType.text,
@@ -39,7 +39,7 @@ class GlobalTextField extends StatefulWidget {
     this.maskFormatter,
     this.obscureText,
     this.contentPadding,
-  }) : super(key: key);
+  });
 
   @override
   State<GlobalTextField> createState() => _GlobalTextFieldState();
@@ -80,7 +80,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       maxLength: widget.maxLength,
       textCapitalization: widget.textCapitalization,
       focusNode: widget.focusNode ?? internalFocusNode,
-      // inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : [],
+      inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : [],
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         counterText: '',

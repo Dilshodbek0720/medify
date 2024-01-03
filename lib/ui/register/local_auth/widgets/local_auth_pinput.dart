@@ -20,6 +20,8 @@ class LocalAuthPinput extends StatelessWidget {
       height: 50.0,
       child: Pinput(
         showCursor: false,
+        obscureText: true,
+        obscuringCharacter: "⚫",
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
           FilteringTextInputFormatter.digitsOnly
