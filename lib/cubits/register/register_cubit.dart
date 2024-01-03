@@ -13,18 +13,18 @@ class RegisterCubit extends Cubit<RegisterState> {
     fullNameController: TextEditingController(),
     nicknameController: TextEditingController(),
     dateOfBirthController: TextEditingController(),
-    emailController: TextEditingController(),
+    phoneController: TextEditingController(),
     fullNameFocusNode: FocusNode(),
     nicknameFocusNode: FocusNode(),
     dateOfBirthFocusNode: FocusNode(),
-    emailFocusNode: FocusNode(),
+    phoneFocusNode: FocusNode(),
     gender: 'Male',
     genders: ["Male","Female"],
     iconColor: AppColors.c_500,
     iconColor2: AppColors.c_500,
     selectedDate: DateTime.now(),
   )){
-    state.emailFocusNode.addListener(emailFocusChanged);
+    state.phoneFocusNode.addListener(emailFocusChanged);
   }
 
   void updateFullName(String fullName) {
@@ -45,16 +45,16 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(state.copyWith(selectedDate: newDate));
   }
 
-  void updateEmail(String email) {
-    Color newIconColor = email.isNotEmpty
-        ? (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
-        : (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
-    emit(state.copyWith(emailController:state.emailController..text=email,iconColor: newIconColor));
+  void updatePhone(String phone) {
+    Color newIconColor = phone.isNotEmpty
+        ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
+        : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
+    emit(state.copyWith(phoneController:state.phoneController..text=phone,iconColor: newIconColor));
   }
 
   void emailFocusChanged() {
     Color newIconColor =
-    state.emailController.text.isNotEmpty ? (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_900) : (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
+    state.phoneController.text.isNotEmpty ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900) : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
     emit(state.copyWith(iconColor: newIconColor));
   }
 
@@ -70,11 +70,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> close() {
     state.fullNameController.dispose();
     state.nicknameController.dispose();
-    state.emailController.dispose();
+    state.phoneController.dispose();
     state.dateOfBirthController.dispose();
     state.fullNameFocusNode.dispose();
     state.nicknameFocusNode.dispose();
-    state.emailFocusNode.dispose();
+    state.phoneFocusNode.dispose();
     state.dateOfBirthFocusNode.dispose();
     return super.close();
   }

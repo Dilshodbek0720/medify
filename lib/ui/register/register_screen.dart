@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
@@ -26,6 +28,8 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  var phoneFormatter = MaskTextInputFormatter(
+      mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +46,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Expanded(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 24.w, vertical: 24.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
                           onTap: () {
-                            profileDialog(context: context, valueChanged: (v){
-                              context.read<RegisterCubit>().updateFile(File(v));
-                            });
+                            profileDialog(
+                                context: context,
+                                valueChanged: (v) {
+                                  context
+                                      .read<RegisterCubit>()
+                                      .updateFile(File(v));
+                                });
                           },
                           child: Stack(children: [
-                            state.file==null?Image.asset(
-                              AppIcons.avatar,
-                              width: 150.w,
-                            ):ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                                child: Image.file(state.file!,width: 150.w,height: 150.h,fit: BoxFit.cover,)),
+                            state.file == null
+                                ? Image.asset(
+                                    AppIcons.avatar,
+                                    width: 150.w,
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: Image.file(
+                                      state.file!,
+                                      width: 150.w,
+                                      height: 150.h,
+                                      fit: BoxFit.cover,
+                                    )),
                             Positioned(
                               right: 0,
                               bottom: 0,
@@ -86,7 +101,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         keyboardType: TextInputType.name,
                         controller: state.fullNameController,
                         onChanged: (fullName) {
-                          context.read<RegisterCubit>().updateFullName(fullName);
+                          context
+                              .read<RegisterCubit>()
+                              .updateFullName(fullName);
                         },
                         focusNode: state.fullNameFocusNode,
                         hintText: "Full name"),
@@ -96,7 +113,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         keyboardType: TextInputType.name,
                         controller: state.nicknameController,
                         onChanged: (nickName) {
-                          context.read<RegisterCubit>().updateNickname(nickName);
+                          context
+                              .read<RegisterCubit>()
+                              .updateNickname(nickName);
                         },
                         focusNode: state.nicknameFocusNode,
                         hintText: "Nickname"),
@@ -111,12 +130,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           hintText: 'Date of birth',
                           focusNode: state.dateOfBirthFocusNode,
                           onTap: () {
-                            context.read<RegisterCubit>().showDatePicker(context);
+                            context
+                                .read<RegisterCubit>()
+                                .showDatePicker(context);
                           },
                           rightImage: AppIcons.calendar,
                           controller: state.dateOfBirthController,
-                          onChanged: (value){
-                            context.read<RegisterCubit>().updateDateOfBirth(value);
+                          onChanged: (value) {
+                            context
+                                .read<RegisterCubit>()
+                                .updateDateOfBirth(value);
                           },
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
@@ -126,27 +149,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     24.ph,
                     GlobalTextField(
                       textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: state.emailController,
+                      keyboardType: TextInputType.phone,
+                      controller: state.phoneController,
+                      maskFormatter: phoneFormatter,
                       onChanged: (email) {
-                        context.read<RegisterCubit>().updateEmail(email);
+                        context.read<RegisterCubit>().updatePhone(email);
                       },
-                      focusNode: state.emailFocusNode,
-                      hintText: "Email",
+                      focusNode: state.phoneFocusNode,
+                      hintText: "Phone",
                       suffixIcon: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: SvgPicture.asset(AppIcons.message,
-                            colorFilter:
-                            ColorFilter.mode(state.iconColor, BlendMode.srcIn)),
+                        child: SvgPicture.asset(AppIcons.call,
+                            colorFilter: ColorFilter.mode(
+                                state.iconColor, BlendMode.srcIn)),
                       ),
                     ),
                     24.ph,
                     Container(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.r),
-                        color: AppColors.greysCale, // Use the desired background color
+                        color: AppColors
+                            .greysCale, // Use the desired background color
                       ),
                       child: DropdownButton<String>(
                         isExpanded: true,
@@ -165,7 +190,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             value: items,
                             child: Text(
                               items,
-                              style: AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.c_900),
+                              style: AppTextStyle.bodyMediumSemibold
+                                  .copyWith(color: AppColors.c_900),
                             ),
                           );
                         }).toList(),

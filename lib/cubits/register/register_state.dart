@@ -4,11 +4,11 @@ class RegisterState {
   final TextEditingController fullNameController;
   final TextEditingController nicknameController;
   final TextEditingController dateOfBirthController;
-  final TextEditingController emailController;
+  final TextEditingController phoneController;
   final FocusNode fullNameFocusNode;
   final FocusNode nicknameFocusNode;
   final FocusNode dateOfBirthFocusNode;
-  final FocusNode emailFocusNode;
+  final FocusNode phoneFocusNode;
   final String gender;
   final List<String> genders;
   final Color iconColor;
@@ -20,11 +20,11 @@ class RegisterState {
     required this.fullNameController,
     required this.nicknameController,
     required this.dateOfBirthController,
-    required this.emailController,
+    required this.phoneController,
     required this.fullNameFocusNode,
     required this.nicknameFocusNode,
     required this.dateOfBirthFocusNode,
-    required this.emailFocusNode,
+    required this.phoneFocusNode,
     required this.gender,
     required this.genders,
     required this.iconColor,
@@ -37,11 +37,11 @@ class RegisterState {
     TextEditingController? fullNameController,
     TextEditingController? nicknameController,
     TextEditingController? dateOfBirthController,
-    TextEditingController? emailController,
+    TextEditingController? phoneController,
     FocusNode? fullNameFocusNode,
     FocusNode? nicknameFocusNode,
     FocusNode? dateOfBirthFocusNode,
-    FocusNode? emailFocusNode,
+    FocusNode? phoneFocusNode,
     String? gender,
     List<String>? genders,
     Color? iconColor,
@@ -53,11 +53,11 @@ class RegisterState {
       fullNameController: fullNameController ?? this.fullNameController,
       nicknameController: nicknameController ?? this.nicknameController,
       dateOfBirthController: dateOfBirthController ?? this.dateOfBirthController,
-      emailController: emailController ?? this.emailController,
+      phoneController: phoneController ?? this.phoneController,
       fullNameFocusNode: fullNameFocusNode ?? this.fullNameFocusNode,
       nicknameFocusNode: nicknameFocusNode ?? this.nicknameFocusNode,
       dateOfBirthFocusNode: dateOfBirthFocusNode ?? this.dateOfBirthFocusNode,
-      emailFocusNode: emailFocusNode ?? this.emailFocusNode,
+      phoneFocusNode: phoneFocusNode ?? this.phoneFocusNode,
       gender: gender ?? this.gender,
       genders: genders ?? this.genders,
       iconColor: iconColor ?? this.iconColor,
