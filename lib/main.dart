@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
+import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
 import 'package:medify/cubits/code_input_cubit.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
@@ -22,6 +24,8 @@ class MainApp extends StatelessWidget {
       BlocProvider(create: (context) => CodeInputCubit()),
       BlocProvider(create: (context) => SignUpCubit()),
       BlocProvider(create: (context) => RegisterCubit()),
+      BlocProvider(create: (context) => PaymentBloc()),
+      BlocProvider(create: (context) => PaymentAddBloc()),
     ],
     child: const MyApp(),
     );

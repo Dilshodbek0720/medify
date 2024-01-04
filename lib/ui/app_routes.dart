@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:medify/ui/auth/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up_screen.dart';
+import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
+import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
 import 'package:medify/ui/forgot_password/create_password/create_password_screen.dart';
 import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
-import 'package:medify/ui/onboarding/onboarding_pages.dart';
+import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
-import 'package:medify/ui/welcome/welcome_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
@@ -25,6 +26,7 @@ class RouteNames {
   static const String fillYourProfile = "/fill_your_profile";
   static const String enterPinScreen = "/enter_pin_screen";
   static const String fingerPrintScreen = "/finger_print_screen";
+  static const String paymentAddCard = "/payment_add_card";
 }
 
 class AppRoutes {
@@ -77,6 +79,10 @@ class AppRoutes {
       case RouteNames.fingerPrintScreen:
         return MaterialPageRoute(
           builder: (context) => const SetBiometricsScreen(),
+        );
+      case RouteNames.paymentAddCard:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentAddCardScreen(),
         );
       default:
         return MaterialPageRoute(
