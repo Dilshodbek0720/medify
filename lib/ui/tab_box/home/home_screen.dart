@@ -81,7 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       fillColor: AppColors.c_100,
                       suffixIcon: IconButton(
                         splashRadius: 20,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, RouteNames.searchScreen);
+                        },
                         icon: SvgPicture.asset(
                             AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.lightOutline),
                             colorFilter: const ColorFilter.mode(
@@ -118,10 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.user2, title: "General")
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },)
                     ],),
                   ),
                   24.ph,
@@ -130,10 +132,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.user2, title: "General"),
-                      CategoryItem(icon: AppIcons.moreCircle, title: "More")
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                      CategoryItem(icon: AppIcons.moreCircle, title: "More", onTap: () {
+                        Navigator.pushNamed(context, RouteNames.categoryScreen);
+                      },)
                     ],),
                   ),
                   24.ph,

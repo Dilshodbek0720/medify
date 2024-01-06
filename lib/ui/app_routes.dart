@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medify/ui/auth/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up_screen.dart';
+import 'package:medify/ui/category/category_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
@@ -11,6 +12,7 @@ import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_screen.dart';
+import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
@@ -33,6 +35,8 @@ class RouteNames {
   static const String tabBox = "/tab_box";
   static const String notificationScreen = "/notification_screen";
   static const String favoriteScreen = "/favorite_screen";
+  static const String searchScreen = "/search_screen";
+  static const String categoryScreen = "/category_screen";
 }
 
 class AppRoutes {
@@ -101,6 +105,14 @@ class AppRoutes {
       case RouteNames.favoriteScreen:
         return MaterialPageRoute(
           builder: (context) => const FavoriteScreen(),
+        );
+      case RouteNames.searchScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchScreen(),
+        );
+      case RouteNames.categoryScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CategoryScreen(),
         );
       default:
         return MaterialPageRoute(
