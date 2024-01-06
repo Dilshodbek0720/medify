@@ -17,6 +17,7 @@ class AppIcons {
   static const String humoPng = "assets/images/others/humo_card.png";
   static const String uzCardPng = "assets/images/others/uzCard_card.png";
   static const String drWatson = "assets/images/others/dr_watson.png";
+  static const String reklama = "assets/images/others/reklama.png";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {

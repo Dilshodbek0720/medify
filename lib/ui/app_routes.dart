@@ -12,6 +12,9 @@ import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/tab_box.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
@@ -27,6 +30,9 @@ class RouteNames {
   static const String enterPinScreen = "/enter_pin_screen";
   static const String fingerPrintScreen = "/finger_print_screen";
   static const String paymentAddCard = "/payment_add_card";
+  static const String tabBox = "/tab_box";
+  static const String notificationScreen = "/notification_screen";
+  static const String favoriteScreen = "/favorite_screen";
 }
 
 class AppRoutes {
@@ -83,6 +89,18 @@ class AppRoutes {
       case RouteNames.paymentAddCard:
         return MaterialPageRoute(
           builder: (context) => const PaymentAddCardScreen(),
+        );
+      case RouteNames.tabBox:
+        return MaterialPageRoute(
+          builder: (context) => const TabBox(),
+        );
+      case RouteNames.notificationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationScreen(),
+        );
+      case RouteNames.favoriteScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FavoriteScreen(),
         );
       default:
         return MaterialPageRoute(
