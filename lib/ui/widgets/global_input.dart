@@ -20,6 +20,7 @@ class GlobalTextField extends StatefulWidget {
   final int? maxLines;
   final int? maxLength;
   final TextCapitalization textCapitalization;
+  final Color? fillColor;
 
   const GlobalTextField({
     super.key,
@@ -39,6 +40,7 @@ class GlobalTextField extends StatefulWidget {
     this.maskFormatter,
     this.obscureText,
     this.contentPadding,
+    this.fillColor = AppColors.c_50,
   });
 
   @override
@@ -120,7 +122,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
         ),
         fillColor: (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
                 ? AppColors.blueTransparent
-                : AppColors.c_50,
+                : widget.fillColor,
         filled: true,
       ),
       // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),

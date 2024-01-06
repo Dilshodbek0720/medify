@@ -7,12 +7,12 @@ import 'package:medify/utils/ui_utils/utility_function.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
-    Key? key,
+    super.key,
     this.onTap,
     this.action,
     this.centerTitle,
     this.title = "",
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final String title;
