@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/ui/search/widgets/doctor_card.dart';
+import 'package:medify/ui/search/widgets/filter.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -19,7 +21,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 70.h,
         backgroundColor: AppColors.c_50,
@@ -33,7 +34,9 @@ class _SearchScreenState extends State<SearchScreen> {
           fillColor: AppColors.c_100,
           suffixIcon: IconButton(
             splashRadius: 20,
-            onPressed: () {},
+            onPressed: () {
+              showBottomSheetWidget(context);
+            },
             icon: SvgPicture.asset(
                 AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.bold),
                 colorFilter: const ColorFilter.mode(
@@ -50,73 +53,85 @@ class _SearchScreenState extends State<SearchScreen> {
           keyboardType: TextInputType.name,
         ),
       ),
-      body: ListView(
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "0 Found",
-                style: TextStyle(
-                  fontFamily: "Urbanist",
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.c_900,
-                ),
-              ),
-              TextButton(
-                  child: Row(
-                    children: [
-                      Text(
-                        "Default",
-                        style: TextStyle(
-                          fontFamily: "Urbanist",
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary500,
-                        ),
-                      ),
-                      12.pw,
-                      SvgPicture.asset(AppIcons.swap,
-                          width: 20,
-                          colorFilter: const ColorFilter.mode(
-                              AppColors.primary500, BlendMode.srcIn)),
-                    ],
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "0 Found",
+                  style: TextStyle(
+                    fontFamily: "Urbanist",
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.c_900,
                   ),
-                  onPressed: () {}),
-            ],
-          ),
-          ...List.generate(4, (index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.h),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.r),
-                color: AppColors.white,
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16.r),
-                child: Row(
-                  children: [
-                    Image.asset(AppIcons.drWatson,width: 110.w,),
-                    16.pw,
-                    Column(
-                      children: [
-                        Text("Dr. Jenny Watson"),
-                        SizedBox(
-                          width: 222.w,
-                            child: Divider(color: AppColors.c_200,thickness: 1,)),
-                        Text("Immunologists | Christ Hospital"),
-
-                      ],
-                    )
-                  ],
                 ),
-              ),),
-            );
-          })
-        ],
+                TextButton(
+                    child: Row(
+                      children: [
+                        Text(
+                          "Default",
+                          style: TextStyle(
+                            fontFamily: "Urbanist",
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.primary500,
+                          ),
+                        ),
+                        12.pw,
+                        SvgPicture.asset(AppIcons.swap,
+                            width: 20,
+                            colorFilter: const ColorFilter.mode(
+                                AppColors.primary500, BlendMode.srcIn)),
+                      ],
+                    ),
+                    onPressed: () {}),
+              ],
+            ),
+            // const NotFoundWidget()
+            Expanded(
+              child: ListView(
+                children: const [
+                  DoctorsCard(
+                    index: 0,
+                    name: 'Dr. Jenny Watson',
+                    category: 'Immunologists',
+                    hospital: 'Christ Hospital',
+                    rate: '4.4',
+                    views: '4,942',
+                  ),
+                  DoctorsCard(
+                    index: 1,
+                    name: 'Dr. Jenny Baranick',
+                    category: 'Allergists',
+                    hospital: 'JFK Medical Center',
+                    rate: '4.6',
+                    views: '3,837',
+                  ),
+                  DoctorsCard(
+                    index: 2,
+                    name: 'Dr. Jenny Zirkind',
+                    category: 'Neurologists',
+                    hospital: 'Franklin Hospital',
+                    rate: '4.8',
+                    views: '6,362',
+                  ),
+                  DoctorsCard(
+                    index: 3,
+                    name: 'Dr. Jenny Wigham',
+                    category: 'Cardiologists',
+                    hospital: 'The Valley Hospital',
+                    rate: '4.8',
+                    views: '4,729',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

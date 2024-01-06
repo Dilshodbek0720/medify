@@ -173,6 +173,7 @@ class AppIcons {
   static const String letsYouIn = "assets/svg/others/lets_you_in.svg";
   static const String signLogo = "assets/svg/others/sign_logo.svg";
   static const String fingerPrintSvg = "assets/svg/others/fingerPrint.svg";
+  static const String notFound = "assets/svg/others/not_found.svg";
 
   //help_screen_social_icons
   static const String head = "assets/svg/others/help_screen_head.svg";
