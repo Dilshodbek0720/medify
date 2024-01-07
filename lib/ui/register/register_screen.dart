@@ -211,7 +211,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: GlobalButton(
                   title: "Continue",
                   onTap: () {
-                    Navigator.pushNamed(context, RouteNames.enterPinScreen);
+                    Navigator.pushNamed(context, RouteNames.verifyWithScreen);
                   },
                   radius: 100.r,
                   color: AppColors.primary,

@@ -87,15 +87,8 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                 Expanded(
                     child: GlobalButton(
                   title: 'skip',
-                  onTap: ()async{
-                    successDialog(
-                        image: AppIcons.successReg,
-                        title: "Congratulations",
-                        text: "Your account is ready to use. You will be redirected to the Home page in a few seconds..", context: context);
-                    await Future.delayed(const Duration(seconds: 3));
-                    if(context.mounted) {
-                      Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-                    }
+                  onTap: (){
+                    Navigator.pushNamed(context, RouteNames.paymentAddCard);
                   },
                   radius: 100,
                   color: AppColors.c_50, textColor: AppColors.c_900,

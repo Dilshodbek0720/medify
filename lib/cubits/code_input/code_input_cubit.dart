@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 part 'code_input_state.dart';
 
 class CodeInputCubit extends Cubit<CodeInputState> {
-  final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
+  final List<FocusNode> pinFocusNodes = List.generate(6, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
-  List.generate(4, (_) => TextEditingController());
+  List.generate(6, (_) => TextEditingController());
 
   int remainingTime = 60;
   Timer? _countdownTimer;
@@ -59,10 +59,10 @@ class CodeInputCubit extends Cubit<CodeInputState> {
           FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
         }
       } else {
-        if (index == 3) {
+        if (index == 5) {
           pinFocusNodes[index].unfocus();
         } else {
-          FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
+          FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 6]);
         }
       }
     }
