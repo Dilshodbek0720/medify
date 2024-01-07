@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
@@ -23,132 +24,136 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:
-        Scaffold(
-          backgroundColor: AppColors.white,
-          body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 0,
+        elevation: 0,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
+      ),
+      backgroundColor: AppColors.white,
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(24.r),
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 48.w,
+                  width: 48.w,
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30.r),
+                      child: Image.asset(AppIcons.drWatson)),
+                ),
+                16.pw,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Good Morning",
+                      style: TextStyle(
+                        color: AppColors.c_600,
+                        fontSize: 16.sp,
+                        fontFamily: 'Urbanist',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.2
+                      ),
+                    ),
+                    6.ph,
+                    Text("Andrew Ainsley",
+                      style: TextStyle(
+                        color: AppColors.c_900,
+                        fontSize: 20.sp,
+                        fontFamily: 'Urbanist',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                ),
+                const Spacer(),
+                getIcon(AppIcons.notification, context: context, onTap: (){
+                  Navigator.pushNamed(context, RouteNames.notificationScreen);
+                }),
+                getIcon(AppIcons.heart, context: context, onTap: (){
+                  Navigator.pushNamed(context, RouteNames.favoriteScreen);
+                })
+              ],
+            ),
+          ),
+          Expanded(child: ListView(
             children: [
               Padding(
-                padding: EdgeInsets.all(24.r),
-                child: Row(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                child: GlobalTextField(
+                  fillColor: AppColors.c_100,
+                  suffixIcon: IconButton(
+                    splashRadius: 20,
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteNames.searchScreen);
+                    },
+                    icon: SvgPicture.asset(
+                        AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.lightOutline),
+                        colorFilter: const ColorFilter.mode(
+                            AppColors.primary500, BlendMode.srcIn)),
+                  ),
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 18.w),
+                    child: SvgPicture.asset(AppIcons.search,
+                        colorFilter:
+                        const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn)),
+                  ),
+                  hintText: "Search",
+                  textInputAction: TextInputAction.done,
+                  keyboardType: TextInputType.name,
+                ),
+              ),
+              24.ph,
+              SizedBox(
+                height: 180*MediaQuery.of(context).size.height/926,
+                width: MediaQuery.of(context).size.width,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
-                    SizedBox(
-                      height: 48.w,
-                      width: 48.w,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30.r),
-                          child: Image.asset(AppIcons.drWatson)),
-                    ),
-                    16.pw,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Good Morning",
-                          style: TextStyle(
-                            color: AppColors.c_600,
-                            fontSize: 16.sp,
-                            fontFamily: 'Urbanist',
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 0.2
-                          ),
-                        ),
-                        6.ph,
-                        Text("Andrew Ainsley",
-                          style: TextStyle(
-                            color: AppColors.c_900,
-                            fontSize: 20.sp,
-                            fontFamily: 'Urbanist',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )
-                      ],
-                    ),
-                    const Spacer(),
-                    getIcon(AppIcons.notification, context: context, onTap: (){
-                      Navigator.pushNamed(context, RouteNames.notificationScreen);
-                    }),
-                    getIcon(AppIcons.heart, context: context, onTap: (){
-                      Navigator.pushNamed(context, RouteNames.favoriteScreen);
-                    })
+                    12.pw,
+                    ...List.generate(4, (index) => const ReklamaItem())
                   ],
                 ),
               ),
-              Expanded(child: ListView(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: GlobalTextField(
-                      fillColor: AppColors.c_100,
-                      suffixIcon: IconButton(
-                        splashRadius: 20,
-                        onPressed: () {
-                          Navigator.pushNamed(context, RouteNames.searchScreen);
-                        },
-                        icon: SvgPicture.asset(
-                            AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.lightOutline),
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.primary500, BlendMode.srcIn)),
-                      ),
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.w),
-                        child: SvgPicture.asset(AppIcons.search,
-                            colorFilter:
-                            const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn)),
-                      ),
-                      hintText: "Search",
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.name,
-                    ),
-                  ),
-                  24.ph,
-                  SizedBox(
-                    height: 180*MediaQuery.of(context).size.height/926,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        12.pw,
-                        ...List.generate(4, (index) => const ReklamaItem())
-                      ],
-                    ),
-                  ),
-                  24.ph,
-                  SeeAllItem(onTap: (){ }, title: 'Doctor Speciality'),
-                  24.ph,
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },)
-                    ],),
-                  ),
-                  24.ph,
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
-                      CategoryItem(icon: AppIcons.moreCircle, title: "More", onTap: () {
-                        Navigator.pushNamed(context, RouteNames.categoryScreen);
-                      },)
-                    ],),
-                  ),
-                  24.ph,
-                  SeeAllItem(onTap: (){ }, title: 'Top Doctors'),
-                  24.ph,
-                  const Categories(),
-                ],
-              ))
+              24.ph,
+              SeeAllItem(onTap: (){ }, title: 'Doctor Speciality'),
+              24.ph,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },)
+                ],),
+              ),
+              24.ph,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.user2, title: "General", onTap: () {  },),
+                  CategoryItem(icon: AppIcons.moreCircle, title: "More", onTap: () {
+                    Navigator.pushNamed(context, RouteNames.categoryScreen);
+                  },)
+                ],),
+              ),
+              24.ph,
+              SeeAllItem(onTap: (){ }, title: 'Top Doctors'),
+              24.ph,
+              const Categories(),
             ],
-          ),
-        )
+          ))
+        ],
+      ),
     );
   }
 }
