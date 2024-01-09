@@ -8,6 +8,8 @@ import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
 import 'package:medify/ui/forgot_password/create_password/create_password_screen.dart';
 import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
+import 'package:medify/ui/location/get_location.dart';
+import 'package:medify/ui/location/search_location.dart';
 import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
@@ -41,6 +43,8 @@ class RouteNames {
   static const String categoryScreen = "/category_screen";
   static const String verifyWithScreen = "/verify_with_screen";
   static const String verifyScreen = "/verify_screen";
+  static const String getLocationScreen = "/get_location_screen";
+  static const String searchLocationScreen = "/search_location_screen";
 }
 
 class AppRoutes {
@@ -125,6 +129,14 @@ class AppRoutes {
       case RouteNames.verifyScreen:
         return MaterialPageRoute(
           builder: (context) => const VerifyScreen(),
+        );
+      case RouteNames.getLocationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const GetLocationScreen(),
+        );
+      case RouteNames.searchLocationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchLocationScreen(),
         );
       default:
         return MaterialPageRoute(
