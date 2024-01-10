@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 
-class SwitcherListTile extends StatelessWidget {
+class SwitcherListTile extends StatefulWidget {
   const SwitcherListTile({
     super.key,
     required this.isSwitched,
@@ -15,6 +15,7 @@ class SwitcherListTile extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
 
+  @override
   State<SwitcherListTile> createState() => _SwitcherListTileState();
 }
 

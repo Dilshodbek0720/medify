@@ -149,6 +149,7 @@ class AppRoutes {
       case RouteNames.languageScreen:
         return MaterialPageRoute(
           builder: (context) => const LanguageScreen(),
+        );
       case RouteNames.controlNotification:
         return MaterialPageRoute(
           builder: (context) => const ControlNotificationScreen(),
