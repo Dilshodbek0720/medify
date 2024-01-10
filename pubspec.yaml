@@ -24,6 +24,7 @@ dependencies:
   dio: ^5.4.0
   location: ^5.0.3
   google_maps_flutter: ^2.5.1
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,7 @@ flutter:
     - assets/fonts/
     - assets/lottie/
     - assets/styles/
+    - assets/translations/
     - assets/svg/additional_icons/
 
   fonts:
