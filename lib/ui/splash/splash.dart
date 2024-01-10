@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3));
     if(context.mounted){
       // StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.loginScreen) :
-      // Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
-      Navigator.pushReplacementNamed(context, RouteNames.securityScreen);
+      Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
+      // Navigator.pushReplacementNamed(context, RouteNames.securityScreen);
     }
   }
 
