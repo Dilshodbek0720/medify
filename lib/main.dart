@@ -7,7 +7,9 @@ import 'package:medify/cubits/code_input/code_input_cubit.dart';
 import 'package:medify/cubits/get_location_cubit.dart';
 import 'package:medify/cubits/help_center/help_center_category_cubit.dart';
 import 'package:medify/cubits/location/location_cubit.dart';
+import 'package:medify/cubits/notifications/notification_cubit.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
+import 'package:medify/cubits/security_cubit/security_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/network/api_service.dart';
@@ -35,6 +37,8 @@ class MainApp extends StatelessWidget {
       BlocProvider(create: (context) => PaymentBloc()),
       BlocProvider(create: (context) => PaymentAddBloc()),
       BlocProvider(create: (context) => GetLocationCubit()),
+      BlocProvider(create: (context) => NotificationCubit()),
+      BlocProvider(create: (context) => SecurityCubit()),
       BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
     ],
     child: const MyApp(),

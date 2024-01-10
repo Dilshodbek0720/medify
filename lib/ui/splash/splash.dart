@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if(context.mounted){
       // StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.loginScreen) :
       Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
-      // Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+      // Navigator.pushReplacementNamed(context, RouteNames.securityScreen);
     }
   }
 

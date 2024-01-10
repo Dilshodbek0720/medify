@@ -20,6 +20,9 @@ import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
 class RouteNames {
@@ -45,6 +48,9 @@ class RouteNames {
   static const String verifyScreen = "/verify_screen";
   static const String getLocationScreen = "/get_location_screen";
   static const String searchLocationScreen = "/search_location_screen";
+  static const String controlNotification = "/control_notification";
+  static const String paymentListScreen = "/payment_screen";
+  static const String securityScreen = "/security_screen";
 }
 
 class AppRoutes {
@@ -137,6 +143,18 @@ class AppRoutes {
       case RouteNames.searchLocationScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchLocationScreen(),
+        );
+      case RouteNames.controlNotification:
+        return MaterialPageRoute(
+          builder: (context) => const ControlNotificationScreen(),
+        );
+      case RouteNames.paymentListScreen:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentsListScreen(),
+        );
+      case RouteNames.securityScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SecurityScreen(),
         );
       default:
         return MaterialPageRoute(
