@@ -11,7 +11,7 @@ class StorageKeys {
 
 
   static const String generalNotifications = "General Notification";
-  static const String soundNotifications = "sound";
+  static const String soundNotifications = "Sound";
   static const String vibrateNotifications = "Vibrate";
   static const String specialOffersNotifications = "Special Offers";
   static const String promoDiscountNotifications = "Promo & Discount";
