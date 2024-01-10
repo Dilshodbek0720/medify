@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
-import 'package:medify/ui/tab_box/profile/subScreens/language/widgets/language_selector.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/language/widgets/language_selector.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/size/size_extension.dart';

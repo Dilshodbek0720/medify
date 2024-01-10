@@ -20,7 +20,7 @@ import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
-import 'package:medify/ui/tab_box/profile/subScreens/language/language_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.dart';
