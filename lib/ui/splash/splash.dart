@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 3));
     if(context.mounted){
       // StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.loginScreen) :
-      // Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
-      Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+      Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen);
+      // Navigator.pushReplacementNamed(context, RouteNames.tabBox);
     }
   }
 
@@ -39,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 0,
+        elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: AppColors.white,
           statusBarIconBrightness: Brightness.dark,

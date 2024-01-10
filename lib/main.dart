@@ -4,11 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
+import 'package:medify/cubits/get_location_cubit.dart';
 import 'package:medify/cubits/help_center/help_center_category_cubit.dart';
+import 'package:medify/cubits/location/location_cubit.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
+import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/location/get_location.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
@@ -30,6 +34,8 @@ class MainApp extends StatelessWidget {
       BlocProvider(create: (context) => RegisterCubit()),
       BlocProvider(create: (context) => PaymentBloc()),
       BlocProvider(create: (context) => PaymentAddBloc()),
+      BlocProvider(create: (context) => GetLocationCubit()),
+      BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
     ],
     child: const MyApp(),
     );
@@ -51,6 +57,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(useMaterial3: false,appBarTheme: const AppBarTheme(elevation: 0,iconTheme: IconThemeData(color: AppColors.c_900))),
           initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
+          // home: const GetLocationScreen(),
         );
       },
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/forgot_password/widgets/success_dialog.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -86,12 +87,8 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                 Expanded(
                     child: GlobalButton(
                   title: 'skip',
-                  onTap: () {
-                    successDialog(
-                        image: AppIcons.successReg,
-                        title: "Congratulations",
-                        text: "Your account is ready to use. You will be redirected to the Home page in a few seconds..", context: context);
-                    // Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+                  onTap: (){
+                    Navigator.pushNamed(context, RouteNames.paymentAddCard);
                   },
                   radius: 100,
                   color: AppColors.c_50, textColor: AppColors.c_900,

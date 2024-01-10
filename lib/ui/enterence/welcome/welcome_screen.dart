@@ -35,9 +35,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 0,
+        elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: AppColors.white,
-          statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.dark,
         ),
       ),

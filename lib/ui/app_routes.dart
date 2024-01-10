@@ -8,10 +8,14 @@ import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
 import 'package:medify/ui/forgot_password/create_password/create_password_screen.dart';
 import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
+import 'package:medify/ui/location/get_location.dart';
+import 'package:medify/ui/location/search_location.dart';
 import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_screen.dart';
+import 'package:medify/ui/register/verify/verify_screen.dart';
+import 'package:medify/ui/register/verify/verify_with.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
@@ -37,6 +41,10 @@ class RouteNames {
   static const String favoriteScreen = "/favorite_screen";
   static const String searchScreen = "/search_screen";
   static const String categoryScreen = "/category_screen";
+  static const String verifyWithScreen = "/verify_with_screen";
+  static const String verifyScreen = "/verify_screen";
+  static const String getLocationScreen = "/get_location_screen";
+  static const String searchLocationScreen = "/search_location_screen";
 }
 
 class AppRoutes {
@@ -113,6 +121,22 @@ class AppRoutes {
       case RouteNames.categoryScreen:
         return MaterialPageRoute(
           builder: (context) => const CategoryScreen(),
+        );
+      case RouteNames.verifyWithScreen:
+        return MaterialPageRoute(
+          builder: (context) => const VerifyWithScreen(),
+        );
+      case RouteNames.verifyScreen:
+        return MaterialPageRoute(
+          builder: (context) => const VerifyScreen(),
+        );
+      case RouteNames.getLocationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const GetLocationScreen(),
+        );
+      case RouteNames.searchLocationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchLocationScreen(),
         );
       default:
         return MaterialPageRoute(

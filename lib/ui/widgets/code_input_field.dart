@@ -42,9 +42,9 @@ class CodeInputFieldState extends State<CodeInputField> {
         60.ph,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: List.generate(4, (index) {
+          children: List.generate(6, (index) {
             return SizedBox(
-              width: 80.0.w,
+              width: 50.0.w,
               child: TextField(
                 style: TextStyle(
                   fontFamily: "Urbanist",
@@ -66,7 +66,7 @@ class CodeInputFieldState extends State<CodeInputField> {
                 cursorColor: AppColors.primary.withOpacity(0.6),
                 decoration: InputDecoration(
                     counterText: "",
-                    contentPadding: EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 32.0.w),
+                    // contentPadding: EdgeInsets.symmetric(vertical: 20.0.h, horizontal: 32.0.w),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(color: AppColors.primary,width: 2),
