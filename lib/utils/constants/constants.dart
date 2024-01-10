@@ -1,3 +1,5 @@
+import 'package:medify/utils/constants/storage_keys.dart';
+
 const String adminEmail = "admin@gmail.com";
 
 const defaultImageConstant = "Select Image";
@@ -25,3 +27,39 @@ const List<String> langList = [
   "tr_TR",
 ];
 
+List<String> notificationKeys = [
+  StorageKeys.generalNotifications,
+  StorageKeys.soundNotifications,
+  StorageKeys.vibrateNotifications,
+  StorageKeys.specialOffersNotifications,
+  StorageKeys.promoDiscountNotifications,
+  StorageKeys.paymentsNotifications,
+  StorageKeys.cashbackNotifications,
+  StorageKeys.appUpdatesNotifications,
+  StorageKeys.newServiceAvailableNotifications,
+  StorageKeys.newTipsAvailableNotifications,
+];
+
+List<bool> notificationValues = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
+List<String> securityKeys = [
+  StorageKeys.rememberMeSecurity,
+  StorageKeys.faceIdMeSecurity,
+  StorageKeys.biometricIdMeSecurity,
+];
+List<bool> securityValues = [
+  false,
+  false,
+  false,
+];

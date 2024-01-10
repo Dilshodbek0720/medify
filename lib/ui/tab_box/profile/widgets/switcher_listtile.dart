@@ -15,25 +15,35 @@ class SwitcherListTile extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
 
+  State<SwitcherListTile> createState() => _SwitcherListTileState();
+}
+
+class _SwitcherListTileState extends State<SwitcherListTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap,
+      onTap: widget.onTap,
       contentPadding: EdgeInsets.symmetric(
         vertical: 4.h,
         horizontal: 24.w,
       ),
-      title: Text(text),
+      title: Text(widget.text, style: TextStyle(
+        color: AppColors.c_900,
+        fontSize: 18.sp,
+        fontFamily: 'Urbanist',
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.20,
+      ),),
       trailing: CupertinoSwitch(
         activeColor: AppColors.primary,
-        value: isSwitched,
+        value: widget.isSwitched,
         onChanged: (v) {
-          // setState(() {
-          //   widget.isSwitched = v;
-          //   context
-          //       .read<SecurityCubit>()
-          //       .updateSecurityValues(widget.text, v, securityKeys);
-          // });
+//           setState(() {
+//             widget.isSwitched = v;
+//             context
+//                 .read<SecurityCubit>()
+//                 .updateSecurityValues(widget.text, v, securityKeys);
+//           });
         },
       ),
     );
