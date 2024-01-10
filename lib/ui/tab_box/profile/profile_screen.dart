@@ -101,19 +101,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: tr('notification'),
               icon: AppIcons.notification,
               onTap: () {
-                // Navigator.pushNamed(context, RouteNames.notificationSwitch);
+                Navigator.pushNamed(context, RouteNames.controlNotification);
               }),
           ProfileButton(
               text: tr('payment'),
               icon: AppIcons.wallet,
               onTap: () {
-                // Navigator.pushNamed(context, RouteNames.payment);
+                Navigator.pushNamed(context, RouteNames.paymentListScreen);
               }),
           ProfileButton(
               text: tr('security'),
               icon: AppIcons.shieldDone,
               onTap: () {
-                // Navigator.pushNamed(context, RouteNames.security);
+                Navigator.pushNamed(context, RouteNames.securityScreen);
               }),
           ProfileButton(
             text: tr('language'),
