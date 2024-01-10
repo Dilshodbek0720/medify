@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,14 +11,17 @@ import 'package:medify/cubits/location/location_cubit.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/location/get_location.dart';
+import 'package:medify/ui/tab_box/tab_box.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await StorageRepository.getInstance();
+  await EasyLocalization.ensureInitialized();
   runApp(const MainApp());
 }
 
@@ -37,7 +41,16 @@ class MainApp extends StatelessWidget {
       BlocProvider(create: (context) => GetLocationCubit()),
       BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
     ],
-    child: const MyApp(),
+    child: EasyLocalization(
+        supportedLocales: const [
+          Locale('ru', 'RU'),
+          Locale('uz', 'UZ'),
+          Locale('uz', 'Cyrl'),
+          Locale('en', 'US'),
+        ],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('uz', 'UZ'),
+        child: const MyApp()),
     );
   }
 }
@@ -55,9 +68,12 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(useMaterial3: false,appBarTheme: const AppBarTheme(elevation: 0,iconTheme: IconThemeData(color: AppColors.c_900))),
-          initialRoute: RouteNames.splashScreen,
+          // initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
-          // home: const GetLocationScreen(),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          home: const TabBox(),
         );
       },
     );

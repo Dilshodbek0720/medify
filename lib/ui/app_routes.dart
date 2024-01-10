@@ -20,6 +20,7 @@ import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/profile/subScreens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
 class RouteNames {
@@ -45,6 +46,7 @@ class RouteNames {
   static const String verifyScreen = "/verify_screen";
   static const String getLocationScreen = "/get_location_screen";
   static const String searchLocationScreen = "/search_location_screen";
+  static const String languageScreen = "/language_screen";
 }
 
 class AppRoutes {
@@ -137,6 +139,10 @@ class AppRoutes {
       case RouteNames.searchLocationScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchLocationScreen(),
+        );
+      case RouteNames.languageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const LanguageScreen(),
         );
       default:
         return MaterialPageRoute(
