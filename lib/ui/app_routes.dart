@@ -3,6 +3,7 @@ import 'package:medify/ui/auth/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up_screen.dart';
 import 'package:medify/ui/category/category_screen.dart';
+import 'package:medify/ui/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
@@ -55,6 +56,7 @@ class RouteNames {
   static const String paymentListScreen = "/payment_screen";
   static const String securityScreen = "/security_screen";
   static const String editProfileScreen = "/edit_profile_screen";
+  static const String doctorDetailScreen = "/doctor_detail_screen";
 }
 
 class AppRoutes {
@@ -167,6 +169,10 @@ class AppRoutes {
       case RouteNames.editProfileScreen:
         return MaterialPageRoute(
           builder: (context) => const EditProfileScreen(),
+        );
+      case RouteNames.doctorDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const DoctorDetailScreen(),
         );
       default:
         return MaterialPageRoute(
