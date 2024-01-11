@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
-import 'package:medify/ui/register/widgets/profile_dialog.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -29,6 +27,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')});
 
+  String? selectedImagePath;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,53 +47,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            profileDialog(
-                                context: context,
-                                valueChanged: (v) {
-                                  context
-                                      .read<EditProfileCubit>()
-                                      .updateFile(File(v));
-                                });
-                            print(state.file!.path);
-                          },
-                          child: Stack(children: [
-                            state.file == null
-                                ? Image.asset(
-                                    AppIcons.avatar,
-                                    width: 150.w,
-                                  )
-                                : ClipRRect(
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Image.file(state.file!,
-                                        width: 150.w,
-                                        height: 150.h,
-                                        fit: BoxFit.cover,
-                                        )),
-                            Positioned(
-                              right: 0,
-                              bottom: 0,
-                              child: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                  name: AppIcons.editSquare,
-                                  iconType: IconType.bold,
-                                ),
-                                width: 30.w,
-                                colorFilter: const ColorFilter.mode(
-                                  AppColors.primary,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                            ),
-                          ]),
-                        ),
-                      ],
-                    ),
-                    24.ph,
                     GlobalTextField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,

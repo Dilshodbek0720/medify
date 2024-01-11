@@ -8,7 +8,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/register/widgets/profile_dialog.dart';
+import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -49,51 +49,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            profileDialog(
-                                context: context,
-                                valueChanged: (v) {
-                                  context
-                                      .read<RegisterCubit>()
-                                      .updateFile(File(v));
-                                });
-                          },
-                          child: Stack(children: [
-                            state.file == null
-                                ? Image.asset(
-                                    AppIcons.avatar,
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          showCameraAndGalleryDialog(context, (imagePath) {
+                            if (imagePath != null) {
+                              context
+                                  .read<RegisterCubit>()
+                                  .updateFile(imagePath);
+                            }
+                          });
+                        },
+                        child: Stack(children: [
+                          state.file == null
+                              ? Image.asset(AppIcons.avatar, width: 150.w)
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(100.r),
+                                  child: Image.file(
+                                    File(state.file!),
                                     width: 150.w,
-                                  )
-                                : ClipRRect(
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Image.file(
-                                      state.file!,
-                                      width: 150.w,
-                                      height: 150.h,
-                                      fit: BoxFit.cover,
-                                    )),
-                            Positioned(
-                              right: 0,
-                              bottom: 0,
-                              child: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                  name: AppIcons.editSquare,
-                                  iconType: IconType.bold,
+                                    height: 150.h,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                                width: 30.w,
-                                colorFilter: const ColorFilter.mode(
-                                  AppColors.primary,
-                                  BlendMode.srcIn,
-                                ),
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: SvgPicture.asset(
+                              AppIcons.getSvg(
+                                name: AppIcons.editSquare,
+                                iconType: IconType.bold,
+                              ),
+                              width: 30.w,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.primary,
+                                BlendMode.srcIn,
                               ),
                             ),
-                          ]),
-                        ),
-                      ],
+                          ),
+                        ]),
+                      ),
                     ),
                     24.ph,
                     GlobalTextField(

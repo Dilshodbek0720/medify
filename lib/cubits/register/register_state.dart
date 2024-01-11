@@ -14,7 +14,7 @@ class RegisterState {
   final Color iconColor;
   final Color iconColor2;
   final DateTime selectedDate;
-  final File? file;
+  final String? file;
 
   RegisterState({
     required this.fullNameController,
@@ -47,7 +47,7 @@ class RegisterState {
     Color? iconColor,
     Color? iconColor2,
     DateTime? selectedDate,
-    File? file
+    String? file
   }) {
     return RegisterState(
       fullNameController: fullNameController ?? this.fullNameController,
