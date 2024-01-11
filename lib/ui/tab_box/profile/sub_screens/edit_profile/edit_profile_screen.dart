@@ -59,6 +59,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       .read<EditProfileCubit>()
                                       .updateFile(File(v));
                                 });
+                            print(state.file!.path);
                           },
                           child: Stack(children: [
                             state.file == null

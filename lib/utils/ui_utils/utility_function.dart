@@ -133,8 +133,10 @@ IconButton getIcon(
   Color? color,
   int width = 28,
   IconType? iconType,
+  double splashRadius = 30,
 }) =>
     IconButton(
+      splashRadius: splashRadius,
       onPressed: onTap,
       icon: SvgPicture.asset(
         AppIcons.getSvg(

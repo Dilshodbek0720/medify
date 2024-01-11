@@ -73,7 +73,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child){
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(useMaterial3: false,appBarTheme: const AppBarTheme(elevation: 0,iconTheme: IconThemeData(color: AppColors.c_900))),
+          theme: ThemeData(
+            backgroundColor: Colors.white,
+              useMaterial3: false,appBarTheme: const AppBarTheme(elevation: 0,iconTheme: IconThemeData(color: AppColors.c_900))),
           // initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
           localizationsDelegates: context.localizationDelegates,
