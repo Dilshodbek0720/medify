@@ -1,29 +1,27 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/utils/colors/app_colors.dart';
-import 'package:medify/utils/size/screen_size.dart';
 
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit()
       : super(RegisterState(
-    fullNameController: TextEditingController(),
-    nicknameController: TextEditingController(),
-    dateOfBirthController: TextEditingController(),
-    phoneController: TextEditingController(),
-    fullNameFocusNode: FocusNode(),
-    nicknameFocusNode: FocusNode(),
-    dateOfBirthFocusNode: FocusNode(),
-    phoneFocusNode: FocusNode(),
-    gender: 'Male',
-    genders: ["Male","Female"],
-    iconColor: AppColors.c_500,
-    iconColor2: AppColors.c_500,
-    selectedDate: DateTime.now(),
-  )){
+          fullNameController: TextEditingController(),
+          nicknameController: TextEditingController(),
+          dateOfBirthController: TextEditingController(),
+          phoneController: TextEditingController(),
+          fullNameFocusNode: FocusNode(),
+          nicknameFocusNode: FocusNode(),
+          dateOfBirthFocusNode: FocusNode(),
+          phoneFocusNode: FocusNode(),
+          gender: 'Male',
+          genders: ["Male", "Female"],
+          iconColor: AppColors.c_500,
+          iconColor2: AppColors.c_500,
+          selectedDate: DateTime.now(),
+        )) {
     state.phoneFocusNode.addListener(emailFocusChanged);
   }
 
@@ -49,20 +47,23 @@ class RegisterCubit extends Cubit<RegisterState> {
     Color newIconColor = phone.isNotEmpty
         ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
         : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
-    emit(state.copyWith(phoneController:state.phoneController..text=phone,iconColor: newIconColor));
+    emit(state.copyWith(
+        phoneController: state.phoneController..text = phone,
+        iconColor: newIconColor));
   }
 
   void emailFocusChanged() {
-    Color newIconColor =
-    state.phoneController.text.isNotEmpty ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900) : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
+    Color newIconColor = state.phoneController.text.isNotEmpty
+        ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
+        : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
     emit(state.copyWith(iconColor: newIconColor));
   }
 
   void updateGender(String gender) {
-    emit(state.copyWith(gender: gender,iconColor2: AppColors.c_900));
+    emit(state.copyWith(gender: gender, iconColor2: AppColors.c_900));
   }
 
-  void updateFile(File file) {
+  void updateFile(String file) {
     emit(state.copyWith(file: file));
   }
 
@@ -83,30 +84,37 @@ class RegisterCubit extends Cubit<RegisterState> {
     final DateTime? pickedDate = await showCupertinoModalPopup<DateTime>(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          decoration: const BoxDecoration(
-              color: AppColors.c_50,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10))),
-          height: 300 * height / figmaHeight,
-          child: CupertinoDatePicker(
-            mode: CupertinoDatePickerMode.date,
-            initialDateTime: DateTime(2000),
-            minimumDate: DateTime(1950),
-            maximumDate: DateTime(2101),
-            onDateTimeChanged: (DateTime newDate) {
-              if (newDate != state.selectedDate) {
-                state.dateOfBirthController.text =
-                newDate.toLocal().toString().split(' ')[0];
-                updateSelectedDate(newDate);
-                context.read<RegisterCubit>().updateDateOfBirth(state.dateOfBirthController.text);
-              }
-            },
+        return SizedBox(
+          height: 300.h,
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+                color: AppColors.c_50,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10))),
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: DateTime(2000),
+              minimumDate: DateTime(1950),
+              maximumDate: DateTime(2101),
+              onDateTimeChanged: (DateTime newDate) {
+                if (newDate != state.selectedDate) {
+                  state.dateOfBirthController.text =
+                      newDate.toLocal().toString().split(' ')[0];
+                  updateSelectedDate(newDate);
+                  context
+                      .read<RegisterCubit>()
+                      .updateDateOfBirth(state.dateOfBirthController.text);
+                }
+              },
+            ),
           ),
         );
       },
     );
-    if (pickedDate != null && context.mounted && pickedDate != context.read<RegisterState>().selectedDate) {
+    if (pickedDate != null &&
+        context.mounted &&
+        pickedDate != context.read<RegisterState>().selectedDate) {
       context.read<RegisterCubit>().updateSelectedDate(pickedDate);
     }
   }

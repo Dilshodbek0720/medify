@@ -134,10 +134,10 @@ Future<void> _getFromGallery(
     maxWidth: 512 * width / figmaWidth,
   );
   if (xFile != null && context.mounted) {
-    showLoading(context: context);
+    // showLoading(context: context);
     // UniversalData data = await imageUploader(xFile);
-    if (!context.mounted) return;
-    hideLoading(context: context);
+    // if (!context.mounted) return;
+    // hideLoading(context: context);
     // if (context.mounted &&
     //     StorageRepository.getString(StorageKeys.userRole) ==
     //         AppConstants.driver) {

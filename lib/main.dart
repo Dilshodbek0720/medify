@@ -17,12 +17,10 @@ import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/splash/splash.dart';
-import 'package:medify/ui/tab_box/tab_box.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
@@ -34,30 +32,32 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: (context) => TabCubit()),
-      BlocProvider(create: (context) => HelpCenterCategoryCubit()),
-      BlocProvider(create: (context) => CodeInputCubit()),
-      BlocProvider(create: (context) => SignUpCubit()),
-      BlocProvider(create: (context) => RegisterCubit()),
-      BlocProvider(create: (context) => PaymentBloc()),
-      BlocProvider(create: (context) => PaymentAddBloc()),
-      BlocProvider(create: (context) => GetLocationCubit()),
-      BlocProvider(create: (context) => NotificationCubit()),
-      BlocProvider(create: (context) => SecurityCubit()),
-      BlocProvider(create: (context) => EditProfileCubit()),
-      BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
-    ],
-    child: EasyLocalization(
-        supportedLocales: const [
-          Locale('ru', 'RU'),
-          Locale('uz', 'UZ'),
-          Locale('uz', 'Cyrl'),
-          Locale('en', 'US'),
-        ],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('uz', 'UZ'),
-        child: const MyApp()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => TabCubit()),
+        BlocProvider(create: (context) => HelpCenterCategoryCubit()),
+        BlocProvider(create: (context) => CodeInputCubit()),
+        BlocProvider(create: (context) => SignUpCubit()),
+        BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(create: (context) => PaymentBloc()),
+        BlocProvider(create: (context) => PaymentAddBloc()),
+        BlocProvider(create: (context) => GetLocationCubit()),
+        BlocProvider(create: (context) => NotificationCubit()),
+        BlocProvider(create: (context) => SecurityCubit()),
+        BlocProvider(create: (context) => EditProfileCubit()),
+        BlocProvider(
+            create: (context) => LocationCubit(apiService: ApiService())),
+      ],
+      child: EasyLocalization(
+          supportedLocales: const [
+            Locale('ru', 'RU'),
+            Locale('uz', 'UZ'),
+            Locale('uz', 'Cyrl'),
+            Locale('en', 'US'),
+          ],
+          path: 'assets/translations',
+          fallbackLocale: const Locale('uz', 'UZ'),
+          child: const MyApp()),
     );
   }
 }
@@ -71,18 +71,21 @@ class MyApp extends StatelessWidget {
       designSize: Size(figmaWidth, figmaHeight),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child){
+      builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            backgroundColor: Colors.white,
-              useMaterial3: false,appBarTheme: const AppBarTheme(elevation: 0,iconTheme: IconThemeData(color: AppColors.c_900))),
-          // initialRoute: RouteNames.splashScreen,
+              fontFamily: "Urbanist",
+              scaffoldBackgroundColor: Colors.white,
+              useMaterial3: false,
+              appBarTheme: const AppBarTheme(
+                  elevation: 0,
+                  iconTheme: IconThemeData(color: AppColors.c_900))),
+          initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          home: const SplashScreen(),
         );
       },
     );

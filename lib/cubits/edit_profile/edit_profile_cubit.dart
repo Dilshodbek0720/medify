@@ -1,31 +1,30 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/utils/colors/app_colors.dart';
-import 'package:medify/utils/size/screen_size.dart';
+
 part 'edit_profile_state.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit()
       : super(EditProfileState(
-    fullNameController: TextEditingController(),
-    nicknameController: TextEditingController(),
-    dateOfBirthController: TextEditingController(),
-    phoneController: TextEditingController(),
-    emailController: TextEditingController(),
-    fullNameFocusNode: FocusNode(),
-    nicknameFocusNode: FocusNode(),
-    dateOfBirthFocusNode: FocusNode(),
-    phoneFocusNode: FocusNode(),
-    emailFocusNode: FocusNode(),
-    gender: 'Male',
-    genders: ["Male","Female"],
-    genderIconColor: AppColors.c_500,
-    phoneIconColor: AppColors.c_500,
-    emailIconColor: AppColors.c_500,
-    selectedDate: DateTime.now(),
-  )){
+          fullNameController: TextEditingController(),
+          nicknameController: TextEditingController(),
+          dateOfBirthController: TextEditingController(),
+          phoneController: TextEditingController(),
+          emailController: TextEditingController(),
+          fullNameFocusNode: FocusNode(),
+          nicknameFocusNode: FocusNode(),
+          dateOfBirthFocusNode: FocusNode(),
+          phoneFocusNode: FocusNode(),
+          emailFocusNode: FocusNode(),
+          gender: 'Male',
+          genders: ["Male", "Female"],
+          genderIconColor: AppColors.c_500,
+          phoneIconColor: AppColors.c_500,
+          emailIconColor: AppColors.c_500,
+          selectedDate: DateTime.now(),
+        )) {
     state.phoneFocusNode.addListener(phoneFocusChanged);
     state.emailFocusNode.addListener(emailFocusChanged);
   }
@@ -52,33 +51,39 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     Color newIconColor = email.isNotEmpty
         ? (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
         : (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
-    emit(state.copyWith(emailController: state.emailController..text = email, emailIconColor: newIconColor));
+    emit(state.copyWith(
+        emailController: state.emailController..text = email,
+        emailIconColor: newIconColor));
   }
 
   void updatePhone(String phone) {
     Color newIconColor = phone.isNotEmpty
         ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
         : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
-    emit(state.copyWith(phoneController:state.phoneController..text=phone,phoneIconColor: newIconColor));
+    emit(state.copyWith(
+        phoneController: state.phoneController..text = phone,
+        phoneIconColor: newIconColor));
   }
 
   void emailFocusChanged() {
-    Color newIconColor =
-    state.emailController.text.isNotEmpty ? (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_900) : (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
+    Color newIconColor = state.emailController.text.isNotEmpty
+        ? (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
+        : (state.emailFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
     emit(state.copyWith(emailIconColor: newIconColor));
   }
 
   void phoneFocusChanged() {
-      Color newIconColor =
-      state.phoneController.text.isNotEmpty ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900) : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
-      emit(state.copyWith(phoneIconColor: newIconColor));
-    }
-
-  void updateGender(String gender) {
-    emit(state.copyWith(gender: gender,genderIconColor: AppColors.c_900));
+    Color newIconColor = state.phoneController.text.isNotEmpty
+        ? (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_900)
+        : (state.phoneFocusNode.hasFocus ? AppColors.primary : AppColors.c_500);
+    emit(state.copyWith(phoneIconColor: newIconColor));
   }
 
-  void updateFile(File file) {
+  void updateGender(String gender) {
+    emit(state.copyWith(gender: gender, genderIconColor: AppColors.c_900));
+  }
+
+  void updateFile(String file) {
     emit(state.copyWith(file: file));
   }
 
@@ -107,7 +112,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
             decoration: const BoxDecoration(
                 color: AppColors.c_50,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10))),
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
               initialDateTime: DateTime(2000),
@@ -116,9 +122,11 @@ class EditProfileCubit extends Cubit<EditProfileState> {
               onDateTimeChanged: (DateTime newDate) {
                 if (newDate != state.selectedDate) {
                   state.dateOfBirthController.text =
-                  newDate.toLocal().toString().split(' ')[0];
+                      newDate.toLocal().toString().split(' ')[0];
                   updateSelectedDate(newDate);
-                  context.read<EditProfileCubit>().updateDateOfBirth(state.dateOfBirthController.text);
+                  context
+                      .read<EditProfileCubit>()
+                      .updateDateOfBirth(state.dateOfBirthController.text);
                 }
               },
             ),
@@ -126,7 +134,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         );
       },
     );
-    if (pickedDate != null && context.mounted && pickedDate != context.read<EditProfileState>().selectedDate) {
+    if (pickedDate != null &&
+        context.mounted &&
+        pickedDate != context.read<EditProfileState>().selectedDate) {
       context.read<EditProfileCubit>().updateSelectedDate(pickedDate);
     }
   }

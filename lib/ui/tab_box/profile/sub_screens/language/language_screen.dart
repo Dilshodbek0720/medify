@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/language/widgets/language_selector.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
@@ -31,7 +32,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
       appBar: GlobalAppBar(
         title: tr('language'),
         onTap: () {
-          Navigator.pop(context);
+          Navigator.pushNamed(context,RouteNames.tabBox);
         },
       ),
       body: Column(

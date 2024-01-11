@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
+import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/register/widgets/profile_dialog.dart';
 import 'package:medify/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:medify/ui/tab_box/profile/widgets/profile_button.dart';
-import 'package:medify/ui/widgets/user_image.dart';
+import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
@@ -47,9 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             AppIcons.moreCircle,
             context: context,
             onTap: () {
-              setState(() {
-
-              });
+              setState(() {});
             },
           ),
           12.pw
@@ -58,11 +61,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          UserImage(
-            onTap: () {
-              profileDialog(
-                context: context,
-                valueChanged: (v) {},
+          BlocBuilder<EditProfileCubit, EditProfileState>(
+            builder: (context, state) {
+              return Center(
+                child: GestureDetector(
+                  onTap: () {
+                    showCameraAndGalleryDialog(context, (imagePath) {
+                      if (imagePath != null) {
+                        context.read<EditProfileCubit>().updateFile(imagePath);
+                      }
+                    });
+                  },
+                  child: Stack(children: [
+                    state.file == null
+                        ? Image.asset(AppIcons.avatar, width: 150.w)
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(100.r),
+                            child: Image.file(
+                              File(state.file!),
+                              width: 150.w,
+                              height: 150.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: SvgPicture.asset(
+                        AppIcons.getSvg(
+                          name: AppIcons.editSquare,
+                          iconType: IconType.bold,
+                        ),
+                        width: 30.w,
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.primary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  ]),
+                ),
               );
             },
           ),
@@ -87,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 fontFamily: "Urbanist"),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w,vertical: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
             child: const Divider(),
           ),
           ProfileButton(
