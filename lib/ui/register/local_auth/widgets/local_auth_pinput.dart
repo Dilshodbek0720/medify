@@ -6,10 +6,10 @@ import 'package:pinput/pinput.dart';
 
 class LocalAuthPinput extends StatelessWidget {
   const LocalAuthPinput({
-    Key? key,
+    super.key,
     required this.pinPutController,
     required this.onCompleted,
-  }) : super(key: key);
+  });
 
   final TextEditingController pinPutController;
   final ValueChanged<String> onCompleted;

@@ -11,11 +11,11 @@ class CategoryContainer extends StatelessWidget {
   final bool isSelected;
 
   const CategoryContainer({
-    Key? key,
+    super.key,
     required this.name,
     required this.selectedName,
     required this.isSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class CategoryContainer extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
         child: Text(
           name,
-          style: AppTextStyle.bodyLargeBold!.copyWith(
+          style: AppTextStyle.bodyLargeBold.copyWith(
             color: isSelected ? AppColors.white : AppColors.primary,
           ),
         ),

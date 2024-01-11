@@ -18,7 +18,7 @@ class GlobalSearchTextField extends StatefulWidget {
   final bool? readOnly;
   final MaskTextInputFormatter? maskFormatter;
   const GlobalSearchTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.keyboardType,
     required this.textInputAction,
@@ -31,7 +31,7 @@ class GlobalSearchTextField extends StatefulWidget {
     this.readOnly,
     this.focusNode,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   GlobalSearchTextFieldWidget createState() => GlobalSearchTextFieldWidget();
@@ -79,6 +79,20 @@ class GlobalSearchTextFieldWidget extends State<GlobalSearchTextField> {
           inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : null,
           decoration: InputDecoration(
             hintText: widget.hintText,
+            labelStyle: TextStyle(
+              fontFamily: "Urbanist",
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              color: AppColors.c_900,
+              height: 20 / 14,
+            ),
+            hintStyle: TextStyle(
+              fontFamily: "Urbanist",
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              color: AppColors.c_500,
+              height: 20 / 14,
+            ),
             suffixIcon: widget.rightImage != null
                 ? GestureDetector(
                     onTap: widget.onTap,

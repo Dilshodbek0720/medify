@@ -46,7 +46,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           getIcon(
             AppIcons.moreCircle,
             context: context,
-            onTap: () {},
+            onTap: () {
+              setState(() {
+
+              });
+            },
           ),
           12.pw
         ],
@@ -89,7 +93,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ProfileButton(
             text: tr('edit_profile'),
             icon: AppIcons.profile,
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.editProfileScreen);
+            },
           ),
           ProfileButton(
               text: tr('address'),
