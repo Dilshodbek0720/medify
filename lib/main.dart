@@ -17,6 +17,7 @@ import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          home: const TabBox(),
+          home: const SplashScreen(),
         );
       },
     );
