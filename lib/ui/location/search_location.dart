@@ -28,7 +28,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
       ),
       body: BlocBuilder<LocationCubit, LocationState>(
         builder: (context, state) {
-          print("printttttt");
+          debugPrint("printttttt");
           return ListView(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             children: [
@@ -47,7 +47,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                   child: SvgPicture.asset(
                     AppIcons.search,
                     colorFilter:
-                    ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+                    const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),),
               ListTile(

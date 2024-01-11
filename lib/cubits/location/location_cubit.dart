@@ -21,7 +21,7 @@ class LocationCubit extends Cubit<LocationState> {
 
     if (universalData.error.isEmpty) {
       state.addresses = [universalData.data];
-      print(state.addresses);
+      debugPrint(state.addresses.toString());
     } else {
       debugPrint("ERROR:${universalData.error}");
     }

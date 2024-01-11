@@ -3,7 +3,6 @@ import 'package:lottie/lottie.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
-import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 void showErrorMessage({

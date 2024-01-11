@@ -31,7 +31,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
   void initState() {
     locationProvider = BlocProvider.of<LocationCubit>(context, listen: false);
     // call();
-    print("print");
+    debugPrint("print");
     super.initState();
   }
   @override

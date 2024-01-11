@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 initLocationService(BuildContext context) async {
@@ -32,7 +32,7 @@ initLocationService(BuildContext context) async {
 
   location.onLocationChanged.listen((LocationData newLocation)async
   {
-    LatLng latLng = LatLng(newLocation.latitude!, newLocation.longitude!);
+    // LatLng latLng = LatLng(newLocation.latitude!, newLocation.longitude!);
     // context.read<MarkerProvider>().addNewMarker(latLng);
     debugPrint("LONGITUDE:${newLocation.longitude}");
   });

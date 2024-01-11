@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/forgot_password/widgets/success_dialog.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
