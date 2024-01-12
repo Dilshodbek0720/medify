@@ -75,6 +75,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       onTapOutside: (event) {
         FocusManager.instance.primaryFocus?.unfocus();
       },
+      onChanged: widget.onChanged,
       // obscuringCharacter: '●',
       readOnly: widget.readOnly,
       controller: _internalController,
