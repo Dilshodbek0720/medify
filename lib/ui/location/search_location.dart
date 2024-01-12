@@ -7,6 +7,7 @@ import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
+import 'package:medify/utils/size/size_extension.dart';
 
 class SearchLocationScreen extends StatefulWidget {
   const SearchLocationScreen({super.key});
@@ -16,6 +17,8 @@ class SearchLocationScreen extends StatefulWidget {
 }
 
 class _SearchLocationScreenState extends State<SearchLocationScreen> {
+  List addresses = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +31,6 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
       ),
       body: BlocBuilder<LocationCubit, LocationState>(
         builder: (context, state) {
-          debugPrint("printttttt");
           return ListView(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             children: [
@@ -38,8 +40,11 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                 keyboardType: TextInputType.visiblePassword,
                 controller: state.textController,
                 onChanged: (address) {
-                  debugPrint(address);
-                  context.read<LocationCubit>().getAddressByName(address: address);},
+                  context.read<LocationCubit>().getAddressByName(address: address);
+                  setState(() {
+                    addresses = context.read<LocationCubit>().state.addresses;
+                  });
+                  },
                 // focusNode: state.passwordFocusNode,
                 // obscureText: state.isObscure,
                 prefixIcon: Padding(
@@ -50,6 +55,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                     const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),),
+              8.ph,
               ListTile(
                 onTap: () {},
                 horizontalTitleGap: 0,
@@ -63,7 +69,9 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                       fontFamily: "Urbanist"
                   ),),
               ),
+              8.ph,
               const Divider(color: AppColors.c_200, thickness: 2,),
+              8.ph,
               Text("Search Result",
                 style: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -71,31 +79,59 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                     color: AppColors.c_700,
                     fontFamily: "Urbanist"
                 ),),
+              8.ph,
+              // ListTile(
+              //   onTap: () {},
+              //   contentPadding: EdgeInsets.zero,
+              //   title: Row(
+              //     children: [
+              //       SvgPicture.asset(AppIcons.navigationBold,
+              //         width: 20,),
+              //       Text("Golden Avenue",
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.w500,
+              //             fontSize: 18.sp,
+              //             color: AppColors.c_900,
+              //             fontFamily: "Urbanist"
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   subtitle: Text("8502 Preston Rd. Ingl..",
+              //     style: TextStyle(
+              //         fontWeight: FontWeight.w500,
+              //         fontSize: 17.sp,
+              //         color: AppColors.c_500,
+              //         fontFamily: "Urbanist"
+              //     ),),
+              // ),
               ListTile(
                 onTap: () {},
                 contentPadding: EdgeInsets.zero,
-                title: Row(
-                  children: [
-                    SvgPicture.asset(AppIcons.navigationBold,
-                      width: 20,),
-                    Text("Golden Avenue",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.sp,
-                          color: AppColors.c_900,
-                          fontFamily: "Urbanist"
-                      ),
-                    ),
-                  ],
+                leading: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(AppIcons.navigationBold,
+                            width: 24,),
                 ),
-                subtitle: Text("8502 Preston Rd. Ingl..",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 17.sp,
-                      color: AppColors.c_500,
-                      fontFamily: "Urbanist"
-                  ),),
-              )
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 3),
+                  child: Text(addresses.toString(),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.sp,
+                        color: AppColors.c_900,
+                        fontFamily: "Urbanist"
+                    ),
+                  ),
+                ),
+                // subtitle: Text("8502 Preston Rd. Ingl..",
+                //   style: TextStyle(
+                //       fontWeight: FontWeight.w500,
+                //       fontSize: 17.sp,
+                //       color: AppColors.c_500,
+                //       fontFamily: "Urbanist"
+                //   ),),
+              ),
             ],
           );
         },

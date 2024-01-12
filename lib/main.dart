@@ -6,7 +6,7 @@ import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
-import 'package:medify/cubits/get_location_cubit.dart';
+import 'package:medify/cubits/get_location/get_location_cubit.dart';
 import 'package:medify/cubits/help_center/help_center_category_cubit.dart';
 import 'package:medify/cubits/location/location_cubit.dart';
 import 'package:medify/cubits/notifications/notification_cubit.dart';
