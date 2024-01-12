@@ -226,7 +226,7 @@ void showBottomSheetWidget(BuildContext context) {
                     ],
                   ),
                 ),
-                48.ph
+                40.ph
               ],
             );
           },
