@@ -7,6 +7,7 @@ import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/servise.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -38,6 +39,12 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
+      appBar: GlobalAppBar(
+        title: "Your location",
+        onTap: (){
+          Navigator.pop(context);
+        },
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(

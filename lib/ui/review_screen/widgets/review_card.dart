@@ -45,7 +45,7 @@ class _ReviewCardState extends State<ReviewCard> {
                       color: AppColors.c_900,
                     ),),
                 ),
-                12.pw,
+                const Spacer(),
                 SizedBox(
                   width: 64.5.w,
                   child: Container(

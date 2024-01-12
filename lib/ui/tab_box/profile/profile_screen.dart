@@ -75,13 +75,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Stack(children: [
                     state.file == null
                         ? Image.asset(AppIcons.avatar, width: 150.w)
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(100.r),
-                            child: Image.file(
+                        : CircleAvatar(
+                            radius: 100.r,
+                            backgroundImage: FileImage(
                               File(state.file!),
-                              width: 150.w,
-                              height: 150.h,
-                              fit: BoxFit.cover,
                             ),
                           ),
                     Positioned(
@@ -139,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: tr('address'),
               icon: AppIcons.location,
               onTap: () {
-                // Navigator.pushNamed(context, RouteNames.addressScreen);
+                Navigator.pushNamed(context, RouteNames.getLocationScreen);
               }),
           ProfileButton(
               text: tr('notification'),
