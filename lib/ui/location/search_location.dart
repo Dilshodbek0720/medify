@@ -40,7 +40,9 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                 keyboardType: TextInputType.visiblePassword,
                 controller: state.textController,
                 onChanged: (address) {
-                  context.read<LocationCubit>().getAddressByName(address: address);
+                  if(address.toString().isNotEmpty){
+                    context.read<LocationCubit>().getAddressByName(address: address);
+                  }
                   setState(() {
                     addresses = context.read<LocationCubit>().state.addresses;
                   });
@@ -105,17 +107,17 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
               //         fontFamily: "Urbanist"
               //     ),),
               // ),
-              ListTile(
+          addresses.toString().substring(1,addresses.toString().length-1).isNotEmpty ? ListTile(
                 onTap: () {},
                 contentPadding: EdgeInsets.zero,
                 leading: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SvgPicture.asset(AppIcons.navigationBold,
-                            width: 24,),
+                            width: 24.r,),
                 ),
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 3),
-                  child: Text(addresses.toString(),
+                  child: Text(addresses.toString().substring(1,addresses.toString().length-1),
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -124,14 +126,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                     ),
                   ),
                 ),
-                // subtitle: Text("8502 Preston Rd. Ingl..",
-                //   style: TextStyle(
-                //       fontWeight: FontWeight.w500,
-                //       fontSize: 17.sp,
-                //       color: AppColors.c_500,
-                //       fontFamily: "Urbanist"
-                //   ),),
-              ),
+              ) : const SizedBox(),
             ],
           );
         },
