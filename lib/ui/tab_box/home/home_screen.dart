@@ -125,7 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               24.ph,
-              SeeAllItem(onTap: (){ }, title: 'Doctor Speciality'),
+              SeeAllItem(onTap: (){
+                Navigator.pushNamed(context, RouteNames.hospitalDetailScreen);
+              }, title: 'Doctor Speciality'),
               24.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
