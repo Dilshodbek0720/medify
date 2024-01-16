@@ -18,9 +18,11 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  int selectType = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.c_50,
       appBar: AppBar(
         toolbarHeight: 70.h,
         backgroundColor: AppColors.c_50,
@@ -57,6 +59,94 @@ class _SearchScreenState extends State<SearchScreen> {
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           children: [
+            10.ph,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                  EdgeInsets.symmetric(horizontal: 6.w),
+                  child: InkWell(
+                      borderRadius: BorderRadius.circular(100),
+                      onTap: () {
+                        selectType = 0;
+                        setState(() {});
+                      },
+                      child: Ink(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 8.h),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.circular(100.r),
+                            color: selectType == 0
+                                ? AppColors.primary500
+                                : Colors.white,
+                            border: Border.all(
+                                color: AppColors.primary),
+                          ),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(AppIcons.getSvg(name: AppIcons.star,iconType: IconType.bold),
+                                  width: 16.w,
+                                  colorFilter: ColorFilter.mode(
+                                      selectType==0?Colors.white:AppColors.primary500, BlendMode.srcIn)
+                              ),
+                              8.pw,
+                              Text(
+                                "Doctors",
+                                style: TextStyle(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: selectType==0?Colors.white:AppColors.primary500,
+                                ),
+                              ),
+                            ],
+                          ))),
+                ),
+                Padding(
+                  padding:
+                  EdgeInsets.symmetric(horizontal: 6.w),
+                  child: InkWell(
+                      borderRadius: BorderRadius.circular(100),
+                      onTap: () {
+                        selectType = 1;
+                        setState(() {});
+                      },
+                      child: Ink(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.w, vertical: 8.h),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.circular(100.r),
+                            color: selectType == 1
+                                ? AppColors.primary500
+                                : Colors.white,
+                            border: Border.all(
+                                color: AppColors.primary),
+                          ),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(AppIcons.getSvg(name: AppIcons.star,iconType: IconType.bold),
+                                  width: 16.w,
+                                  colorFilter: ColorFilter.mode(
+                                      selectType==1?Colors.white:AppColors.primary500, BlendMode.srcIn)
+                              ),
+                              8.pw,
+                              Text(
+                                "Hospitals",
+                                style: TextStyle(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: selectType==1?Colors.white:AppColors.primary500,
+                                ),
+                              ),
+                            ],
+                          ))),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
