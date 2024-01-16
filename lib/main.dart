@@ -19,6 +19,7 @@ import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/booking/calendar_screen.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
@@ -84,11 +85,12 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                   elevation: 0,
                   iconTheme: IconThemeData(color: AppColors.c_900))),
-          initialRoute: RouteNames.splashScreen,
+          // initialRoute: RouteNames.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
+          home: const CalendarScreen(),
         );
       },
     );

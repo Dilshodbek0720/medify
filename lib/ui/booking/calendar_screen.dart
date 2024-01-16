@@ -58,7 +58,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         calendarBuilders: CalendarBuilders(
                           headerTitleBuilder: (context, DateTime focusedDay) {
                             final monthName =
-                                DateFormat.MMMM(context.locale.toLanguageTag())
+                                DateFormat.MMMM(context.locale.toString())
                                     .format(focusedDay);
                             final year = DateFormat.y().format(focusedDay);
                             return Text(
@@ -73,7 +73,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           },
                           dowBuilder: (context, day) {
                             if (day.weekday == DateTime.sunday) {
-                              final text = DateFormat.E().format(day);
+                              final text = DateFormat.E(context.locale.toString()).format(day);
                               return Center(
                                 child: Text(
                                   text,
@@ -92,7 +92,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        locale: context.locale.toLanguageTag(),
+                        locale: context.locale.toString(),
                         firstDay: DateTime.now(),
                         lastDay: DateTime(2040),
                         focusedDay: state.focusedDay,
