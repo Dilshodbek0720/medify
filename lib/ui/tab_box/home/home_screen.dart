@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/widgets/categories.dart';
@@ -43,7 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 48.w,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(30.r),
-                      child: Image.asset(AppIcons.drWatson)),
+                      child: GestureDetector(
+                        onTap: (){
+                          context.read<TabCubit>().changeTabIndex(4);
+                        },
+                          child: Image.asset(AppIcons.drWatson))),
                 ),
                 16.pw,
                 Column(

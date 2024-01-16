@@ -133,6 +133,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
           ProfileButton(
+            text: tr('my_bookings'),
+            icon: AppIcons.calendar,
+            onTap: () {},
+          ),
+          ProfileButton(
               text: tr('address'),
               icon: AppIcons.location,
               onTap: () {

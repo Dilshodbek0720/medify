@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:medify/ui/auth/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up_screen.dart';
+import 'package:medify/ui/booking/booking_info_detail.dart';
+import 'package:medify/ui/booking/calendar_screen.dart';
+import 'package:medify/ui/booking/our_rec.dart';
+import 'package:medify/ui/booking/review_summary.dart';
 import 'package:medify/ui/category/category_screen.dart';
 import 'package:medify/ui/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
@@ -59,6 +63,10 @@ class RouteNames {
   static const String editProfileScreen = "/edit_profile_screen";
   static const String doctorDetailScreen = "/doctor_detail_screen";
   static const String reviewScreen = "/review_screen";
+  static const String calendarScreen = "/calendar_screen";
+  static const String ourRec = "/our_rec";
+  static const String reviewSummaryScreen = "/review_summary_screen";
+  static const String bookingInfoDetailScreen = "/booking_info_detail_screen";
 }
 
 class AppRoutes {
@@ -179,6 +187,22 @@ class AppRoutes {
       case RouteNames.reviewScreen:
         return MaterialPageRoute(
           builder: (context) => const ReviewScreen(),
+        );
+      case RouteNames.calendarScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CalendarScreen(),
+        );
+      case RouteNames.bookingInfoDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const BookingInfoDetail(),
+        );
+      case RouteNames.ourRec:
+        return MaterialPageRoute(
+          builder: (context) => const OurRecommendationScreen(),
+        );
+      case RouteNames.reviewSummaryScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ReviewSummaryScreen(),
         );
       default:
         return MaterialPageRoute(

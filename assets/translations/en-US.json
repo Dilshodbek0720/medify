@@ -211,7 +211,7 @@
   "no_thanks": "Yo'q rahmat!",
   "pay_tip": "Maslahat berish",
   "06": "",
-  "my_bookings": "Mening bandlovlarim",
+  "my_bookings": "My Bookings",
   "active_now": "Hozir faol",
   "completed": "Yakunlandi",
   "cancelled": "Bekor qilingan",
@@ -314,5 +314,11 @@
   "why_didnot_after_payment": "Nega men to'lovdan keyin elektron kvitansiyani olmadim?",
   "enter_valid_phone_number": "Yaroqli telefon raqamini kiriting",
   "enter_valid_password": "Yaroqli parol kiriting",
-  "no_such_identifed": "Bunday hudud aniqlanmadi!"
+  "no_such_identifed": "Bunday hudud aniqlanmadi!",
+  "select_date": "Select Date",
+  "check_in": "Check in",
+  "check_out": "Check out",
+  "note_to_owner": "Note to Owner (optional)",
+  "notes": "Notes",
+  "change": "Change"
 }
