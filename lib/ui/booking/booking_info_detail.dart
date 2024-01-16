@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
+import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -14,14 +14,14 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+class BookingInfoDetail extends StatefulWidget {
+  const BookingInfoDetail({super.key});
 
   @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
+  State<BookingInfoDetail> createState() => _BookingInfoDetailState();
 }
 
-class _EditProfileScreenState extends State<EditProfileScreen> {
+class _BookingInfoDetailState extends State<BookingInfoDetail> {
   var phoneFormatter = MaskTextInputFormatter(
       initialText: "+998",
       mask: '## ### ## ##',
@@ -35,23 +35,30 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          title: tr("edit_profile")),
-      body: BlocBuilder<EditProfileCubit, EditProfileState>(
+          title: "Book Real Estate"),
+      body: BlocBuilder<BookingInfoDetailCubit, BookingInfoDetailState>(
         builder: (context, state) {
           return Column(
             children: [
               Expanded(
                 child: ListView(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                  EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   children: [
+                    Text("Your Information Details",
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.c_900
+                    ),),
+                    24.ph,
                     GlobalTextField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,
                         controller: state.fullNameController,
                         onChanged: (fullName) {
                           context
-                              .read<EditProfileCubit>()
+                              .read<BookingInfoDetailCubit>()
                               .updateFullName(fullName);
                         },
                         focusNode: state.fullNameFocusNode,
@@ -63,7 +70,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         controller: state.nicknameController,
                         onChanged: (nickName) {
                           context
-                              .read<EditProfileCubit>()
+                              .read<BookingInfoDetailCubit>()
                               .updateNickname(nickName);
                         },
                         focusNode: state.nicknameFocusNode,
@@ -72,7 +79,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     GestureDetector(
                       onTap: () {
                         context
-                            .read<EditProfileCubit>()
+                            .read<BookingInfoDetailCubit>()
                             .showDatePicker(context);
                       },
                       child: AbsorbPointer(
@@ -82,14 +89,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           focusNode: state.dateOfBirthFocusNode,
                           onTap: () {
                             context
-                                .read<EditProfileCubit>()
+                                .read<BookingInfoDetailCubit>()
                                 .showDatePicker(context);
                           },
                           rightImage: AppIcons.calendar,
                           controller: state.dateOfBirthController,
                           onChanged: (value) {
                             context
-                                .read<EditProfileCubit>()
+                                .read<BookingInfoDetailCubit>()
                                 .updateDateOfBirth(value);
                           },
                           keyboardType: TextInputType.number,
@@ -103,7 +110,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       keyboardType: TextInputType.emailAddress,
                       controller: state.emailController,
                       onChanged: (email) {
-                        context.read<EditProfileCubit>().updateEmail(email);
+                        context.read<BookingInfoDetailCubit>().updateEmail(email);
                       },
                       focusNode: state.emailFocusNode,
                       hintText: 'Email',
@@ -121,7 +128,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       controller: state.phoneController,
                       maskFormatter: phoneFormatter,
                       onChanged: (phone) {
-                        context.read<EditProfileCubit>().updatePhone(phone);
+                        context.read<BookingInfoDetailCubit>().updatePhone(phone);
                       },
                       focusNode: state.phoneFocusNode,
                       hintText: "Phone",
@@ -168,9 +175,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             );
                           }).toList(),
                           onChanged: (newValue) {
-                            context
-                                .read<EditProfileCubit>()
-                                .updateGender(newValue!);
+                            context.read<BookingInfoDetailCubit>().updateGender(newValue!);
                           },
                           hint: Text(
                             state.gender,
@@ -190,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: GlobalButton(
-                  title: tr("update"),
+                  title: tr("continue"),
                   onTap: () {
                     // Navigator.pushNamed(context, RouteNames.verifyWithScreen);
                   },
@@ -199,7 +204,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   textColor: Colors.white,
                 ),
               ),
-              48.ph,
+              40.ph,
             ],
           );
         },

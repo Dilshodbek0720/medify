@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
+import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
+import 'package:medify/cubits/calendar/calendar_cubit.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
 import 'package:medify/cubits/get_location/get_location_cubit.dart';
@@ -45,8 +47,9 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => NotificationCubit()),
         BlocProvider(create: (context) => SecurityCubit()),
         BlocProvider(create: (context) => EditProfileCubit()),
-        BlocProvider(
-            create: (context) => LocationCubit(apiService: ApiService())),
+        BlocProvider(create: (context) => BookingInfoDetailCubit()),
+        BlocProvider(create: (context) => CalendarCubit()),
+        BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
       ],
       child: EasyLocalization(
           supportedLocales: const [

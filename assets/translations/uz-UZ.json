@@ -314,5 +314,11 @@
   "why_didnot_after_payment": "Nega men to'lovdan keyin elektron kvitansiyani olmadim?",
   "enter_valid_phone_number": "Yaroqli telefon raqamini kiriting",
   "enter_valid_password": "Yaroqli parol kiriting",
-  "no_such_identifed": "Bunday hudud aniqlanmadi!"
+  "no_such_identifed": "Bunday hudud aniqlanmadi!",
+  "select_date": "Sana-ni tanlang",
+  "check_in": "Boshlanishi",
+  "check_out": "Tugashi",
+  "note_to_owner": "Egasiga eslatma (ixtiyoriy)",
+  "notes": "Eslatmalar",
+  "change": "O'zgartirish"
 }

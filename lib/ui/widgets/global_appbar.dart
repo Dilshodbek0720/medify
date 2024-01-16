@@ -12,18 +12,20 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
     this.action,
     this.centerTitle,
     this.title = "",
+    this.background = Colors.white,
   });
 
   final VoidCallback? onTap;
   final String title;
   final List<Widget>? action;
   final bool? centerTitle;
+  final Color background;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white),
-      backgroundColor: Colors.white,
+      backgroundColor: background,
       scrolledUnderElevation: 0,
       actions: action,
       elevation: 0,
