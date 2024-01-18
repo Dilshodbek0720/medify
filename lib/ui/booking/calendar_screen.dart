@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/calendar/calendar_cubit.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -196,7 +197,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: GlobalButton(
                   title: tr("continue"),
                   onTap: () {
-                    // Navigator.pushNamed(context, RouteNames.verifyWithScreen);
+                    Navigator.pushNamed(context, RouteNames.bookingInfoDetailScreen);
                   },
                   radius: 100.r,
                   color: AppColors.primary,

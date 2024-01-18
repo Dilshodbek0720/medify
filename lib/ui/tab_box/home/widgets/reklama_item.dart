@@ -5,7 +5,8 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class ReklamaItem extends StatelessWidget {
-  const ReklamaItem({super.key});
+  const ReklamaItem({super.key, required this.image});
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +51,13 @@ class ReklamaItem extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          SizedBox(
-              height: 180*MediaQuery.of(context).size.height/926,
-              width: 180*MediaQuery.of(context).size.height/926,
-              child: Image.asset(AppIcons.reklama))
+          ClipRRect(
+            borderRadius: BorderRadius.circular(32.r),
+            child: SizedBox(
+                height: 180*MediaQuery.of(context).size.height/926,
+                width: 180*MediaQuery.of(context).size.height/926,
+                child: Image.asset(image, fit: BoxFit.cover,)),
+          )
         ],),
     );
   }
