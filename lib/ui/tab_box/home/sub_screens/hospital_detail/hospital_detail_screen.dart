@@ -31,12 +31,12 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
   late CameraPosition currentCameraPosition;
   bool onCameraMoveStarted = false;
 
-  Future<void> _followMe({required CameraPosition cameraPosition}) async {
-    final GoogleMapController controller = mapController
-      ..animateCamera(
-        CameraUpdate.newCameraPosition(cameraPosition),
-      );
-  }
+  // Future<void> _followMe({required CameraPosition cameraPosition}) async {
+  //   final GoogleMapController controller = mapController
+  //     ..animateCamera(
+  //       CameraUpdate.newCameraPosition(cameraPosition),
+  //     );
+  // }
 
   Set<Marker> markers = {
     const Marker(markerId: MarkerId('location'),position: LatLng(41.311081,69.240562))
@@ -64,7 +64,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
               Expanded(
                 child: ListView(
                   children: [
-                    HospitalImagesWidget(),
+                    const HospitalImagesWidget(),
                     24.ph,
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),

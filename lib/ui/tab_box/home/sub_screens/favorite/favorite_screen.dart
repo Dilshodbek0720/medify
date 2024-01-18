@@ -18,8 +18,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.c_50,
       appBar: GlobalAppBar(
+        background: AppColors.c_50,
         onTap: (){
           Navigator.pop(context);
         },
