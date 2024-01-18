@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -197,7 +198,7 @@ class _BookingInfoDetailState extends State<BookingInfoDetail> {
                 child: GlobalButton(
                   title: tr("continue"),
                   onTap: () {
-                    // Navigator.pushNamed(context, RouteNames.verifyWithScreen);
+                    Navigator.pushNamed(context, RouteNames.reviewSummaryScreen);
                   },
                   radius: 100.r,
                   color: AppColors.primary,

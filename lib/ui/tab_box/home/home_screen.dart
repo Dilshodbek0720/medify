@@ -1,4 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,13 +9,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/categories.dart';
 import 'package:medify/ui/tab_box/home/widgets/category_item.dart';
+import 'package:medify/ui/tab_box/home/widgets/home_doctor_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
+import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/utility_function.dart';
 
@@ -24,8 +30,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _controller = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -120,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   children: [
                     12.pw,
-                    ...List.generate(4, (index) => const ReklamaItem())
+                    ...List.generate(4, (index) => const ReklamaItem(image: AppIcons.reklama,))
                   ],
                 ),
               ),
@@ -156,8 +169,35 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               24.ph,
               SeeAllItem(onTap: (){ }, title: 'Top Doctors'),
-              24.ph,
+              20.ph,
               const Categories(),
+              24.ph,
+              SizedBox(
+                height: 180*MediaQuery.of(context).size.height/926,
+                width: MediaQuery.of(context).size.width,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    12.pw,
+                    ...List.generate(4, (index) => const ReklamaItem(image: AppIcons.reklama,))
+                  ],
+                ),
+              ),
+              20.ph,
+              SeeAllItem(onTap: (){ }, title: 'Top Hospitals'),
+              24.ph,
+              SizedBox(
+                height: 180*MediaQuery.of(context).size.height/926,
+                width: MediaQuery.of(context).size.width,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    12.pw,
+                    ...List.generate(4, (index) => const ReklamaItem(image: AppIcons.hospital,))
+                  ],
+                ),
+              ),
+              20.ph,
             ],
           ))
         ],

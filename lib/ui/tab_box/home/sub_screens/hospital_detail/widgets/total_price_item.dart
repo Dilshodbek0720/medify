@@ -5,7 +5,8 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class TotalPriceItem extends StatelessWidget {
-  const TotalPriceItem({super.key});
+  const TotalPriceItem({super.key, required this.onTap});
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class TotalPriceItem extends StatelessWidget {
           Expanded(
             child: GlobalButton(
               color: AppColors.primary500,
-              onTap: (){ },
+              onTap: onTap,
               title: 'Booking Now',
               textColor: AppColors.white,
             ),

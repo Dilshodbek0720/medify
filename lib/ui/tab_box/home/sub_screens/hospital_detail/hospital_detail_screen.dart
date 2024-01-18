@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -159,7 +158,9 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                         ],),
                     ),
                     24.ph,
-                    SeeAllItem(onTap: (){ }, title: 'Gallary'),
+                    SeeAllItem(onTap: (){
+                      Navigator.pushNamed(context, RouteNames.galleryScreen);
+                    }, title: 'Gallary'),
                     20.ph,
                     SizedBox(
                       height: 118*height/figmaHeight,
@@ -249,7 +250,9 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                     const ReviewCard(index: 0),
                   ],
                 ),),
-              const TotalPriceItem(),
+              TotalPriceItem(onTap: (){
+                Navigator.pushNamed(context, RouteNames.calendarScreen);
+              }),
             ],
           ),
           Positioned(
