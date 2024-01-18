@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/booking/widgets/booking_card.dart';
 import 'package:medify/ui/booking/widgets/type_card.dart';
-import 'package:medify/ui/review_screen/widgets/review_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
-import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/utility_function.dart';
 
 class OurRecommendationScreen extends StatefulWidget {
@@ -28,7 +23,9 @@ class _OurRecommendationScreenState extends State<OurRecommendationScreen> {
       appBar: GlobalAppBar(
         background: AppColors.c_50,
         title: "Our Recommendation",
-        onTap: (){},
+        onTap: (){
+          Navigator.pop(context);
+        },
         action: [
           getIcon(AppIcons.filter, context: context, onTap: (){
             Navigator.pushNamed(context, RouteNames.categoryScreen);
