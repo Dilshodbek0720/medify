@@ -24,7 +24,9 @@ class _OurRecommendationScreenState extends State<OurRecommendationScreen> {
       appBar: GlobalAppBar(
         background: AppColors.c_50,
         title: "Our Recommendation",
-        onTap: (){},
+        onTap: (){
+          Navigator.pop(context);
+        },
       ),
       body: Column(
         children: [

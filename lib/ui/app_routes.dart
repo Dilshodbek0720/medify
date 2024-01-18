@@ -26,6 +26,7 @@ import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallary_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
@@ -69,6 +70,7 @@ class RouteNames {
   static const String reviewSummaryScreen = "/review_summary_screen";
   static const String bookingInfoDetailScreen = "/booking_info_detail_screen";
   static const String hospitalDetailScreen = "/hospital_detail_screen";
+  static const String galleryScreen = "/gallery_screen";
 }
 
 class AppRoutes {
@@ -209,6 +211,10 @@ class AppRoutes {
       case RouteNames.hospitalDetailScreen:
         return MaterialPageRoute(
           builder: (context) => const HospitalDetailScreen(),
+        );
+      case RouteNames.galleryScreen:
+        return MaterialPageRoute(
+          builder: (context) => const GalleryScreen(),
         );
       default:
         return MaterialPageRoute(

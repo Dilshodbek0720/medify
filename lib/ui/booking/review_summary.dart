@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/booking/widgets/booking_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -197,7 +198,9 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: GlobalButton(color: AppColors.primary, textColor: Colors.white, title: tr("continue"), onTap: (){}),
+            child: GlobalButton(color: AppColors.primary, textColor: Colors.white, title: tr("continue"), onTap: (){
+              Navigator.pushNamed(context, RouteNames.ourRec);
+            }),
           ),
           40.ph,
         ],
