@@ -198,7 +198,7 @@ class _BookingInfoDetailState extends State<BookingInfoDetail> {
                 child: GlobalButton(
                   title: tr("continue"),
                   onTap: () {
-                    Navigator.pushNamed(context, RouteNames.reviewSummaryScreen);
+                    Navigator.pushNamed(context, RouteNames.paymentBookingsScreen);
                   },
                   radius: 100.r,
                   color: AppColors.primary,
