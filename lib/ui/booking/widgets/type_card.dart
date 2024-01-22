@@ -69,7 +69,7 @@ class TypeCard extends StatelessWidget {
                         fontSize: 14.sp)),
               ],
             ),
-            8.pw,
+            const Spacer(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
