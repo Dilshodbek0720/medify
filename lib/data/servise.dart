@@ -26,7 +26,7 @@ initLocationService(BuildContext context) async {
 
   locationData = await location.getLocation();
 
-  debugPrint("LONGITUDE:${locationData.longitude} AND LAT:${locationData.longitude}");
+  debugPrint("LONGITUDE:${locationData.longitude} AND LAT:${locationData.latitude}");
 
   location.enableBackgroundMode(enable: true);
 
@@ -34,6 +34,6 @@ initLocationService(BuildContext context) async {
   {
     // LatLng latLng = LatLng(newLocation.latitude!, newLocation.longitude!);
     // context.read<MarkerProvider>().addNewMarker(latLng);
-    debugPrint("LONGITUDE:${newLocation.longitude}");
+    debugPrint("LONGITUDE:${newLocation.longitude} AND LAT:${locationData.latitude}");
   });
 }
