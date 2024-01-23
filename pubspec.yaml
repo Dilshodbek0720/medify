@@ -29,6 +29,7 @@ dependencies:
   json_annotation: ^4.8.1
   table_calendar: ^3.0.9
   carousel_slider: ^4.2.1
+  photo_view: ^0.14.0
 
 dev_dependencies:
   flutter_test:

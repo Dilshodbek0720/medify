@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/gallery_image_item.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -15,6 +17,8 @@ class GalleryScreen extends StatefulWidget {
 }
 
 class _GalleryScreenState extends State<GalleryScreen> {
+  final PageController pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -52,17 +56,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
               scrollDirection: Axis.horizontal,
               children: [
                 18.pw,
-                ...List.generate(6, (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.r),
-                    child: SizedBox(
-                      height: 118*height/figmaHeight,
-                      width: 118*height/figmaHeight,
-                      child: Image.asset(AppIcons.hospital),
-                    ),
-                  ),
-                )),
+                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
+                  Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
+                    'images' : images,
+                    'selectedIndex' : index,
+                  });
+                }, image: images[index],)),
                 18.pw,
               ],
             ),
@@ -88,17 +87,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
               scrollDirection: Axis.horizontal,
               children: [
                 18.pw,
-                ...List.generate(6, (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.r),
-                    child: SizedBox(
-                      height: 118*height/figmaHeight,
-                      width: 118*height/figmaHeight,
-                      child: Image.asset(AppIcons.hospital),
-                    ),
-                  ),
-                )),
+                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
+                  Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
+                    'images' : images,
+                    'selectedIndex' : index,
+                  });
+                }, image: images[index],)),
                 18.pw,
               ],
             ),
@@ -124,17 +118,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
               scrollDirection: Axis.horizontal,
               children: [
                 18.pw,
-                ...List.generate(6, (index) => Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6.w),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.r),
-                    child: SizedBox(
-                      height: 118*height/figmaHeight,
-                      width: 118*height/figmaHeight,
-                      child: Image.asset(AppIcons.hospital),
-                    ),
-                  ),
-                )),
+                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
+                  Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
+                    'images' : images,
+                    'selectedIndex' : index,
+                  });
+                }, image: images[index],)),
                 18.pw,
               ],
             ),
@@ -144,3 +133,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
     );
   }
 }
+
+List<String> images = [
+  AppIcons.hospital,
+  AppIcons.hospital,
+  AppIcons.hospital,
+  AppIcons.hospital,
+  AppIcons.hospital,
+  AppIcons.hospital,
+];
