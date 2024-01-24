@@ -31,6 +31,8 @@ import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/g
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
 import 'package:medify/ui/tab_box/mailing/sub_screens/mail_detail/mail_detail_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/top_doctors/top_doctors_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/top_hospitals/top_hospitals_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
@@ -77,6 +79,8 @@ class RouteNames {
   static const String paymentBookingsScreen = "/payment_bookings_screen";
   static const String galleryDetailScreen = "/gallery_detail_screen";
   static const String mailDetailScreen = "/mail_detail_screen";
+  static const String topDoctorsScreen = "/top_doctors_screen";
+  static const String topHospitalsScreen = "/top_hospitals_screen";
 }
 
 class AppRoutes {
@@ -225,6 +229,14 @@ class AppRoutes {
       case RouteNames.paymentBookingsScreen:
         return MaterialPageRoute(
           builder: (context) => const PaymentBookingsScreen(),
+        );
+      case RouteNames.topDoctorsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const TopDoctorsScreen(),
+        );
+      case RouteNames.topHospitalsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const TopHospitalsScreen(),
         );
       case RouteNames.galleryDetailScreen:
         Map<Object, Object> maps = settings.arguments as Map<Object, Object>;

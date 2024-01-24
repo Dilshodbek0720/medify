@@ -3,16 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 
 class SeeAllItem extends StatelessWidget {
-  const SeeAllItem({super.key, required this.onTap, required this.title});
+  const SeeAllItem({super.key, required this.onTap, required this.title, this.backgroundColor = AppColors.white});
   final VoidCallback onTap;
   final String title;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50.h,
       padding: EdgeInsets.symmetric(horizontal: 24.w),
-      decoration: const BoxDecoration(color: AppColors.white),
+      decoration: BoxDecoration(color: backgroundColor),
       child: Row(
         children: [
           Text(
