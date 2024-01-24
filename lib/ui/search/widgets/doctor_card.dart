@@ -15,9 +15,11 @@ class DoctorsCard extends StatefulWidget {
       required this.category,
       required this.hospital,
       required this.rate,
+      this.length = 4,
       required this.views});
 
   final int index;
+  final int length;
   final String name;
   final String category;
   final String hospital;
@@ -29,7 +31,13 @@ class DoctorsCard extends StatefulWidget {
 }
 
 class _DoctorsCardState extends State<DoctorsCard> {
-  List<int> selectedLike = [-1, -1, -1, -1];
+  List<int> selectedLike = [];
+
+  @override
+  void initState() {
+    selectedLike = [...List.generate(widget.length, (index) => -1)];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
