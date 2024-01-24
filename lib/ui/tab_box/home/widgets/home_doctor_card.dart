@@ -46,6 +46,7 @@ class _HomeDoctorCardState extends State<HomeDoctorCard> {
           child: InkWell(
             borderRadius: BorderRadius.circular(24.r),
             onTap: () {
+              Navigator.pushNamed(context, RouteNames.doctorDetailScreen);
             },
             child: Padding(
               padding: EdgeInsets.all(16.r),
