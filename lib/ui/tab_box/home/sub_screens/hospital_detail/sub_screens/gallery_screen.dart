@@ -48,25 +48,26 @@ class _GalleryScreenState extends State<GalleryScreen> {
               ),
             ),
           ),
-          20.ph,
-          SizedBox(
-            height: 118*height/figmaHeight,
-            width: width,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+          16.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18.w,),
+            child: GridView(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1,
+            ),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
-                18.pw,
-                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
-                  Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
-                    'images' : images,
-                    'selectedIndex' : index,
-                  });
-                }, image: images[index],)),
-                18.pw,
+                ...List.generate(4, (index) => GalleryImageItem(onTap: () {
+                Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
+                'images' : images,
+                'selectedIndex' : index,
+                });
+                }, image: images[index],),)
               ],
             ),
           ),
-          24.ph,
+          20.ph,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Text(
@@ -79,25 +80,26 @@ class _GalleryScreenState extends State<GalleryScreen> {
               ),
             ),
           ),
-          20.ph,
-          SizedBox(
-            height: 118*height/figmaHeight,
-            width: width,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+          16.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18.w,),
+            child: GridView(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1,
+            ),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
-                18.pw,
-                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
+                ...List.generate(4, (index) => GalleryImageItem(onTap: () {
                   Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
                     'images' : images,
                     'selectedIndex' : index,
                   });
-                }, image: images[index],)),
-                18.pw,
+                }, image: images[index],),)
               ],
             ),
           ),
-          24.ph,
+          20.ph,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Text(
@@ -110,21 +112,22 @@ class _GalleryScreenState extends State<GalleryScreen> {
               ),
             ),
           ),
-          20.ph,
-          SizedBox(
-            height: 118*height/figmaHeight,
-            width: width,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+          16.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18.w,),
+            child: GridView(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1,
+            ),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
-                18.pw,
-                ...List.generate(6, (index) => GalleryImageItem(onTap: () {
+                ...List.generate(4, (index) => GalleryImageItem(onTap: () {
                   Navigator.pushNamed(context, RouteNames.galleryDetailScreen, arguments: {
                     'images' : images,
                     'selectedIndex' : index,
                   });
-                }, image: images[index],)),
-                18.pw,
+                }, image: images[index],),)
               ],
             ),
           ),

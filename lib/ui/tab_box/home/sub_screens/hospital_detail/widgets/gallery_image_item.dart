@@ -17,7 +17,7 @@ class _GalleryImageItemState extends State<GalleryImageItem> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 6.w),
+      padding: EdgeInsets.all(6.r),
       child: InkWell(
         borderRadius: BorderRadius.circular(20.r),
         onTap: widget.onTap,

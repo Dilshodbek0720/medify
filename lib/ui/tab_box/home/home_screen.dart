@@ -16,6 +16,7 @@ import 'package:medify/ui/tab_box/home/widgets/home_doctor_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/widgets/global_input.dart';
+import 'package:medify/ui/widgets/global_search_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';

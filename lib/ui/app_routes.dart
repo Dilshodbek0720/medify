@@ -30,6 +30,7 @@ import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_deta
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_detail/gallery_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/mailing/sub_screens/mail_detail/mail_detail_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
@@ -75,6 +76,7 @@ class RouteNames {
   static const String galleryScreen = "/gallery_screen";
   static const String paymentBookingsScreen = "/payment_bookings_screen";
   static const String galleryDetailScreen = "/gallery_detail_screen";
+  static const String mailDetailScreen = "/mail_detail_screen";
 }
 
 class AppRoutes {
@@ -228,6 +230,10 @@ class AppRoutes {
         Map<Object, Object> maps = settings.arguments as Map<Object, Object>;
         return MaterialPageRoute(
           builder: (context) => GalleryDetailScreen(images: maps['images'] as List<String>, selectedIndex: maps['selectedIndex'] as int,),
+        );
+      case RouteNames.mailDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MailDetailScreen(),
         );
       default:
         return MaterialPageRoute(

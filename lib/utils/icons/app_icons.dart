@@ -181,6 +181,11 @@ class AppIcons {
   static const String bath = "assets/svg/others/bath.svg";
   static const String bed = "assets/svg/others/bed.svg";
   static const String sqft = "assets/svg/others/sqft.svg";
+  static const String drawer = "assets/svg/others/drawer.svg";
+  static const String word = "assets/svg/others/word.svg";
+  static const String pptx = "assets/svg/others/pptx.svg";
+  static const String answer = "assets/svg/others/answer.svg";
+  static const String forward = "assets/svg/others/forward.svg";
 
   //help_screen_social_icons
   static const String head = "assets/svg/others/help_screen_head.svg";

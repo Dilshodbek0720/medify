@@ -5,9 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/tab_box/appointment/appointment_screen.dart';
-import 'package:medify/ui/tab_box/articles/articles_screen.dart';
 import 'package:medify/ui/tab_box/history/history_screen.dart';
 import 'package:medify/ui/tab_box/home/home_screen.dart';
+import 'package:medify/ui/tab_box/mailing/mailing_screen.dart';
 import 'package:medify/ui/tab_box/profile/profile_screen.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -28,7 +28,7 @@ class _TabBoxState extends State<TabBox> {
       const HomeScreen(),
       const AppointmentScreen(),
       const HistoryScreen(),
-      const ArticlesScreen(),
+      const MailingScreen(),
       const ProfileScreen()
     ];
 
@@ -67,7 +67,7 @@ class _TabBoxState extends State<TabBox> {
               _getItem(icon: AppIcons.home, label: 'Home'),
               _getItem(icon: AppIcons.calendar, label: 'Appointment'),
               _getItem(icon: AppIcons.document, label: 'History'),
-              _getItem(icon: AppIcons.paper, label: 'Articles'),
+              _getItem(icon: AppIcons.paper, label: 'Mailing'),
               _getItem(icon: AppIcons.profile, label: 'Profile'),
             ],
             currentIndex: context.watch<TabCubit>().state,
