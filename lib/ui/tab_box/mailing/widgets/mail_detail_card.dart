@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
-import 'package:medify/utils/ui_utils/utility_function.dart';
 
 class MailDetailCard extends StatelessWidget {
   const MailDetailCard({super.key, required this.image, required this.title, required this.description, required this.onTapStar, required this.onTap});

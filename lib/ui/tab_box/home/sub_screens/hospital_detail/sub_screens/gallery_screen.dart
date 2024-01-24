@@ -5,7 +5,6 @@ import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/galle
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
-import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/utility_function.dart';
 
@@ -21,7 +20,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: GlobalAppBar(
         onTap: (){
