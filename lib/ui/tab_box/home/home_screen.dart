@@ -212,15 +212,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor: AppColors.c_50),
               20.ph,
               const Categories(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: const DoctorsCard(
-                    index: 0,
-                    name: "Dr. Jenny Watson",
-                    category: "Immunologists",
-                    hospital: "Christ Hospital",
-                    rate: "4.4",
-                    views: "4,942"),
+              CarouselSlider(
+                items: [
+                  ...List.generate(
+                      10,
+                          (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 24.w),
+                            child: DoctorsCard(
+                              length: 10,
+                                index: index,
+                                name: "Dr. Jenny Watson",
+                                category: "Immunologists",
+                                hospital: "Christ Hospital",
+                                rate: "4.4",
+                                views: "4,942"),
+                          ))
+                ],
+                options: CarouselOptions(
+                  viewportFraction: 1,
+                  height: 180 * MediaQuery.of(context).size.height / 926,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 5),
+                ),
               ),
               SeeAllItem(
                   onTap: () {
@@ -228,9 +241,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   title: 'Top Hospitals',
                   backgroundColor: AppColors.c_50),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: const HospitalCard()
+              CarouselSlider(
+                items: [
+                  ...List.generate(
+                      10,
+                          (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 24.w),
+                            child: const HospitalCard(),
+                          ))
+                ],
+                options: CarouselOptions(
+                  viewportFraction: 1,
+                  height: 275,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 5),
+                ),
               ),
               20.ph,
             ],

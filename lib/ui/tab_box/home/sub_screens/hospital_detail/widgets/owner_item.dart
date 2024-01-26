@@ -28,10 +28,8 @@ class _OwnerItemState extends State<OwnerItem> {
   @override
   void initState() {
     super.initState();
-    // Check for phone call support.
     canLaunchUrl(Uri(scheme: 'tel', path: '+998998999739')).then((bool result) {
       setState(() {
-        print(result);
         _hasCallSupport = result;
       });
     });

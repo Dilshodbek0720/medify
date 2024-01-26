@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
 class GalleryImageItem extends StatefulWidget {
