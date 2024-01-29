@@ -8,7 +8,6 @@ import 'package:medify/ui/booking/our_rec.dart';
 import 'package:medify/ui/booking/payment_bookings_screen.dart';
 import 'package:medify/ui/booking/review_summary.dart';
 import 'package:medify/ui/category/category_screen.dart';
-import 'package:medify/ui/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
@@ -25,6 +24,7 @@ import 'package:medify/ui/register/verify/verify_with.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_detail/gallery_detail_screen.dart';
@@ -38,6 +38,9 @@ import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.d
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_activity/storage_activity_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_detail/storage_detail_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_home/storage_home_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
 class RouteNames {
@@ -81,6 +84,9 @@ class RouteNames {
   static const String mailDetailScreen = "/mail_detail_screen";
   static const String topDoctorsScreen = "/top_doctors_screen";
   static const String topHospitalsScreen = "/top_hospitals_screen";
+  static const String storageHomeScreen = "/storage_home_screen";
+  static const String storageActivityScreen = "/storage_activity_screen";
+  static const String storageDetailScreen = "/storage_detail_screen";
 }
 
 class AppRoutes {
@@ -246,6 +252,18 @@ class AppRoutes {
       case RouteNames.mailDetailScreen:
         return MaterialPageRoute(
           builder: (context) => const MailDetailScreen(),
+        );
+      case RouteNames.storageHomeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const StorageHomeScreen(),
+        );
+      case RouteNames.storageActivityScreen:
+        return MaterialPageRoute(
+          builder: (context) => const StorageActivityScreen(),
+        );
+      case RouteNames.storageDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const StorageDetailScreen(),
         );
       default:
         return MaterialPageRoute(

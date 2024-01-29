@@ -259,7 +259,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               20.ph,
             ],
-          ))
+          ),
+          )
         ],
       ),
     );
