@@ -189,6 +189,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 // Navigator.pushNamed(context, RouteNames.inviteFriends);
               }),
           ProfileButton(
+              text: 'File Storage',
+              icon: AppIcons.download,
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.storageHomeScreen);
+              }),
+          ProfileButton(
             text: tr('log_out'),
             icon: AppIcons.logOut,
             onTap: () {

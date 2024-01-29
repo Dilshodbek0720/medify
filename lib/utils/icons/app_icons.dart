@@ -240,4 +240,10 @@ class AppIcons {
   static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
   static const String promoCode = "assets/svg/others/promo_code.svg";
   static const String pinFilled = "assets/svg/others/pin_filled.svg";
+  static const String storageFile = "assets/svg/others/storage_file.svg";
+  static const String storagePicture = "assets/svg/others/storage_picture.svg";
+  static const String storageVideo = "assets/svg/others/storage_video.svg";
+  static const String storageFiles = "assets/svg/others/storage_files.svg";
+  static const String storageApp = "assets/svg/others/storage_app.svg";
+  static const String mobileApp = "assets/svg/others/mobile_app.svg";
 }

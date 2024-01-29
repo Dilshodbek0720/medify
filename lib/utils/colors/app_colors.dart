@@ -126,4 +126,10 @@ class AppColors {
   static const Color redTransparent = Color(0x14F75555);
   static const Color greenTransparent = Color(0x144CAF50);
   static const Color cyanTransparent = Color(0x1400BCD4);
+
+  //----------------- OTHERS COLORS -------------------------
+
+  static const Color storageBlueColor = Color(0xFF34C9F3);
+  static const Color activeSliderColor = Color(0xFF65DAFF);
+  static const Color storageBackgroundColor = Color(0xFFFAFAFA);
 }
