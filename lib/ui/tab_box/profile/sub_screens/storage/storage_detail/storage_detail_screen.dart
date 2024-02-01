@@ -113,7 +113,7 @@ class _StorageDetailScreenState extends State<StorageDetailScreen> {
                                   color: AppColors.primary100
                               )
                           ),
-                          child: Center(child: Text('+3', style: TextStyle(
+                          child: const Center(child: Text('+3', style: TextStyle(
                             color: AppColors.white
                           ),)),
                         ),
