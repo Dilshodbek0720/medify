@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ...List.generate(
                       4,
                       (index) => const ReklamaItem(
-                            image: AppIcons.reklama,
+                            image: AppIcons.doctorReklama,
                           ))
                 ],
                 options: CarouselOptions(
