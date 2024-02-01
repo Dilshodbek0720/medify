@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/widgets/storage_files_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -216,7 +217,9 @@ class _StorageDetailScreenState extends State<StorageDetailScreen> {
           8.ph,
           ...List.generate(6, (index) => Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
-              child: StorageFilesCard(title: 'Illustrations DesignS', description: '19 Feb 2022', onTap: () {  },)))
+              child: StorageFilesCard(title: 'Illustrations DesignS', description: '19 Feb 2022', onTap: () {
+                Navigator.pushNamed(context, RouteNames.pdfViewerScreen);
+              },)))
         ],
       ),
     );
