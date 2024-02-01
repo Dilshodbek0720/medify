@@ -49,9 +49,12 @@ class _DoctorDetailItemState extends State<DoctorDetailItem> {
           padding: EdgeInsets.all(16.r),
           child: Row(
             children: [
-              Image.asset(
-                AppIcons.drWatson,
-                width: 110.w,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(60.r),
+                child: Image.asset(
+                  AppIcons.drWatson,
+                  width: 110.w,
+                ),
               ),
               16.pw,
               Column(
