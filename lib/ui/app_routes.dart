@@ -41,6 +41,7 @@ import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.d
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_activity/storage_activity_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_detail/storage_detail_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_home/storage_home_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/storage/sub_screens/pdf_viewer_screen/pdf_viewer_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
 class RouteNames {
@@ -87,6 +88,7 @@ class RouteNames {
   static const String storageHomeScreen = "/storage_home_screen";
   static const String storageActivityScreen = "/storage_activity_screen";
   static const String storageDetailScreen = "/storage_detail_screen";
+  static const String pdfViewerScreen = "pdf_viewer_screen";
 }
 
 class AppRoutes {
@@ -264,6 +266,10 @@ class AppRoutes {
       case RouteNames.storageDetailScreen:
         return MaterialPageRoute(
           builder: (context) => const StorageDetailScreen(),
+        );
+      case RouteNames.pdfViewerScreen:
+        return MaterialPageRoute(
+          builder: (context) => const PdfViewerScreen(),
         );
       default:
         return MaterialPageRoute(
