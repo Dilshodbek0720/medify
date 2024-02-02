@@ -132,4 +132,15 @@ class AppColors {
   static const Color storageBlueColor = Color(0xFF34C9F3);
   static const Color activeSliderColor = Color(0xFF65DAFF);
   static const Color storageBackgroundColor = Color(0xFFFAFAFA);
+  
+  //----------------- Category background COLORS -------------------------
+
+  static const Color category1 = Color(0xFFDC9497);
+  static const Color category2 = Color(0xFF93C19E);
+  static const Color category3 = Color(0xFFF5AD7E);
+  static const Color category4 = Color(0xFFACA1CD);
+  static const Color category5 = Color(0xFF4D9B91);
+  static const Color category6 = Color(0xFF352261);
+  static const Color category7 = Color(0xFFDEB6B5);
+  static const Color category8 = Color(0xFF89CCDB);
 }

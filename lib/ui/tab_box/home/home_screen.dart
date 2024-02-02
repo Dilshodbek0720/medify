@@ -9,8 +9,8 @@ import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/categories.dart';
+import 'package:medify/ui/tab_box/home/widgets/category_item2.dart';
 import 'package:medify/ui/tab_box/home/widgets/hospital_card.dart';
-import 'package:medify/ui/tab_box/home/widgets/category_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -27,7 +27,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,173 +92,183 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Expanded(
-              child: ListView(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: GlobalTextField(
-                  fillColor: AppColors.c_100,
-                  suffixIcon: IconButton(
-                    splashRadius: 20,
-                    onPressed: () {
-                      Navigator.pushNamed(context, RouteNames.searchScreen);
-                    },
-                    icon: SvgPicture.asset(
-                        AppIcons.getSvg(
-                            name: AppIcons.filter,
-                            iconType: IconType.lightOutline),
-                        colorFilter: const ColorFilter.mode(
-                            AppColors.primary500, BlendMode.srcIn)),
-                  ),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 18.w),
-                    child: SvgPicture.asset(AppIcons.search,
-                        colorFilter: const ColorFilter.mode(
-                            AppColors.c_500, BlendMode.srcIn)),
-                  ),
-                  hintText: "Search",
-                  textInputAction: TextInputAction.done,
-                  keyboardType: TextInputType.name,
-                ),
-              ),
-              24.ph,
-              CarouselSlider(
-                items: [
-                  ...List.generate(
-                      4,
-                      (index) => const ReklamaItem(
-                            image: AppIcons.doctorReklama,
-                          ))
-                ],
-                options: CarouselOptions(
-                  viewportFraction: 1,
-                  height: 180 * MediaQuery.of(context).size.height / 926,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 5),
-                ),
-              ),
-              24.ph,
-              SeeAllItem(
-                  backgroundColor: AppColors.c_50,
-                  onTap: () {},
-                  title: 'Doctor Speciality'),
-              24.ph,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    )
-                  ],
-                ),
-              ),
-              24.ph,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.user2,
-                      title: "General",
-                      onTap: () {},
-                    ),
-                    CategoryItem(
-                      icon: AppIcons.moreCircle,
-                      title: "More",
-                      onTap: () {
-                        Navigator.pushNamed(context, RouteNames.categoryScreen);
+            child: ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: GlobalTextField(
+                    fillColor: AppColors.c_100,
+                    suffixIcon: IconButton(
+                      splashRadius: 20,
+                      onPressed: () {
+                        Navigator.pushNamed(context, RouteNames.searchScreen);
                       },
-                    )
+                      icon: SvgPicture.asset(
+                          AppIcons.getSvg(
+                              name: AppIcons.filter,
+                              iconType: IconType.lightOutline),
+                          colorFilter: const ColorFilter.mode(
+                              AppColors.primary500, BlendMode.srcIn)),
+                    ),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18.w),
+                      child: SvgPicture.asset(AppIcons.search,
+                          colorFilter: const ColorFilter.mode(
+                              AppColors.c_500, BlendMode.srcIn)),
+                    ),
+                    hintText: "Search",
+                    textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.name,
+                  ),
+                ),
+                24.ph,
+                CarouselSlider(
+                  items: [
+                    ...List.generate(
+                        4,
+                        (index) => const ReklamaItem(
+                              image: AppIcons.doctorReklama,
+                            ))
                   ],
+                  options: CarouselOptions(
+                    viewportFraction: 1,
+                    autoPlay: true,
+                    aspectRatio: 6.5 / 3,
+                    autoPlayInterval: const Duration(seconds: 5),
+                  ),
                 ),
-              ),
-              24.ph,
-              SeeAllItem(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.topDoctorsScreen);
-                  },
-                  title: 'Top Doctors',
-                  backgroundColor: AppColors.c_50),
-              20.ph,
-              const Categories(),
-              CarouselSlider(
-                items: [
-                  ...List.generate(
-                      10,
-                          (index) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
-                            child: DoctorsCard(
-                              length: 10,
-                                index: index,
-                                name: "Dr. Jenny Watson",
-                                category: "Immunologists",
-                                hospital: "Christ Hospital",
-                                rate: "4.4",
-                                views: "4,942"),
-                          ))
-                ],
-                options: CarouselOptions(
-                  viewportFraction: 1,
-                  height: 180 * MediaQuery.of(context).size.height / 926,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 5),
+                // 24.ph,
+                SeeAllItem(
+                    backgroundColor: AppColors.c_50,
+                    onTap: () {},
+                    title: 'Doctor Speciality'),
+                24.ph,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category1,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category2,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category3,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category4,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              SeeAllItem(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.topHospitalsScreen);
-                  },
-                  title: 'Top Hospitals',
-                  backgroundColor: AppColors.c_50),
-              CarouselSlider(
-                items: [
-                  ...List.generate(
-                      10,
-                          (index) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24.w),
-                            child: const HospitalCard(),
-                          ))
-                ],
-                options: CarouselOptions(
-                  viewportFraction: 1,
-                  height: 275,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 5),
+                24.ph,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category5,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category6,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.teeth,
+                        title: "General",
+                        onTap: () {},
+                        background: AppColors.category7,
+                      ),
+                      CategoryItem2(
+                        icon: AppIcons.moreCircle,
+                        title: "More",
+                        background: AppColors.category8,
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, RouteNames.categoryScreen);
+                        },
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              20.ph,
-            ],
-          ),
+                24.ph,
+                SeeAllItem(
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.topDoctorsScreen);
+                    },
+                    title: 'Top Doctors',
+                    backgroundColor: AppColors.c_50),
+                20.ph,
+                const Categories(),
+                CarouselSlider(
+                  items: [
+                    ...List.generate(
+                        10,
+                        (index) => Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              child: DoctorsCard(
+                                  length: 10,
+                                  index: index,
+                                  name: "Dr. Jenny Watson",
+                                  category: "Immunologists",
+                                  hospital: "Christ Hospital",
+                                  rate: "4.4",
+                                  views: "4,942"),
+                            ))
+                  ],
+                  options: CarouselOptions(
+                    viewportFraction: 1,
+                    height: 180 * MediaQuery.of(context).size.height / 926,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 5),
+                  ),
+                ),
+                SeeAllItem(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RouteNames.topHospitalsScreen);
+                    },
+                    title: 'Top Hospitals',
+                    backgroundColor: AppColors.c_50),
+                CarouselSlider(
+                  items: [
+                    ...List.generate(
+                        10,
+                        (index) => Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 24.w),
+                              child: const HospitalCard(),
+                            ))
+                  ],
+                  options: CarouselOptions(
+                    viewportFraction: 1,
+                    height: 275,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 5),
+                  ),
+                ),
+                20.ph,
+              ],
+            ),
           )
         ],
       ),

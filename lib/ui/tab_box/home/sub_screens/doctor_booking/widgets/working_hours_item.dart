@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/work_hour_item.dart';
-import 'package:medify/utils/colors/app_colors.dart';
 
 class WorkingHoursItem extends StatelessWidget {
   const WorkingHoursItem({super.key});

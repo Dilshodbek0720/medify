@@ -16,8 +16,7 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: SfPdfViewer.network(
-                pdfFileName)));
+        body: SfPdfViewer.network(
+            pdfFileName));
   }
 }
