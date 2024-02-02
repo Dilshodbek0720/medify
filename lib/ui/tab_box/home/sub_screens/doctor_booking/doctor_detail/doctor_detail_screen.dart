@@ -12,7 +12,6 @@ import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/workin
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
-import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
