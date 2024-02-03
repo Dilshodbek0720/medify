@@ -29,7 +29,7 @@ class BookingCard extends StatelessWidget {
                   padding: EdgeInsets.only(top: 12.h,right: 12.w),
                   child: DecoratedBox(decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100.r),
-                      color: AppColors.C_F0F0F0
+                      color: AppColors.cF0F0F0
                   ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 4.h),

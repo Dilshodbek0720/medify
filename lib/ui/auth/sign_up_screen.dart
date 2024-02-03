@@ -95,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 GlobalButton(
                   title: "Sign up",
                   onTap: () {
-                    Navigator.pushNamed(context, RouteNames.fillYourProfile);
+                    Navigator.pushNamed(context, RouteNames.registerPage);
                   },
                   color: AppColors.primary,
                   textColor: Colors.white,

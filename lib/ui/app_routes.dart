@@ -18,9 +18,7 @@ import 'package:medify/ui/location/search_location.dart';
 import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
-import 'package:medify/ui/register/register_screen.dart';
-import 'package:medify/ui/register/verify/verify_screen.dart';
-import 'package:medify/ui/register/verify/verify_with.dart';
+import 'package:medify/ui/register/register_page.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
@@ -54,7 +52,6 @@ class RouteNames {
   static const String forgotPassword = "/forgot_password";
   static const String confirmCodeScreen = "/confirm_code_screen";
   static const String createPassword = "/create_password";
-  static const String fillYourProfile = "/fill_your_profile";
   static const String enterPinScreen = "/enter_pin_screen";
   static const String fingerPrintScreen = "/finger_print_screen";
   static const String paymentAddCard = "/payment_add_card";
@@ -63,8 +60,6 @@ class RouteNames {
   static const String favoriteScreen = "/favorite_screen";
   static const String searchScreen = "/search_screen";
   static const String categoryScreen = "/category_screen";
-  static const String verifyWithScreen = "/verify_with_screen";
-  static const String verifyScreen = "/verify_screen";
   static const String getLocationScreen = "/get_location_screen";
   static const String searchLocationScreen = "/search_location_screen";
   static const String languageScreen = "/language_screen";
@@ -89,6 +84,7 @@ class RouteNames {
   static const String storageActivityScreen = "/storage_activity_screen";
   static const String storageDetailScreen = "/storage_detail_screen";
   static const String pdfViewerScreen = "pdf_viewer_screen";
+  static const String registerPage = "register_page";
 }
 
 class AppRoutes {
@@ -130,10 +126,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const CreatePasswordScreen(),
         );
-      case RouteNames.fillYourProfile:
-        return MaterialPageRoute(
-          builder: (context) => const RegisterScreen(navigateFromAuth: true),
-        );
       case RouteNames.enterPinScreen:
         return MaterialPageRoute(
           builder: (context) => const EnterPinScreen(),
@@ -165,14 +157,6 @@ class AppRoutes {
       case RouteNames.categoryScreen:
         return MaterialPageRoute(
           builder: (context) => const CategoryScreen(),
-        );
-      case RouteNames.verifyWithScreen:
-        return MaterialPageRoute(
-          builder: (context) => const VerifyWithScreen(),
-        );
-      case RouteNames.verifyScreen:
-        return MaterialPageRoute(
-          builder: (context) => const VerifyScreen(),
         );
       case RouteNames.getLocationScreen:
         return MaterialPageRoute(
@@ -270,6 +254,10 @@ class AppRoutes {
       case RouteNames.pdfViewerScreen:
         return MaterialPageRoute(
           builder: (context) => const PdfViewerScreen(),
+        );
+      case RouteNames.registerPage:
+        return MaterialPageRoute(
+          builder: (context) => const RegisterPage(),
         );
       default:
         return MaterialPageRoute(
