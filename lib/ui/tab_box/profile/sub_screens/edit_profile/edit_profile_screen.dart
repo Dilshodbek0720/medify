@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -42,9 +44,44 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             children: [
               Expanded(
                 child: ListView(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                   children: [
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          showCameraAndGalleryDialog(context, (imagePath) {
+                            if (imagePath != null) {
+                              context.read<EditProfileCubit>().updateFile(imagePath);
+                            }
+                          });
+                        },
+                        child: Stack(children: [
+                          state.file == null
+                              ? Image.asset(AppIcons.avatar, width: 150.w)
+                              : CircleAvatar(
+                            radius: 75.r,
+                            backgroundImage: FileImage(File(state.file!),
+                            ),
+                          ),
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: SvgPicture.asset(
+                              AppIcons.getSvg(
+                                name: AppIcons.editSquare,
+                                iconType: IconType.bold,
+                              ),
+                              width: 30.w,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.primary,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    24.ph,
                     GlobalTextField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,

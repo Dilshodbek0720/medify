@@ -16,20 +16,26 @@ class CategoryItem2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10.r),
-              decoration: BoxDecoration(
-                  color: background,
-                  borderRadius: BorderRadius.circular(8.r)
-              ),
-              child: IconButton(
-                onPressed: onTap,
-                icon: SvgPicture.asset(icon),
-              )),
-            SvgPicture.asset(AppIcons.iconBack,width: 40.w),
-          ],
+        InkWell(
+          borderRadius: BorderRadius.circular(8.r),
+          onTap: onTap,
+          child: Stack(
+            children: [
+              DecoratedBox(
+                decoration: BoxDecoration(
+                    color: background,
+                    borderRadius: BorderRadius.circular(8.r)
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: IconButton(
+                    onPressed: onTap,
+                    icon: SvgPicture.asset(icon),
+                  ),
+                )),
+              SvgPicture.asset(AppIcons.iconBack,width: 40.w),
+            ],
+          ),
         ),
         12.ph,
         Text(title, style: TextStyle(
