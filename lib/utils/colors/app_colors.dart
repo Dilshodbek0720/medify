@@ -104,7 +104,8 @@ class AppColors {
   static const Color dimYellow = Color(0xFFFFE4A4);
   static const Color cardShadowTwo=Color(0xFF04060F);
   static const Color greysCale =Color(0xFFFAFAFA);
-  static const Color C_F0F0F0 =Color(0xFFF0F0F0);
+  static const Color cF0F0F0 =Color(0xFFF0F0F0);
+  static const Color cA6A9AB =Color(0xFFA6A9AB);
 
 
 

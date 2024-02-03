@@ -98,7 +98,7 @@ class CodeInputFieldState extends State<CodeInputField> {
 
             if (state is CodeInputCountdown) {
               final remainingTime = "${state.remainingTime}";
-              return RichText(
+              return state.remainingTime!=0?RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
@@ -136,10 +136,23 @@ class CodeInputFieldState extends State<CodeInputField> {
                     ),
                   ],
                 ),
+              ): TextButton(
+                onPressed: (){
+                  context.read<CodeInputCubit>().resendCode();
+                },
+                child: Text("Resend code",
+                  style: TextStyle(
+                    color: AppColors.c_900,
+                    fontFamily: "Urbanist",
+                    fontSize: 18.sp,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.2,
+                  ),),
               );
             } else {
               return const Text(
-                "resend_code_in_s",
+                "",
                 // style: defaultTextStyle,
               );
             }

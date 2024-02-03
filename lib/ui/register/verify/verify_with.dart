@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/forgot_password/widgets/forgot_password_selector.dart';
-import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/fonts/text_styles.dart';
@@ -10,34 +8,38 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class VerifyWithScreen extends StatefulWidget {
-  const VerifyWithScreen({super.key});
+  const VerifyWithScreen({super.key, required this.onTapLeft, required this.onTapRight});
+
+  final VoidCallback onTapLeft;
+  final VoidCallback onTapRight;
+
 
   @override
   State<VerifyWithScreen> createState() => _VerifyWithScreenState();
 }
 
 class _VerifyWithScreenState extends State<VerifyWithScreen> {
-  bool pressed = false;
+  int pressed = -1;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: GlobalAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          title: "Verify account"),
-      body: Padding(
-        padding: EdgeInsets.all(24.w),
-        child: Column(
+    return Column(
           children: [
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  33.ph,
+                  Text(
+                    "Select contact",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppColors.c_900,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 28.sp,
+                    ),
+                  ),
+                  20.ph,
                   Image.asset(
                     AppIcons.forgotPasswordImage,
                     height: height * 0.285,
@@ -54,10 +56,10 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                     svg: 'assets/svg/bold/chat.svg',
                     onTap: () {
                       setState(() {
-                        pressed = !pressed;
+                        pressed = 0;
                       });
                     },
-                    pressed: pressed,
+                    pressed: pressed==0,
                   ),
                   24.ph,
                   ForgotPasswordSelector(
@@ -66,26 +68,40 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                     svg: 'assets/svg/bold/message.svg',
                     onTap: () {
                       setState(() {
-                        pressed = !pressed;
+                        pressed = 1;
                       });
                     },
-                    pressed: !pressed,
+                    pressed: pressed==1,
                   ),
                 ],
               ),
             ),
             24.ph,
-            GlobalButton(
-              color: AppColors.primary,
-              textColor: AppColors.white,
-              title: "Continue",
-              onTap: () {
-                Navigator.pushNamed(context, RouteNames.verifyScreen);
-              },
-            )
+            Row(
+              children: [
+                Expanded(
+                  child: GlobalButton(
+                    title: "Back",
+                    onTap: widget.onTapLeft,
+                    radius: 100.r,
+                    color: AppColors.cA6A9AB,
+                    textColor: Colors.black,
+                  ),
+                ),
+                20.pw,
+                Expanded(
+                  child: GlobalButton(
+                    title: "Next",
+                    onTap: widget.onTapRight,
+                    radius: 100.r,
+                    color: AppColors.primary,
+                    textColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            48.ph,
           ],
-        ),
-      ),
     );
   }
 }
