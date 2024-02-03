@@ -40,7 +40,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               name: 'Dr. Jenny Watson',
               category: 'Immunologists',
               hospital: 'Christ Hospital',
-              rate: '4.4',
+              rating: '4.4',
               views: '4,942',
             ),
             DoctorsCard(
@@ -48,7 +48,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               name: 'Dr. Jenny Baranick',
               category: 'Allergists',
               hospital: 'JFK Medical Center',
-              rate: '4.6',
+              rating: '4.6',
               views: '3,837',
             ),
             DoctorsCard(
@@ -56,7 +56,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               name: 'Dr. Jenny Zirkind',
               category: 'Neurologists',
               hospital: 'Franklin Hospital',
-              rate: '4.8',
+              rating: '4.8',
               views: '6,362',
             ),
             DoctorsCard(
@@ -64,7 +64,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               name: 'Dr. Jenny Wigham',
               category: 'Cardiologists',
               hospital: 'The Valley Hospital',
-              rate: '4.8',
+              rating: '4.8',
               views: '4,729',
             ),
           ],

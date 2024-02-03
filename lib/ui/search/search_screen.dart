@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/search/widgets/filter.dart';
+import 'package:medify/ui/search/widgets/search_categories_item.dart';
+import 'package:medify/ui/search/widgets/symptoms_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
@@ -18,41 +21,46 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  List<String> categories = ['Doctors','Hospitals','Symptoms'];
   int selectType = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.c_50,
+      backgroundColor: const Color(0xFFF7F7F7),
       appBar: AppBar(
         toolbarHeight: 70.h,
-        backgroundColor: AppColors.c_50,
+        backgroundColor: const Color(0xFFF7F7F7),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: getIcon(AppIcons.arrowLeft, context: context, onTap: () {
             Navigator.pop(context);
           }),
         ),
-        title: GlobalTextField(
-          fillColor: AppColors.c_100,
-          suffixIcon: IconButton(
-            splashRadius: 20,
-            onPressed: () {
-              showBottomSheetWidget(context);
-            },
-            icon: SvgPicture.asset(
-                AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.bold),
-                colorFilter: const ColorFilter.mode(
-                    AppColors.primary500, BlendMode.srcIn)),
+        title: Padding(
+          padding: EdgeInsets.only(top: 14.h, right: 8.w),
+          child: GlobalTextField(
+            contentPadding: EdgeInsets.symmetric(vertical: 8.h),
+            fillColor: AppColors.c_100,
+            suffixIcon: IconButton(
+              splashRadius: 20,
+              onPressed: () {
+                showBottomSheetWidget(context);
+              },
+              icon: SvgPicture.asset(
+                  AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.bold),
+                  colorFilter: const ColorFilter.mode(
+                      AppColors.primary500, BlendMode.srcIn)),
+            ),
+            prefixIcon: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: SvgPicture.asset(AppIcons.search,
+                  colorFilter:
+                      const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn)),
+            ),
+            hintText: "Search",
+            textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.name,
           ),
-          prefixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: SvgPicture.asset(AppIcons.search,
-                colorFilter:
-                    const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn)),
-          ),
-          hintText: "Search",
-          textInputAction: TextInputAction.done,
-          keyboardType: TextInputType.name,
         ),
       ),
       body: Padding(
@@ -60,94 +68,23 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Column(
           children: [
             10.ph,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 6.w),
-                  child: InkWell(
-                      borderRadius: BorderRadius.circular(100),
-                      onTap: () {
-                        selectType = 0;
-                        setState(() {});
-                      },
-                      child: Ink(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 8.h),
-                          decoration: BoxDecoration(
-                            borderRadius:
-                            BorderRadius.circular(100.r),
-                            color: selectType == 0
-                                ? AppColors.primary500
-                                : Colors.white,
-                            border: Border.all(
-                                color: AppColors.primary),
-                          ),
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(AppIcons.getSvg(name: AppIcons.star,iconType: IconType.bold),
-                                  width: 16.w,
-                                  colorFilter: ColorFilter.mode(
-                                      selectType==0?Colors.white:AppColors.primary500, BlendMode.srcIn)
-                              ),
-                              8.pw,
-                              Text(
-                                "Doctors",
-                                style: TextStyle(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: selectType==0?Colors.white:AppColors.primary500,
-                                ),
-                              ),
-                            ],
-                          ))),
-                ),
-                Padding(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 6.w),
-                  child: InkWell(
-                      borderRadius: BorderRadius.circular(100),
-                      onTap: () {
-                        selectType = 1;
-                        setState(() {});
-                      },
-                      child: Ink(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 8.h),
-                          decoration: BoxDecoration(
-                            borderRadius:
-                            BorderRadius.circular(100.r),
-                            color: selectType == 1
-                                ? AppColors.primary500
-                                : Colors.white,
-                            border: Border.all(
-                                color: AppColors.primary),
-                          ),
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(AppIcons.getSvg(name: AppIcons.star,iconType: IconType.bold),
-                                  width: 16.w,
-                                  colorFilter: ColorFilter.mode(
-                                      selectType==1?Colors.white:AppColors.primary500, BlendMode.srcIn)
-                              ),
-                              8.pw,
-                              Text(
-                                "Hospitals",
-                                style: TextStyle(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: selectType==1?Colors.white:AppColors.primary500,
-                                ),
-                              ),
-                            ],
-                          ))),
-                ),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ...List.generate(categories.length, (index) => SearchCategoriesItem(onTap: () {
+                    selectType = index;
+                    setState(() {});
+                  },
+                    index: index,
+                    selectType: selectType, categoryName: categories[index],
+                  ),)
+                ],
+              ),
             ),
-            Row(
+            6.ph,
+            selectType == 0 ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -180,44 +117,46 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     onPressed: () {}),
               ],
-            ),
+            ) : const SizedBox(),
             // const NotFoundWidget()
             Expanded(
-              child: ListView(
-                children: const [
-                  DoctorsCard(
-                    index: 0,
+              child:  selectType == 0 ? ListView(
+                children: [
+                  ...List.generate(10, (index) => DoctorsCard(
+                    index: index,
                     name: 'Dr. Jenny Watson',
                     category: 'Immunologists',
                     hospital: 'Christ Hospital',
-                    rate: '4.4',
+                    rating: '4.4',
                     views: '4,942',
-                  ),
-                  DoctorsCard(
-                    index: 1,
-                    name: 'Dr. Jenny Baranick',
-                    category: 'Allergists',
-                    hospital: 'JFK Medical Center',
-                    rate: '4.6',
-                    views: '3,837',
-                  ),
-                  DoctorsCard(
-                    index: 2,
-                    name: 'Dr. Jenny Zirkind',
-                    category: 'Neurologists',
-                    hospital: 'Franklin Hospital',
-                    rate: '4.8',
-                    views: '6,362',
-                  ),
-                  DoctorsCard(
-                    index: 3,
-                    name: 'Dr. Jenny Wigham',
-                    category: 'Cardiologists',
-                    hospital: 'The Valley Hospital',
-                    rate: '4.8',
-                    views: '4,729',
-                  ),
+                  ))
                 ],
+              ) : selectType == 1 ? const SizedBox() : Container(
+                margin: EdgeInsets.symmetric(vertical: 16.h),
+                decoration: BoxDecoration(
+                  // border: Border.all(color: AppColors.c_300),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30.r)),
+                child: ListView(
+                  children: [
+                    ...List.generate(symptoms.length, (index) => index == 0 ? SymptomsButton(
+                  text: symptoms[index],
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
+                  onTap: () {
+
+                  },
+                ) : index != symptoms.length-1 ?
+                    SymptomsButton(
+                    text: symptoms[index],
+                onTap: () {},
+              ) : SymptomsButton(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r),bottomRight: Radius.circular(20.r)),
+          text: symptoms[index],
+          onTap: () {
+
+          }),)
+                  ],
+                ),
               ),
             ),
           ],
@@ -226,3 +165,27 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
+
+
+List<String> symptoms = [
+  'Abdominal cramps',
+  'Acne',
+  'Appetite changes',
+  'Body and muscle ache',
+  'Bloating',
+  'Breast pain',
+  'Chest tightness or pain',
+  'Chills',
+  'Coughing',
+  'Dizziness',
+  'Dry skin',
+  'Fatigue',
+  'Fever',
+  'Headache',
+  'Lower back pain',
+  'Mood changes',
+  'Nausea',
+  'Skipped heartbeats',
+  'Vomiting',
+  'Wheezing',
+];
