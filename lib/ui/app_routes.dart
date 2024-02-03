@@ -156,7 +156,7 @@ class AppRoutes {
         );
       case RouteNames.categoryScreen:
         return MaterialPageRoute(
-          builder: (context) => const CategoryScreen(),
+          builder: (context) => CategoryScreen(),
         );
       case RouteNames.getLocationScreen:
         return MaterialPageRoute(
