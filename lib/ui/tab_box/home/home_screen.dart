@@ -218,31 +218,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     title: 'Top Doctors',
                     backgroundColor: AppColors.c_50),
-                20.ph,
-                const Categories(),
-                CarouselSlider(
-                  items: [
-                    ...List.generate(
-                        10,
+                14.ph,
+                // const Categories(),
+                ...List.generate(
+                    5,
                         (index) => Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24.w),
-                              child: DoctorsCard(
-                                  length: 10,
-                                  index: index,
-                                  name: "Dr. Jenny Watson",
-                                  category: "Immunologists",
-                                  hospital: "Christ Hospital",
-                                  rate: "4.4",
-                                  views: "4,942"),
-                            ))
-                  ],
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    height: 180 * MediaQuery.of(context).size.height / 926,
-                    autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 5),
-                  ),
-                ),
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: DoctorsCard(
+                          length: 10,
+                          index: index,
+                          name: "Dr. Jenny Watson",
+                          category: "Immunologists",
+                          hospital: "Christ Hospital",
+                          rating: "4.4",
+                          views: "4,942"),
+                    ),),
+                8.ph,
                 SeeAllItem(
                     onTap: () {
                       Navigator.pushNamed(
@@ -257,7 +248,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         (index) => Padding(
                               padding: EdgeInsets.symmetric(horizontal: 24.w),
                               child: const HospitalCard(),
-                            ))
+                            ),
+                    ),
                   ],
                   options: CarouselOptions(
                     viewportFraction: 1,
