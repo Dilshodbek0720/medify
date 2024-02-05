@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           24.ph,
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
+            margin: EdgeInsets.symmetric(horizontal: 20.w),
             decoration: BoxDecoration(
                 // border: Border.all(color: AppColors.c_300),
                 color: Colors.white,
@@ -191,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           20.ph,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: ProfileButton(
               borderRadius: BorderRadius.circular(20.r),
               text: tr('log_out'),
