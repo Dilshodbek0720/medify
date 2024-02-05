@@ -21,6 +21,7 @@ import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_page.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
+import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
@@ -85,6 +86,7 @@ class RouteNames {
   static const String storageDetailScreen = "/storage_detail_screen";
   static const String pdfViewerScreen = "pdf_viewer_screen";
   static const String registerPage = "register_page";
+  static const String symptomsDetailScreen = "symptoms_detail_screen";
 }
 
 class AppRoutes {
@@ -258,6 +260,11 @@ class AppRoutes {
       case RouteNames.registerPage:
         return MaterialPageRoute(
           builder: (context) => const RegisterPage(),
+        );
+      case RouteNames.symptomsDetailScreen:
+        String title = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => SymptomsDetailScreen(title: title),
         );
       default:
         return MaterialPageRoute(

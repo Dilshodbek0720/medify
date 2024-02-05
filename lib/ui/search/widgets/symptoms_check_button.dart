@@ -6,15 +6,15 @@ import 'package:medify/utils/fonts/text_styles.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
-class SymptomsButton extends StatelessWidget {
-  const SymptomsButton(
-      {super.key, required this.text, required this.onTap,this.language="", this.isLanguage=false,this.isLogOut=false,this.borderRadius = null});
+class SymptomsCheckButton extends StatelessWidget {
+  const SymptomsCheckButton(
+      {super.key, required this.text, required this.onTap,this.language="", this.isLanguage=false,this.borderRadius, required this.isChecked});
 
   final String text;
   final VoidCallback onTap;
   final String language;
   final bool isLanguage;
-  final bool isLogOut;
+  final bool isChecked;
   final BorderRadius? borderRadius;
 
   @override
@@ -35,15 +35,18 @@ class SymptomsButton extends StatelessWidget {
               children: [
                 Text(
                   text,
-                  style:isLogOut?AppTextStyle.bodyXlargeSemibold.copyWith(color: AppColors.error):AppTextStyle.bodyXlargeSemibold,
+                  style: AppTextStyle.bodyXlargeSemibold,
                 ),
                 const Spacer(),
                 isLanguage?Text(language,style: AppTextStyle.bodyXlargeSemibold,):const SizedBox(),
                 16.pw,
-                isLogOut?const SizedBox(): SvgPicture.asset(
-                  AppIcons.getSvg(
-                    name: AppIcons.arrowRight2,
-                  ),
+                isChecked ?
+                SvgPicture.asset(
+                  AppIcons.radioSuccess,
+                  colorFilter:  const ColorFilter.mode(AppColors.green, BlendMode.srcIn),
+                ) :
+                SvgPicture.asset(
+                  AppIcons.radioEmpty,
                   colorFilter:  const ColorFilter.mode(AppColors.c_900, BlendMode.srcIn),
                 )
               ],
