@@ -23,6 +23,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   List<String> categories = ['Doctors', 'Hospitals', 'Symptoms'];
   int selectType = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,8 +150,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       : Container(
                           margin: EdgeInsets.symmetric(vertical: 16.h),
                           decoration: BoxDecoration(
-                              // border: Border.all(color: AppColors.c_300),
-                              color: Colors.white,
                               borderRadius: BorderRadius.circular(30.r)),
                           child: ListView(
                             children: [
