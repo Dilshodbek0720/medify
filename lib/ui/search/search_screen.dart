@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/search/widgets/filter.dart';
 import 'package:medify/ui/search/widgets/search_categories_item.dart';
@@ -41,6 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: GlobalTextField(
             contentPadding: EdgeInsets.symmetric(vertical: 8.h),
             fillColor: AppColors.c_100,
+            borderColor: AppColors.c_300,
             suffixIcon: IconButton(
               splashRadius: 20,
               onPressed: () {
@@ -159,12 +161,22 @@ class _SearchScreenState extends State<SearchScreen> {
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(20.r),
                                             topRight: Radius.circular(20.r)),
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.pushNamed(context,
+                                              RouteNames.symptomsDetailScreen,
+                                              arguments: symptoms[index]);
+                                        },
                                       )
                                     : index != symptoms.length - 1
                                         ? SymptomsButton(
                                             text: symptoms[index],
-                                            onTap: () {},
+                                            onTap: () {
+                                              Navigator.pushNamed(
+                                                  context,
+                                                  RouteNames
+                                                      .symptomsDetailScreen,
+                                                  arguments: symptoms[index]);
+                                            },
                                           )
                                         : SymptomsButton(
                                             borderRadius: BorderRadius.only(
@@ -173,7 +185,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 bottomRight:
                                                     Radius.circular(20.r)),
                                             text: symptoms[index],
-                                            onTap: () {}),
+                                            onTap: () {
+                                              Navigator.pushNamed(
+                                                  context,
+                                                  RouteNames
+                                                      .symptomsDetailScreen,
+                                                  arguments: symptoms[index]);
+                                            },
+                                          ),
                               )
                             ],
                           ),

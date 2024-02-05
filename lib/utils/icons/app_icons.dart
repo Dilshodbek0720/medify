@@ -250,4 +250,6 @@ class AppIcons {
   static const String storageApp = "assets/svg/others/storage_app.svg";
   static const String mobileApp = "assets/svg/others/mobile_app.svg";
   static const String starIcon = "assets/svg/others/star_icons.svg";
+  static const String radioEmpty = "assets/svg/others/radio_empty.svg";
+  static const String radioSuccess = "assets/svg/others/radio_success.svg";
 }
