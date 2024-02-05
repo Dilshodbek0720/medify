@@ -8,7 +8,6 @@ import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
-import 'package:medify/ui/tab_box/home/widgets/categories.dart';
 import 'package:medify/ui/tab_box/home/widgets/category_item2.dart';
 import 'package:medify/ui/tab_box/home/widgets/hospital_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';

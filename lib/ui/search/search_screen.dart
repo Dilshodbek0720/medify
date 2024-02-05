@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,8 +20,9 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<String> categories = ['Doctors','Hospitals','Symptoms'];
+  List<String> categories = ['Doctors', 'Hospitals', 'Symptoms'];
   int selectType = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 showBottomSheetWidget(context);
               },
               icon: SvgPicture.asset(
-                  AppIcons.getSvg(name: AppIcons.filter, iconType: IconType.bold),
+                  AppIcons.getSvg(
+                      name: AppIcons.filter, iconType: IconType.bold),
                   colorFilter: const ColorFilter.mode(
                       AppColors.primary500, BlendMode.srcIn)),
             ),
@@ -73,91 +74,110 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  ...List.generate(categories.length, (index) => SearchCategoriesItem(onTap: () {
-                    selectType = index;
-                    setState(() {});
-                  },
-                    index: index,
-                    selectType: selectType, categoryName: categories[index],
-                  ),)
+                  ...List.generate(
+                    categories.length,
+                    (index) => SearchCategoriesItem(
+                      onTap: () {
+                        selectType = index;
+                        setState(() {});
+                      },
+                      index: index,
+                      selectType: selectType,
+                      categoryName: categories[index],
+                    ),
+                  )
                 ],
               ),
             ),
             6.ph,
-            selectType == 0 ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "0 Found",
-                  style: TextStyle(
-                    fontFamily: "Urbanist",
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.c_900,
-                  ),
-                ),
-                TextButton(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Default",
-                          style: TextStyle(
-                            fontFamily: "Urbanist",
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.primary500,
-                          ),
+            selectType == 0
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "0 Found",
+                        style: TextStyle(
+                          fontFamily: "Urbanist",
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.c_900,
                         ),
-                        12.pw,
-                        SvgPicture.asset(AppIcons.swap,
-                            width: 20,
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.primary500, BlendMode.srcIn)),
-                      ],
-                    ),
-                    onPressed: () {}),
-              ],
-            ) : const SizedBox(),
+                      ),
+                      TextButton(
+                          child: Row(
+                            children: [
+                              Text(
+                                "Default",
+                                style: TextStyle(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.primary500,
+                                ),
+                              ),
+                              12.pw,
+                              SvgPicture.asset(AppIcons.swap,
+                                  width: 20,
+                                  colorFilter: const ColorFilter.mode(
+                                      AppColors.primary500, BlendMode.srcIn)),
+                            ],
+                          ),
+                          onPressed: () {}),
+                    ],
+                  )
+                : const SizedBox(),
             // const NotFoundWidget()
             Expanded(
-              child:  selectType == 0 ? ListView(
-                children: [
-                  ...List.generate(10, (index) => DoctorsCard(
-                    index: index,
-                    name: 'Dr. Jenny Watson',
-                    category: 'Immunologists',
-                    hospital: 'Christ Hospital',
-                    rating: '4.4',
-                    views: '4,942',
-                  ))
-                ],
-              ) : selectType == 1 ? const SizedBox() : Container(
-                margin: EdgeInsets.symmetric(vertical: 16.h),
-                decoration: BoxDecoration(
-                  // border: Border.all(color: AppColors.c_300),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30.r)),
-                child: ListView(
-                  children: [
-                    ...List.generate(symptoms.length, (index) => index == 0 ? SymptomsButton(
-                  text: symptoms[index],
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
-                  onTap: () {
-
-                  },
-                ) : index != symptoms.length-1 ?
-                    SymptomsButton(
-                    text: symptoms[index],
-                onTap: () {},
-              ) : SymptomsButton(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r),bottomRight: Radius.circular(20.r)),
-          text: symptoms[index],
-          onTap: () {
-
-          }),)
-                  ],
-                ),
-              ),
+              child: selectType == 0
+                  ? ListView(
+                      children: [
+                        ...List.generate(
+                            10,
+                            (index) => DoctorsCard(
+                                  index: index,
+                                  name: 'Dr. Jenny Watson',
+                                  category: 'Immunologists',
+                                  hospital: 'Christ Hospital',
+                                  rating: '4.4',
+                                  views: '4,942',
+                                ))
+                      ],
+                    )
+                  : selectType == 1
+                      ? const SizedBox()
+                      : Container(
+                          margin: EdgeInsets.symmetric(vertical: 16.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.r)),
+                          child: ListView(
+                            children: [
+                              ...List.generate(
+                                symptoms.length,
+                                (index) => index == 0
+                                    ? SymptomsButton(
+                                        text: symptoms[index],
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.r),
+                                            topRight: Radius.circular(20.r)),
+                                        onTap: () {},
+                                      )
+                                    : index != symptoms.length - 1
+                                        ? SymptomsButton(
+                                            text: symptoms[index],
+                                            onTap: () {},
+                                          )
+                                        : SymptomsButton(
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft:
+                                                    Radius.circular(20.r),
+                                                bottomRight:
+                                                    Radius.circular(20.r)),
+                                            text: symptoms[index],
+                                            onTap: () {}),
+                              )
+                            ],
+                          ),
+                        ),
             ),
           ],
         ),
@@ -165,7 +185,6 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 }
-
 
 List<String> symptoms = [
   'Abdominal cramps',

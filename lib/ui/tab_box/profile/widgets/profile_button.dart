@@ -9,7 +9,7 @@ import 'package:medify/utils/size/size_extension.dart';
 
 class ProfileButton extends StatelessWidget {
   const ProfileButton(
-      {super.key, required this.text, required this.icon, required this.onTap,this.language="", this.isLanguage=false,this.isLogOut=false,this.borderRadius = null});
+      {super.key, required this.text, required this.icon, required this.onTap,this.language="", this.isLanguage=false,this.isLogOut=false,this.borderRadius});
 
   final String text;
   final String icon;
