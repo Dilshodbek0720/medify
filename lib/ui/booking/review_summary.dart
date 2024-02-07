@@ -200,6 +200,7 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: GlobalButton(color: AppColors.primary, textColor: Colors.white, title: tr("continue"), onTap: (){
               Navigator.pushNamed(context, RouteNames.ourRec);
+              print(DateTime.now());
             }),
           ),
           40.ph,
