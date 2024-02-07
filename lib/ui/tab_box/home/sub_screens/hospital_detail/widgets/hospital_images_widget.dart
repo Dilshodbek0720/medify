@@ -4,7 +4,9 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
 class HospitalImagesWidget extends StatefulWidget {
-  const HospitalImagesWidget({super.key});
+  const HospitalImagesWidget({super.key, required this.image, required this.imageHeight});
+  final String image;
+  final double imageHeight;
 
   @override
   State<HospitalImagesWidget> createState() => _HospitalImagesWidgetState();
@@ -19,7 +21,7 @@ class _HospitalImagesWidgetState extends State<HospitalImagesWidget> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: height * 460 / figmaHeight,
+      height: height * widget.imageHeight / figmaHeight,
       width: width,
       child: Stack(
         children: [
@@ -36,7 +38,7 @@ class _HospitalImagesWidgetState extends State<HospitalImagesWidget> {
                   height: height * 460 / figmaHeight,
                   width: width,
                   child: Image.asset(
-                    AppIcons.hospital,
+                    widget.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -44,7 +46,7 @@ class _HospitalImagesWidgetState extends State<HospitalImagesWidget> {
                   height: height * 460 / figmaHeight,
                   width: width,
                   child: Image.asset(
-                    AppIcons.hospital,
+                    widget.image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -52,7 +54,7 @@ class _HospitalImagesWidgetState extends State<HospitalImagesWidget> {
                   height: height * 460 / figmaHeight,
                   width: width,
                   child: Image.asset(
-                    AppIcons.hospital,
+                    widget.image,
                     fit: BoxFit.cover,
                   ),
                 )

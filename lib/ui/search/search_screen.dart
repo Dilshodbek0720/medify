@@ -141,7 +141,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                   category: 'Immunologists',
                                   hospital: 'Christ Hospital',
                                   rating: '4.4',
-                                  views: '4,942',
                                 ))
                       ],
                     )

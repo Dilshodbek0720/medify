@@ -7,11 +7,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/review_screen/widgets/review_card.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_detail_item.dart';
+import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_detail_widget.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/review_search_input.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/working_hours_item.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/hospital_images_widget.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
+import 'package:medify/ui/tab_box/mailing/widgets/answer_button.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -19,6 +21,7 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/utility_function.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
   const DoctorDetailScreen({super.key});
@@ -34,6 +37,14 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
   bool onCameraMoveStarted = false;
   int remainingTime = 0;
   Timer? _countUpTimer;
+
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
 
   void startCountUp() {
     _countUpTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -62,6 +73,10 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
     currentCameraPosition =
         const CameraPosition(target: LatLng(41.311081, 69.240562), zoom: 15);
     super.initState();
+    canLaunchUrl(Uri(scheme: 'tel', path: '+998998999739')).then((bool result) {
+      setState(() {
+      });
+    });
   }
 
   @override
@@ -94,19 +109,52 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
             Expanded(
                 child: ListView(
               children: [
-                18.ph,
+                const HospitalImagesWidget(image: AppIcons.doctorReklama, imageHeight: 320,),
+                12.ph,
+                Padding(padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: const DoctorsCard(length: 10,index: 0, name: "Katryn Murphy", category: "Therapist, Mon - Sun", hospital: "Christ Hospital", rating: "4.9"),
+                ),
+                12.ph,
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: const DoctorDetailItem(
-                    index: 0,
-                    name: 'Dr. Jenny Watson',
-                    category: 'Immunologists',
-                    hospital: 'Christ Hospital',
-                    rate: '4.4',
-                    views: '4,942',
+                  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
+                  child: GlobalButton(
+                    onTap: () {},
+                    textColor: AppColors.white,
+                    color: AppColors.green,
+                    title: "Book an appointment",
+                    radius: 12.r,
                   ),
                 ),
-                24.ph,
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 24.w,
+                    right: 24.w,
+                    bottom: 36.h,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AnswerButton(onTap: (){
+
+                      }, title: 'Message', icon: AppIcons.send, color: AppColors.green, textColor: AppColors.green,),
+                      12.pw,
+                      AnswerButton(onTap: () => setState(() {
+                        _makePhoneCall("+998998999739");
+                      }), title: 'Make a call', icon: AppIcons.call, color: AppColors.green, textColor: AppColors.green,),
+                    ],
+                  ),
+                ),
+                // Padding(
+                //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+                //   child: const DoctorDetailItem(
+                //     index: 0,
+                //     name: 'Dr. Jenny Watson',
+                //     category: 'Immunologists',
+                //     hospital: 'Christ Hospital',
+                //     rate: '4.4',
+                //     views: '4,942',
+                //   ),
+                // ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Row(
@@ -295,16 +343,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 4.ph,
                 const ReviewCard(index: 4),
               ],
-            )),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-              child: GlobalButton(
-                onTap: () {},
-                textColor: AppColors.white,
-                color: AppColors.primary,
-                title: "Book Appointment",
-              ),
-            )
+            ),),
           ],
         ),
       ),

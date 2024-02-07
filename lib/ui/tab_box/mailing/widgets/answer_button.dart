@@ -5,10 +5,12 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class AnswerButton extends StatelessWidget {
-  const AnswerButton({super.key, required this.onTap, required this.title, required this.icon});
+  const AnswerButton({super.key, required this.onTap, required this.title, required this.icon, required this.color, required this.textColor});
   final VoidCallback onTap;
   final String title;
   final String icon;
+  final Color color;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +32,16 @@ class AnswerButton extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              height: 16.r,
-              width: 16.r,
-              child: SvgPicture.asset(icon),
+              height: 20.r,
+              width: 20.r,
+              child: SvgPicture.asset(icon, colorFilter: ColorFilter.mode(color, BlendMode.srcIn),),
             ),
             16.pw,
             Text(title, style: TextStyle(
                 fontFamily: "Urbanist",
                 fontWeight: FontWeight.w600,
-                fontSize: 14.sp,
-                color: AppColors.c_900
+                fontSize: 16.sp,
+                color: textColor
             ),),
           ],
         ),
