@@ -91,9 +91,9 @@ class _MailDetailScreenState extends State<MailDetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnswerButton(onTap: (){ }, title: 'Answer', icon: AppIcons.answer,),
+                AnswerButton(onTap: (){ }, title: 'Answer', icon: AppIcons.answer, color: AppColors.primary, textColor: AppColors.c_900,),
                 18.pw,
-                AnswerButton(onTap: (){ }, title: 'Forward', icon: AppIcons.forward,),
+                AnswerButton(onTap: (){ }, title: 'Forward', icon: AppIcons.forward, color: AppColors.primary, textColor: AppColors.c_900,),
               ],
             ),
           )

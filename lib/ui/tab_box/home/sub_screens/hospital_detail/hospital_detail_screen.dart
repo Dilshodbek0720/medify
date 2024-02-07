@@ -64,7 +64,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
               Expanded(
                 child: ListView(
                   children: [
-                    const HospitalImagesWidget(),
+                    const HospitalImagesWidget(image: AppIcons.hospital,imageHeight: 460),
                     24.ph,
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -268,7 +268,8 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                   getIcon(AppIcons.send, context: context, onTap: (){ }),
                   10.pw,
                 ],),
-              )),
+              ),
+          ),
         ],
       ),
     );

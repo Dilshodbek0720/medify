@@ -229,8 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           name: "Dr. Jenny Watson",
                           category: "Immunologists",
                           hospital: "Christ Hospital",
-                          rating: "4.4",
-                          views: "4,942"),
+                          rating: "4.4"),
                     ),),
                 8.ph,
                 SeeAllItem(

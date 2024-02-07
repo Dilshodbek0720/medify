@@ -41,7 +41,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               category: 'Immunologists',
               hospital: 'Christ Hospital',
               rating: '4.4',
-              views: '4,942',
             ),
             DoctorsCard(
               index: 1,
@@ -49,7 +48,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               category: 'Allergists',
               hospital: 'JFK Medical Center',
               rating: '4.6',
-              views: '3,837',
             ),
             DoctorsCard(
               index: 2,
@@ -57,7 +55,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               category: 'Neurologists',
               hospital: 'Franklin Hospital',
               rating: '4.8',
-              views: '6,362',
             ),
             DoctorsCard(
               index: 3,
@@ -65,7 +62,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               category: 'Cardiologists',
               hospital: 'The Valley Hospital',
               rating: '4.8',
-              views: '4,729',
             ),
           ],
         ),

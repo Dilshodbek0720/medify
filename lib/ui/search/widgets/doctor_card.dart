@@ -14,8 +14,7 @@ class DoctorsCard extends StatefulWidget {
       required this.category,
       required this.hospital,
       required this.rating,
-      this.length = 4,
-      required this.views});
+      this.length = 4});
 
   final int index;
   final int length;
@@ -23,7 +22,6 @@ class DoctorsCard extends StatefulWidget {
   final String category;
   final String hospital;
   final String rating;
-  final String views;
 
   @override
   State<DoctorsCard> createState() => _DoctorsCardState();
