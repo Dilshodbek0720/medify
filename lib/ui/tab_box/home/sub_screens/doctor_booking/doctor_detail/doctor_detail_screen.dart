@@ -118,7 +118,9 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
                   child: GlobalButton(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.calendarDoctorsScreen);
+                    },
                     textColor: AppColors.white,
                     color: AppColors.green,
                     title: "Book an appointment",

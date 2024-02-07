@@ -3,9 +3,9 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medify/cubits/calendar/calendar_cubit.dart';
+import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/booking/widgets/hours_button.dart';
+import 'package:medify/ui/booking_doctor/widgets/hours_button.dart';
 import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -14,14 +14,14 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({super.key});
+class CalendarDoctorsScreen extends StatefulWidget {
+  const CalendarDoctorsScreen({super.key});
 
   @override
-  State<CalendarScreen> createState() => _CalendarScreenState();
+  State<CalendarDoctorsScreen> createState() => _CalendarDoctorsScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
+class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
   DateTime page = DateTime.now();
   int selectHour = -1;
 
@@ -33,7 +33,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           onTap: () {
             Navigator.pop(context);
           }),
-      body: BlocBuilder<CalendarCubit, CalendarState>(
+      body: BlocBuilder<CalendarDoctorsCubit, CalendarDoctorsState>(
         builder: (context, state) {
           print("${state.startDate} checkIn");
           return Column(
@@ -109,12 +109,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         rangeSelectionMode: state.rangeSelectionMode,
                         onRangeSelected: (start, end, focusedDay) {
                           context
-                              .read<CalendarCubit>()
+                              .read<CalendarDoctorsCubit>()
                               .initializeRanges(start, start);
                           // context.read<CalendarCubit>().updateCheck(start.toString().split(" ").first, start.toString().split(" ").first);
                         },
                         onPageChanged: (v) {
-                          context.read<CalendarCubit>().changeFocusDay(v);
+                          context.read<CalendarDoctorsCubit>().changeFocusDay(v);
                         },
                       ),
                     ),

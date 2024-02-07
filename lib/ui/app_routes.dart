@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:medify/ui/auth/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up_screen.dart';
-import 'package:medify/ui/booking/booking_info_detail.dart';
-import 'package:medify/ui/booking/calendar_screen.dart';
-import 'package:medify/ui/booking/our_rec.dart';
-import 'package:medify/ui/booking/payment_bookings_screen.dart';
-import 'package:medify/ui/booking/review_summary.dart';
+import 'package:medify/ui/booking_doctor/booking_doctors_info_detail.dart';
+import 'package:medify/ui/booking_doctor/calendar_doctors_screen.dart';
+import 'package:medify/ui/booking_hospital/calendar_screen.dart';
 import 'package:medify/ui/category/category_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
@@ -43,6 +41,10 @@ import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_home/stora
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/sub_screens/pdf_viewer_screen/pdf_viewer_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
+import 'booking_hospital/our_rec.dart';
+import 'booking_hospital/payment_bookings_screen.dart';
+import 'booking_hospital/review_summary.dart';
+
 class RouteNames {
   static const String splashScreen = "/";
   static const String onBoardingPages = "/onboarding_pages";
@@ -70,7 +72,8 @@ class RouteNames {
   static const String editProfileScreen = "/edit_profile_screen";
   static const String doctorDetailScreen = "/doctor_detail_screen";
   static const String reviewScreen = "/review_screen";
-  static const String calendarScreen = "/calendar_screen";
+  static const String calendarDoctorsScreen = "/calendar_doctors_screen";
+  static const String calendarHospitalsScreen = "/calendar_hospitals_screen";
   static const String ourRec = "/our_rec";
   static const String reviewSummaryScreen = "/review_summary_screen";
   static const String bookingInfoDetailScreen = "/booking_info_detail_screen";
@@ -196,13 +199,17 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const ReviewScreen(),
         );
-      case RouteNames.calendarScreen:
+      case RouteNames.calendarDoctorsScreen:
         return MaterialPageRoute(
-          builder: (context) => const CalendarScreen(),
+          builder: (context) => const CalendarDoctorsScreen(),
+        );
+      case RouteNames.calendarHospitalsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CalendarHospitalsScreen(),
         );
       case RouteNames.bookingInfoDetailScreen:
         return MaterialPageRoute(
-          builder: (context) => const BookingInfoDetail(),
+          builder: (context) => const BookingDoctorsInfoDetail(),
         );
       case RouteNames.ourRec:
         return MaterialPageRoute(

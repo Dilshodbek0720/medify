@@ -251,7 +251,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                   ],
                 ),),
               TotalPriceItem(onTap: (){
-                Navigator.pushNamed(context, RouteNames.calendarScreen);
+                Navigator.pushNamed(context, RouteNames.calendarHospitalsScreen);
               }),
             ],
           ),

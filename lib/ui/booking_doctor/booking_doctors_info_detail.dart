@@ -15,14 +15,14 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
-class BookingInfoDetail extends StatefulWidget {
-  const BookingInfoDetail({super.key});
+class BookingDoctorsInfoDetail extends StatefulWidget {
+  const BookingDoctorsInfoDetail({super.key});
 
   @override
-  State<BookingInfoDetail> createState() => _BookingInfoDetailState();
+  State<BookingDoctorsInfoDetail> createState() => _BookingInfoDetailState();
 }
 
-class _BookingInfoDetailState extends State<BookingInfoDetail> {
+class _BookingInfoDetailState extends State<BookingDoctorsInfoDetail> {
   var phoneFormatter = MaskTextInputFormatter(
       initialText: "+998",
       mask: '## ### ## ##',
