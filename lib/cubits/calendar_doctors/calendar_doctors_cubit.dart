@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-part 'calendar_state.dart';
+part 'calendar_doctors_state.dart';
 
-class CalendarCubit extends Cubit<CalendarState> {
-  CalendarCubit()
-      : super(CalendarState(
+class CalendarDoctorsCubit extends Cubit<CalendarDoctorsState> {
+  CalendarDoctorsCubit()
+      : super(CalendarDoctorsState(
             selectedDate: DateTime.now(),
             startDate: null,
             getDateTime: DateTime.now(),

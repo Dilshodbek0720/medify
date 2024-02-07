@@ -1,6 +1,6 @@
-part of 'calendar_cubit.dart';
+part of 'calendar_doctors_cubit.dart';
 
-class CalendarState {
+class CalendarDoctorsState {
   final DateTime selectedDate;
   final DateTime getDateTime;
   final DateTime? startDate;
@@ -9,7 +9,7 @@ class CalendarState {
   final TextEditingController notes;
   final FocusNode notesFocus;
 
-  const CalendarState({
+  const CalendarDoctorsState({
     required this.selectedDate,
     required this.startDate,
     required this.rangeSelectionMode,
@@ -19,7 +19,7 @@ class CalendarState {
     required this.notesFocus,
   });
 
-  CalendarState copyWith({
+  CalendarDoctorsState copyWith({
     DateTime? selectedDate,
     DateTime? startDate,
     DateTime? endDate,
@@ -35,7 +35,7 @@ class CalendarState {
     Color? checkInColor,
     Color? checkOutColor,
   }) {
-    return CalendarState(
+    return CalendarDoctorsState(
       selectedDate: selectedDate ?? this.selectedDate,
       startDate: startDate ?? this.startDate,
       rangeSelectionMode: rangeSelectionMode ?? this.rangeSelectionMode,

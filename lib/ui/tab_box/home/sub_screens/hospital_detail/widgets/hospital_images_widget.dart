@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/page_images_index.dart';
-import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
 class HospitalImagesWidget extends StatefulWidget {
