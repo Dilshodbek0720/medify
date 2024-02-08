@@ -53,6 +53,7 @@ class _CalendarHospitalsScreenState extends State<CalendarHospitalsScreen> {
                           color: AppColors.blueBackground,
                           borderRadius: BorderRadius.circular(24.r)),
                       child: TableCalendar(
+                        locale: context.locale.toString(),
                         firstDay: DateTime.now(),
                         lastDay: DateTime(2040),
                         focusedDay: state.focusedDay,

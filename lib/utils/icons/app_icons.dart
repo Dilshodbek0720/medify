@@ -189,6 +189,7 @@ class AppIcons {
   static const String forward = "assets/svg/others/forward.svg";
   static const String iconBack = "assets/svg/others/icon_back.svg";
   static const String teeth = "assets/svg/others/teeth.svg";
+  static const String medical = "assets/svg/others/medical.svg";
 
   //help_screen_social_icons
   static const String head = "assets/svg/others/help_screen_head.svg";

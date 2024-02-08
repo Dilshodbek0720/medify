@@ -320,5 +320,7 @@
   "check_out": "Check out",
   "note_to_owner": "Note to Owner (optional)",
   "notes": "Notes",
-  "change": "Change"
+  "change": "Change",
+  "select_image": "Select image",
+  "select_file": "Select file"
 }
