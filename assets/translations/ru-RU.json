@@ -330,5 +330,7 @@
   "notes": "Примечания",
   "change": "Изменять",
   "select_image": "Выберите изображение",
-  "select_file": "Выберите файл"
+  "select_file": "Выберите файл",
+  "video_conversation": "Видео разговор",
+  "audio_conversation": "Аудио разговор"
 }

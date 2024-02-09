@@ -323,5 +323,7 @@
   "notes": "Эслатмалар",
   "change": "Ўзгартириш",
   "select_image": "Расмни танланг",
-  "select_file": "Файлни танланг"
+  "select_file": "Файлни танланг",
+  "video_conversation": "Видео сухбат",
+  "audio_conversation": "Аудио сухбат"
 }

@@ -23,7 +23,7 @@ class _HoursButtonState extends State<HoursButton> {
             color: widget.isSelect
                 ? Colors.greenAccent.withOpacity(0.3)
                 : Colors.white,
-            borderRadius: BorderRadius.circular(15.r),
+            borderRadius: BorderRadius.circular(50.r),
             border: Border.all(
               color: widget.isSelect ? Colors.green : AppColors.c_700,
             )),

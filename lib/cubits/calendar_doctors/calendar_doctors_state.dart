@@ -8,6 +8,10 @@ class CalendarDoctorsState {
   final DateTime focusedDay;
   final TextEditingController notes;
   final FocusNode notesFocus;
+  final int selectHour;
+  final FilePickerResult? file;
+  final String? image;
+  final int selectCall;
 
   const CalendarDoctorsState({
     required this.selectedDate,
@@ -17,6 +21,10 @@ class CalendarDoctorsState {
     required this.getDateTime,
     required this.notes,
     required this.notesFocus,
+    required this.selectCall,
+    required this.selectHour,
+    required this.file,
+    required this.image,
   });
 
   CalendarDoctorsState copyWith({
@@ -34,6 +42,10 @@ class CalendarDoctorsState {
     FocusNode? notesFocus,
     Color? checkInColor,
     Color? checkOutColor,
+    int? selectHour,
+    FilePickerResult? file,
+    String? image,
+    int? selectCall,
   }) {
     return CalendarDoctorsState(
       selectedDate: selectedDate ?? this.selectedDate,
@@ -43,6 +55,10 @@ class CalendarDoctorsState {
       getDateTime: getDateTime ?? this.getDateTime,
       notes: notes ?? this.notes,
       notesFocus: notesFocus ?? this.notesFocus,
+      selectHour: selectHour ?? this.selectHour,
+      file: file ?? this.file,
+      image: image ?? this.image,
+      selectCall: selectCall ?? this.selectCall,
     );
   }
 }

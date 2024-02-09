@@ -322,5 +322,7 @@
   "notes": "Notes",
   "change": "Change",
   "select_image": "Select image",
-  "select_file": "Select file"
+  "select_file": "Select file",
+  "video_conversation": "Video conversation",
+  "audio_conversation": "Audio conversation"
 }
