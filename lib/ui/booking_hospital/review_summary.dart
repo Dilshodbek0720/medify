@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
-import 'package:medify/ui/app_routes.dart';
+// import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -315,7 +315,7 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
                 textColor: Colors.white,
                 title: tr("continue"),
                 onTap: () {
-                  Navigator.pushNamed(context, RouteNames.ourRec);
+                  // Navigator.pushNamed(context, RouteNames.ourRec);
                   print(DateTime.now());
                 }),
           ),

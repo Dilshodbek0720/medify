@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -13,10 +14,29 @@ class CalendarDoctorsCubit extends Cubit<CalendarDoctorsState> {
             rangeSelectionMode: RangeSelectionMode.toggledOn,
             focusedDay: DateTime.now(),
             notes: TextEditingController(),
+            selectCall: 0,
+            selectHour: -1,
+            file: null,
+            image: null,
             notesFocus: FocusNode()));
 
   void initializeDateTime(DateTime? getDateTime) {
     emit(state.copyWith(getDateTime: getDateTime));
+  }
+
+  void setSelectHour(int index) {
+    emit(state.copyWith(selectHour: index));
+  }
+  void setSelectCall(int index) {
+    emit(state.copyWith(selectCall: index));
+  }
+
+  void updateImage(String? path) {
+    emit(state.copyWith(image: path));
+  }
+
+  void updateFile(FilePickerResult? file) {
+    emit(state.copyWith(file: file));
   }
 
   void initializeSelectedDate(DateTime? selectedDate) {

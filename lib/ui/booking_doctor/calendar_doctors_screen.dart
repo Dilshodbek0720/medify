@@ -24,9 +24,6 @@ class CalendarDoctorsScreen extends StatefulWidget {
 }
 
 class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
-  DateTime page = DateTime.now();
-  int selectHour = -1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +34,7 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
           }),
       body: BlocBuilder<CalendarDoctorsCubit, CalendarDoctorsState>(
         builder: (context, state) {
-          print("${state.startDate} checkIn");
+          // print("${state.startDate} checkIn");
           return Column(
             children: [
               Expanded(
@@ -118,7 +115,6 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                             context
                                 .read<CalendarDoctorsCubit>()
                                 .initializeRanges(start, start);
-                            // context.read<CalendarCubit>().updateCheck(start.toString().split(" ").first, start.toString().split(" ").first);
                           },
                           onPageChanged: (v) {
                             context
@@ -137,19 +133,91 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                           ...List.generate(
                               9,
                               (index) => Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 5.h),
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 5.h),
                                     child: HoursButton(
                                         index: index + 1,
                                         onTap: () {
-                                          selectHour = index;
-                                          setState(() {});
+                                          context
+                                              .read<CalendarDoctorsCubit>()
+                                              .setSelectHour(index);
                                         },
-                                        isSelect: selectHour == index),
+                                        isSelect: state.selectHour == index),
                                   ))
                         ],
                       ),
                     ),
                     24.ph,
+                    ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
+                      leading: DecoratedBox(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.r),
+                            color: AppColors.blueGrey),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.r),
+                          child: SvgPicture.asset(AppIcons.video,
+                              colorFilter: const ColorFilter.mode(
+                                  AppColors.white, BlendMode.srcIn)),
+                        ),
+                      ),
+                      title: Text(
+                        tr("video_conversation"),
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.c_900,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "\$13.88 per 30 minutes",
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.c_700,
+                        ),
+                      ),
+                      trailing: state.selectCall == 1
+                          ? SvgPicture.asset(AppIcons.checked)
+                          : SvgPicture.asset(AppIcons.unchecked),
+                      onTap: () {
+                        context.read<CalendarDoctorsCubit>().setSelectCall(1);
+                      },
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
+                      leading: DecoratedBox(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100.r),
+                            color: AppColors.green),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.r),
+                          child: SvgPicture.asset(AppIcons.call,
+                              colorFilter: const ColorFilter.mode(
+                                  AppColors.white, BlendMode.srcIn)),
+                        ),
+                      ),
+                      title: Text(
+                        tr("audio_conversation"),
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.c_900,
+                        ),
+                      ),
+                      subtitle: Text("\$10.33 per 30 minutes",
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.c_700,
+                          )),
+                      trailing: state.selectCall == 2
+                          ? SvgPicture.asset(AppIcons.checked)
+                          : SvgPicture.asset(AppIcons.unchecked),
+                      onTap: () {
+                        context.read<CalendarDoctorsCubit>().setSelectCall(2);
+                      },
+                    ),
                     ListTile(
                       contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
                       leading: DecoratedBox(
@@ -171,16 +239,30 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                           color: AppColors.c_900,
                         ),
                       ),
+                      subtitle: state.image != null
+                          ? Text(
+                              state.image!.substring(state.image!.length - 15),
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.c_700,
+                              ),
+                            )
+                          : null,
+                      trailing: state.image != null
+                          ? SvgPicture.asset(AppIcons.checked)
+                          : SvgPicture.asset(AppIcons.unchecked),
                       onTap: () {
                         showCameraAndGalleryDialog(context, (imagePath) {
                           if (imagePath != null) {
-                            // context.read<EditProfileCubit>().updateFile(imagePath);
+                            context
+                                .read<CalendarDoctorsCubit>()
+                                .updateImage(imagePath);
                             print(imagePath.split(".").last);
                           }
                         });
                       },
                     ),
-                    20.pw,
                     ListTile(
                       contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
                       leading: DecoratedBox(
@@ -202,9 +284,24 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                           color: AppColors.c_900,
                         ),
                       ),
-                      // trailing: ,
-                      onTap: () {
-                        _openFilePicker(context);
+                      subtitle: state.file != null
+                          ? Text(
+                              state.file!.paths.first!.split("/").last,
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.c_700,
+                              ),
+                            )
+                          : null,
+                      trailing: state.file != null
+                          ? SvgPicture.asset(AppIcons.checked)
+                          : SvgPicture.asset(AppIcons.unchecked),
+                      onTap: () async {
+                        context
+                            .read<CalendarDoctorsCubit>()
+                            .updateFile(await _openFilePicker(context));
+                        setState(() {});
                       },
                     ),
                     24.ph,
@@ -254,13 +351,14 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
     );
   }
 
-  Future<void> _openFilePicker(BuildContext context) async {
+  Future<FilePickerResult?> _openFilePicker(BuildContext context) async {
     try {
       final result = await FilePicker.platform.pickFiles();
 
       if (result != null) {
         // File picked successfully
         print('File picked: ${result.files.first.path?.split(".").last}');
+        return result;
       } else {
         // User canceled the picker
         print('User canceled the picker');
@@ -269,5 +367,6 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
       // Handle exception
       print('Error picking file: $e');
     }
+    return null;
   }
 }

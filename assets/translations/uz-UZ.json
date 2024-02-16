@@ -322,5 +322,7 @@
   "notes": "Eslatmalar",
   "change": "O'zgartirish",
   "select_image": "Rasmni tanlang",
-  "select_file": "Faylni tanlang"
+  "select_file": "Faylni tanlang",
+  "video_conversation": "Video suhbat",
+  "audio_conversation": "Audio suhbat"
 }
