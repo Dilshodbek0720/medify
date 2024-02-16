@@ -22,6 +22,7 @@ import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat_list_screen/chat_list_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/chat_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
@@ -92,6 +93,7 @@ class RouteNames {
   static const String registerPage = "register_page";
   static const String symptomsDetailScreen = "symptoms_detail_screen";
   static const String chatListScreen = "chat_list_screen";
+  static const String chatScreen = "chat_screen";
 }
 
 class AppRoutes {
@@ -278,6 +280,10 @@ class AppRoutes {
       case RouteNames.chatListScreen:
         return MaterialPageRoute(
           builder: (context) => const ChatListScreen(),
+          );
+      case RouteNames.chatScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChatScreen(),
         );
       default:
         return MaterialPageRoute(
