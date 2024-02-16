@@ -79,5 +79,8 @@
     <key>NSDocumentsFolderUsageDescription</key>
     <string>Explanation of why your app needs access to the documents folder.</string>
 
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Your microphone is used to share voice recordings with doctors</string>
+
 </dict>
 </plist>

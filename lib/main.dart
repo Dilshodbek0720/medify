@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
 import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
@@ -27,6 +29,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MainApp());
 }
 
@@ -44,6 +50,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => PaymentBloc()),
         BlocProvider(create: (context) => PaymentAddBloc()),
+        BlocProvider(create: (context) => MessageBloc()),
         BlocProvider(create: (context) => GetLocationCubit()),
         BlocProvider(create: (context) => NotificationCubit()),
         BlocProvider(create: (context) => SecurityCubit()),
