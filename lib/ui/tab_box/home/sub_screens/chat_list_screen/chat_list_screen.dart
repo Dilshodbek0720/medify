@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat_list_screen/widgets/chat_person_card.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat_list_screen/widgets/chat_screen_textfield.dart';
-import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 
 class ChatListScreen extends StatefulWidget {
@@ -29,7 +29,9 @@ class _ChatListScreenState extends State<ChatListScreen> {
             Expanded(
                 child: ListView(
                   children: [
-                    ...List.generate(10, (index) => const ChatPersonCard(index: 0, name: 'Danial Siddiki', description: 'Текст сообщения для карточки чата с анонсом.', date: '08:28', count: '1',))
+                    ...List.generate(10, (index) => ChatPersonCard(index: 0, name: 'Danial Siddiki', description: 'Текст сообщения для карточки чата с анонсом.', date: '08:28', count: '1', onTap: () {
+                      Navigator.pushNamed(context, RouteNames.chatScreen);
+                    },))
                   ],
                 )
             )
