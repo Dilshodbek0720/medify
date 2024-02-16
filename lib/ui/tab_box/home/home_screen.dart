@@ -84,8 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 getIcon(AppIcons.notification, context: context, onTap: () {
                   Navigator.pushNamed(context, RouteNames.notificationScreen);
                 }),
-                getIcon(AppIcons.heart, context: context, onTap: () {
-                  Navigator.pushNamed(context, RouteNames.favoriteScreen);
+                getIcon(AppIcons.chat, context: context, onTap: () {
+                  Navigator.pushNamed(context, RouteNames.chatListScreen);
                 })
               ],
             ),
