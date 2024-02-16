@@ -14,6 +14,7 @@ class ChatPersonCard extends StatefulWidget {
         required this.description,
         required this.date,
         required this.count,
+        required this.onTap,
         this.length = 4});
 
   final int index;
@@ -22,6 +23,7 @@ class ChatPersonCard extends StatefulWidget {
   final String description;
   final String date;
   final String count;
+  final VoidCallback onTap;
 
   @override
   State<ChatPersonCard> createState() => _ChatPersonCardState();
@@ -34,9 +36,7 @@ class _ChatPersonCardState extends State<ChatPersonCard> {
     return Material(
       color: AppColors.white,
       child: InkWell(
-        onTap: () {
-
-        },
+        onTap: widget.onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           child: Row(
