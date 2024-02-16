@@ -325,7 +325,8 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                         maxLines: 4,
                         contentPadding: EdgeInsets.all(20.r),
                       ),
-                    )
+                    ),
+                    20.ph,
                   ],
                 ),
               ),

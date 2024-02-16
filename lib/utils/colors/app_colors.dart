@@ -106,6 +106,10 @@ class AppColors {
   static const Color greysCale =Color(0xFFFAFAFA);
   static const Color cF0F0F0 =Color(0xFFF0F0F0);
   static const Color cA6A9AB =Color(0xFFA6A9AB);
+  static const Color c182330 =Color(0xFF182330);
+  static const Color c212F3F =Color(0xFF212F3F);
+  static const Color c6C808C =Color(0xFF6C808C);
+  static const Color cEAF4FA =Color(0xFFEAF4FA);
 
 
 

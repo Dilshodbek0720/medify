@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
-// import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -178,72 +178,88 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Consultation",
+                    Text(
+                      "Consultation",
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
-                    Text("\$60.00",
+                      ),
+                    ),
+                    Text(
+                      "\$60.00",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
+                      ),
+                    ),
                   ],
                 ),
                 5.ph,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Admin Fee",
+                    Text(
+                      "Admin Fee",
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
-                    Text("\$5.00",
+                      ),
+                    ),
+                    Text(
+                      "\$5.00",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
+                      ),
+                    ),
                   ],
                 ),
                 5.ph,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Discount",
+                    Text(
+                      "Discount",
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
-                    Text("-\$10.00",
+                      ),
+                    ),
+                    Text(
+                      "-\$10.00",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                         color: AppColors.c_700,
-                      ),),
+                      ),
+                    ),
                   ],
                 ),
                 5.ph,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Total",
+                    Text(
+                      "Total",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 16.sp,
                         color: AppColors.c_900,
-                      ),),
-                    Text("\$55.00",
+                      ),
+                    ),
+                    Text(
+                      "\$55.00",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp,
                         color: AppColors.green,
-                      ),),
+                      ),
+                    ),
                   ],
                 ),
                 24.ph,
@@ -273,12 +289,18 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
                                 fontSize: 18.sp)),
                         const Spacer(),
                         TextButton(
-                            onPressed: () {},
-                            child: Text(tr("change"),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.primary500,
-                                    fontSize: 16.sp)))
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RouteNames.paymentBookingsScreen);
+                          },
+                          child: Text(
+                            tr("change"),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primary500,
+                                fontSize: 16.sp),
+                          ),
+                        ),
                       ],
                     ),
                   ),
