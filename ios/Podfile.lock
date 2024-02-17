@@ -37,7 +37,7 @@ PODS:
   - file_picker (0.0.1):
     - DKImagePickerController/PhotoGallery
     - Flutter
-  - Flutter (1.0.0)
+  - Flutter (3.13.0)
   - google_maps_flutter_ios (0.0.1):
     - Flutter
     - GoogleMaps (< 9.0)
@@ -131,16 +131,16 @@ SPEC CHECKSUMS:
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: 15fd9539e4eb735dc54bae8c0534a7a9511a03de
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  google_maps_flutter_ios: 590249c67f34f422122c232f2a626192adbc78ee
+  Flutter: 19b1d10965908b5a33ac72a0b928ecf67a1e9e51
+  google_maps_flutter_ios: d1318b4ff711612cab16862d7a87e31a7403d458
   GoogleMaps: 025272d5876d3b32604e5c080dc25eaf68764693
-  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
-  local_auth_ios: c6cf091ded637a88f24f86a8875d8b0f526e2605
+  image_picker_ios: 99dfe1854b4fa34d0364e74a78448a0151025425
+  local_auth_ios: 1ba1475238daa33a6ffa2a29242558437be435ac
   location: d5cf8598915965547c3f36761ae9cc4f4e87d22e
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
   permission_handler_apple: 036b856153a2b1f61f21030ff725f3e6fece2b78
   SDWebImage: fc8f2d48bbfd72ef39d70e981bd24a3f3be53fec
-  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   smart_auth: 4bedbc118723912d0e45a07e8ab34039c19e04f2
   SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
   syncfusion_flutter_pdfviewer: bb9998884b864cfedf72628df3503bdf57e397c0
