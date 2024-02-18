@@ -54,6 +54,7 @@ class _AudioContainerState extends State<AudioContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.h),
       padding: const EdgeInsets.all(3),
       decoration: const BoxDecoration(
           color: AppColors.primary, borderRadius: BorderRadius.all(Radius.circular(20))),

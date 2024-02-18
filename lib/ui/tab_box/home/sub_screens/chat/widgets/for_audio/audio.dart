@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/messages/message_event.dart';
@@ -113,20 +112,13 @@ class _AudioControllerState extends State<AudioController> {
             recordingDuration = Duration.zero;
           },
           onTap: () {},
-          child: Container(
-            padding: EdgeInsets.all(12.r),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100.r),
-              gradient: AppColors.gradientOrange,
-            ),
-            child: SvgPicture.asset(AppIcons.getSvg(
-                name: isRecording ? AppIcons.closeSquare : AppIcons.voice,
-                iconType: IconType.bold)),
-          ),
+          child: SvgPicture.asset(AppIcons.getSvg(
+              name: isRecording ? AppIcons.closeSquare : AppIcons.voice,
+              iconType: IconType.lightOutline),colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),),
         ),
 
         // Positioned(
-        //   top: -15,
+        //   top: 0,
         //   child: Text(
         //     recordingDuration.inSeconds.toString() + 's',
         //     style: TextStyle(fontSize: 18),
