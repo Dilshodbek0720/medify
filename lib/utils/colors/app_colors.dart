@@ -110,6 +110,8 @@ class AppColors {
   static const Color c212F3F =Color(0xFF212F3F);
   static const Color c6C808C =Color(0xFF6C808C);
   static const Color cEAF4FA =Color(0xFFEAF4FA);
+  static const Color audioBackground =Color(0xFFEFFDDE);
+  static const Color audioSlider =Color(0xFF5FBE67);
 
 
 
