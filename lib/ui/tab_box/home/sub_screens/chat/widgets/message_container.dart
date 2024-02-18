@@ -18,44 +18,32 @@ class MessageContainer extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 12.h),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       decoration: BoxDecoration(
-        gradient: index.isEven ? null : AppColors.gradientOrange,
-        color: index.isEven
-            ? AppColors.c_100
-            : null,
-        borderRadius: index.isEven
-            ? BorderRadius.only(
-                topRight: Radius.circular(12.r),
-                bottomLeft: Radius.circular(12.r),
-                bottomRight: Radius.circular(12.r),
-              )
-            : BorderRadius.only(
-                topLeft: Radius.circular(12.r),
-                bottomLeft: Radius.circular(12.r),
-                bottomRight: Radius.circular(12.r),
+        color: AppColors.c_100,
+        borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.r),
+                bottomLeft: Radius.circular(16.r),
+                topRight: Radius.circular(16.r),
               ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             message,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontWeight: FontWeight.w400,
-                  color: index.isEven
-                      ? AppColors.c_900
-                      : AppColors.dark3,
+                  color: AppColors.c_900,
                 ),
           ),
           SizedBox(
-            // height: Theme.of(context).textTheme.bodyMedium!.fontSize,
+            height: Theme.of(context).textTheme.bodyMedium!.fontSize,
             child: Text(
               dateTime,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: index.isEven
-                        ? AppColors.c_600
-                        : AppColors.c_700,
-                  ),
+                fontWeight: FontWeight.w400,
+                color: AppColors.c_600,
+              ),
             ),
           ),
         ],

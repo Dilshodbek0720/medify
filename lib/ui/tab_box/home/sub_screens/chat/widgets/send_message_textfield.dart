@@ -26,7 +26,6 @@ class SendMessageTextField extends StatefulWidget {
 }
 
 class _SendMessageTextFieldState extends State<SendMessageTextField> {
-  Color color = const Color(0xFFFAFAFA);
 
   FocusNode? focusNode = FocusNode();
 
@@ -58,19 +57,27 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(24.r),
+      padding: EdgeInsets.symmetric(horizontal: 24.r),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          GestureDetector(
+            // onTap: widget.onSuffixIconTap,
+            child: SvgPicture.asset(
+              AppIcons.smile,
+              width: 24.w,
+              colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
+            ),
+          ),
           SizedBox(
-            width: 312.w,
+            width: 290.w,
             height: _height,
             child: TextField(
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.done,
               maxLines: null,
               expands: true,
-              focusNode: focusNode,
+              // focusNode: focusNode,
               onChanged: widget.onChanged,
               controller: widget.controller,
               decoration: InputDecoration(
@@ -83,37 +90,24 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
                 ),
                 contentPadding: EdgeInsets.all(15.r),
                 hintText: 'Message...',
-                suffixIcon: IconButton(
-                  onPressed: widget.onSuffixIconTap,
-                  icon: SvgPicture.asset(
-                    AppIcons.image2,
-                    width: 20.w,
-                    colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      color: Color(0xFFFAFAFA)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: AppColors.primary),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
                 errorBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.red),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                border: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      color: AppColors.dark2),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                fillColor: (focusNode!.hasFocus)
-                        ? const Color(0xFFFFFAED)
-                        : const Color(0xFFFAFAFA),
+                border: InputBorder.none,
+                fillColor: Colors.white,
                 filled: true,
               ),
+            ),
+          ),
+          GestureDetector(
+            onTap: widget.onSuffixIconTap,
+            child: SvgPicture.asset(
+              AppIcons.paperClip,
+              width: 24.w,
+              colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
             ),
           ),
           12.pw,
@@ -122,15 +116,9 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
               : InkWell(
                   borderRadius: BorderRadius.circular(100.r),
                   onTap: widget.onSendTap,
-                  child: Container(
-                    padding: EdgeInsets.all(12.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100.r),
-                      gradient: AppColors.gradientOrange,
-                    ),
-                    child: SvgPicture.asset(
-                      AppIcons.getSvg(name: AppIcons.send, iconType: IconType.bold),
-                    ),
+                  child: SvgPicture.asset(
+                    AppIcons.getSvg(name: AppIcons.send, iconType: IconType.bold),
+                    colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),
         ],
