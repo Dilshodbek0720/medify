@@ -8,6 +8,7 @@ import 'package:medify/blocs/messages/message_event.dart';
 import 'package:medify/blocs/messages/message_state.dart';
 import 'package:medify/data/models/message/message_model.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_dialog.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/file_select_dialog.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/messages_listview.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/send_message_textfield.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -72,6 +73,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Stack(
         children: [
           SizedBox(
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Image.asset(AppIcons.chatBackground, fit: BoxFit.fill)),
           BlocBuilder<MessageBloc, MessageState>(
@@ -121,6 +123,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         },
                         controller: controller,
                         value: value,
+                        onFileIconTap: () {
+                          fileSelectDialog(context);
+                      },
                       ),
                     ),
                   ),

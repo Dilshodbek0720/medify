@@ -10,12 +10,14 @@ class SendMessageTextField extends StatefulWidget {
   const SendMessageTextField({
     super.key,
     required this.onSuffixIconTap,
+    required this.onFileIconTap,
     required this.onChanged,
     required this.onSendTap,
     required this.controller,
     required this.value,
   });
   final VoidCallback onSuffixIconTap;
+  final VoidCallback onFileIconTap;
   final ValueChanged onChanged;
   final VoidCallback onSendTap;
   final TextEditingController controller;
@@ -70,7 +72,7 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
             ),
           ),
           SizedBox(
-            width: 290.w,
+            width: 255.w,
             height: _height,
             child: TextField(
               keyboardType: TextInputType.multiline,
@@ -110,7 +112,16 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
               colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
             ),
           ),
-          12.pw,
+          10.pw,
+          GestureDetector(
+            onTap: widget.onFileIconTap,
+            child: SvgPicture.asset(
+              AppIcons.paper,
+              width: 24.w,
+              colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
+            ),
+          ),
+          10.pw,
           widget.value.isEmpty
               ? const AudioController()
               : InkWell(

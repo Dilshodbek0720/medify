@@ -6,8 +6,9 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class AudioContainer extends StatefulWidget {
-  const AudioContainer({super.key, required this.audioPath});
+  const AudioContainer({super.key, required this.audioPath, required this.dateTime});
   final String audioPath;
+  final String dateTime;
 
   @override
   State<AudioContainer> createState() => _AudioContainerState();
@@ -57,51 +58,88 @@ class _AudioContainerState extends State<AudioContainer> {
       margin: EdgeInsets.symmetric(vertical: 10.h),
       padding: const EdgeInsets.all(3),
       decoration: const BoxDecoration(
-          color: AppColors.primary, borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: AppColors.audioBackground, borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: () {
-                  setState(() {
-                    if (!isPlaying) {
-                      player.play(DeviceFileSource(widget.audioPath));
-                      isPlaying = true;
-                    } else {
-                      player.pause();
-                      isPlaying = false;
-                    }
-                  });
-                },
-                icon: Icon(
-                  isPlaying ? Icons.pause : Icons.play_arrow,
-                  size: 24.w,
+              6.pw,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: AppColors.green.withOpacity(0.8)
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        if (!isPlaying) {
+                          player.play(DeviceFileSource(widget.audioPath));
+                          isPlaying = true;
+                        } else {
+                          player.pause();
+                          isPlaying = false;
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      isPlaying ? Icons.pause : Icons.play_arrow,
+                      size: 24.w,
+                    ),
+                  ),
                 ),
               ),
-              Slider(
-                thumbColor: Colors.red, inactiveColor: AppColors.c_200,
-                activeColor: AppColors.green,
-                value: currentDuration.inSeconds.toDouble(),
-                max: duration.inSeconds.toDouble(),
-                divisions: 100,
-                //label: _currentSliderValue.round().toString(),
-                onChanged: (double value) async {
-                  await player.seek(Duration(seconds: value.toInt()));
-                  setState(() {});
-                },
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Slider(
+                    thumbColor: AppColors.green.withOpacity(0.5), inactiveColor: AppColors.c_200,
+                    activeColor: AppColors.green.withOpacity(0.8),
+                    value: currentDuration.inSeconds.toDouble(),
+                    max: duration.inSeconds.toDouble(),
+                    divisions: 100,
+                    onChanged: (double value) async {
+                      await player.seek(Duration(seconds: value.toInt()));
+                      setState(() {});
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          12.pw,
+                          Text("${formatSeconds(currentDuration.inSeconds)} | ", style: TextStyle(
+                              fontSize: 12.sp
+                          ),),
+                          Text(formatSeconds(duration.inSeconds), style: TextStyle(
+                              fontSize: 12.sp
+                          ),),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
-          Row(
-            children: [
-              Text("${formatSeconds(currentDuration.inSeconds)} | "),
-              Text(formatSeconds(duration.inSeconds)),
             ],
           ),
           4.ph,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                widget.dateTime.substring(10, 16),
+                style: TextStyle(
+                    fontSize: 12.sp
+                ),
+              ),
+              8.pw
+            ],
+          )
         ],
       ),
     );

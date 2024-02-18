@@ -27,7 +27,7 @@ class MessagesListView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     message.image == null && message.message == null
-                        ? AudioContainer(audioPath: message.voice ?? '')
+                        ? AudioContainer(audioPath: message.voice ?? '', dateTime: message.dateTime)
                         : message.image == null
                             ? Flexible(
                                 child: MessageContainer(
