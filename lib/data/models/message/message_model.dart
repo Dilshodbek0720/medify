@@ -4,6 +4,7 @@ class MessageModel {
   final String dateTime;
   final List<String>? image;
   final String? message;
+  final String? folder;
   final String? voice;
 
   MessageModel({
@@ -12,6 +13,7 @@ class MessageModel {
     required this.dateTime,
     this.image,
     this.message,
+    this.folder,
     this.voice,
   });
 
@@ -22,6 +24,7 @@ class MessageModel {
       'dateTime': dateTime,
       'image': image,
       'message': message,
+      'folder': folder,
       'voice': voice,
     };
   }
@@ -33,6 +36,7 @@ class MessageModel {
       dateTime: json['dateTime'],
       image: json['image'],
       message: json['message'],
+      folder: json['folder'],
       voice: json['voice'],
     );
   }

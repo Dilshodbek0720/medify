@@ -256,4 +256,7 @@ class AppIcons {
   static const String starIcon = "assets/svg/others/star_icons.svg";
   static const String radioEmpty = "assets/svg/others/radio_empty.svg";
   static const String radioSuccess = "assets/svg/others/radio_success.svg";
+  static const String database = "assets/svg/others/database.svg";
+  static const String folderIcon = "assets/svg/others/folder.svg";
+  static const String gallleryIcon = "assets/svg/others/gallery_icon.svg";
 }

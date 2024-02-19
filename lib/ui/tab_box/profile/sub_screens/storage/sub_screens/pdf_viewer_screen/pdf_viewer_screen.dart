@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewerScreen extends StatefulWidget {
@@ -16,7 +17,13 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: GlobalAppBar(
+        onTap: (){
+          Navigator.pop(context);
+        },
+      ),
         body: SfPdfViewer.network(
-            pdfFileName));
+            pdfFileName,
+        ));
   }
 }
