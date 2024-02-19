@@ -89,7 +89,7 @@ class AppIcons {
   static final String heart = "assets/svg/${it.name}/heart.svg";
   static final String hide = "assets/svg/${it.name}/hide.svg";
   static final String home = "assets/svg/${it.name}/home.svg";
-  static final String image = "assets/svg/${it.name}/image.svg";
+  static final String image = "assets/svg/${it.name}/gallery_icon.svg";
   static final String image2 = "assets/svg/${it.name}/image_2.svg";
   static final String infoCircle = "assets/svg/${it.name}/info_circle.svg";
   static final String infoSquare = "assets/svg/${it.name}/info_square.svg";
@@ -256,4 +256,7 @@ class AppIcons {
   static const String starIcon = "assets/svg/others/star_icons.svg";
   static const String radioEmpty = "assets/svg/others/radio_empty.svg";
   static const String radioSuccess = "assets/svg/others/radio_success.svg";
+  static const String database = "assets/svg/others/database.svg";
+  static const String folderIcon = "assets/svg/others/folder.svg";
+  static const String gallleryIcon = "assets/svg/others/gallery_icon.svg";
 }

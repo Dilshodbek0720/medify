@@ -90,6 +90,7 @@ Future<void> _getFromGallery({required ImagePicker picker, required BuildContext
       ),
     );
     images = [];
+    Navigator.pop(context);
   }
 }
 
@@ -112,5 +113,6 @@ Future<void> _getFromCamera({required ImagePicker picker, required BuildContext 
       ),
     );
     images = [];
+    Navigator.pop(context);
   }
 }
