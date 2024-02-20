@@ -7,6 +7,7 @@ import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/messages/message_event.dart';
 import 'package:medify/blocs/messages/message_state.dart';
 import 'package:medify/data/models/message/message_model.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_dialog.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/file_select_dialog.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/messages_listview.dart';
@@ -40,21 +41,32 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Row(
           children: [
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
               child: const Icon(Icons.arrow_back_outlined),
             ),
             10.pw,
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30.r),
-              child: Image.asset(
-                AppIcons.drWatson,
-                width: 40.w,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.chatProfileScreen);
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.r),
+                child: Image.asset(
+                  AppIcons.drWatson,
+                  width: 40.w,
+                ),
               ),
             ),
             10.pw,
-            Text('Daniel Austin', style: AppTextStyle.h4Bold.copyWith(color: AppColors.c_900)),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.chatProfileScreen);
+                },
+                child: Text('Daniel Austin',
+                    style:
+                        AppTextStyle.h4Bold.copyWith(color: AppColors.c_900))),
           ],
         ),
         actions: [
@@ -114,7 +126,9 @@ class _ChatScreenState extends State<ChatScreen> {
                                     messageModel: MessageModel(
                                   receiverName: '',
                                   senderName: '',
-                                  dateTime: DateTime.now().toString().substring(10, 16),
+                                  dateTime: DateTime.now()
+                                      .toString()
+                                      .substring(10, 16),
                                   message: value,
                                 )),
                               );
@@ -125,7 +139,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         value: value,
                         onFileIconTap: () {
                           fileSelectDialog(context);
-                      },
+                        },
                       ),
                     ),
                   ),
