@@ -23,6 +23,7 @@ class AppIcons {
   static const String userCircle = "assets/images/others/user.png";
   static const String hospital = "assets/images/others/hospital.png";
   static const String chatBackground = "assets/images/others/chat_background.png";
+  static const String profileChat = "assets/images/others/profile.png";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {
@@ -193,6 +194,7 @@ class AppIcons {
   static const String medical = "assets/svg/others/medical.svg";
   static const String smile = "assets/svg/others/smile.svg";
   static const String paperClip = "assets/svg/others/clip.svg";
+  static const String qrCode = "assets/svg/others/qr_code.svg";
 
   //help_screen_social_icons
   static const String head = "assets/svg/others/help_screen_head.svg";

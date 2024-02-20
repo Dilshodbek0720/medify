@@ -63,6 +63,7 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
             children: [
               Expanded(
                 child: ListView(
+                  padding: EdgeInsets.zero,
                   children: [
                     const HospitalImagesWidget(image: AppIcons.hospital,imageHeight: 460),
                     24.ph,
