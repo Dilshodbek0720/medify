@@ -4,7 +4,8 @@ const String adminEmail = "admin@gmail.com";
 
 const defaultImageConstant = "Select Image";
 
-const baseUrl = "https://geocode-maps.yandex.ru";
+const baseUrlMap = "https://geocode-maps.yandex.ru";
+const baseUrl = "https://medify-backend-api.onrender.com";
 const String apiKey = "1f903bec-cef8-4fed-a745-5556576061f5";
 
 class TimeOutConstants {
