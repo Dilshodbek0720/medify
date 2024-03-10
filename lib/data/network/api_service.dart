@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:medify/data/models/geocoding/geocoding.dart';
+import 'package:medify/data/models/medline/medline_model.dart';
 import 'package:medify/data/models/universal_data.dart';
 import '../../utils/constants/constants.dart';
 
@@ -9,11 +10,21 @@ class ApiService {
 
   final dio = Dio(
     BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: baseUrlMap,
       headers: {
         "Content-Type": "application/json",
         "Authorization": apiKey,
       },
+      connectTimeout: Duration(seconds: TimeOutConstants.connectTimeout),
+      receiveTimeout: Duration(seconds: TimeOutConstants.receiveTimeout),
+      sendTimeout: Duration(seconds: TimeOutConstants.sendTimeout),
+    ),
+  );
+
+  final _dio = Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      headers: {"Content-Type": "application/json"},
       connectTimeout: Duration(seconds: TimeOutConstants.connectTimeout),
       receiveTimeout: Duration(seconds: TimeOutConstants.receiveTimeout),
       sendTimeout: Duration(seconds: TimeOutConstants.sendTimeout),
@@ -95,6 +106,35 @@ class ApiService {
       }
     } catch (error) {
       return UniversalData(error: error.toString());
+    }
+  }
+
+  // ------------------- SIGN UP ---------------------
+
+  Future<UniversalData> signUp({required String email, required String password, required String phoneNumber, required String companyName}) async {
+    Response response;
+    try {
+      response = await _dio.post('/api/company/signup', queryParameters: {
+        "email":email,
+        "password":password,
+        "phone_number":phoneNumber,
+        "company_name":companyName
+      });
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        return UniversalData(
+            data: MedlineModel.fromJson(response.data),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
     }
   }
 }

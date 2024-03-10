@@ -1,6 +1,7 @@
 
 class StorageKeys {
   static const String pinCode = "code";
+  static const String userToken = "";
   static const String themeKey = "theme_mode";
   static const String languageKey = 'language_key';
   static const String welcomeDone = 'welcomeDone';

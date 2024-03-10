@@ -84,10 +84,11 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Stack(
         children: [
-          SizedBox(
+          Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              child: Image.asset(AppIcons.chatBackground, fit: BoxFit.fill)),
+            color: AppColors.primary100,
+          ),
           BlocBuilder<MessageBloc, MessageState>(
             builder: (context, state) {
               return Column(
@@ -109,38 +110,35 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   DecoratedBox(
                     decoration: const BoxDecoration(color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 24),
-                      child: SendMessageTextField(
-                        onSuffixIconTap: () {
-                          chatDialog(context, picker: picker);
-                        },
-                        onChanged: (v) {
-                          setState(() {
-                            value = v;
-                          });
-                        },
-                        onSendTap: () {
-                          context.read<MessageBloc>().add(
-                                SendMessage(
-                                    messageModel: MessageModel(
-                                  receiverName: '',
-                                  senderName: '',
-                                  dateTime: DateTime.now()
-                                      .toString()
-                                      .substring(10, 16),
-                                  message: value,
-                                )),
-                              );
-                          value = '';
-                          controller.clear();
-                        },
-                        controller: controller,
-                        value: value,
-                        onFileIconTap: () {
-                          fileSelectDialog(context);
-                        },
-                      ),
+                    child: SendMessageTextField(
+                      onSuffixIconTap: () {
+                        chatDialog(context, picker: picker);
+                      },
+                      onChanged: (v) {
+                        setState(() {
+                          value = v;
+                        });
+                      },
+                      onSendTap: () {
+                        context.read<MessageBloc>().add(
+                              SendMessage(
+                                  messageModel: MessageModel(
+                                receiverName: '',
+                                senderName: '',
+                                dateTime: DateTime.now()
+                                    .toString()
+                                    .substring(10, 16),
+                                message: value,
+                              )),
+                            );
+                        value = '';
+                        controller.clear();
+                      },
+                      controller: controller,
+                      value: value,
+                      onFileIconTap: () {
+                        fileSelectDialog(context);
+                      },
                     ),
                   ),
                 ],
