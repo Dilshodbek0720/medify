@@ -78,16 +78,16 @@ class ApiService {
 
       if (response.statusCode == 200) {
         String text = '';
-        if(lang=='en_GB') {
+        if (lang == 'en_GB') {
           text = 'Undefined Area';
         }
-        if(lang =='uz_UZ') {
+        if (lang == 'uz_UZ') {
           text = 'Aniqlanmagan Hudud';
         }
-        if(lang=='ru_RU') {
+        if (lang == 'ru_RU') {
           text = 'Неопределенная область';
         }
-        if(lang=='tr_TR') {
+        if (lang == 'tr_TR') {
           text = 'Tanımsız Alan';
         }
         Geocoding geocoding = Geocoding.fromJson(response.data);
@@ -111,18 +111,23 @@ class ApiService {
 
   // ------------------- SIGN UP ---------------------
 
-  Future<UniversalData> signUp({required String email, required String password, required String phoneNumber, required String companyName}) async {
+  Future<UniversalData> signUp(
+      {required String email,
+      required String password,
+      required String phoneNumber,
+      required String verificationType}) async {
     Response response;
     try {
-      response = await _dio.post('/api/company/signup', queryParameters: {
-        "email":email,
-        "password":password,
-        "phone_number":phoneNumber,
-        "company_name":companyName
+      response = await _dio.post('/api/user/signup', data: {
+        "email": email,
+        "password": password,
+        "phone_number": phoneNumber,
+      }, queryParameters: {
+        "verification_method": verificationType
       });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return UniversalData(
-            data: MedlineModel.fromJson(response.data),
+          data: UserModel.fromJson(response.data['user']),
         );
       }
       return UniversalData(error: 'ERROR');

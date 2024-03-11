@@ -90,41 +90,41 @@ class _RegisterPageState extends State<RegisterPage> {
               },
             ),
             VerifyWithScreen(
-              onTapLeft: () {
-                pageIndex -= 1;
-                setState(() {
-                  pageController.animateToPage(
-                    pageIndex,
-                    duration: const Duration(milliseconds: 1),
-                    curve: Curves.linear,
-                  );
-                });
-              },
-              onTapRight: () {
-                // context.read<CodeInputCubit>().resendCode();
-                pageIndex += 1;
-                pageController.animateToPage(
-                  pageIndex,
-                  duration: const Duration(milliseconds: 1),
-                  curve: Curves.linear,
-                );
-                setState(() {});
-              },
+              // onTapLeft: () {
+              //   pageIndex -= 1;
+              //   setState(() {
+              //     pageController.animateToPage(
+              //       pageIndex,
+              //       duration: const Duration(milliseconds: 1),
+              //       curve: Curves.linear,
+              //     );
+              //   });
+              // },
+              // onTapRight: () {
+              //   // context.read<CodeInputCubit>().resendCode();
+              //   pageIndex += 1;
+              //   pageController.animateToPage(
+              //     pageIndex,
+              //     duration: const Duration(milliseconds: 1),
+              //     curve: Curves.linear,
+              //   );
+              //   setState(() {});
+              // },
             ),
             VerifyScreen(
-              onTapLeft: () {
-                pageIndex -= 1;
-                setState(() {
-                  pageController.animateToPage(
-                    pageIndex,
-                    duration: const Duration(milliseconds: 1),
-                    curve: Curves.linear,
-                  );
-                });
-              },
-              onTapRight: () {
-                Navigator.pushNamed(context, RouteNames.enterPinScreen);
-              },
+              // onTapLeft: () {
+              //   pageIndex -= 1;
+              //   setState(() {
+              //     pageController.animateToPage(
+              //       pageIndex,
+              //       duration: const Duration(milliseconds: 1),
+              //       curve: Curves.linear,
+              //     );
+              //   });
+              // },
+              // onTapRight: () {
+              //   Navigator.pushNamed(context, RouteNames.enterPinScreen);
+              // },
             )
           ],
         ),
