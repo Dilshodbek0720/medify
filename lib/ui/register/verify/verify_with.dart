@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/forgot_password/widgets/forgot_password_selector.dart';
+import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/fonts/text_styles.dart';
@@ -8,11 +10,7 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class VerifyWithScreen extends StatefulWidget {
-  const VerifyWithScreen({super.key, required this.onTapLeft, required this.onTapRight});
-
-  final VoidCallback onTapLeft;
-  final VoidCallback onTapRight;
-
+  const VerifyWithScreen({super.key});
 
   @override
   State<VerifyWithScreen> createState() => _VerifyWithScreenState();
@@ -24,21 +22,21 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Column(
-          children: [
-            Expanded(
+    return Scaffold(
+      appBar: GlobalAppBar(
+        onTap: (){
+      Navigator.pop(context);
+    },
+    title: 'Select Contact',
+    centerTitle: true,
+    ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: ListView(
-                physics: const BouncingScrollPhysics(),
                 children: [
-                  Text(
-                    "Select contact",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppColors.c_900,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 28.sp,
-                    ),
-                  ),
                   20.ph,
                   Image.asset(
                     AppIcons.forgotPasswordImage,
@@ -76,32 +74,17 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                 ],
               ),
             ),
-            24.ph,
-            Row(
-              children: [
-                Expanded(
-                  child: GlobalButton(
-                    title: "Back",
-                    onTap: widget.onTapLeft,
-                    radius: 100.r,
-                    color: AppColors.cA6A9AB,
-                    textColor: Colors.black,
-                  ),
-                ),
-                20.pw,
-                Expanded(
-                  child: GlobalButton(
-                    title: "Next",
-                    onTap: widget.onTapRight,
-                    radius: 100.r,
-                    color: AppColors.primary,
-                    textColor: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-            48.ph,
-          ],
+          ),
+          Padding(
+            padding: EdgeInsets.all(24.r),
+            child: GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Next", onTap: (){
+              if(pressed != -1){
+                Navigator.pushNamed(context, RouteNames.verifyScreen);
+              }
+            }),
+          )
+        ],
+      ),
     );
   }
 }

@@ -26,7 +26,8 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: GlobalAppBar(
         onTap: () {
           Navigator.pop(context);
-        },      ),
+        },
+      ),
       body: BlocBuilder<SignUpCubit, SignUpState>(
         builder: (context, state) {
           return ListView(
@@ -59,8 +60,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     prefixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.w),
                       child: SvgPicture.asset(AppIcons.message,
-                          colorFilter:
-                          ColorFilter.mode(state.iconColor, BlendMode.srcIn)),
+                          colorFilter: ColorFilter.mode(
+                              state.iconColor, BlendMode.srcIn)),
                     ),
                   ),
                   20.ph,
@@ -79,15 +80,17 @@ class _SignInScreenState extends State<SignInScreen> {
                         onPressed: () {
                           context.read<SignUpCubit>().toggleObscure();
                         },
-                        icon: SvgPicture.asset(state.isObscure?AppIcons.hide:AppIcons.show,
-                          colorFilter: ColorFilter.mode(state.iconColor2, BlendMode.srcIn),)
-                    ),
+                        icon: SvgPicture.asset(
+                          state.isObscure ? AppIcons.hide : AppIcons.show,
+                          colorFilter: ColorFilter.mode(
+                              state.iconColor2, BlendMode.srcIn),
+                        )),
                     prefixIcon: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.w),
                       child: SvgPicture.asset(
                         AppIcons.lock,
                         colorFilter:
-                        ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
+                            ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
                       ),
                     ),
                   ),
@@ -123,18 +126,18 @@ class _SignInScreenState extends State<SignInScreen> {
                             fontWeight: FontWeight.w400),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, RouteNames.signUpScreen);
-                          },
-                          child: Text(
-                            "Sign up",
-                            style: TextStyle(
-                                color: AppColors.primary,
-                                fontFamily: "Urbanist",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600),
-                          ))
+                        onPressed: () {
+                          Navigator.pushNamed(context, RouteNames.signUpScreen);
+                        },
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: AppColors.primary,
+                              fontFamily: "Urbanist",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )
                     ],
                   ),
                   // const Spacer()

@@ -17,6 +17,8 @@ import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart
 import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
 import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
 import 'package:medify/ui/register/register_page.dart';
+import 'package:medify/ui/register/verify/verify_screen.dart';
+import 'package:medify/ui/register/verify/verify_with.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
@@ -96,6 +98,8 @@ class RouteNames {
   static const String chatListScreen = "chat_list_screen";
   static const String chatScreen = "chat_screen";
   static const String chatProfileScreen = "chat_profile_screen";
+  static const String selectContactScreen = "select_contact_screen";
+  static const String verifyScreen = "verify_screen";
 }
 
 class AppRoutes {
@@ -290,6 +294,14 @@ class AppRoutes {
       case RouteNames.chatProfileScreen:
         return MaterialPageRoute(
           builder: (context) => const ChatProfileScreen(),
+        );
+      case RouteNames.selectContactScreen:
+        return MaterialPageRoute(
+          builder: (context) => const VerifyWithScreen(),
+        );
+      case RouteNames.verifyScreen:
+        return MaterialPageRoute(
+          builder: (context) => const VerifyScreen(),
         );
       default:
         return MaterialPageRoute(

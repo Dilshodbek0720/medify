@@ -21,6 +21,7 @@ import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
+import 'package:medify/data/repository/user_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -33,43 +34,49 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MainApp());
+  runApp(MainApp(apiService: ApiService(),));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, required this.apiService});
+  final ApiService apiService;
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(create: (context) => TabCubit()),
-        BlocProvider(create: (context) => HelpCenterCategoryCubit()),
-        BlocProvider(create: (context) => CodeInputCubit()),
-        BlocProvider(create: (context) => SignUpCubit()),
-        BlocProvider(create: (context) => RegisterCubit()),
-        BlocProvider(create: (context) => PaymentBloc()),
-        BlocProvider(create: (context) => PaymentAddBloc()),
-        BlocProvider(create: (context) => MessageBloc()),
-        BlocProvider(create: (context) => GetLocationCubit()),
-        BlocProvider(create: (context) => NotificationCubit()),
-        BlocProvider(create: (context) => SecurityCubit()),
-        BlocProvider(create: (context) => EditProfileCubit()),
-        BlocProvider(create: (context) => BookingInfoDetailCubit()),
-        BlocProvider(create: (context) => CalendarDoctorsCubit()),
-        BlocProvider(create: (context) => CalendarHospitalsCubit()),
-        BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
+        RepositoryProvider(create: (context) => UserRepository(apiService: apiService))
       ],
-      child: EasyLocalization(
-          supportedLocales: const [
-            Locale('ru', 'RU'),
-            Locale('uz', 'UZ'),
-            Locale('uz', 'Cyrl'),
-            Locale('en', 'US'),
-          ],
-          path: 'assets/translations',
-          fallbackLocale: const Locale('uz', 'UZ'),
-          child: const MyApp()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => TabCubit()),
+          BlocProvider(create: (context) => HelpCenterCategoryCubit()),
+          BlocProvider(create: (context) => CodeInputCubit()),
+          BlocProvider(create: (context) => SignUpCubit()),
+          BlocProvider(create: (context) => RegisterCubit()),
+          BlocProvider(create: (context) => PaymentBloc()),
+          BlocProvider(create: (context) => PaymentAddBloc()),
+          BlocProvider(create: (context) => MessageBloc()),
+          BlocProvider(create: (context) => GetLocationCubit()),
+          BlocProvider(create: (context) => NotificationCubit()),
+          BlocProvider(create: (context) => SecurityCubit()),
+          BlocProvider(create: (context) => EditProfileCubit()),
+          BlocProvider(create: (context) => BookingInfoDetailCubit()),
+          BlocProvider(create: (context) => CalendarDoctorsCubit()),
+          BlocProvider(create: (context) => CalendarHospitalsCubit()),
+          BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
+        ],
+        child: EasyLocalization(
+            supportedLocales: const [
+              Locale('ru', 'RU'),
+              Locale('uz', 'UZ'),
+              Locale('uz', 'Cyrl'),
+              Locale('en', 'US'),
+            ],
+            path: 'assets/translations',
+            fallbackLocale: const Locale('uz', 'UZ'),
+            child: const MyApp()),
+      ),
     );
   }
 }
