@@ -10,7 +10,7 @@ class CodeInputCubit extends Cubit<CodeInputState> {
   final List<TextEditingController> pinControllers =
   List.generate(6, (_) => TextEditingController());
 
-  int remainingTime = 60;
+  int remainingTime = 180;
   Timer? _countdownTimer;
   BuildContext? _context;
 
@@ -30,7 +30,7 @@ class CodeInputCubit extends Cubit<CodeInputState> {
   }
 
   void resendCode() {
-    remainingTime = 60;
+    remainingTime = 180;
     emit(CodeInputCountdown(remainingTime));
     startCountdown();
   }
@@ -61,6 +61,7 @@ class CodeInputCubit extends Cubit<CodeInputState> {
       } else {
         if (index == 5) {
           pinFocusNodes[index].unfocus();
+          print(pinControllers.length);
         } else {
           FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 6]);
         }

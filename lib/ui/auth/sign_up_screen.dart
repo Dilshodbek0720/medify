@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/data/network/api_service.dart';
-import 'package:medify/data/repository/user_repository.dart';
+import 'package:medify/data/repository/auth_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
@@ -26,12 +26,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       initialText: "+998",
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')});
-
-  @override
-  void initState() {
-    print(UserRepository(apiService: ApiService()).signUp(email: "sayitqulovdilshodbek@gmail.com", password: "password", phoneNumber: '+998949860899', verificationType: "sms"));
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

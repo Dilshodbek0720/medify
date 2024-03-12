@@ -128,6 +128,7 @@ class ApiService {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return UniversalData(
           data: UserModel.fromJson(response.data['user']),
+          token: response.data['token']
         );
       }
       return UniversalData(error: 'ERROR');
