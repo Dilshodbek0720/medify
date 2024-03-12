@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class LogOutItem extends StatelessWidget {
@@ -49,7 +52,12 @@ class LogOutItem extends StatelessWidget {
                 Expanded(
                     child: GlobalButton(
                   title: tr('yes_log_out'),
-                  onTap: () async {},
+                  onTap: () async {
+                    await StorageRepository.deleteString(
+                      StorageKeys.userToken
+                    );
+                    Navigator.pushNamed(context, RouteNames.signInScreen);
+                  },
                   radius: 100.r, color: AppColors.primary, textColor: Colors.white,
                 )),
               ],

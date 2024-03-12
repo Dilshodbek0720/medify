@@ -1,0 +1,43 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
+import 'package:medify/data/models/status/form_status.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/repository/auth_repository.dart';
+import 'package:medify/utils/ui_utils/loading_dialog.dart';
+
+part 'auth_state.dart';
+
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit(this.authRepository) : super(const AuthState());
+
+  final AuthRepository authRepository;
+
+  Future<UniversalData> signUp({required BuildContext context, required String verificationType}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    UniversalData data = await authRepository.signUp(
+      email: context.read<SignUpCubit>().state.emailController.text,
+      password: context.read<SignUpCubit>().state.passwordController.text,
+      phoneNumber: context.read<SignUpCubit>().state.phoneController.text,
+      verificationType: verificationType,
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      emit(state.copyWith(status: FormStatus.authenticated));
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+    // emit(state.copyWith(status: FormStatus.pure));
+  }
+}

@@ -1,7 +1,7 @@
 class UserModel {
   final String email;
   final String password;
-  final String emailVerified;
+  final bool emailVerified;
   final String firstName;
   final String lastName;
   final String phoneNumber;
@@ -56,7 +56,7 @@ class UserModel {
   UserModel copyWith({
     String? email,
     String? password,
-    String? emailVerified,
+    bool? emailVerified,
     String? firstName,
     String? lastName,
     String? phoneNumber,
@@ -111,7 +111,7 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
     email: json["email"] as String? ?? "",
     password: json["password"] as String? ?? "",
-    emailVerified: json["email_verified"] as String? ?? "",
+    emailVerified: json["email_verified"] as bool? ?? false,
     firstName: json["firstName"] as String? ?? "",
     lastName: json["lastName"] as String? ?? "",
     phoneNumber: json["phoneNumber"] as String? ?? "",

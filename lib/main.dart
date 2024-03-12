@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
+import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
 import 'package:medify/cubits/calendar_hospitals/calendar_hospitals_cubit.dart';
@@ -21,7 +22,7 @@ import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
-import 'package:medify/data/repository/user_repository.dart';
+import 'package:medify/data/repository/auth_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -45,11 +46,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (context) => UserRepository(apiService: apiService))
+        RepositoryProvider(create: (context) => AuthRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => TabCubit()),
+          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(create: (context) => SignUpCubit()),
