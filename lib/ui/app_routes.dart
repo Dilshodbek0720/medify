@@ -300,8 +300,9 @@ class AppRoutes {
           builder: (context) => const VerifyWithScreen(),
         );
       case RouteNames.verifyScreen:
+        int verificationCode = settings.arguments as int;
         return MaterialPageRoute(
-          builder: (context) => const VerifyScreen(),
+          builder: (context) => VerifyScreen(verificationCode: verificationCode),
         );
       default:
         return MaterialPageRoute(

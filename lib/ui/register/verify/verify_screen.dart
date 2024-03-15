@@ -9,7 +9,8 @@ import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class VerifyScreen extends StatefulWidget {
-  const VerifyScreen({super.key});
+  const VerifyScreen({super.key, required this.verificationCode});
+  final int verificationCode;
 
   @override
   State<VerifyScreen> createState() => _VerifyScreenState();
@@ -35,7 +36,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
         children: [
           20.ph,
           const Spacer(),
-          const CodeInputField(),
+          CodeInputField(verificationCode: widget.verificationCode,),
           const Spacer(),
           // Row(
           //   children: [
