@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
               //   setState(() {});
               // },
             ),
-            VerifyScreen(
+            // VerifyScreen(
               // onTapLeft: () {
               //   pageIndex -= 1;
               //   setState(() {
@@ -125,7 +125,7 @@ class _RegisterPageState extends State<RegisterPage> {
               // onTapRight: () {
               //   Navigator.pushNamed(context, RouteNames.enterPinScreen);
               // },
-            )
+            // )
           ],
         ),
       ),

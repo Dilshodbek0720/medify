@@ -28,6 +28,7 @@ class VerifyWithScreen extends StatefulWidget {
 class _VerifyWithScreenState extends State<VerifyWithScreen> {
   int pressed = -1;
   String token = "";
+  int verificationCode = 0;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -93,6 +94,8 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                   if(pressed != -1){
                     UniversalData data = await context.read<AuthCubit>().signUp(context: context, verificationType: pressed == 1 ? "sms" : "email");
                     token = data.token;
+                    UserModel userModel = data.data;
+                    verificationCode = userModel.verificationToken;
                   }
                 }),
               )
@@ -106,7 +109,7 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
               token ?? "",
             );
             if(context.mounted){
-              Navigator.pushNamed(context, RouteNames.verifyScreen);
+              Navigator.pushNamed(context, RouteNames.verifyScreen, arguments: verificationCode);
             }
           } else if (state.status == FormStatus.failure) {
             showErrorMessage(message: state.statusMessage, context: context);

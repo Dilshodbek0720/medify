@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
+import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/tab_box/tab_box.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class CodeInputField extends StatefulWidget {
-  const CodeInputField({super.key});
+  const CodeInputField({super.key, required this.verificationCode});
+  final int verificationCode;
 
   @override
   CodeInputFieldState createState() => CodeInputFieldState();
@@ -15,10 +19,11 @@ class CodeInputField extends StatefulWidget {
 
 class CodeInputFieldState extends State<CodeInputField> {
   late CodeInputCubit codeInputCubit;
-
+  int code = 0;
   @override
   void initState() {
     super.initState();
+    code = widget.verificationCode;
     codeInputCubit = CodeInputCubit();
     codeInputCubit
       ..setContext(context)
@@ -85,6 +90,12 @@ class CodeInputFieldState extends State<CodeInputField> {
                 onChanged: (value) {
                   setState(() {
                     codeInputCubit.handleCodeInput(index, value);
+                    if(codeInputCubit.pinControllers[0].text.isNotEmpty && codeInputCubit.pinControllers[1].text.isNotEmpty && codeInputCubit.pinControllers[2].text.isNotEmpty && codeInputCubit.pinControllers[3].text.isNotEmpty && codeInputCubit.pinControllers[4].text.isNotEmpty && codeInputCubit.pinControllers[5].text.isNotEmpty){
+                      print(code);
+                      if(int.parse(codeInputCubit.pinControllers[0].text+codeInputCubit.pinControllers[1].text+codeInputCubit.pinControllers[2].text+codeInputCubit.pinControllers[3].text+codeInputCubit.pinControllers[4].text+codeInputCubit.pinControllers[5].text) == code){
+                        Navigator.pushNamed(context, RouteNames.tabBox);
+                      }
+                    }
                   });
                 },
               ),
