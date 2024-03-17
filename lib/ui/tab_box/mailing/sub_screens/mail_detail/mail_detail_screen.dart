@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/mailing/widgets/answer_button.dart';
 import 'package:medify/ui/tab_box/mailing/widgets/file_widget.dart';
 import 'package:medify/ui/tab_box/mailing/widgets/mail_detail_card.dart';
@@ -91,7 +92,9 @@ class _MailDetailScreenState extends State<MailDetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AnswerButton(onTap: (){ }, title: 'Answer', icon: AppIcons.answer, color: AppColors.primary, textColor: AppColors.c_900,),
+                AnswerButton(onTap: (){
+                  Navigator.pushNamed(context, RouteNames.answerMailScreen);
+                }, title: 'Answer', icon: AppIcons.answer, color: AppColors.primary, textColor: AppColors.c_900,),
                 18.pw,
                 AnswerButton(onTap: (){ }, title: 'Forward', icon: AppIcons.forward, color: AppColors.primary, textColor: AppColors.c_900,),
               ],
