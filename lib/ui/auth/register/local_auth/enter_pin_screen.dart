@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/register/local_auth/widgets/local_auth_pinput.dart';
+import 'package:medify/ui/auth/register/local_auth/widgets/local_auth_pinput.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/constants/storage_keys.dart';

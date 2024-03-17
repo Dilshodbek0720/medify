@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/register/register_screen.dart';
-import 'package:medify/ui/register/verify/verify_screen.dart';
-import 'package:medify/ui/register/verify/verify_with.dart';
+import 'package:medify/ui/auth/register/verify/verify_with.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
+
+import 'register_screen.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -89,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 setState(() {});
               },
             ),
-            VerifyWithScreen(
+            const VerifyWithScreen(
               // onTapLeft: () {
               //   pageIndex -= 1;
               //   setState(() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medify/ui/auth/lets_in_screen.dart';
-import 'package:medify/ui/auth/sign_in_screen.dart';
-import 'package:medify/ui/auth/sign_up_screen.dart';
+import 'package:medify/ui/auth/lets_in/lets_in_screen.dart';
+import 'package:medify/ui/auth/sign_in/sign_in_screen.dart';
+import 'package:medify/ui/auth/sign_up/sign_up_screen.dart';
 import 'package:medify/ui/booking_doctor/booking_doctors_info_detail.dart';
 import 'package:medify/ui/booking_doctor/calendar_doctors_screen.dart';
 import 'package:medify/ui/booking_hospital/calendar_screen.dart';
@@ -14,11 +14,6 @@ import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
 import 'package:medify/ui/location/get_location.dart';
 import 'package:medify/ui/location/search_location.dart';
 import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
-import 'package:medify/ui/register/local_auth/enter_pin_screen.dart';
-import 'package:medify/ui/register/local_auth/set_biometrics_screen.dart';
-import 'package:medify/ui/register/register_page.dart';
-import 'package:medify/ui/register/verify/verify_screen.dart';
-import 'package:medify/ui/register/verify/verify_with.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
@@ -32,6 +27,7 @@ import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_deta
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_detail/gallery_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/mailing/sub_screens/answer_mail/answer_mail_screen.dart';
 import 'package:medify/ui/tab_box/mailing/sub_screens/mail_detail/mail_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/top_doctors/top_doctors_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/top_hospitals/top_hospitals_screen.dart';
@@ -46,6 +42,11 @@ import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_home/stora
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/sub_screens/pdf_viewer_screen/pdf_viewer_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
+import 'auth/register/local_auth/enter_pin_screen.dart';
+import 'auth/register/local_auth/set_biometrics_screen.dart';
+import 'auth/register/register_page.dart';
+import 'auth/register/verify/verify_screen.dart';
+import 'auth/register/verify/verify_with.dart';
 import 'booking_hospital/our_rec.dart';
 import 'booking_hospital/payment_bookings_screen.dart';
 import 'booking_hospital/review_summary.dart';
@@ -100,6 +101,7 @@ class RouteNames {
   static const String chatProfileScreen = "chat_profile_screen";
   static const String selectContactScreen = "select_contact_screen";
   static const String verifyScreen = "verify_screen";
+  static const String answerMailScreen = "answer_mail_screen";
 }
 
 class AppRoutes {
@@ -303,6 +305,10 @@ class AppRoutes {
         int verificationCode = settings.arguments as int;
         return MaterialPageRoute(
           builder: (context) => VerifyScreen(verificationCode: verificationCode),
+        );
+      case RouteNames.answerMailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AnswerMailScreen(),
         );
       default:
         return MaterialPageRoute(
