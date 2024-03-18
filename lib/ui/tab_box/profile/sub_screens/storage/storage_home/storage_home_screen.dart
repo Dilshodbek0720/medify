@@ -114,7 +114,7 @@ class _StorageHomeScreenState extends State<StorageHomeScreen> {
             ),
           ),
           15.ph,
-          StorageFilesCard(title: 'Illustrations DesignS', description: '19 Feb 2022', onTap: () {  },)
+          StorageFilesCard(title: 'Illustrations DesignS', description: '19 Feb 2022', onTap: () {  }, cardOnTap: () {  },)
         ],
       )
     );

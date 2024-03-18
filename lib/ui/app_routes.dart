@@ -269,8 +269,9 @@ class AppRoutes {
           builder: (context) => const StorageActivityScreen(),
         );
       case RouteNames.storageDetailScreen:
+        bool  isEmailFile = settings.arguments as bool;
         return MaterialPageRoute(
-          builder: (context) => const StorageDetailScreen(),
+          builder: (context) => StorageDetailScreen(isEmailSelectFile: isEmailFile,),
         );
       case RouteNames.pdfViewerScreen:
         return MaterialPageRoute(

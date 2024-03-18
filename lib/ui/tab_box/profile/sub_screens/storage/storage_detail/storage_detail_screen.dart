@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/blocs/email_message_file/email_message_file_bloc.dart';
+import 'package:medify/blocs/email_message_file/email_message_file_event.dart';
+import 'package:medify/data/models/message/message_model.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/widgets/storage_files_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
@@ -9,7 +13,8 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class StorageDetailScreen extends StatefulWidget {
-  const StorageDetailScreen({super.key});
+  const StorageDetailScreen({super.key, required this.isEmailSelectFile});
+  final bool isEmailSelectFile;
 
   @override
   State<StorageDetailScreen> createState() => _StorageDetailScreenState();
@@ -219,6 +224,19 @@ class _StorageDetailScreenState extends State<StorageDetailScreen> {
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: StorageFilesCard(title: 'Illustrations DesignS', description: '19 Feb 2022', onTap: () {
                 Navigator.pushNamed(context, RouteNames.pdfViewerScreen);
+              }, cardOnTap: () {
+                if(widget.isEmailSelectFile){
+                  context.read<EmailMessageFileBloc>().add(
+                    SendEmailMessageFile(
+                      messageModel: MessageModel(
+                          receiverName: '',
+                          senderName: '',
+                          dateTime: DateTime.now().toString().substring(10, 16),
+                          folder: 'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf'
+                      ),),
+                  );
+                  Navigator.pop(context);
+                }
               },)))
         ],
       ),
