@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
-import 'package:medify/data/models/medline/medline_model.dart';
 import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/forgot_password/widgets/forgot_password_selector.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
@@ -29,6 +29,14 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
   int pressed = -1;
   String token = "";
   int verificationCode = 0;
+  late SignUpCubit signUpCubit;
+
+  @override
+  void initState() {
+    signUpCubit = BlocProvider.of<SignUpCubit>(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -62,8 +70,8 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                           style: AppTextStyle.h6Bold.copyWith(fontSize: 18.sp, letterSpacing: 0.2.w, fontWeight: FontWeight.w500)),
                       24.ph,
                       ForgotPasswordSelector(
-                        title: 'via SMS:',
-                        subtitle: '\n+1 111 ******99',
+                        title: 'via SMS:\n',
+                        subtitle: signUpCubit.state.phoneController.text,
                         svg: 'assets/svg/bold/chat.svg',
                         onTap: () {
                           setState(() {
@@ -74,8 +82,8 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                       ),
                       24.ph,
                       ForgotPasswordSelector(
-                        title:'via Email:',
-                        subtitle: '\nand***ley@yourdomain.com',
+                        title:'via Email:\n',
+                        subtitle: signUpCubit.state.emailController.text,
                         svg: 'assets/svg/bold/message.svg',
                         onTap: () {
                           setState(() {
@@ -92,10 +100,11 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
                 padding: EdgeInsets.all(24.r),
                 child: GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Next", onTap: ()async{
                   if(pressed != -1){
-                    UniversalData data = await context.read<AuthCubit>().signUp(context: context, verificationType: pressed == 1 ? "sms" : "email");
+                    UniversalData data = await context.read<AuthCubit>().signUp(context: context, verificationType: pressed == 0 ? "sms" : "email");
                     token = data.token;
                     UserModel userModel = data.data;
                     verificationCode = userModel.verificationToken;
+                    print(userModel.verificationToken);
                   }
                 }),
               )
@@ -109,7 +118,7 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
               token ?? "",
             );
             if(context.mounted){
-              Navigator.pushNamed(context, RouteNames.verifyScreen, arguments: verificationCode);
+              Navigator.pushNamed(context, RouteNames.verifyScreen, arguments: pressed==0?signUpCubit.state.phoneController.text:signUpCubit.state.emailController.text);
             }
           } else if (state.status == FormStatus.failure) {
             showErrorMessage(message: state.statusMessage, context: context);

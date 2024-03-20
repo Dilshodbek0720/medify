@@ -303,9 +303,9 @@ class AppRoutes {
           builder: (context) => const VerifyWithScreen(),
         );
       case RouteNames.verifyScreen:
-        int verificationCode = settings.arguments as int;
+        String text = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => VerifyScreen(verificationCode: verificationCode),
+          builder: (context) => VerifyScreen(text: text,),
         );
       case RouteNames.answerMailScreen:
         return MaterialPageRoute(

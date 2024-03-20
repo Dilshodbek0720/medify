@@ -4,14 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
+import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class CodeInputField extends StatefulWidget {
-  const CodeInputField({super.key, required this.verificationCode});
-  final int verificationCode;
+  const CodeInputField({super.key, required this.text});
+  final String text;
 
   @override
   CodeInputFieldState createState() => CodeInputFieldState();
@@ -19,11 +24,10 @@ class CodeInputField extends StatefulWidget {
 
 class CodeInputFieldState extends State<CodeInputField> {
   late CodeInputCubit codeInputCubit;
-  int code = 0;
+
   @override
   void initState() {
     super.initState();
-    code = widget.verificationCode;
     codeInputCubit = CodeInputCubit();
     codeInputCubit
       ..setContext(context)
@@ -34,7 +38,7 @@ class CodeInputFieldState extends State<CodeInputField> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Code has been send to +1 111 ******99",
+        Text("Code has been send to ${widget.text}",
           style: TextStyle(
             color: AppColors.c_900,
             fontFamily: "Urbanist",
@@ -43,6 +47,7 @@ class CodeInputFieldState extends State<CodeInputField> {
             fontWeight: FontWeight.w500,
             letterSpacing: 0.2,
           ),
+          textAlign: TextAlign.center,
         ),
         60.ph,
         Row(
@@ -87,16 +92,23 @@ class CodeInputFieldState extends State<CodeInputField> {
                 ),
                 textAlign: TextAlign.center,
                 focusNode: codeInputCubit.pinFocusNodes[index],
-                onChanged: (value) {
+                onChanged: (value) async{
                   setState(() {
                     codeInputCubit.handleCodeInput(index, value);
-                    if(codeInputCubit.pinControllers[0].text.isNotEmpty && codeInputCubit.pinControllers[1].text.isNotEmpty && codeInputCubit.pinControllers[2].text.isNotEmpty && codeInputCubit.pinControllers[3].text.isNotEmpty && codeInputCubit.pinControllers[4].text.isNotEmpty && codeInputCubit.pinControllers[5].text.isNotEmpty){
-                      print(code);
-                      if(int.parse(codeInputCubit.pinControllers[0].text+codeInputCubit.pinControllers[1].text+codeInputCubit.pinControllers[2].text+codeInputCubit.pinControllers[3].text+codeInputCubit.pinControllers[4].text+codeInputCubit.pinControllers[5].text) == code){
+                  });
+                  if(codeInputCubit.pinControllers[0].text.isNotEmpty && codeInputCubit.pinControllers[1].text.isNotEmpty && codeInputCubit.pinControllers[2].text.isNotEmpty && codeInputCubit.pinControllers[3].text.isNotEmpty && codeInputCubit.pinControllers[4].text.isNotEmpty && codeInputCubit.pinControllers[5].text.isNotEmpty){
+                    UniversalData data = await context.read<AuthCubit>().verifyNewAccount(context: context, verificationToken: int.parse(codeInputCubit.pinControllers[0].text+codeInputCubit.pinControllers[1].text+codeInputCubit.pinControllers[2].text+codeInputCubit.pinControllers[3].text+codeInputCubit.pinControllers[4].text+codeInputCubit.pinControllers[5].text), token: StorageRepository.getString(
+                        StorageKeys.userToken
+                    ));
+                    if(data.error.isEmpty){
+                      UserModel userModel = data.data;
+                      if(userModel.emailVerified){
                         Navigator.pushNamed(context, RouteNames.tabBox);
+                      }else{
+                        print("Failed");
                       }
                     }
-                  });
+                  }
                 },
               ),
             );
@@ -105,8 +117,6 @@ class CodeInputFieldState extends State<CodeInputField> {
         60.ph,
         BlocBuilder<CodeInputCubit, CodeInputState>(
           builder: (context, state) {
-            // final defaultTextStyle = Theme.of(context).textTheme.titleMedium;
-
             if (state is CodeInputCountdown) {
               final remainingTime = "${state.remainingTime}";
               return state.remainingTime!=0?RichText(
@@ -149,6 +159,9 @@ class CodeInputFieldState extends State<CodeInputField> {
                 ),
               ): TextButton(
                 onPressed: (){
+                  context.read<AuthCubit>().resendVerificationToken(context: context, verificationMethod: "email", token: StorageRepository.getString(
+                      StorageKeys.userToken
+                  ));
                   context.read<CodeInputCubit>().resendCode();
                 },
                 child: Text("Resend code",

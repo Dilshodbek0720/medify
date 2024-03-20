@@ -36,7 +36,7 @@ class ConfirmCodeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-            CodeInputField(verificationCode: 0),
+            const CodeInputField(text: '',),
             const Spacer(),
             GlobalButton(
               title: "Verify",
