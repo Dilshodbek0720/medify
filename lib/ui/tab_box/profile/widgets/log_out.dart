@@ -56,7 +56,9 @@ class LogOutItem extends StatelessWidget {
                     await StorageRepository.deleteString(
                       StorageKeys.userToken
                     );
-                    Navigator.pushNamed(context, RouteNames.signInScreen);
+                    if(context.mounted){
+                      Navigator.pushNamedAndRemoveUntil(context, RouteNames.signInScreen, (route) => false,);
+                    }
                   },
                   radius: 100.r, color: AppColors.primary, textColor: Colors.white,
                 )),

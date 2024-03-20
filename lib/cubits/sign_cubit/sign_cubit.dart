@@ -65,6 +65,12 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(state.copyWith(iconColor2: newIconColor2));
   }
 
+  void clearTextFields(){
+    state.emailController.clear();
+    state.phoneController.clear();
+    state.passwordController.clear();
+  }
+
   @override
   Future<void> close() {
     state.emailFocusNode.dispose();
