@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/fonts/text_styles.dart';
@@ -63,15 +65,19 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                       color: AppColors.blueTransparent),
                   child: getIcon(widget.svg, context: context, onTap: () {})),
               20.pw,
-              RichText(
-                text: TextSpan(
-                  text: widget.title,
-                  style: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_600,letterSpacing: 0.2),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: widget.subtitle,
-                        style: AppTextStyle.bodyLargeBold.copyWith(color: AppColors.c_900,letterSpacing: 0.2)),
-                  ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: RichText(
+                  text: TextSpan(
+                    text: widget.title,
+                    style: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_600,letterSpacing: 0.2),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: widget.subtitle,
+                          style: AppTextStyle.bodyLargeBold.copyWith(color: AppColors.c_900,letterSpacing: 0.2)),
+                    ],
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],

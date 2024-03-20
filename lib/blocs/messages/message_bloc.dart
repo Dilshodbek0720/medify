@@ -7,7 +7,7 @@ import 'package:medify/data/models/status/form_status.dart';
 class MessageBloc extends Bloc<MessageEvent, MessageState> {
   MessageBloc()
       : super(
-          MessageState(
+    MessageState(
               message: MessageModel(
                 receiverName: '',
                 senderName: '',

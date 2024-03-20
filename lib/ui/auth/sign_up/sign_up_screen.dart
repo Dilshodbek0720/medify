@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 20.ph,
                 GlobalTextField(
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.visiblePassword,
                   controller: state.passwordController,
                   onChanged: (password) {
@@ -102,11 +102,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 20.ph,
                 GlobalTextField(
-                  textInputAction: TextInputAction.next,
+                  textInputAction: TextInputAction.done,
                   keyboardType: TextInputType.phone,
                   controller: state.phoneController,
                   maskFormatter: phoneFormatter,
-                  onChanged: (phone) {},
+                  onChanged: (phone) {
+
+                  },
                   focusNode: state.phoneFocusNode,
                   hintText: "Phone",
                   suffixIcon: Padding(

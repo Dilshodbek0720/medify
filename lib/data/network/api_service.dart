@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:medify/data/models/geocoding/geocoding.dart';
-import 'package:medify/data/models/medline/medline_model.dart';
+import 'package:medify/data/models/resend_verification/resend_verification_model.dart';
 import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
 import '../../utils/constants/constants.dart';
 
 class ApiService {
@@ -125,10 +126,76 @@ class ApiService {
       }, queryParameters: {
         "verification_method": verificationType
       });
-      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+      if (response.statusCode == 200) {
         return UniversalData(
           data: UserModel.fromJson(response.data['user']),
           token: response.data['token']
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------- RESEND-VERIFICATION_TOKEN -------------------
+
+  Future<UniversalData> resendVerificationToken(
+      {required String verificationMethod, required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/api/user/send/verification/token',
+          options: Options(
+            headers: {
+              "Authorization": "Bearer $token"
+            }
+          ),
+          queryParameters: {
+        "verification_method": verificationMethod
+      });
+      if (response.statusCode == 200) {
+        return UniversalData(
+            data: ResendVerificationModel.fromJson(response.data),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // ------------------ VERIFY-NEW-ACCOUNT ----------------------
+
+  Future<UniversalData> verifyNewAccount(
+      {required int verificationToken, required String token}) async {
+    Response response;
+    try {
+      response = await _dio.patch('/api/user/verify',
+          options: Options(
+              headers: {
+                "Authorization": "Bearer=$token"
+              }
+          ),
+          data: {
+            "verification_token": verificationToken
+          });
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: UserModel.fromJson(response.data),
         );
       }
       return UniversalData(error: 'ERROR');

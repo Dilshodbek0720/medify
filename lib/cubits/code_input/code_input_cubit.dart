@@ -35,12 +35,18 @@ class CodeInputCubit extends Cubit<CodeInputState> {
     startCountdown();
   }
 
+  void resendTime(){
+    remainingTime = 180;
+    CodeInputCountdown(remainingTime);
+  }
+
   @override
   Future<void> close() {
     _countdownTimer?.cancel();
     disposeControllersAndFocusNodes();
     return super.close();
   }
+
 
   void disposeControllersAndFocusNodes() {
     for (var controller in pinControllers) {
@@ -61,7 +67,6 @@ class CodeInputCubit extends Cubit<CodeInputState> {
       } else {
         if (index == 5) {
           pinFocusNodes[index].unfocus();
-          print(pinControllers.length);
         } else {
           FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 6]);
         }

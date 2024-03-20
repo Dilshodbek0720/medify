@@ -26,6 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.c_50,
         toolbarHeight: 95.h,
+        automaticallyImplyLeading: false,
         title: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: Row(

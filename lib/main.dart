@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/blocs/email_message_file/email_message_file_bloc.dart';
 import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
@@ -59,6 +60,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(create: (context) => MessageBloc()),
+          BlocProvider(create: (context) => EmailMessageFileBloc()),
           BlocProvider(create: (context) => GetLocationCubit()),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),

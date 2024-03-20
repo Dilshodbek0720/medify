@@ -99,7 +99,7 @@ class _StorageActivityScreenState extends State<StorageActivityScreen> {
           ),
           12.ph,
           ...List.generate(10, (index) => RecentFilesCard(title: 'Meeting notes', description: '14 Mar 2021', onTap: (){
-            Navigator.pushNamed(context, RouteNames.storageDetailScreen);
+            Navigator.pushNamed(context, RouteNames.storageDetailScreen, arguments: false);
           }, icon: AppIcons.storageFiles, date: '48 GB',),)
         ],
       ),

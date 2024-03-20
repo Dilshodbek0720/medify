@@ -40,4 +40,52 @@ class AuthCubit extends Cubit<AuthState> {
     }
     // emit(state.copyWith(status: FormStatus.pure));
   }
+
+  Future<UniversalData> resendVerificationToken({required BuildContext context, required String verificationMethod, required String token}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    UniversalData data = await authRepository.resendVerificationToken(
+      token: token,
+      verificationMethod: verificationMethod,
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+  }
+
+
+
+  Future<UniversalData> verifyNewAccount({required BuildContext context, required int verificationToken, required String token}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    UniversalData data = await authRepository.verifyNewAccount(
+      token: token,
+      verificationToken: verificationToken,
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+  }
 }

@@ -13,6 +13,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
     this.centerTitle,
     this.title = "",
     this.background = Colors.white,
+    this.automaticallyImplyLeading = true,
   });
 
   final VoidCallback? onTap;
@@ -20,6 +21,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   final List<Widget>? action;
   final bool? centerTitle;
   final Color background;
+  final bool automaticallyImplyLeading;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
       scrolledUnderElevation: 0,
       actions: action,
       elevation: 0,
+      automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: centerTitle,
       leading: onTap != null ? Padding(
         padding: const EdgeInsets.only(left: 12.0),

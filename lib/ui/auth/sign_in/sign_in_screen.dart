@@ -23,14 +23,13 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: GlobalAppBar(
-        onTap: () {
-          Navigator.pop(context);
-        },
+      appBar: const GlobalAppBar(
+        automaticallyImplyLeading: false,
       ),
       body: BlocBuilder<SignUpCubit, SignUpState>(
         builder: (context, state) {
           return ListView(
+            primary: false,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             children: [
               Column(
