@@ -117,6 +117,7 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
               StorageKeys.userToken,
               token ?? "",
             );
+            print('token: ${token}');
             if(context.mounted){
               Navigator.pushNamed(context, RouteNames.verifyScreen, arguments: pressed==0?signUpCubit.state.phoneController.text:signUpCubit.state.emailController.text);
             }

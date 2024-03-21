@@ -5,14 +5,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
+import 'package:medify/data/network/api_service.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/ui/widgets/global_search_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -49,9 +56,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          showCameraAndGalleryDialog(context, (imagePath) {
-                            if (imagePath != null) {
-                              context.read<EditProfileCubit>().updateFile(imagePath);
+                          showCameraAndGalleryDialog(context, (xfile) {
+                            if (xfile != null) {
+                              context.read<EditProfileCubit>().updateFile(xfile);
                             }
                           });
                         },
@@ -60,7 +67,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               ? Image.asset(AppIcons.avatar, width: 150.w)
                               : CircleAvatar(
                             radius: 75.r,
-                            backgroundImage: FileImage(File(state.file!),
+                            backgroundImage: FileImage(File(state.file!.path),
                             ),
                           ),
                           Positioned(
@@ -228,8 +235,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: GlobalButton(
                   title: tr("update"),
-                  onTap: () {
-                    // Navigator.pushNamed(context, RouteNames.verifyWithScreen);
+                  onTap: () async{
+                    await context.read<AuthCubit>().registerUserInformation(context: context, token: StorageRepository.getString(StorageKeys.userToken),
+                        firstName: context.read<EditProfileCubit>().state.fullNameController.text,
+                        lastName: context.read<EditProfileCubit>().state.nicknameController.text,
+                        phoneNumber: context.read<EditProfileCubit>().state.phoneController.text,
+                        birthDay: context.read<EditProfileCubit>().state.dateOfBirthController.text,
+                        gender: context.read<EditProfileCubit>().state.gender,
+                        file: context.read<EditProfileCubit>().state.file!);
                   },
                   radius: 100.r,
                   color: AppColors.primary,

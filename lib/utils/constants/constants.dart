@@ -9,8 +9,8 @@ const baseUrl = "https://medify-backend-api.onrender.com";
 const String apiKey = "1f903bec-cef8-4fed-a745-5556576061f5";
 
 class TimeOutConstants {
-  static int connectTimeout = 30;
-  static int receiveTimeout = 25;
+  static int connectTimeout = 60;
+  static int receiveTimeout = 60;
   static int sendTimeout = 60;
 }
 

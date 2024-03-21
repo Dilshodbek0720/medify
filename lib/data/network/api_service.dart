@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medify/data/models/geocoding/geocoding.dart';
 import 'package:medify/data/models/resend_verification/resend_verification_model.dart';
 import 'package:medify/data/models/universal_data.dart';
@@ -198,6 +199,48 @@ class ApiService {
           data: UserModel.fromJson(response.data),
         );
       }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // --------------- REGISTER-USER-INFORMATION ------------------
+
+  Future<UniversalData> registerUserInformation(
+      {required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async {
+    Response response;
+    try {
+      print("Path: ${file.path}");
+      FormData formData = FormData.fromMap({
+        "firstName":firstName,
+        "lastName":lastName,
+        "phoneNumber":phoneNumber,
+        "birthDay":birthDay,
+        "gender":gender,
+        "image": await MultipartFile.fromFile(file.path, filename: file.name)
+      });
+      response = await _dio.patch('/api/user/register-user-information',
+          options: Options(
+              headers: {
+                "Authorization": "Bearer $token"
+              }
+          ),
+          data: formData
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: UserModel.fromJson(response.data),
+        );
+      }
+      print(response.statusCode);
       return UniversalData(error: 'ERROR');
     } on DioException catch (e) {
       if (e.response != null) {

@@ -96,7 +96,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   40.ph,
                   GlobalButton(
                     title: "Sign in",
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.getLocationScreen);
+                    },
                     color: AppColors.primary,
                     textColor: Colors.white,
                   ),
