@@ -1,4 +1,6 @@
+import 'dart:async';
 
+import 'package:image_picker/image_picker.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
 
@@ -17,5 +19,9 @@ class AuthRepository{
 
   Future<UniversalData> verifyNewAccount({required String token, required int verificationToken}) async{
     return apiService.verifyNewAccount(token: token, verificationToken: verificationToken);
+  }
+
+  Future<UniversalData> registerUserInformation({required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async{
+    return apiService.registerUserInformation(token: token, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDay: birthDay, gender: gender, file: file);
   }
 }

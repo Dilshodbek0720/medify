@@ -52,9 +52,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Center(
                     child: GestureDetector(
                       onTap: () {
-                        showCameraAndGalleryDialog(context, (imagePath) {
-                          if (imagePath != null) {
-                            context.read<RegisterCubit>().updateFile(imagePath);
+                        showCameraAndGalleryDialog(context, (xfile) {
+                          if (xfile != null) {
+                            context.read<RegisterCubit>().updateFile(xfile.path);
                           }
                         });
                       },

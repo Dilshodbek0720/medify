@@ -36,7 +36,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(MainApp(apiService: ApiService(),));
+  runApp(
+      MainApp(apiService: ApiService(),)
+  );
 }
 
 class MainApp extends StatelessWidget {

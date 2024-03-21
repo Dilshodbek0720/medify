@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 
 part 'edit_profile_state.dart';
@@ -83,7 +84,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     emit(state.copyWith(gender: gender, genderIconColor: AppColors.c_900));
   }
 
-  void updateFile(String file) {
+  void updateFile(XFile file) {
     emit(state.copyWith(file: file));
   }
 

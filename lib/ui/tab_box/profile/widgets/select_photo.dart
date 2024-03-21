@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 void showCameraAndGalleryDialog(
-    BuildContext context, Function(String?) callback) async {
+    BuildContext context, Function(XFile?) callback) async {
   if (Theme.of(context).platform == TargetPlatform.iOS) {
     showCupertinoModalPopup(
       context: context,
@@ -19,7 +19,7 @@ void showCameraAndGalleryDialog(
                 final pickedImage =
                     await imagePicker.pickImage(source: ImageSource.gallery);
                 if (pickedImage != null) {
-                  callback(pickedImage.path);
+                  callback(pickedImage);
                 }
               },
               child: const Text(
@@ -34,7 +34,7 @@ void showCameraAndGalleryDialog(
                 final pickedImage =
                     await imagePicker.pickImage(source: ImageSource.camera);
                 if (pickedImage != null) {
-                  callback(pickedImage.path);
+                  callback(pickedImage);
                 }
               },
               child: const Text(
@@ -70,7 +70,7 @@ void showCameraAndGalleryDialog(
                 final pickedImage =
                     await imagePicker.pickImage(source: ImageSource.gallery);
                 if (pickedImage != null) {
-                  callback(pickedImage.path);
+                  callback(pickedImage);
                 }
               },
             ),
@@ -83,7 +83,7 @@ void showCameraAndGalleryDialog(
                 final pickedImage =
                     await imagePicker.pickImage(source: ImageSource.camera);
                 if (pickedImage != null) {
-                  callback(pickedImage.path);
+                  callback(pickedImage);
                 }
               },
             ),

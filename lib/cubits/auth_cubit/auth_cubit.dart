@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
@@ -72,6 +73,34 @@ class AuthCubit extends Cubit<AuthState> {
     UniversalData data = await authRepository.verifyNewAccount(
       token: token,
       verificationToken: verificationToken,
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+  }
+
+  Future<UniversalData> registerUserInformation({required BuildContext context, required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    UniversalData data = await authRepository.registerUserInformation(
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      birthDay: birthDay,
+      gender: gender,
+      token: token,
+      file: file
     );
     if(context.mounted){
       hideLoading(context: context);

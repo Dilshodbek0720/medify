@@ -253,12 +253,12 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                           ? SvgPicture.asset(AppIcons.checked)
                           : SvgPicture.asset(AppIcons.unchecked),
                       onTap: () {
-                        showCameraAndGalleryDialog(context, (imagePath) {
-                          if (imagePath != null) {
+                        showCameraAndGalleryDialog(context, (xfile) {
+                          if (xfile != null) {
                             context
                                 .read<CalendarDoctorsCubit>()
-                                .updateImage(imagePath);
-                            print(imagePath.split(".").last);
+                                .updateImage(xfile.path);
+                            print(xfile.path.split(".").last);
                           }
                         });
                       },

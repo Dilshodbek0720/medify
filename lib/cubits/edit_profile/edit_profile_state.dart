@@ -17,7 +17,7 @@ class EditProfileState {
   final Color phoneIconColor;
   final Color emailIconColor;
   final DateTime selectedDate;
-  final String? file;
+  final XFile? file;
 
   EditProfileState({
     required this.fullNameController,
@@ -56,7 +56,7 @@ class EditProfileState {
     Color? phoneIconColor,
     Color? emailIconColor,
     DateTime? selectedDate,
-    String? file
+    XFile? file
   }) {
     return EditProfileState(
       fullNameController: fullNameController ?? this.fullNameController,
