@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
+import 'package:medify/data/models/location/location_model.dart';
 import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/repository/auth_repository.dart';
@@ -101,6 +102,29 @@ class AuthCubit extends Cubit<AuthState> {
       gender: gender,
       token: token,
       file: file
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+  }
+
+  Future<UniversalData> updateLocation({required BuildContext context, required UserLocationModel userLocationModel, required String token}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    UniversalData data = await authRepository.updateLocation(
+      token: token,
+      userLocationModel: userLocationModel,
     );
     if(context.mounted){
       hideLoading(context: context);

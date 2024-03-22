@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-initLocationService(BuildContext context) async {
+Future<LatLng?> initLocationService(BuildContext context) async {
   Location location = Location();
   bool serviceEnabled;
   PermissionStatus permissionGranted;
@@ -13,7 +13,7 @@ initLocationService(BuildContext context) async {
   if (!serviceEnabled) {
     serviceEnabled = await location.requestService();
     if (!serviceEnabled) {
-      return;
+      return null;
     }
   }
 
@@ -21,7 +21,7 @@ initLocationService(BuildContext context) async {
   if (permissionGranted == PermissionStatus.denied) {
     permissionGranted = await location.requestPermission();
     if (permissionGranted != PermissionStatus.granted) {
-      return;
+      return null;
     }
   }
 
@@ -37,4 +37,6 @@ initLocationService(BuildContext context) async {
     // context.read<MarkerProvider>().addNewMarker(latLng);
     debugPrint("LONGITUDE:${newLocation.longitude} AND LAT:${locationData.latitude}");
   });
+
+  return LatLng(locationData.latitude!, locationData.longitude!);
 }

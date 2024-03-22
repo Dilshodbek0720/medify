@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/location/location_cubit.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
+import 'package:medify/data/models/location/location_model.dart';
 import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/data/servise.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -25,9 +31,9 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
    late LocationCubit locationProvider;
    UniversalData? universalData;
 
-  call() async {
-    await initLocationService(context);
-  }
+  // call() async {
+  //   await initLocationService(context);
+  // }
   @override
   void initState() {
     locationProvider = BlocProvider.of<LocationCubit>(context, listen: false);
@@ -71,8 +77,18 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                   fontFamily: "Urbanist"
               ),),
             100.ph,
-            GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Allow location access", onTap: (){
-              call();
+            GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Allow location access", onTap: ()async{
+              // call();
+              LatLng? latLng = await initLocationService(context);
+              if(latLng!=null && context.mounted){
+                UniversalData data = await context.read<AuthCubit>().updateLocation(context: context, userLocationModel: UserLocationModel(locationModel: LocationModel(pointModel: PointModel(
+                  lat: 0,
+                  lng: 0,
+                ))), token: StorageRepository.getString(StorageKeys.userToken));
+                UserModel user = data.data;
+                print(user.phoneNumber);
+              }
+              Navigator.pushNamed(context, RouteNames.tabBox);
             }),
             20.ph,
             TextButton(onPressed: (){

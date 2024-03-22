@@ -4,8 +4,7 @@ part of 'payment_add_bloc.dart';
 abstract class PaymentAddEvent {}
 
 class AddCards extends PaymentAddEvent{
-  final PaymentModel name;
 
-  AddCards({required this.name});
+  AddCards();
 }
 class GetCards extends PaymentAddEvent{}

@@ -1,3 +1,5 @@
+import 'package:medify/data/models/location/location_model.dart';
+
 class UserModel {
   final String email;
   final String password;
@@ -7,7 +9,7 @@ class UserModel {
   final String phoneNumber;
   final String birthDay;
   final String gender;
-  final String location;
+  // final LocationModel location;
   final String accountVerificationOption;
   final String profilePhotoFolder;
   final String profilePhotoNameId;
@@ -34,7 +36,7 @@ class UserModel {
     required this.phoneNumber,
     required this.birthDay,
     required this.gender,
-    required this.location,
+    // required this.location,
     required this.accountVerificationOption,
     required this.profilePhotoFolder,
     required this.profilePhotoNameId,
@@ -62,7 +64,7 @@ class UserModel {
     String? phoneNumber,
     String? birthDay,
     String? gender,
-    String? location,
+    // LocationModel? location,
     String? accountVerificationOption,
     String? profilePhotoFolder,
     String? profilePhotoNameId,
@@ -89,7 +91,7 @@ class UserModel {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         birthDay: birthDay ?? this.birthDay,
         gender: gender ?? this.gender,
-        location: location ?? this.location,
+        // location: location ?? this.location,
         accountVerificationOption: accountVerificationOption ?? this.accountVerificationOption,
         profilePhotoFolder: profilePhotoFolder ?? this.profilePhotoFolder,
         profilePhotoNameId: profilePhotoNameId ?? this.profilePhotoNameId,
@@ -117,7 +119,7 @@ class UserModel {
     phoneNumber: json["phoneNumber"] as String? ?? "",
     birthDay: json["birthDay"] as String? ?? "",
     gender: json["gender"] as String? ?? "",
-    location: json["location"] as String? ?? "",
+    // location: LocationModel.fromJson(json["location"]) as LocationModel? ?? LocationModel(pointModel: PointModel(lng: 0, lat: 0)),
     accountVerificationOption: json["accountVerificationOption"] as String? ?? "",
     profilePhotoFolder: json["profilePhotoFolder"] as String? ?? "",
     profilePhotoNameId: json["profilePhotoNameId"] as String? ?? "",

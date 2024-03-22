@@ -144,23 +144,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     24.ph,
                     GlobalTextField(
                       textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: state.emailController,
-                      onChanged: (email) {
-                        context.read<EditProfileCubit>().updateEmail(email);
-                      },
-                      focusNode: state.emailFocusNode,
-                      hintText: 'Email',
-                      suffixIcon: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: SvgPicture.asset(AppIcons.message,
-                            colorFilter: ColorFilter.mode(
-                                state.emailIconColor, BlendMode.srcIn)),
-                      ),
-                    ),
-                    24.ph,
-                    GlobalTextField(
-                      textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.phone,
                       controller: state.phoneController,
                       maskFormatter: phoneFormatter,
@@ -243,6 +226,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         birthDay: context.read<EditProfileCubit>().state.dateOfBirthController.text,
                         gender: context.read<EditProfileCubit>().state.gender,
                         file: context.read<EditProfileCubit>().state.file!);
+                    if(context.mounted){
+                      context.read<EditProfileCubit>().clear();
+                      Navigator.pushNamed(context, RouteNames.getLocationScreen);
+                    }
                   },
                   radius: 100.r,
                   color: AppColors.primary,

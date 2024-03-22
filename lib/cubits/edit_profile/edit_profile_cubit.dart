@@ -103,6 +103,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     return super.close();
   }
 
+  void clear(){
+    state.fullNameController.clear();
+    state.nicknameController.clear();
+    state.dateOfBirthController.clear();
+    state.phoneController.clear();
+    state.dateOfBirthController.clear();
+  }
+
   Future<void> showDatePicker(BuildContext context) async {
     final DateTime? pickedDate = await showCupertinoModalPopup<DateTime>(
       context: context,
