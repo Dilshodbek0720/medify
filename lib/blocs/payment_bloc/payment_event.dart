@@ -9,6 +9,10 @@ class CardNumber extends PaymentEvent{
   CardNumber({required this.cardNumber});
 }
 
+class AddCard extends PaymentEvent{
+  AddCard();
+}
+
 class CardName extends PaymentEvent{
   final String cardName;
 

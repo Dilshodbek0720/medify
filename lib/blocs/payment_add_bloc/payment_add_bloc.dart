@@ -11,7 +11,6 @@ part 'payment_add_state.dart';
 class PaymentAddBloc extends Bloc<PaymentAddEvent, PaymentAddState> {
   PaymentAddBloc() : super(const PaymentAddState(cards: [])) {
     on<GetCards>(getCard);
-    on<AddCards>(addCards);
     add(GetCards());
   }
 
@@ -29,8 +28,4 @@ class PaymentAddBloc extends Bloc<PaymentAddEvent, PaymentAddState> {
     emit(state.copyWith(cards: payments));
   }
 
-  void addCards(AddCards event, Emitter<PaymentAddState> emit) {
-    payments.add(event.name);
-    add(GetCards());
-  }
 }

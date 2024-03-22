@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:medify/data/models/location/location_model.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
 
@@ -23,5 +24,9 @@ class AuthRepository{
 
   Future<UniversalData> registerUserInformation({required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async{
     return apiService.registerUserInformation(token: token, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDay: birthDay, gender: gender, file: file);
+  }
+
+  Future<UniversalData> updateLocation({required String token, required UserLocationModel userLocationModel}) async{
+    return apiService.updateLocation(token: token, userLocationModel: userLocationModel);
   }
 }

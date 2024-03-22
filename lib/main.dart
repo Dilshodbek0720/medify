@@ -24,6 +24,7 @@ import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/data/repository/auth_repository.dart';
+import 'package:medify/data/repository/payment_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -49,7 +50,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (context) => AuthRepository(apiService: apiService))
+        RepositoryProvider(create: (context) => AuthRepository(apiService: apiService)),
+        RepositoryProvider(create: (context) => PaymentRepository(apiService: apiService)),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -59,7 +61,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(create: (context) => SignUpCubit()),
           BlocProvider(create: (context) => RegisterCubit()),
-          BlocProvider(create: (context) => PaymentBloc()),
+          BlocProvider(create: (context) => PaymentBloc(context.read<PaymentRepository>())),
           BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(create: (context) => MessageBloc()),
           BlocProvider(create: (context) => EmailMessageFileBloc()),
