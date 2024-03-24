@@ -34,35 +34,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: ListView(
-          children: const [
-            DoctorsCard(
-              index: 0,
-              name: 'Dr. Jenny Watson',
-              category: 'Immunologists',
-              hospital: 'Christ Hospital',
-              rating: '4.4',
-            ),
-            DoctorsCard(
-              index: 1,
-              name: 'Dr. Jenny Baranick',
-              category: 'Allergists',
-              hospital: 'JFK Medical Center',
-              rating: '4.6',
-            ),
-            DoctorsCard(
-              index: 2,
-              name: 'Dr. Jenny Zirkind',
-              category: 'Neurologists',
-              hospital: 'Franklin Hospital',
-              rating: '4.8',
-            ),
-            DoctorsCard(
-              index: 3,
-              name: 'Dr. Jenny Wigham',
-              category: 'Cardiologists',
-              hospital: 'The Valley Hospital',
-              rating: '4.8',
-            ),
+          children: [
+            ...List.generate(4, (index) => DoctorsCard(
+                length: 10,
+                index: index,
+                name: "Ahmadjanova Nasibaxon Erkinovna",
+                category: "Ginekolog",
+                experience: "Tajriba: 29 yil",
+                price: "1 daqiqa - 5000 so'm",
+                language: "uz | ru",
+                rating: "4.4",),)
           ],
         ),
       ),

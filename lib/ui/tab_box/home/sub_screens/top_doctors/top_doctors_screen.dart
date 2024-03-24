@@ -27,7 +27,15 @@ class _TopDoctorsScreenState extends State<TopDoctorsScreen> {
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         children: [
-          ...List.generate(10, (index) => DoctorsCard(length: 10,index: index, name: "Dr. Jenny Watson", category: "Immunologists", hospital: "Christ Hospital", rating: "4.4"))
+          ...List.generate(10, (index) => DoctorsCard(
+              length: 10,
+              index: index,
+              name: "Ahmadjanova Nasibaxon Erkinovna",
+              category: "Ginekolog",
+              experience: "Tajriba: 29 yil",
+              price: "1 daqiqa - 5000 so'm",
+              language: "uz | ru",
+              rating: "4.4"),)
         ],
       ),
     );

@@ -88,11 +88,13 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 UserModel user = data.data;
                 print(user.phoneNumber);
               }
-              Navigator.pushNamed(context, RouteNames.tabBox);
+              if(context.mounted){
+                Navigator.pushNamed(context, RouteNames.successful);
+              }
             }),
             20.ph,
             TextButton(onPressed: (){
-              Navigator.pushNamed(context, RouteNames.searchLocationScreen);
+              Navigator.pushNamed(context, RouteNames.searchLocationScreen, arguments: '');
             }, child: Text("Enter Location Manually",
               style: TextStyle(
                 fontWeight: FontWeight.w700,

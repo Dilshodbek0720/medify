@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medify/ui/auth/lets_in/lets_in_screen.dart';
 import 'package:medify/ui/auth/sign_in/sign_in_screen.dart';
 import 'package:medify/ui/auth/sign_up/sign_up_screen.dart';
+import 'package:medify/ui/auth/successful/successful_screen.dart';
 import 'package:medify/ui/booking_doctor/booking_doctors_info_detail.dart';
 import 'package:medify/ui/booking_doctor/calendar_doctors_screen.dart';
 import 'package:medify/ui/booking_hospital/calendar_screen.dart';
@@ -102,6 +103,7 @@ class RouteNames {
   static const String selectContactScreen = "select_contact_screen";
   static const String verifyScreen = "verify_screen";
   static const String answerMailScreen = "answer_mail_screen";
+  static const String successful = "/successful_screen";
 }
 
 class AppRoutes {
@@ -310,6 +312,11 @@ class AppRoutes {
       case RouteNames.answerMailScreen:
         return MaterialPageRoute(
           builder: (context) => const AnswerMailScreen(),
+        );
+      case RouteNames.successful:
+        String selectScreen = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => SuccessfulScreen(successSelectScreen: selectScreen,),
         );
       default:
         return MaterialPageRoute(

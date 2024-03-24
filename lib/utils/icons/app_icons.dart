@@ -24,6 +24,9 @@ class AppIcons {
   static const String hospital = "assets/images/others/hospital.png";
   static const String chatBackground = "assets/images/others/chat_background.png";
   static const String profileChat = "assets/images/others/profile.png";
+  static const String signSuccess = "assets/images/others/sign_success.png";
+  static const String deadpool = "assets/images/others/deadpool.png";
+
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {
