@@ -6,17 +6,17 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ApointmentDrawerWidget extends StatefulWidget {
-  const ApointmentDrawerWidget({super.key, required this.cancelOnTap, required this.onChanged, required this.selectedIndex});
+class AppointmentDrawerWidget extends StatefulWidget {
+  const AppointmentDrawerWidget({super.key, required this.cancelOnTap, required this.onChanged, required this.selectedIndex});
   final VoidCallback cancelOnTap;
   final ValueChanged<int> onChanged;
   final int selectedIndex;
 
   @override
-  State<ApointmentDrawerWidget> createState() => _ApointmentDrawerWidgetState();
+  State<AppointmentDrawerWidget> createState() => _AppointmentDrawerWidgetState();
 }
 
-class _ApointmentDrawerWidgetState extends State<ApointmentDrawerWidget> {
+class _AppointmentDrawerWidgetState extends State<AppointmentDrawerWidget> {
 
   @override
   Widget build(BuildContext context) {

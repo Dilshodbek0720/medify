@@ -56,7 +56,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
           ],
         ),
         key: _scaffoldKey,
-        drawer: ApointmentDrawerWidget(cancelOnTap: (){
+        drawer: AppointmentDrawerWidget(cancelOnTap: (){
           _closeDrawer();
         }, onChanged: (int value) {
           if(value==11){
