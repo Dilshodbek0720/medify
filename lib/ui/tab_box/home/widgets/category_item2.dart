@@ -17,14 +17,14 @@ class CategoryItem2 extends StatelessWidget {
     return Column(
       children: [
         InkWell(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(100.r),
           onTap: onTap,
           child: Stack(
             children: [
               DecoratedBox(
                 decoration: BoxDecoration(
                     color: background,
-                    borderRadius: BorderRadius.circular(8.r)
+                    borderRadius: BorderRadius.circular(100.r)
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(10.r),

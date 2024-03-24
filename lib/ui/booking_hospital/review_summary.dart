@@ -39,10 +39,12 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
                 const DoctorsCard(
                     length: 10,
                     index: 0,
-                    name: "Dr. Jenny Watson",
-                    category: "Immunologists",
-                    hospital: "Christ Hospital",
-                    rating: "4.4"),
+                    name: "Ahmadjanova Nasibaxon Erkinovna",
+                    category: "Ginekolog",
+                    experience: "Tajriba: 29 yil",
+                    price: "1 daqiqa - 5000 so'm",
+                    language: "uz | ru",
+                    rating: "4.4",),
                 24.ph,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -104,7 +104,7 @@ class CodeInputFieldState extends State<CodeInputField> {
                       UserModel userModel = data.data;
                       if(userModel.emailVerified && context.mounted){
                         context.read<SignUpCubit>().clearTextFields();
-                        Navigator.pushReplacementNamed(context, RouteNames.editProfileScreen);
+                        Navigator.pushNamed(context, RouteNames.successful, arguments: "sign_up");
                       }else{
                         print("Failed");
                       }

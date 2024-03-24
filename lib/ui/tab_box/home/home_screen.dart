@@ -139,7 +139,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 // 24.ph,
                 SeeAllItem(
                     backgroundColor: AppColors.c_50,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.categoryScreen);
+                    },
                     title: 'Doctor Speciality'),
                 24.ph,
                 Padding(
@@ -226,10 +228,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: DoctorsCard(
                           length: 10,
                           index: index,
-                          name: "Dr. Jenny Watson",
-                          category: "Immunologists",
-                          hospital: "Christ Hospital",
-                          rating: "4.4"),
+                          name: "Ahmadjanova Nasibaxon Erkinovna",
+                          category: "Ginekolog",
+                          experience: "Tajriba: 29 yil",
+                          price: "1 daqiqa - 5000 so'm",
+                          language: "uz | ru",
+                          rating: "4.4",),
                     ),),
                 8.ph,
                 SeeAllItem(

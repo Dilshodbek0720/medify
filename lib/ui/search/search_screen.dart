@@ -136,12 +136,14 @@ class _SearchScreenState extends State<SearchScreen> {
                         ...List.generate(
                             10,
                             (index) => DoctorsCard(
-                                  index: index,
-                                  name: 'Dr. Jenny Watson',
-                                  category: 'Immunologists',
-                                  hospital: 'Christ Hospital',
-                                  rating: '4.4',
-                                ))
+                                length: 10,
+                                index: index,
+                                name: "Ahmadjanova Nasibaxon Erkinovna",
+                                category: "Ginekolog",
+                                experience: "Tajriba: 29 yil",
+                                price: "1 daqiqa - 5000 so'm",
+                                language: "uz | ru",
+                                rating: "4.4",),)
                       ],
                     )
                   : selectType == 1

@@ -112,7 +112,15 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 const HospitalImagesWidget(image: AppIcons.doctorReklama, imageHeight: 320,),
                 12.ph,
                 Padding(padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: const DoctorsCard(length: 10,index: 0, name: "Katryn Murphy", category: "Therapist, Mon - Sun", hospital: "Christ Hospital", rating: "4.9"),
+                  child: const DoctorsCard(
+                      length: 10,
+                      index: 10,
+                      name: "Ahmadjanova Nasibaxon Erkinovna",
+                      category: "Ginekolog",
+                      experience: "Tajriba: 29 yil",
+                      price: "1 daqiqa - 5000 so'm",
+                      language: "uz | ru",
+                      rating: "4.4",),
                 ),
                 12.ph,
                 Padding(
