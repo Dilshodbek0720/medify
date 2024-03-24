@@ -89,12 +89,12 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 print(user.phoneNumber);
               }
               if(context.mounted){
-                Navigator.pushNamed(context, RouteNames.successful);
+                Navigator.pushNamed(context, RouteNames.successful,  arguments: "location");
               }
             }),
             20.ph,
             TextButton(onPressed: (){
-              Navigator.pushNamed(context, RouteNames.searchLocationScreen, arguments: '');
+              Navigator.pushNamed(context, RouteNames.searchLocationScreen);
             }, child: Text("Enter Location Manually",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
