@@ -22,9 +22,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.c_50,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        backgroundColor: AppColors.c_50,
+        backgroundColor: AppColors.white,
         toolbarHeight: 95.h,
         automaticallyImplyLeading: false,
         title: Padding(
@@ -87,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
               hintText: 'Search',
-              fillColor: Colors.white,
+              fillColor: AppColors.white,
             ),
           ),
           24.ph,
@@ -104,116 +104,99 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           24.ph,
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.w),
-            decoration: BoxDecoration(
-                // border: Border.all(color: AppColors.c_300),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30.r)),
-            child: Column(
-              children: [
-                ProfileButton(
-                  text: tr('edit_profile'),
-                  icon: AppIcons.profile,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.editProfileScreen);
-                  },
-                ),
-                ProfileButton(
-                  text: tr('my_bookings'),
-                  icon: AppIcons.calendar,
-                  onTap: () {},
-                ),
-                ProfileButton(
-                    text: tr('address'),
-                    icon: AppIcons.location,
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.getLocationScreen);
-                    }),
-                ProfileButton(
-                    text: tr('notification'),
-                    icon: AppIcons.notification,
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.controlNotification);
-                    }),
-                ProfileButton(
-                    text: tr('payment'),
-                    icon: AppIcons.wallet,
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.paymentListScreen);
-                    }),
-                ProfileButton(
-                    text: tr('security'),
-                    icon: AppIcons.shieldDone,
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteNames.securityScreen);
-                    }),
-                ProfileButton(
-                  text: tr('language'),
-                  icon: AppIcons.moreCircle,
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.languageScreen);
-                  },
-                  isLanguage: true,
-                  language: tr("language_type"),
-                ),
-                ProfileButton(
-                    text: tr('privacy_policy'),
-                    icon: AppIcons.lock,
-                    onTap: () {
-                      // Navigator.pushNamed(context, RouteNames.privacyPolicy);
-                    }),
-                ProfileButton(
-                    text: tr('help_center'),
-                    icon: AppIcons.infoSquare,
-                    onTap: () {
-                      // Navigator.pushNamed(context, RouteNames.helpCenterScreen);
-                    }),
-                ProfileButton(
-                    text: tr('invite_friends'),
-                    icon: AppIcons.user3,
-                    onTap: () {
-                      // Navigator.pushNamed(context, RouteNames.inviteFriends);
-                    }),
-                ProfileButton(
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.r),bottomRight: Radius.circular(20.r)),
-                    text: 'File Storage',
-                    icon: AppIcons.download,
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.storageHomeScreen);
-                    }),
-              ],
-            ),
+          ProfileButton(
+            text: tr('edit_profile'),
+            icon: AppIcons.profile,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.editProfileScreen);
+            },
           ),
-          20.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: ProfileButton(
-              borderRadius: BorderRadius.circular(20.r),
-              text: tr('log_out'),
-              icon: AppIcons.logOut,
+          ProfileButton(
+            text: tr('my_bookings'),
+            icon: AppIcons.calendar,
+            onTap: () {},
+          ),
+          ProfileButton(
+              text: tr('address'),
+              icon: AppIcons.location,
               onTap: () {
-                showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(32.r),
-                    ),
+                Navigator.pushNamed(
+                    context, RouteNames.getLocationScreen);
+              }),
+          ProfileButton(
+              text: tr('notification'),
+              icon: AppIcons.notification,
+              onTap: () {
+                Navigator.pushNamed(
+                    context, RouteNames.controlNotification);
+              }),
+          ProfileButton(
+              text: tr('payment'),
+              icon: AppIcons.wallet,
+              onTap: () {
+                Navigator.pushNamed(
+                    context, RouteNames.paymentListScreen);
+              }),
+          ProfileButton(
+              text: tr('security'),
+              icon: AppIcons.shieldDone,
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.securityScreen);
+              }),
+          ProfileButton(
+            text: tr('language'),
+            icon: AppIcons.moreCircle,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.languageScreen);
+            },
+            isLanguage: true,
+            language: tr("language_type"),
+          ),
+          ProfileButton(
+              text: tr('privacy_policy'),
+              icon: AppIcons.lock,
+              onTap: () {
+                // Navigator.pushNamed(context, RouteNames.privacyPolicy);
+              }),
+          ProfileButton(
+              text: tr('help_center'),
+              icon: AppIcons.infoSquare,
+              onTap: () {
+                // Navigator.pushNamed(context, RouteNames.helpCenterScreen);
+              }),
+          ProfileButton(
+              text: tr('invite_friends'),
+              icon: AppIcons.user3,
+              onTap: () {
+                // Navigator.pushNamed(context, RouteNames.inviteFriends);
+              }),
+          ProfileButton(
+              text: 'File Storage',
+              icon: AppIcons.download,
+              onTap: () {
+                Navigator.pushNamed(
+                    context, RouteNames.storageHomeScreen);
+              }),
+          20.ph,
+          ProfileButton(
+            text: tr('log_out'),
+            icon: AppIcons.logOut,
+            onTap: () {
+              showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(32.r),
                   ),
-                  backgroundColor: Colors.white,
-                  showDragHandle: true,
-                  context: context,
-                  builder: (context) {
-                    return const LogOutItem();
-                  },
-                );
-              },
-              isLogOut: true,
-            ),
+                ),
+                backgroundColor: Colors.white,
+                showDragHandle: true,
+                context: context,
+                builder: (context) {
+                  return const LogOutItem();
+                },
+              );
+            },
+            isLogOut: true,
           ),
         ],
       ),
