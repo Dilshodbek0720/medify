@@ -90,20 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               fillColor: AppColors.white,
             ),
           ),
-          24.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Text(
-              "Profile Categories",
-              style: TextStyle(
-                  color: AppColors.c_900,
-                  fontSize: 24.sp,
-                  fontFamily: 'Urbanist',
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.2),
-            ),
-          ),
-          24.ph,
+          12.ph,
           ProfileButton(
             text: tr('edit_profile'),
             icon: AppIcons.profile,
@@ -177,6 +164,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.pushNamed(
                     context, RouteNames.storageHomeScreen);
               }),
+          ProfileButton(
+            text: 'Calendar',
+            icon: AppIcons.calendar,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.calendarScreen);
+            },
+          ),
           20.ph,
           ProfileButton(
             text: tr('log_out'),

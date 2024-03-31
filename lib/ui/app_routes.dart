@@ -32,6 +32,8 @@ import 'package:medify/ui/tab_box/mailing/sub_screens/answer_mail/answer_mail_sc
 import 'package:medify/ui/tab_box/mailing/sub_screens/mail_detail/mail_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/top_doctors/top_doctors_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/top_hospitals/top_hospitals_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/calendar/calendar_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/calendar/sub_screens/calendar_add_todo/calendar_add_todo_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
@@ -104,6 +106,8 @@ class RouteNames {
   static const String verifyScreen = "verify_screen";
   static const String answerMailScreen = "answer_mail_screen";
   static const String successful = "/successful_screen";
+  static const String calendarScreen = "/calendar_screen";
+  static const String calendarAddTodo = "/calendar_add_todo_screen";
 }
 
 class AppRoutes {
@@ -317,6 +321,14 @@ class AppRoutes {
         String selectScreen = settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => SuccessfulScreen(successSelectScreen: selectScreen,),
+        );
+      case RouteNames.calendarScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CalendarScreen(),
+        );
+      case RouteNames.calendarAddTodo:
+        return MaterialPageRoute(
+          builder: (context) => const CalendarAddTodo(),
         );
       default:
         return MaterialPageRoute(

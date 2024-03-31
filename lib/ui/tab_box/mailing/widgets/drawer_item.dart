@@ -28,8 +28,8 @@ class DrawerItem extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                  width: 28.w,
-                  height: 28.w,
+                  width: 24.w,
+                  height: 24.w,
                   child: SvgPicture.asset(icon, colorFilter: ColorFilter.mode((isSelected && isCancel) ? const Color(0xFFF44336) : isSelected ? const Color(0xFF1E88E5) : AppColors.c_800, BlendMode.srcIn),)),
               12.pw,
               Text(title,
