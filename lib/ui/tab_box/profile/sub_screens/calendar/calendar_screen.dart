@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
+import 'package:medify/cubits/calendar_todo/calendar_todo_cubit.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/booking_doctor/widgets/hours_button.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/calendar/widgets/calendar_drawer.dart';
@@ -71,7 +72,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           }
           Navigator.pop(context);
         }, selectedIndex: screenIndex,),
-        body: BlocBuilder<CalendarDoctorsCubit, CalendarDoctorsState>(
+        body: BlocBuilder<CalendarTodoCubit, CalendarTodoState>(
           builder: (context, state) {
             // print("${state.startDate} checkIn");
             return Column(
@@ -145,12 +146,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           rangeSelectionMode: state.rangeSelectionMode,
                           onRangeSelected: (start, end, focusedDay) {
                             context
-                                .read<CalendarDoctorsCubit>()
+                                .read<CalendarTodoCubit>()
                                 .initializeRanges(start, start);
+                            context
+                                .read<CalendarTodoCubit>()
+                                .initializeRanges(end, start);
                           },
                           onPageChanged: (v) {
                             context
-                                .read<CalendarDoctorsCubit>()
+                                .read<CalendarTodoCubit>()
                                 .changeFocusDay(v);
                           },
                         ),
@@ -172,26 +176,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     ],
                   ),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 24.w),
-                //   child: GlobalButton(
-                //     title: tr("continue"),
-                //     onTap: () {
-                //       Navigator.pushNamed(
-                //           context, RouteNames.bookingInfoDetailScreen);
-                //     },
-                //     radius: 100.r,
-                //     color: AppColors.primary,
-                //     textColor: Colors.white,
-                //   ),
-                // ),
-                // 40.ph,
               ],
             );
           },
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pushNamed(context, RouteNames.calendarAddTodo);
           },
           backgroundColor: AppColors.white,

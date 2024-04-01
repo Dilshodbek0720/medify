@@ -11,6 +11,7 @@ import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
 import 'package:medify/cubits/calendar_hospitals/calendar_hospitals_cubit.dart';
+import 'package:medify/cubits/calendar_todo/calendar_todo_cubit.dart';
 import 'package:medify/cubits/code_input/code_input_cubit.dart';
 import 'package:medify/cubits/edit_profile/edit_profile_cubit.dart';
 import 'package:medify/cubits/get_location/get_location_cubit.dart';
@@ -72,6 +73,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => BookingInfoDetailCubit()),
           BlocProvider(create: (context) => CalendarDoctorsCubit()),
           BlocProvider(create: (context) => CalendarHospitalsCubit()),
+          BlocProvider(create: (context) => CalendarTodoCubit()),
           BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
         ],
         child: EasyLocalization(
