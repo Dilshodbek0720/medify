@@ -291,6 +291,7 @@ class _StartAndEndTimeState extends State<StartAndEndTime> {
           int hour = value.hour;
           String formattedHour = hour < 10 ? '0$hour' : hour.toString();
           startTime = "$formattedHour:$formattedMinute";
+          widget.startValueChanged(startTime);
           setState(() {});
         },
       ),
@@ -318,6 +319,7 @@ class _StartAndEndTimeState extends State<StartAndEndTime> {
           int hour = value.hour;
           String formattedHour = hour < 10 ? '0$hour' : hour.toString();
           endTime = "$formattedHour:$formattedMinute";
+          widget.endValueChanged(endTime);
           setState(() {});
         },
       ),

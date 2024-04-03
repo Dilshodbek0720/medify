@@ -96,7 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: GlobalTextField(
-                    fillColor: AppColors.c_100,
+                    fillColor: AppColors.white,
+                    borderColor: AppColors.c_400,
+                    radius: 50,
+                    contentPadding: EdgeInsets.symmetric(vertical: 18.h),
                     suffixIcon: IconButton(
                       splashRadius: 20,
                       onPressed: () {
