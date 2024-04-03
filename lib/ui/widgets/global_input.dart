@@ -22,6 +22,7 @@ class GlobalTextField extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final Color? fillColor;
   final Color? borderColor;
+  final double? radius;
 
   const GlobalTextField({
     super.key,
@@ -42,6 +43,7 @@ class GlobalTextField extends StatefulWidget {
     this.obscureText,
     this.contentPadding,
     this.fillColor = AppColors.c_50,
+    this.radius = 16,
     this.borderColor = Colors.transparent,
   });
 
@@ -109,19 +111,19 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: widget.borderColor!),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.radius!),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: AppColors.primary),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.radius!),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.red),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.radius!),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: widget.borderColor!),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(widget.radius!),
         ),
         fillColor: (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
                 ? AppColors.blueTransparent

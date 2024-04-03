@@ -30,6 +30,8 @@ import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
+import 'blocs/todos/todo_message_bloc.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
@@ -65,6 +67,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => PaymentBloc(context.read<PaymentRepository>())),
           BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(create: (context) => MessageBloc()),
+          BlocProvider(create: (context) => TodoMessageBloc()),
           BlocProvider(create: (context) => EmailMessageFileBloc()),
           BlocProvider(create: (context) => GetLocationCubit()),
           BlocProvider(create: (context) => NotificationCubit()),
