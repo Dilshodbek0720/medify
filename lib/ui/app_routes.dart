@@ -45,11 +45,14 @@ import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_home/stora
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/sub_screens/pdf_viewer_screen/pdf_viewer_screen.dart';
 import 'package:medify/ui/tab_box/tab_box.dart';
 
+import 'auth/lets_in/lets_in_screen2.dart';
 import 'auth/register/local_auth/enter_pin_screen.dart';
 import 'auth/register/local_auth/set_biometrics_screen.dart';
 import 'auth/register/register_page.dart';
 import 'auth/register/verify/verify_screen.dart';
 import 'auth/register/verify/verify_with.dart';
+import 'auth/sign_in/sign_in_screen2.dart';
+import 'auth/sign_up/sign_up_screen2.dart';
 import 'booking_hospital/our_rec.dart';
 import 'booking_hospital/payment_bookings_screen.dart';
 import 'booking_hospital/review_summary.dart';
@@ -127,15 +130,15 @@ class AppRoutes {
         );
       case RouteNames.letsInScreen:
         return MaterialPageRoute(
-          builder: (context) => const LetsYouInScreen(),
+          builder: (context) => const LetsYouInScreen2(),
         );
       case RouteNames.signInScreen:
         return MaterialPageRoute(
-          builder: (context) => const SignInScreen(),
+          builder: (context) => const SignInScreen2(),
         );
       case RouteNames.signUpScreen:
         return MaterialPageRoute(
-          builder: (context) => const SignUpScreen(),
+          builder: (context) => const SignUpScreen2(),
         );
       case RouteNames.forgotPassword:
         return MaterialPageRoute(
