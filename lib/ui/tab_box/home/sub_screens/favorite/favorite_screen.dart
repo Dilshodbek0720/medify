@@ -41,7 +41,6 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 name: "Ahmadjanova Nasibaxon Erkinovna",
                 category: "Ginekolog",
                 experience: "Tajriba: 29 yil",
-                price: "1 daqiqa - 5000 so'm",
                 language: "uz | ru",
                 rating: "4.4",),)
           ],

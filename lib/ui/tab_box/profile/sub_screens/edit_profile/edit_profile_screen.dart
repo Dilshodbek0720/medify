@@ -90,6 +90,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     24.ph,
                     GlobalTextField(
+                      radius: 0,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,
                         controller: state.fullNameController,
@@ -102,6 +103,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         hintText: "Full name"),
                     24.ph,
                     GlobalTextField(
+                        radius: 0,
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,
                         controller: state.nicknameController,
@@ -121,6 +123,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       },
                       child: AbsorbPointer(
                         child: GlobalSearchTextField(
+                          radius: 0,
                           readOnly: true,
                           hintText: 'Date of birth',
                           focusNode: state.dateOfBirthFocusNode,
@@ -143,6 +146,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     24.ph,
                     GlobalTextField(
+                      radius: 0,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.phone,
                       controller: state.phoneController,
@@ -162,7 +166,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     24.ph,
                     DecoratedBox(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.r),
+                        borderRadius: BorderRadius.circular(0),
                         color: AppColors.greysCale,
                       ),
                       child: Padding(

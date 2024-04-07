@@ -17,12 +17,14 @@ class GlobalSearchTextField extends StatefulWidget {
   final String? leftImage;
   final bool? readOnly;
   final MaskTextInputFormatter? maskFormatter;
+  final double? radius;
   const GlobalSearchTextField({
     super.key,
     required this.hintText,
     required this.keyboardType,
     required this.textInputAction,
     this.caption = '',
+    this.radius = 10,
     this.controller,
     this.rightImage,
     this.maskFormatter,
@@ -115,20 +117,20 @@ class GlobalSearchTextFieldWidget extends State<GlobalSearchTextField> {
             enabledBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(color: Color(0xFFFAFAFA)),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(widget.radius!),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: AppColors.primary),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(widget.radius!),
             ),
             errorBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(widget.radius!),
             ),
             border: OutlineInputBorder(
               borderSide:
                   const BorderSide(color: AppColors.dark2),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(widget.radius!),
             ),
             fillColor: (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
                     ? const Color(0xFFFFFAED)

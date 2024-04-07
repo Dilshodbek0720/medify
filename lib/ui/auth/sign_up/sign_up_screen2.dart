@@ -72,7 +72,7 @@ class _SignInScreenState extends State<SignUpScreen2> {
                           ),
                           20.ph,
                           Text(
-                            "Войдите в свою рабочую, учебную или личную учетную запись Майкрософт",
+                            "Войти. Зайдите в свой кабинет Medify, и делайте свою жизнь удобнее",
                             style: TextStyle(
                                 color: AppColors.c_600,
                                 fontFamily: "Urbanist",
@@ -80,60 +80,51 @@ class _SignInScreenState extends State<SignUpScreen2> {
                                 fontWeight: FontWeight.w700),
                           ),
                           30.ph,
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Expanded(
-                                child: GlobalTextField(
-                                  radius: 0,
-                                  borderColor: AppColors.c_500,
-                                  textInputAction: TextInputAction.done,
-                                  keyboardType: TextInputType.emailAddress,
-                                  controller: state.emailController,
-                                  onChanged: (phone) {},
-                                  focusNode: state.emailFocusNode,
-                                  hintText: "Почта или телефон",
-                                ),
-                              ),
-                              SizedBox(
-                                width: 50.w,
-                                height: 60.h,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, RouteNames.tabBox);
-                                  },
-                                  child: DecoratedBox(
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.primary,
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SvgPicture.asset(
-                                        AppIcons.arrowRight,
-                                        colorFilter: const ColorFilter.mode(
-                                            Colors.white, BlendMode.srcIn),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          GlobalTextField(
+                            radius: 0,
+                            borderColor: AppColors.c_500,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: state.phoneController,
+                            onChanged: (phone) {},
+                            focusNode: state.phoneFocusNode,
+                            hintText: "Почта или телефон",
                           ),
-                          120.ph,
-                          TextButton(
-                              onPressed: () {
-                                // Navigator.pushNamed(
-                                //     context, RouteNames.forgotPassword);
-                              },
-                              child: Text(
-                                "Выполните вход с URL-адресом SharePoint Server >",
-                                style: TextStyle(
-                                    color: AppColors.primary,
-                                    fontFamily: "Urbanist",
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600),
-                              )),
+                          24.ph,
+                          GlobalTextField(
+                            radius: 0,
+                            borderColor: AppColors.c_500,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: state.emailController,
+                            onChanged: (phone) {},
+                            focusNode: state.emailFocusNode,
+                            hintText: "Email",
+                          ),
+                          24.ph,
+                          GlobalTextField(
+                            radius: 0,
+                            borderColor: AppColors.c_500,
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: state.passwordController,
+                            onChanged: (phone) {},
+                            focusNode: state.passwordFocusNode,
+                            hintText: "Password",
+                          ),
+                          // TextButton(
+                          //     onPressed: () {
+                          //       // Navigator.pushNamed(
+                          //       //     context, RouteNames.forgotPassword);
+                          //     },
+                          //     child: Text(
+                          //       "Выполните вход с URL-адресом SharePoint Server >",
+                          //       style: TextStyle(
+                          //           color: AppColors.primary,
+                          //           fontFamily: "Urbanist",
+                          //           fontSize: 14.sp,
+                          //           fontWeight: FontWeight.w600),
+                          //     )),
                           // const Spacer()
                         ],
                       )
@@ -141,11 +132,13 @@ class _SignInScreenState extends State<SignUpScreen2> {
                   ),
                 ),
                 GlobalButton(
-                  radius: 0,
+                    radius: 0,
                     color: AppColors.primary,
                     textColor: Colors.white,
                     title: "Нет учетной записи? Создайте ее.",
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.tabBox);
+                    }),
               ],
             ),
           );
