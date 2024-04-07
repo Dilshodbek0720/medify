@@ -18,7 +18,7 @@ class _HospitalCardState extends State<HospitalCard> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: AppColors.white,
           // borderRadius: BorderRadius.circular(24.r)
         ),
