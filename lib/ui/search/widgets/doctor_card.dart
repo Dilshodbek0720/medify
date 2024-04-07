@@ -15,7 +15,6 @@ class DoctorsCard extends StatefulWidget {
       required this.name,
       required this.category,
       required this.experience,
-      required this.price,
       required this.language,
       required this.rating,
       this.length = 4});
@@ -25,7 +24,6 @@ class DoctorsCard extends StatefulWidget {
   final String name;
   final String category;
   final String experience;
-  final String price;
   final String language;
   final String rating;
 
@@ -46,7 +44,7 @@ class _DoctorsCardState extends State<DoctorsCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4.h),
+      padding: EdgeInsets.symmetric(vertical: 2.h),
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -109,16 +107,6 @@ class _DoctorsCardState extends State<DoctorsCard> {
                             fontFamily: "Urbanist",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.c_700,
-                          ),
-                        ),
-                        6.ph,
-                        Text(
-                          widget.price,
-                          style: TextStyle(
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
                             color: AppColors.c_700,
                           ),
                         ),

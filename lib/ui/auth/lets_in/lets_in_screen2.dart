@@ -34,7 +34,7 @@ class LetsYouInScreen2 extends StatelessWidget {
                 )),
             60.ph,
             Text(
-              "Защищайте свои файлы и получайте доступ к ним в любом месте",
+              "Все виды услуг медицины в одном приложении Medify. Это удобно и просто!",
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: AppColors.black,
@@ -63,19 +63,19 @@ class LetsYouInScreen2 extends StatelessWidget {
               color: AppColors.white,
               textColor: Colors.black,
             ),
-            20.ph,
-            TextButton(
-                onPressed: () {
-                  // Navigator.pushNamed(context, RouteNames.forgotPassword);
-                },
-                child: Text(
-                  "Перейти к моим фотографиям",
-                  style: TextStyle(
-                      color: AppColors.primary,
-                      fontFamily: "Urbanist",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600),
-                )),
+            // 20.ph,
+            // TextButton(
+            //     onPressed: () {
+            //       // Navigator.pushNamed(context, RouteNames.forgotPassword);
+            //     },
+            //     child: Text(
+            //       "Перейти к моим фотографиям",
+            //       style: TextStyle(
+            //           color: AppColors.primary,
+            //           fontFamily: "Urbanist",
+            //           fontSize: 16.sp,
+            //           fontWeight: FontWeight.w600),
+            //     )),
             const Spacer()
           ],
         ),

@@ -66,8 +66,18 @@ class _SignInScreenState extends State<SignInScreen2> {
                         fontSize: 28.w,
                         fontWeight: FontWeight.w700),
                   ),
+                  20.ph,
+                  Text(
+                    "Войти. Зайдите в свой кабинет Medify, и делайте свою жизнь удобнее",
+                    style: TextStyle(
+                        color: AppColors.c_600,
+                        fontFamily: "Urbanist",
+                        fontSize: 18.w,
+                        fontWeight: FontWeight.w700),
+                  ),
                   30.ph,
                   GlobalTextField(
+                    radius: 0,
                     textInputAction: TextInputAction.done,
                     keyboardType: TextInputType.phone,
                     controller: state.phoneController,
@@ -98,56 +108,17 @@ class _SignInScreenState extends State<SignInScreen2> {
                             fontWeight: FontWeight.w600),
                       )),
                   40.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                        width: 140,
-                        child: GlobalButton(
-                          title: "Sign in",
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, RouteNames.tabBox);
-                          },
-                          color: AppColors.primary,
-                          textColor: Colors.white,
-                          radius: 0,
-                        ),
-                      ),
-                    ],
+                  GlobalButton(
+                    title: "Sign in",
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RouteNames.tabBox);
+                    },
+                    color: AppColors.primary,
+                    textColor: Colors.white,
+                    radius: 0,
                   ),
                   20.ph,
-                  SizedBox(
-                    height: 35.h,
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, RouteNames.forgotPassword);
-                        },
-                        child: Text(
-                          "Условия использования",
-                          style: TextStyle(
-                              color: AppColors.c_400,
-                              fontFamily: "Urbanist",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 35.h,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, RouteNames.signUpScreen);
-                      },
-                      child: Text(
-                        "Конфиденциальность и файлы cookie",
-                        style: TextStyle(
-                            color: AppColors.c_400,
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  )
                   // const Spacer()
                 ],
               )

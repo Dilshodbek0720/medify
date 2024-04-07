@@ -227,14 +227,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ...List.generate(
                     5,
                         (index) => Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      padding: EdgeInsets.symmetric(horizontal: 0.w),
                       child: DoctorsCard(
                           length: 10,
                           index: index,
                           name: "Ahmadjanova Nasibaxon Erkinovna",
                           category: "Ginekolog",
                           experience: "Tajriba: 29 yil",
-                          price: "1 daqiqa - 5000 so'm",
                           language: "uz | ru",
                           rating: "4.4",),
                     ),),
@@ -250,9 +249,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   items: [
                     ...List.generate(
                         10,
-                        (index) => Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 24.w),
-                              child: const HospitalCard(),
+                        (index) => const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 0),
+                              child: HospitalCard(),
                             ),
                     ),
                   ],
