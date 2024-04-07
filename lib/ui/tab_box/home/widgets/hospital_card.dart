@@ -18,30 +18,27 @@ class _HospitalCardState extends State<HospitalCard> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(24.r)),
+          // borderRadius: BorderRadius.circular(24.r)
+        ),
       child: Material(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(24.r),
+        // borderRadius: BorderRadius.circular(24.r),
         child: InkWell(
-          borderRadius: BorderRadius.circular(24.r),
+          // borderRadius: BorderRadius.circular(24.r),
           onTap: (){
             Navigator.pushNamed(context, RouteNames.hospitalDetailScreen);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(24.r),
-                      topLeft: Radius.circular(24.r)),
-                  child: Image.asset(
-                    AppIcons.hospital,
-                    height: 150,
-                    width: 400,
-                    fit: BoxFit.cover,
-                  )),
+              Image.asset(
+                AppIcons.hospital,
+                height: 150,
+                width: 400,
+                fit: BoxFit.cover,
+              ),
               10.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
