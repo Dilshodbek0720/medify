@@ -20,6 +20,7 @@ import 'package:medify/cubits/location/location_cubit.dart';
 import 'package:medify/cubits/notifications/notification_cubit.dart';
 import 'package:medify/cubits/register/register_cubit.dart';
 import 'package:medify/cubits/security_cubit/security_cubit.dart';
+import 'package:medify/cubits/settings_widget/settings_widget_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
@@ -71,6 +72,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => EmailMessageFileBloc()),
           BlocProvider(create: (context) => GetLocationCubit()),
           BlocProvider(create: (context) => NotificationCubit()),
+          BlocProvider(create: (context) => SettingsWidgetCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => EditProfileCubit()),
           BlocProvider(create: (context) => BookingInfoDetailCubit()),

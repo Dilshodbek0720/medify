@@ -24,6 +24,13 @@ class StorageKeys {
   static const String rememberMeSecurity = "Remember me";
   static const String faceIdMeSecurity = "Face ID";
   static const String biometricIdMeSecurity = "Biometric ID";
+
+  static const String document = "Хранилище документов";
+  static const String mailServis = "Почта сервис";
+  static const String calendar = "Календарь";
+  static const String payment = "Оплата";
+  static const String address = "Адрес";
+  static const String fileStorage = "File Storage";
 }
 
 

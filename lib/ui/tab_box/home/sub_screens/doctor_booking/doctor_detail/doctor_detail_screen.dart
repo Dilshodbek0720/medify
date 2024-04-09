@@ -82,6 +82,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return PopScope(
       onPopInvoked: (v){
         print(remainingTime);
@@ -109,17 +110,14 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
             Expanded(
                 child: ListView(
               children: [
-                const HospitalImagesWidget(image: AppIcons.doctorReklama, imageHeight: 320,),
-                12.ph,
-                Padding(padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: const DoctorsCard(
-                      length: 10,
-                      index: 10,
-                      name: "Ahmadjanova Nasibaxon Erkinovna",
-                      category: "Ginekolog",
-                      experience: "Tajriba: 29 yil",
-                      language: "uz | ru",
-                      rating: "4.4",),
+                // const HospitalImagesWidget(image: AppIcons.doctorReklama, imageHeight: 320,),
+                SizedBox(
+                  height: height * 320 / figmaHeight,
+                  width: width,
+                  child: Image.asset(
+                    AppIcons.doctorReklama,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 12.ph,
                 Padding(
