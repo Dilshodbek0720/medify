@@ -1,4 +1,5 @@
 import 'package:medify/utils/constants/storage_keys.dart';
+import 'package:medify/utils/icons/app_icons.dart';
 
 const String adminEmail = "admin@gmail.com";
 
@@ -39,6 +40,33 @@ List<String> notificationKeys = [
   StorageKeys.appUpdatesNotifications,
   StorageKeys.newServiceAvailableNotifications,
   StorageKeys.newTipsAvailableNotifications,
+];
+
+List<String> settingsWidgetKeys = [
+  StorageKeys.document,
+  StorageKeys.mailServis,
+  StorageKeys.calendar,
+  StorageKeys.payment,
+  StorageKeys.address,
+  StorageKeys.fileStorage,
+];
+
+List<String> settingsIcons = [
+  AppIcons.document,
+  AppIcons.message,
+  AppIcons.calendar,
+  AppIcons.wallet,
+  AppIcons.location,
+  AppIcons.download,
+];
+
+List<bool> settingsWidgetValues = [
+  true,
+  true,
+  true,
+  false,
+  false,
+  false,
 ];
 
 List<bool> notificationValues = [
