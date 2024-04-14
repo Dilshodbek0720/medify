@@ -29,6 +29,7 @@ class SettingsWidgetCubit extends Cubit<SettingsWidgetState> {
         await StorageRepository.putBool(key, value);
       }
     }
+    emit(state.copyWith(settingsValues: values, settingsNames: keys));
   }
 
   Future<void> readSettingsWidgetValues(List<String> keys) async {

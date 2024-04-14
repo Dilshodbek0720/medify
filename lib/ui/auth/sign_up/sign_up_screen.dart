@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
-import 'package:medify/data/network/api_service.dart';
-import 'package:medify/data/repository/auth_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
