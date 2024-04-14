@@ -82,9 +82,7 @@ class _SignInScreenState extends State<SignInScreen2> {
                     keyboardType: TextInputType.phone,
                     controller: state.phoneController,
                     maskFormatter: phoneFormatter,
-                    onChanged: (phone) {
-
-                    },
+                    onChanged: (phone) {},
                     focusNode: state.phoneFocusNode,
                     hintText: "Phone",
                     suffixIcon: Padding(
@@ -93,6 +91,36 @@ class _SignInScreenState extends State<SignInScreen2> {
                           colorFilter: ColorFilter.mode(
                               state.iconColor3, BlendMode.srcIn)),
                     ),
+                  ),
+                  20.ph,
+                  GlobalTextField(
+                    radius: 0,
+                    textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: state.passwordController,
+                    suffixIcon: IconButton(
+                      splashRadius: 20.r,
+                      onPressed: () {
+                        context.read<SignUpCubit>().toggleObscure();
+                      },
+                      icon: SvgPicture.asset(
+                        state.isObscure ? AppIcons.hide : AppIcons.show,
+                        colorFilter:
+                            ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
+                      ),
+                    ),
+                    onChanged: (password) {},
+                    focusNode: state.passwordFocusNode,
+                    hintText: 'Password',
+                    obscureText: state.isObscure,
+                    // prefixIcon: Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    //   child: SvgPicture.asset(
+                    //     AppIcons.lock,
+                    //     colorFilter:
+                    //     ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
+                    //   ),
+                    // ),
                   ),
                   20.ph,
                   TextButton(
@@ -111,8 +139,7 @@ class _SignInScreenState extends State<SignInScreen2> {
                   GlobalButton(
                     title: "Sign in",
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.tabBox);
+                      Navigator.pushNamed(context, RouteNames.tabBox);
                     },
                     color: AppColors.primary,
                     textColor: Colors.white,

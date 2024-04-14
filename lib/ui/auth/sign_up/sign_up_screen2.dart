@@ -108,6 +108,17 @@ class _SignInScreenState extends State<SignUpScreen2> {
                             textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.emailAddress,
                             controller: state.passwordController,
+                            obscureText: state.isObscure,
+                            suffixIcon: IconButton(
+                                splashRadius: 20.r,
+                                onPressed: () {
+                                  context.read<SignUpCubit>().toggleObscure();
+                                },
+                                icon: SvgPicture.asset(
+                                  state.isObscure ? AppIcons.hide : AppIcons.show,
+                                  colorFilter:
+                                  ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
+                                )),
                             onChanged: (phone) {},
                             focusNode: state.passwordFocusNode,
                             hintText: "Password",
@@ -137,7 +148,7 @@ class _SignInScreenState extends State<SignUpScreen2> {
                     textColor: Colors.white,
                     title: "Нет учетной записи? Создайте ее.",
                     onTap: () {
-                      Navigator.pushNamed(context, RouteNames.tabBox);
+                      Navigator.pushNamed(context, RouteNames.selectContactScreen);
                     }),
               ],
             ),
