@@ -76,7 +76,9 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
             const Divider(height: 1,),
             Padding(
               padding: EdgeInsets.only(left: 24.w, top: 24.h, right: 24.w, bottom: 36.h),
-              child: GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Let's Start", onTap: (){
+              child: GlobalButton(
+                  radius: 0,
+                  color: AppColors.primary, textColor: AppColors.white, title: "Let's Start", onTap: (){
                 if(widget.successSelectScreen == 'sign_up'){
                   Navigator.pushNamed(context, RouteNames.editProfileScreen);
                 }else if(widget.successSelectScreen == 'location'){

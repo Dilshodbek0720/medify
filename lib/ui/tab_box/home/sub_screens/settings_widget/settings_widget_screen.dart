@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/cubits/settings_widget/settings_widget_cubit.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/settings_widget/widgets/setting_widget_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
-import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class SettingsWidgetScreen extends StatefulWidget {

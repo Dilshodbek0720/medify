@@ -98,7 +98,9 @@ class _VerifyWithScreenState extends State<VerifyWithScreen> {
               ),
               Padding(
                 padding: EdgeInsets.all(24.r),
-                child: GlobalButton(color: AppColors.primary, textColor: AppColors.white, title: "Next", onTap: ()async{
+                child: GlobalButton(
+                    radius: 0,
+                    color: AppColors.primary, textColor: AppColors.white, title: "Next", onTap: ()async{
                   if(pressed != -1){
                     UniversalData data = await context.read<AuthCubit>().signUp(context: context, verificationType: pressed == 0 ? "sms" : "email");
                     token = data.token;
