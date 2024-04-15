@@ -32,7 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         },
         background: AppColors.primary400.withOpacity(0.8),
         action: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.qr_code, color: AppColors.white,)),
           IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),
           IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
         ],
