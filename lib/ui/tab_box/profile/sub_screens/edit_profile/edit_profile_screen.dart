@@ -235,7 +235,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Navigator.pushNamed(context, RouteNames.getLocationScreen);
                     }
                   },
-                  radius: 100.r,
+                  radius: 0,
                   color: AppColors.primary,
                   textColor: Colors.white,
                 ),

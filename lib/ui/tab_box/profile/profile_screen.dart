@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_description_item.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_image_card.dart';
 import 'package:medify/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:medify/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -23,72 +26,98 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
-        toolbarHeight: 95.h,
-        automaticallyImplyLeading: false,
-        title: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
-          child: Row(
-            children: [
-              SizedBox(
-                height: 48.w,
-                width: 48.w,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30.r),
-                    child: Image.asset(AppIcons.drWatson)),
-              ),
-              16.pw,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                        color: AppColors.c_600,
-                        fontSize: 16.sp,
-                        fontFamily: 'Urbanist',
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 0.2),
-                  ),
-                  6.ph,
-                  Text(
-                    "Else Holmes",
-                    style: TextStyle(
-                      color: AppColors.c_900,
-                      fontSize: 20.sp,
-                      fontFamily: 'Urbanist',
-                      fontWeight: FontWeight.w700,
-                    ),
-                  )
-                ],
-              ),
-              const Spacer(),
-              getIcon(AppIcons.notification, context: context, onTap: () {
-                Navigator.pushNamed(context, RouteNames.notificationScreen);
-              }),
-            ],
-          ),
-        ),
+      appBar: ChatProfileAppBar(
+        onTap: (){
+          // Navigator.pop(context);
+        },
+        background: AppColors.primary400.withOpacity(0.8),
+        action: [
+          IconButton(onPressed: (){}, icon: const Icon(Icons.qr_code, color: AppColors.white,)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
+        ],
       ),
+      // AppBar(
+      //   backgroundColor: AppColors.white,
+      //   toolbarHeight: 95.h,
+      //   automaticallyImplyLeading: false,
+      //   title: Padding(
+      //     padding: EdgeInsets.symmetric(horizontal: 8.w),
+      //     child: Row(
+      //       children: [
+      //         SizedBox(
+      //           height: 48.w,
+      //           width: 48.w,
+      //           child: ClipRRect(
+      //               borderRadius: BorderRadius.circular(30.r),
+      //               child: Image.asset(AppIcons.drWatson)),
+      //         ),
+      //         16.pw,
+      //         Column(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           children: [
+      //             Text(
+      //               "Welcome",
+      //               style: TextStyle(
+      //                   color: AppColors.c_600,
+      //                   fontSize: 16.sp,
+      //                   fontFamily: 'Urbanist',
+      //                   fontWeight: FontWeight.w400,
+      //                   letterSpacing: 0.2),
+      //             ),
+      //             6.ph,
+      //             Text(
+      //               "Else Holmes",
+      //               style: TextStyle(
+      //                 color: AppColors.c_900,
+      //                 fontSize: 20.sp,
+      //                 fontFamily: 'Urbanist',
+      //                 fontWeight: FontWeight.w700,
+      //               ),
+      //             )
+      //           ],
+      //         ),
+      //         const Spacer(),
+      //         getIcon(AppIcons.notification, context: context, onTap: () {
+      //           Navigator.pushNamed(context, RouteNames.notificationScreen);
+      //         }),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: ListView(
-        physics: const BouncingScrollPhysics(),
+        physics: const ScrollPhysics(),
         children: [
-          24.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
-            child: GlobalTextField(
-              borderColor: AppColors.c_300,
-              prefixIcon: Padding(
-                padding: EdgeInsets.only(left: 15.w, right: 10.w),
-                child: SvgPicture.asset(AppIcons.search,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.c_500, BlendMode.srcIn)),
-              ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-              hintText: 'Search',
-              fillColor: AppColors.white,
-            ),
+          ProfileImageCard(onTap: (){
+            // Navigator.pop(context);
+          },
+            icon: const Icon(Icons.camera_alt_outlined, color: AppColors.c_500,),
+          ),
+          // 24.ph,
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+          //   child: GlobalTextField(
+          //     borderColor: AppColors.c_300,
+          //     prefixIcon: Padding(
+          //       padding: EdgeInsets.only(left: 15.w, right: 10.w),
+          //       child: SvgPicture.asset(AppIcons.search,
+          //           colorFilter: const ColorFilter.mode(
+          //               AppColors.c_500, BlendMode.srcIn)),
+          //     ),
+          //     contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+          //     hintText: 'Search',
+          //     fillColor: AppColors.white,
+          //   ),
+          // ),
+          const ProfileDescriptionItem(title: "+998 909904044", description: "Mobile"),
+          16.ph,
+          const ProfileDescriptionItem(title: "@Ambition9X", description: "Username"),
+          16.ph,
+          const ProfileDescriptionItem(title: "Write 7275, Read 14450", description: "Bio"),
+          10.ph,
+          Container(
+            height: 12.h,
+            color: AppColors.c_200,
           ),
           12.ph,
           ProfileButton(

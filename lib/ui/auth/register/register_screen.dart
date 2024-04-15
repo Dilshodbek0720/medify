@@ -208,7 +208,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: GlobalButton(
                     title: "Next",
                     onTap: widget.onTapRight,
-                    radius: 100.r,
+                    radius: 0,
                     color: AppColors.primary,
                     textColor: Colors.white,
                   ),

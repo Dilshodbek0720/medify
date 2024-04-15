@@ -83,12 +83,41 @@ class _SignInScreenState extends State<SignUpScreen2> {
                           GlobalTextField(
                             radius: 0,
                             borderColor: AppColors.c_500,
+                            keyboardType: TextInputType.phone,
                             textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.emailAddress,
+                            maskFormatter: phoneFormatter,
                             controller: state.phoneController,
+                            prefixIcon: SizedBox(
+                              width: 60.w,
+                              child: Padding(
+                                padding: EdgeInsets.only(bottom: 6.h),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    // IconButton(
+                                    //   onPressed: null,
+                                    //   icon: SvgPicture.asset(
+                                    //     AppIcons.call,
+                                    //     colorFilter: ColorFilter.mode(state.iconColor, BlendMode.srcIn),
+                                    //     semanticsLabel: "A grey color mode",
+                                    //     width: 24.w,
+                                    //   ),
+                                    // ),
+                                    Text(
+                                      "+998",
+                                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                          height: 20 / 14,
+                                          color: AppColors.c_900,
+                                          fontSize: 18.sp, fontWeight: FontWeight.w400),
+                                    ),
+                                    6.pw,
+                                  ],
+                                ),
+                              ),
+                            ),
                             onChanged: (phone) {},
                             focusNode: state.phoneFocusNode,
-                            hintText: "Почта или телефон",
+                            hintText: "Phone",
                           ),
                           24.ph,
                           GlobalTextField(
