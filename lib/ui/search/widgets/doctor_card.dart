@@ -43,144 +43,141 @@ class _DoctorsCardState extends State<DoctorsCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 2.h),
-      child: Container(
-        padding: const EdgeInsets.all(1),
-        decoration: BoxDecoration(
+    return Container(
+      padding: const EdgeInsets.all(1),
+      decoration: BoxDecoration(
+        // borderRadius: BorderRadius.circular(24.r),
+        border: Border.all(width: 1, color: AppColors.c_200),
+      ),
+      child: Material(
+        color: AppColors.white,
+        // borderRadius: BorderRadius.circular(24.r),
+        child: InkWell(
           // borderRadius: BorderRadius.circular(24.r),
-          border: Border.all(width: 1, color: AppColors.c_200),
-        ),
-        child: Material(
-          color: AppColors.white,
-          // borderRadius: BorderRadius.circular(24.r),
-          child: InkWell(
-            // borderRadius: BorderRadius.circular(24.r),
-            onTap: () {
-              Navigator.pushNamed(context, RouteNames.doctorDetailScreen);
-            },
-            child: Padding(
-              padding: EdgeInsets.all(16.r),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12.r),
-                    child: SizedBox(
-                      width: 105.w,
-                      height: 105.w,
-                      child: Image.asset(
-                        AppIcons.drWatson,
-                        fit: BoxFit.cover,
-                      ),
+          onTap: () {
+            Navigator.pushNamed(context, RouteNames.doctorDetailScreen);
+          },
+          child: Padding(
+            padding: EdgeInsets.all(16.r),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12.r),
+                  child: SizedBox(
+                    width: 105.w,
+                    height: 105.w,
+                    child: Image.asset(
+                      AppIcons.drWatson,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  16.pw,
-                  SizedBox(
-                    width: 160.w,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.name,
-                          style: TextStyle(
-                            fontFamily: "Urbanist",
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.c_900,
-                          ),
-                        ),
-                        4.ph,
-                        Text(
-                          widget.category,
-                          style: TextStyle(
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.c_700,
-                          ),
-                        ),
-                        6.ph,
-                        Text(
-                          widget.experience,
-                          style: TextStyle(
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.c_700,
-                          ),
-                        ),
-                        6.ph,
-                        Row(
-                          children: [
-                            Text(
-                              widget.language,
-                              style: TextStyle(
-                                fontFamily: "Urbanist",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.c_700,
-                              ),
-                            ),
-                            6.pw,
-                            SizedBox(
-                              width: 16.w,
-                              height: 16.w,
-                              child: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                  name: AppIcons.star,
-                                  iconType: IconType.bold,
-                                ),
-                                colorFilter: const ColorFilter.mode(
-                                    AppColors.orange, BlendMode.srcIn),
-                              ),
-                            ),
-                            6.pw,
-                            Text(
-                              widget.rating,
-                              style: TextStyle(
-                                fontFamily: "Urbanist",
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.c_700,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Spacer(),
-                  Column(
+                ),
+                16.pw,
+                SizedBox(
+                  width: 160.w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      40.ph,
-                      GestureDetector(
-                        onTap: (){
-                          _makePhoneCall("+998998999739");
-                        },
-                        child: Container(
-                          width: 45.w,
-                          height: 45.w,
-                          padding: EdgeInsets.all(12.r),
-                          decoration: const BoxDecoration(
-                            color: AppColors.primary400,
-                            shape: BoxShape.circle
-                          ),
-                          child: SvgPicture.asset(
-                            AppIcons.getSvg(
-                              name: AppIcons.call,
-                              iconType: IconType.bold,
-                            ),
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.white,
-                                BlendMode.srcIn),
-                          ),
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                          fontFamily: "Urbanist",
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.c_900,
                         ),
+                      ),
+                      4.ph,
+                      Text(
+                        widget.category,
+                        style: TextStyle(
+                          fontFamily: "Urbanist",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.c_700,
+                        ),
+                      ),
+                      6.ph,
+                      Text(
+                        widget.experience,
+                        style: TextStyle(
+                          fontFamily: "Urbanist",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.c_700,
+                        ),
+                      ),
+                      6.ph,
+                      Row(
+                        children: [
+                          Text(
+                            widget.language,
+                            style: TextStyle(
+                              fontFamily: "Urbanist",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.c_700,
+                            ),
+                          ),
+                          6.pw,
+                          SizedBox(
+                            width: 16.w,
+                            height: 16.w,
+                            child: SvgPicture.asset(
+                              AppIcons.getSvg(
+                                name: AppIcons.star,
+                                iconType: IconType.bold,
+                              ),
+                              colorFilter: const ColorFilter.mode(
+                                  AppColors.orange, BlendMode.srcIn),
+                            ),
+                          ),
+                          6.pw,
+                          Text(
+                            widget.rating,
+                            style: TextStyle(
+                              fontFamily: "Urbanist",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.c_700,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                const Spacer(),
+                Column(
+                  children: [
+                    40.ph,
+                    GestureDetector(
+                      onTap: (){
+                        _makePhoneCall("+998998999739");
+                      },
+                      child: Container(
+                        width: 45.w,
+                        height: 45.w,
+                        padding: EdgeInsets.all(12.r),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primary400,
+                          shape: BoxShape.circle
+                        ),
+                        child: SvgPicture.asset(
+                          AppIcons.getSvg(
+                            name: AppIcons.call,
+                            iconType: IconType.bold,
+                          ),
+                          colorFilter: const ColorFilter.mode(
+                              AppColors.white,
+                              BlendMode.srcIn),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),

@@ -20,8 +20,7 @@ class _FileContainerState extends State<FileContainer> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10.h),
       padding: const EdgeInsets.all(3),
-      decoration: const BoxDecoration(
-          color: AppColors.audioBackground, borderRadius: BorderRadius.all(Radius.circular(20))),
+      decoration: const BoxDecoration(color: AppColors.audioBackground, borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -42,6 +41,7 @@ class _FileContainerState extends State<FileContainer> {
                     icon: Icon(
                       Icons.folder,
                       size: 24.w,
+                      color: AppColors.c_200,
                     ),
                   ),
                 ),

@@ -1,18 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_description_item.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_image_card.dart';
 import 'package:medify/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:medify/ui/tab_box/profile/widgets/profile_button.dart';
-import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
-import 'package:medify/utils/ui_utils/utility_function.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

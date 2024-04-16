@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context, RouteNames.categoryScreen);
                         },
                         title: 'Doctor Speciality'),
-                    24.ph,
+                    6.ph,
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: Row(
@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    24.ph,
+                    // 24.ph,
                     SeeAllItem(
                         onTap: () {
                           Navigator.pushNamed(
@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         title: 'Top Doctors',
                         backgroundColor: AppColors.primary100),
-                    6.ph,
+                    // 6.ph,
                     CarouselSlider(
                       items: [
                         ...List.generate(
@@ -258,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         autoPlayInterval: const Duration(seconds: 3),
                       ),
                     ),
-                    6.ph,
+                    // 6.ph,
                     SeeAllItem(
                         onTap: () {
                           Navigator.pushNamed(
@@ -266,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         title: 'Top Hospitals',
                         backgroundColor: AppColors.primary100),
-                    6.ph,
+                    // 6.ph,
                     CarouselSlider(
                       items: [
                         ...List.generate(
@@ -284,14 +284,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         autoPlayInterval: const Duration(seconds: 5),
                       ),
                     ),
-                    6.ph,
+                    // 6.ph,
                     SeeAllItem(
                         onTap: () {
 
                         },
                         title: 'Быстрый доступ',
                         backgroundColor: AppColors.primary100),
-                    6.ph,
+                    // 6.ph,
                     Column(
                       children: [
                         ...List.generate(
@@ -303,7 +303,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 description: '100',
                                 icon: settingsIcons[index],
                                 onTap: () {
+                                  if(state.settingsNames[index]==settingsWidgetKeys[0]){
 
+                                  }else if(state.settingsNames[index]==settingsWidgetKeys[1]){
+                                    Navigator.pushNamed(context, RouteNames.mailDetailScreen);
+                                  }else if(state.settingsNames[index]==settingsWidgetKeys[2]){
+                                    Navigator.pushNamed(context, RouteNames.calendarScreen);
+                                  }else if(state.settingsNames[index]==settingsWidgetKeys[3]){
+                                    Navigator.pushNamed(context, RouteNames.paymentListScreen);
+                                  }else if(state.settingsNames[index]==settingsWidgetKeys[4]){
+                                    Navigator.pushNamed(context, RouteNames.getLocationScreen);
+                                  }else if(state.settingsNames[index]==settingsWidgetKeys[5]){
+                                    Navigator.pushNamed(context, RouteNames.storageHomeScreen);
+                                  }
                                 },
                               );
                             }
@@ -333,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   height: 28.r,
                                   width: 28.r,
-                                  child: SvgPicture.asset(AppIcons.setting, colorFilter: ColorFilter.mode(AppColors.blue, BlendMode.srcIn),),
+                                  child: SvgPicture.asset(AppIcons.setting, colorFilter: const ColorFilter.mode(AppColors.blue, BlendMode.srcIn),),
                                 ),
                                 16.pw,
                                 Text(
