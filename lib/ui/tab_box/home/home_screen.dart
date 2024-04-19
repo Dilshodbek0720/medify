@@ -13,6 +13,7 @@ import 'package:medify/ui/tab_box/home/widgets/category_item2.dart';
 import 'package:medify/ui/tab_box/home/widgets/hospital_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
+import 'package:medify/ui/tab_box/home/widgets/service_category_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/setting_widget_item.dart';
 import 'package:medify/ui/tab_box/profile/widgets/switcher_listtile.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -147,9 +148,37 @@ class _HomeScreenState extends State<HomeScreen> {
                         autoPlayInterval: const Duration(seconds: 5),
                       ),
                     ),
+                    SeeAllItem(
+                        backgroundColor: AppColors.c_50,
+                        onTap: () {
+
+                        },
+                        title: 'Service Categories'),
+                    4.ph,
+                    Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              ServiceCategoryCard(onTap: (){
+
+                              },icon: AppIcons.doctorIcon, title: "Doctors",),
+                              16.pw,
+                              ServiceCategoryCard(onTap: (){
+
+                              },icon: AppIcons.hospitalIcon, title: "Hospitals",),
+                              16.pw,
+                              ServiceCategoryCard(onTap: (){
+
+                              },icon: AppIcons.servicesIcon, title: "Services",),
+                            ],
+                          ),
+                        ),),
+                    4.ph,
                     // 24.ph,
                     SeeAllItem(
-                        backgroundColor: AppColors.primary100,
+                        backgroundColor: AppColors.c_50,
                         onTap: () {
                           Navigator.pushNamed(
                               context, RouteNames.categoryScreen);
@@ -231,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context, RouteNames.topDoctorsScreen);
                         },
                         title: 'Top Doctors',
-                        backgroundColor: AppColors.primary100),
+                        backgroundColor: AppColors.c_50),
                     // 6.ph,
                     CarouselSlider(
                       items: [
@@ -265,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context, RouteNames.topHospitalsScreen);
                         },
                         title: 'Top Hospitals',
-                        backgroundColor: AppColors.primary100),
+                        backgroundColor: AppColors.c_50),
                     // 6.ph,
                     CarouselSlider(
                       items: [
@@ -286,42 +315,50 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     // 6.ph,
                     SeeAllItem(
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                         title: 'Быстрый доступ',
-                        backgroundColor: AppColors.primary100),
+                        backgroundColor: AppColors.c_50),
                     // 6.ph,
                     Column(
                       children: [
-                        ...List.generate(
-                          state.settingsNames.length,
-                          (index) {
-                            if(state.settingsValues[index]){
-                              return SettingWidgetItem(
+                        ...List.generate(state.settingsNames.length, (index) {
+                          if (state.settingsValues[index]) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 2.w),
+                              child: SettingWidgetItem(
                                 title: state.settingsNames[index],
                                 description: '100',
                                 icon: settingsIcons[index],
                                 onTap: () {
-                                  if(state.settingsNames[index]==settingsWidgetKeys[0]){
-
-                                  }else if(state.settingsNames[index]==settingsWidgetKeys[1]){
-                                    Navigator.pushNamed(context, RouteNames.mailDetailScreen);
-                                  }else if(state.settingsNames[index]==settingsWidgetKeys[2]){
-                                    Navigator.pushNamed(context, RouteNames.calendarScreen);
-                                  }else if(state.settingsNames[index]==settingsWidgetKeys[3]){
-                                    Navigator.pushNamed(context, RouteNames.paymentListScreen);
-                                  }else if(state.settingsNames[index]==settingsWidgetKeys[4]){
-                                    Navigator.pushNamed(context, RouteNames.getLocationScreen);
-                                  }else if(state.settingsNames[index]==settingsWidgetKeys[5]){
-                                    Navigator.pushNamed(context, RouteNames.storageHomeScreen);
+                                  if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[0]) {
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[1]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.mailDetailScreen);
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[2]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.calendarScreen);
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[3]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.paymentListScreen);
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[4]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.getLocationScreen);
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[5]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.storageHomeScreen);
                                   }
                                 },
-                              );
-                            }
-                            return const SizedBox();
+                              ),
+                            );
                           }
-                        )
+                          return const SizedBox();
+                        })
                       ],
                     ),
                     16.ph,
@@ -329,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushNamed(
                                 context, RouteNames.settingsWidget);
                           },
@@ -345,17 +382,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   height: 28.r,
                                   width: 28.r,
-                                  child: SvgPicture.asset(AppIcons.setting, colorFilter: const ColorFilter.mode(AppColors.blue, BlendMode.srcIn),),
+                                  child: SvgPicture.asset(
+                                    AppIcons.setting,
+                                    colorFilter: const ColorFilter.mode(
+                                        AppColors.blue, BlendMode.srcIn),
+                                  ),
                                 ),
                                 16.pw,
                                 Text(
                                   "Настроить виджеты",
-                                  style:
-                                  Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.blue
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w700,
+                                          color: AppColors.blue),
                                 ),
                               ],
                             ),

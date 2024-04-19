@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
 import 'package:medify/ui/app_routes.dart';
-import 'package:medify/ui/booking_doctor/widgets/hours_button.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/booking_doctor/widgets/hours_button.dart';
 import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
