@@ -28,6 +28,9 @@ class AppIcons {
   static const String deadpool = "assets/images/others/deadpool.png";
   static const String pdfDemoImage = "assets/images/others/pdf_demo_image.jpg";
   static const String pdf = "assets/images/others/pdf.png";
+  static const String hospitalIcon = "assets/images/others/hospital_icon.png";
+  static const String doctorIcon = "assets/images/others/doctor_icon.png";
+  static const String servicesIcon = "assets/images/others/services_icon.png";
 
 
   static String getSvg({required String name, IconType? iconType}) {
