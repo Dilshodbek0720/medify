@@ -15,7 +15,6 @@ import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/service_category_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/setting_widget_item.dart';
-import 'package:medify/ui/tab_box/profile/widgets/switcher_listtile.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/constants/constants.dart';
