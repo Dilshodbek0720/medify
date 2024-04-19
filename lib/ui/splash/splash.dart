@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
-import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/fonts/text_styles.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/screen_size.dart';
@@ -28,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _init()async{
     await Future.delayed(const Duration(seconds: 3));
     if(context.mounted){
-      StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen) :
+      // StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen) :
       Navigator.pushReplacementNamed(context, RouteNames.tabBox);
     }
   }
