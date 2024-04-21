@@ -130,7 +130,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                 : widget.fillColor,
         filled: true,
       ),
-      // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
+      style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );
