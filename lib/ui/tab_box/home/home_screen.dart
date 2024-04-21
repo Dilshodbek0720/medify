@@ -102,33 +102,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: GlobalTextField(
-                        fillColor: AppColors.white,
-                        borderColor: AppColors.c_400,
-                        radius: 50,
-                        contentPadding: EdgeInsets.symmetric(vertical: 18.h),
-                        suffixIcon: IconButton(
-                          splashRadius: 20,
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, RouteNames.searchScreen);
-                          },
-                          icon: SvgPicture.asset(
-                              AppIcons.getSvg(
-                                  name: AppIcons.filter,
-                                  iconType: IconType.lightOutline),
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.primary500, BlendMode.srcIn)),
+                      child: SizedBox(
+                        height: 50.h,
+                        child: GlobalTextField(
+                          fillColor: AppColors.white,
+                          borderColor: AppColors.c_400,
+                          radius: 12,
+                          contentPadding: EdgeInsets.symmetric(vertical: 0.h),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, RouteNames.searchScreen);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: SvgPicture.asset(
+                                width: 20.r,
+                                  height: 20.r,
+                                  AppIcons.getSvg(
+                                      name: AppIcons.filter,
+                                      iconType: IconType.lightOutline),
+                                  colorFilter: const ColorFilter.mode(
+                                      AppColors.primary500, BlendMode.srcIn)),
+                            ),
+                          ),
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 0),
+                            child: SvgPicture.asset(
+                                width: 20.r,
+                                AppIcons.search,
+                                colorFilter: const ColorFilter.mode(
+                                    AppColors.c_500, BlendMode.srcIn)),
+                          ),
+                          hintText: "Search",
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.name,
                         ),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 18.w),
-                          child: SvgPicture.asset(AppIcons.search,
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.c_500, BlendMode.srcIn)),
-                        ),
-                        hintText: "Search",
-                        textInputAction: TextInputAction.done,
-                        keyboardType: TextInputType.name,
                       ),
                     ),
                     24.ph,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
@@ -188,9 +189,13 @@ class _ChatProfileScreenState extends State<ChatProfileScreen> {
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w700,
                           fontFamily: 'Urbanist'),
-                      tabs: const <Widget>[
-                        Tab(text: "Media"),
-                        Tab(text: "File"),
+                      tabs: <Widget>[
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width/2.4,
+                            child: const Tab(text: "Media")),
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width/2.4,
+                            child: const Tab(text: "File")),
                       ],
                   ),
                 ),),
