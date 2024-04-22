@@ -115,9 +115,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context, RouteNames.searchScreen);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12.0),
                               child: SvgPicture.asset(
-                                width: 20.r,
+                                  width: 20.r,
                                   height: 20.r,
                                   AppIcons.getSvg(
                                       name: AppIcons.filter,
@@ -127,7 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           prefixIcon: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 18.w, vertical: 0),
                             child: SvgPicture.asset(
                                 width: 20.r,
                                 AppIcons.search,
@@ -144,10 +146,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     CarouselSlider(
                       items: [
                         ...List.generate(
-                            4,
-                            (index) => const ReklamaItem(
-                                  image: AppIcons.doctorReklama,
-                                ))
+                          4,
+                          (index) => ReklamaItem(
+                            image: AppIcons.doctorCardImage,
+                            onTap: () {
+                              Navigator.pushNamed(context, RouteNames.aboutMedifyScreen);
+                            },
+                          ),
+                        ),
                       ],
                       options: CarouselOptions(
                         viewportFraction: 1,
@@ -158,31 +164,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SeeAllItem(
                         backgroundColor: AppColors.c_50,
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                         title: 'Service Categories'),
                     4.ph,
                     Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 24.w),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              ServiceCategoryCard(onTap: (){
-
-                              },icon: AppIcons.doctorIcon, title: "Doctors",),
-                              16.pw,
-                              ServiceCategoryCard(onTap: (){
-
-                              },icon: AppIcons.hospitalIcon, title: "Hospitals",),
-                              16.pw,
-                              ServiceCategoryCard(onTap: (){
-
-                              },icon: AppIcons.servicesIcon, title: "Services",),
-                            ],
-                          ),
-                        ),),
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            ServiceCategoryCard(
+                              onTap: () {},
+                              icon: AppIcons.doctorIcon,
+                              title: "Doctors",
+                            ),
+                            16.pw,
+                            ServiceCategoryCard(
+                              onTap: () {},
+                              icon: AppIcons.hospitalIcon,
+                              title: "Hospitals",
+                            ),
+                            16.pw,
+                            ServiceCategoryCard(
+                              onTap: () {},
+                              icon: AppIcons.servicesIcon,
+                              title: "Services",
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     4.ph,
                     // 24.ph,
                     SeeAllItem(

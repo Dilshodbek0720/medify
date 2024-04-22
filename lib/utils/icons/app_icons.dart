@@ -31,6 +31,8 @@ class AppIcons {
   static const String hospitalIcon = "assets/images/others/hospital_icon.png";
   static const String doctorIcon = "assets/images/others/doctor_icon.png";
   static const String servicesIcon = "assets/images/others/services_icon.png";
+  static const String aboutImage = "assets/images/others/about_image.png";
+  static const String doctorCardImage = "assets/images/others/doctor_card_image.jpg";
 
 
   static String getSvg({required String name, IconType? iconType}) {
