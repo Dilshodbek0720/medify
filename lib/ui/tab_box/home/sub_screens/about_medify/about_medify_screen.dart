@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/about_medify/widgets/about_benefit_text.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/about_medify/widgets/about_card.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/about_medify/widgets/about_checked_text.dart';
@@ -10,7 +7,6 @@ import 'package:medify/ui/tab_box/home/sub_screens/about_medify/widgets/about_me
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
-import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class AboutMedifyScreen extends StatefulWidget {
@@ -23,7 +19,6 @@ class AboutMedifyScreen extends StatefulWidget {
 class _AboutMedifyScreenState extends State<AboutMedifyScreen> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: GlobalAppBar(
         onTap: () {
