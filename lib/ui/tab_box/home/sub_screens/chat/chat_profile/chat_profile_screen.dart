@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_image_card.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -29,7 +30,9 @@ class _ChatProfileScreenState extends State<ChatProfileScreen> {
           },
           background: AppColors.primary400.withOpacity(0.8),
           action: [
-            IconButton(onPressed: (){}, icon: const Icon(Icons.videocam, color: AppColors.white,)),
+            IconButton(onPressed: (){
+              Navigator.pushNamed(context, RouteNames.meetScreen);
+            }, icon: const Icon(Icons.videocam, color: AppColors.white,)),
             IconButton(onPressed: (){}, icon: const Icon(Icons.call, color: AppColors.white,)),
             IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
           ],

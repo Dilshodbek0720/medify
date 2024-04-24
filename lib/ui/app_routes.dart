@@ -21,6 +21,7 @@ import 'package:medify/ui/tab_box/home/sub_screens/category/category_screen.dart
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat_list_screen/chat_list_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat_profile/chat_profile_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat/chat_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/meet/meet_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
@@ -112,6 +113,7 @@ class RouteNames {
   static const String calendarAddTodo = "/calendar_add_todo_screen";
   static const String settingsWidget = "/settings_widget_screen";
   static const String aboutMedifyScreen = "/about_medify_screen";
+  static const String meetScreen = "/meet_screen";
 }
 
 class AppRoutes {
@@ -341,6 +343,10 @@ class AppRoutes {
       case RouteNames.aboutMedifyScreen:
         return MaterialPageRoute(
           builder: (context) => const AboutMedifyScreen(),
+        );
+      case RouteNames.meetScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MeetScreen(),
         );
       default:
         return MaterialPageRoute(
