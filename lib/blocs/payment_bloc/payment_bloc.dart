@@ -34,7 +34,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   }
 
   void addCards(AddCard event, Emitter<PaymentState> emit) async{
-    UniversalData data = await paymentRepository.createCreditCard(
+    UniversalData data = await paymentRepository.addCreditCard(
       token: StorageRepository.getString(StorageKeys.userToken),
       creditCardModel: CreditCardModel(
           cardName: state.cardName,
@@ -42,7 +42,6 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           cardHolderName: "Dilshodbek Sayitqulov",
           expireDate: state.expireDate),
     );
-    print(data.data);
     emit(state);
   }
 }

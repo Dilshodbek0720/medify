@@ -7,8 +7,8 @@ class PaymentRepository {
 
   PaymentRepository({required this.apiService});
 
-  Future<UniversalData> createCreditCard({required String token, required CreditCardModel creditCardModel}) async{
-    return apiService.createCreditCard(token: token, creditCardModel: creditCardModel);
+  Future<UniversalData> addCreditCard({required String token, required CreditCardModel creditCardModel}) async{
+    return apiService.addCreditCard(token: token, creditCardModel: creditCardModel);
   }
 
 }

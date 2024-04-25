@@ -223,7 +223,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: GlobalButton(
                   title: tr("update"),
                   onTap: () async{
-                    await context.read<AuthCubit>().registerUserInformation(context: context, token: StorageRepository.getString(StorageKeys.userToken),
+                    await context.read<AuthCubit>().completeRegistration(context: context, token: StorageRepository.getString(StorageKeys.userToken),
                         firstName: context.read<EditProfileCubit>().state.fullNameController.text,
                         lastName: context.read<EditProfileCubit>().state.nicknameController.text,
                         phoneNumber: context.read<EditProfileCubit>().state.phoneController.text,

@@ -68,10 +68,10 @@ class AuthCubit extends Cubit<AuthState> {
 
 
 
-  Future<UniversalData> verifyNewAccount({required BuildContext context, required int verificationToken, required String token}) async {
+  Future<UniversalData> userAccountVerify({required BuildContext context, required int verificationToken, required String token}) async {
     emit(state.copyWith(status: FormStatus.loading));
     showLoading(context: context);
-    UniversalData data = await authRepository.verifyNewAccount(
+    UniversalData data = await authRepository.userAccountVerify(
       token: token,
       verificationToken: verificationToken,
     );
@@ -91,10 +91,10 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<UniversalData> registerUserInformation({required BuildContext context, required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async {
+  Future<UniversalData> completeRegistration({required BuildContext context, required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async {
     emit(state.copyWith(status: FormStatus.loading));
     showLoading(context: context);
-    UniversalData data = await authRepository.registerUserInformation(
+    UniversalData data = await authRepository.completeRegistration(
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,

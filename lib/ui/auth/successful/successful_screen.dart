@@ -21,7 +21,7 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
 
   @override
   void initState() {
-    title = widget.successSelectScreen == 'sign_in' ? "You're All Set!" : widget.successSelectScreen == 'sign_up' ? 'Successfully verified' : widget.successSelectScreen == 'location' ? 'Welcome to Studify!' : '';
+    title = widget.successSelectScreen == 'sign_in' ? "You're All Set!" : widget.successSelectScreen == 'sign_up' ? 'Successfully verified' : widget.successSelectScreen == 'location' ? 'Welcome to Medify!' : '';
     description = widget.successSelectScreen == 'sign_in' ? "Start exploring the latest movies, showtimes, and ticket options." : widget.successSelectScreen == 'sign_up' ? 'Dear user you have successfully verified your account' : widget.successSelectScreen == 'location' ? "Let's make your dreams into reality" : '';
     super.initState();
   }

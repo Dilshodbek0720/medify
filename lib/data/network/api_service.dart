@@ -122,7 +122,7 @@ class ApiService {
       required String verificationType}) async {
     Response response;
     try {
-      response = await _dio.post('/api/user/signup', data: {
+      response = await _dio.post('/users/registration', data: {
         "email": email,
         "password": password,
         "phone_number": phoneNumber,
@@ -153,7 +153,7 @@ class ApiService {
       {required String verificationMethod, required String token}) async {
     Response response;
     try {
-      response = await _dio.get('/api/user/send/verification/token',
+      response = await _dio.get('/users/resend-verification-token',
           options: Options(headers: {"Authorization": "Bearer $token"}),
           queryParameters: {"verification_method": verificationMethod});
       if (response.statusCode == 200) {
@@ -176,11 +176,11 @@ class ApiService {
 
   // ------------------ VERIFY-NEW-ACCOUNT ----------------------
 
-  Future<UniversalData> verifyNewAccount(
+  Future<UniversalData> userAccountVerify(
       {required int verificationToken, required String token}) async {
     Response response;
     try {
-      response = await _dio.patch('/api/user/verify',
+      response = await _dio.patch('/users/verify',
           options: Options(headers: {"Authorization": "Bearer=$token"}),
           data: {"verification_token": verificationToken});
       if (response.statusCode == 200) {
@@ -203,7 +203,7 @@ class ApiService {
 
   // --------------- REGISTER-USER-INFORMATION ------------------
 
-  Future<UniversalData> registerUserInformation(
+  Future<UniversalData> completeRegistration(
       {required String token,
       required String firstName,
       required String lastName,
@@ -221,7 +221,7 @@ class ApiService {
         "gender": gender,
         "image": await MultipartFile.fromFile(file.path, filename: file.name)
       });
-      response = await _dio.patch('/api/user/register-user-information',
+      response = await _dio.patch('/users/complete-registration',
           options: Options(headers: {"Authorization": "Bearer $token"}),
           data: formData);
       if (response.statusCode == 200) {
@@ -248,7 +248,7 @@ class ApiService {
       required String token}) async {
     Response response;
     try {
-      response = await _dio.patch('/api/user/update-location',
+      response = await _dio.patch('/users/location',
           options: Options(headers: {"Authorization": "Bearer $token"}),
           data: userLocationModel.toJson());
       if (response.statusCode == 200) {
@@ -271,11 +271,11 @@ class ApiService {
 
   // ----------------- CREATE-CREDIT-CARD ------------------------
 
-  Future<UniversalData> createCreditCard(
+  Future<UniversalData> addCreditCard(
       {required CreditCardModel creditCardModel, required String token}) async {
     Response response;
     try {
-      response = await _dio.post('/api/user/create-credit-card',
+      response = await _dio.post('/users/add-credit-card',
           options: Options(headers: {"Authorization": "Bearer $token"}),
           data: {"creditCard": creditCardModel.toJson()});
       if (response.statusCode == 200) {
@@ -295,4 +295,32 @@ class ApiService {
       return UniversalData(error: e.toString());
     }
   }
+
+  //-------------------- GET-USER-PROFILE -------------------------
+
+  Future<UniversalData> getUserProfile(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/profile',
+          options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: UserModel.fromJson(response.data['profile']),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
 }
