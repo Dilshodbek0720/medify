@@ -57,7 +57,7 @@ class LogOutItem extends StatelessWidget {
                       StorageKeys.userToken
                     );
                     if(context.mounted){
-                      Navigator.pushNamedAndRemoveUntil(context, RouteNames.signInScreen, (route) => false,);
+                      Navigator.pushNamedAndRemoveUntil(context, RouteNames.letsInScreen, (route) => false,);
                     }
                   },
                   radius: 100.r, color: AppColors.primary, textColor: Colors.white,

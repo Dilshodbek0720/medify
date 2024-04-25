@@ -83,6 +83,19 @@ class _SignInScreenState extends State<SignUpScreen2> {
                           GlobalTextField(
                             radius: 0,
                             borderColor: AppColors.c_500,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: state.emailController,
+                            onChanged: (email) {
+                              context.read<SignUpCubit>().updateEmail(email);
+                            },
+                            focusNode: state.emailFocusNode,
+                            hintText: "Email",
+                          ),
+                          24.ph,
+                          GlobalTextField(
+                            radius: 0,
+                            borderColor: AppColors.c_500,
                             keyboardType: TextInputType.phone,
                             textInputAction: TextInputAction.next,
                             maskFormatter: phoneFormatter,
@@ -115,7 +128,9 @@ class _SignInScreenState extends State<SignUpScreen2> {
                                 ),
                               ),
                             ),
-                            onChanged: (phone) {},
+                            onChanged: (phone) {
+                              context.read<SignUpCubit>().updatePhone(phone);
+                            },
                             focusNode: state.phoneFocusNode,
                             hintText: "Phone",
                           ),
@@ -123,19 +138,8 @@ class _SignInScreenState extends State<SignUpScreen2> {
                           GlobalTextField(
                             radius: 0,
                             borderColor: AppColors.c_500,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.emailAddress,
-                            controller: state.emailController,
-                            onChanged: (phone) {},
-                            focusNode: state.emailFocusNode,
-                            hintText: "Email",
-                          ),
-                          24.ph,
-                          GlobalTextField(
-                            radius: 0,
-                            borderColor: AppColors.c_500,
                             textInputAction: TextInputAction.done,
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.visiblePassword,
                             controller: state.passwordController,
                             obscureText: state.isObscure,
                             suffixIcon: IconButton(
@@ -148,24 +152,12 @@ class _SignInScreenState extends State<SignUpScreen2> {
                                   colorFilter:
                                   ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
                                 )),
-                            onChanged: (phone) {},
+                            onChanged: (password) {
+                              context.read<SignUpCubit>().updatePassword(password);
+                            },
                             focusNode: state.passwordFocusNode,
                             hintText: "Password",
                           ),
-                          // TextButton(
-                          //     onPressed: () {
-                          //       // Navigator.pushNamed(
-                          //       //     context, RouteNames.forgotPassword);
-                          //     },
-                          //     child: Text(
-                          //       "Выполните вход с URL-адресом SharePoint Server >",
-                          //       style: TextStyle(
-                          //           color: AppColors.primary,
-                          //           fontFamily: "Urbanist",
-                          //           fontSize: 14.sp,
-                          //           fontWeight: FontWeight.w600),
-                          //     )),
-                          // const Spacer()
                         ],
                       )
                     ],

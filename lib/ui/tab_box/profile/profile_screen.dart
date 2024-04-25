@@ -1,6 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
+import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_description_item.dart';
@@ -8,6 +12,7 @@ import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_image_ca
 import 'package:medify/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:medify/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -24,8 +29,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: ChatProfileAppBar(
-        onTap: (){
-          // Navigator.pop(context);
+        onTap: ()async{
+          ApiService apiService = ApiService();
+          UniversalData data = await apiService.getUserProfile(token: StorageRepository.getString(StorageKeys.userToken));
+          UserModel userModel = data.data;
+          print(data.error);
+          print(userModel.phoneNumber);
+          print(StorageRepository.getString(StorageKeys.userToken));
         },
         background: AppColors.primary400.withOpacity(0.8),
         action: [

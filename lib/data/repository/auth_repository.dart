@@ -18,12 +18,12 @@ class AuthRepository{
     return apiService.resendVerificationToken(token: token, verificationMethod: verificationMethod);
   }
 
-  Future<UniversalData> verifyNewAccount({required String token, required int verificationToken}) async{
-    return apiService.verifyNewAccount(token: token, verificationToken: verificationToken);
+  Future<UniversalData> userAccountVerify({required String token, required int verificationToken}) async{
+    return apiService.userAccountVerify(token: token, verificationToken: verificationToken);
   }
 
-  Future<UniversalData> registerUserInformation({required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async{
-    return apiService.registerUserInformation(token: token, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDay: birthDay, gender: gender, file: file);
+  Future<UniversalData> completeRegistration({required String token, required String firstName, required String lastName, required String phoneNumber, required String birthDay, required String gender, required XFile file}) async{
+    return apiService.completeRegistration(token: token, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, birthDay: birthDay, gender: gender, file: file);
   }
 
   Future<UniversalData> updateLocation({required String token, required UserLocationModel userLocationModel}) async{

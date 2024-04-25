@@ -97,7 +97,7 @@ class CodeInputFieldState extends State<CodeInputField> {
                     codeInputCubit.handleCodeInput(index, value);
                   });
                   if(codeInputCubit.pinControllers[0].text.isNotEmpty && codeInputCubit.pinControllers[1].text.isNotEmpty && codeInputCubit.pinControllers[2].text.isNotEmpty && codeInputCubit.pinControllers[3].text.isNotEmpty && codeInputCubit.pinControllers[4].text.isNotEmpty && codeInputCubit.pinControllers[5].text.isNotEmpty){
-                    UniversalData data = await context.read<AuthCubit>().verifyNewAccount(context: context, verificationToken: int.parse(codeInputCubit.pinControllers[0].text+codeInputCubit.pinControllers[1].text+codeInputCubit.pinControllers[2].text+codeInputCubit.pinControllers[3].text+codeInputCubit.pinControllers[4].text+codeInputCubit.pinControllers[5].text), token: StorageRepository.getString(
+                    UniversalData data = await context.read<AuthCubit>().userAccountVerify(context: context, verificationToken: int.parse(codeInputCubit.pinControllers[0].text+codeInputCubit.pinControllers[1].text+codeInputCubit.pinControllers[2].text+codeInputCubit.pinControllers[3].text+codeInputCubit.pinControllers[4].text+codeInputCubit.pinControllers[5].text), token: StorageRepository.getString(
                         StorageKeys.userToken
                     ));
                     if(data.error.isEmpty){
