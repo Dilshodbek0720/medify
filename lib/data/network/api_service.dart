@@ -215,9 +215,6 @@ class ApiService {
       required String gender,
       required XFile file}) async {
     Response response;
-    print(StorageRepository.getString(StorageKeys.userToken));
-    print(file.path);
-    print(file.openRead());
 
     try {
       FormData formData = FormData();
@@ -260,8 +257,6 @@ class ApiService {
         ),
         data: formData,
       );
-
-      print(response.statusCode);
       if (response.statusCode == 200) {
         return UniversalData(
           data: UserModel.fromJson(response.data),
@@ -270,10 +265,8 @@ class ApiService {
       return UniversalData(error: 'ERROR');
     } on DioException catch (e) {
       if (e.response != null) {
-        print(e.response);
-        return UniversalData(error: "");
+        return UniversalData(error: e.response!.data['message']);
       } else {
-        print('Hsjkf');
         return UniversalData(error: e.message!);
       }
     } catch (e) {
