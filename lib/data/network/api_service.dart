@@ -8,6 +8,7 @@ import 'package:medify/data/models/location/location_model.dart';
 import 'package:medify/data/models/resend_verification/resend_verification_model.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/models/user/user_model.dart';
+// import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
 import '../../utils/constants/constants.dart';
 import 'package:http_parser/http_parser.dart';
