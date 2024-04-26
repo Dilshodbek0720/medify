@@ -67,7 +67,6 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
 
-
   Future<UniversalData> userAccountVerify({required BuildContext context, required int verificationToken, required String token}) async {
     emit(state.copyWith(status: FormStatus.loading));
     showLoading(context: context);

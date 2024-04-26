@@ -31,11 +31,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: ChatProfileAppBar(
         onTap: ()async{
           ApiService apiService = ApiService();
+          print(StorageRepository.getString(StorageKeys.userToken));
           UniversalData data = await apiService.getUserProfile(token: StorageRepository.getString(StorageKeys.userToken));
           UserModel userModel = data.data;
-          print(data.error);
           print(userModel.phoneNumber);
-          print(StorageRepository.getString(StorageKeys.userToken));
         },
         background: AppColors.primary400.withOpacity(0.8),
         action: [
