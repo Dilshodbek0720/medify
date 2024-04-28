@@ -31,10 +31,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: AppColors.white,
       appBar: ChatProfileAppBar(
         onTap: ()async{
-          ApiService apiService = ApiService();
-          UniversalData data = await apiService.getInnerFolderFiles(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline");
-          List<FileModel> model = data.data;
-          print(model[0].toJson());
+          print(StorageRepository.getString(StorageKeys.userToken));
+          // ApiService apiService = ApiService();
+          // UniversalData data = await apiService.getInnerFolderFiles(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline");
+          // List<FileModel> model = data.data;
+          // print(model[0].toJson());
         },
         background: AppColors.primary400.withOpacity(0.8),
         action: [

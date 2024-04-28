@@ -37,4 +37,5 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
     emit(state.copyWith(status: FormStatus.success, messages: x));
     add(GetMessage());
   }
+
 }

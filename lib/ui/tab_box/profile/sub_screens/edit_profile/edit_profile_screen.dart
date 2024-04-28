@@ -223,16 +223,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: GlobalButton(
                   title: tr("update"),
                   onTap: () async{
-                    // String token = StorageRepository.getString(StorageKeys.userToken);
-                    // await context.read<AuthCubit>().completeRegistration(context: context, token: token,
-                    //     firstName: context.read<EditProfileCubit>().state.fullNameController.text,
-                    //     lastName: context.read<EditProfileCubit>().state.nicknameController.text,
-                    //     phoneNumber: context.read<EditProfileCubit>().state.phoneController.text,
-                    //     birthDay: context.read<EditProfileCubit>().state.dateOfBirthController.text,
-                    //     gender: context.read<EditProfileCubit>().state.gender,
-                    //     file: context.read<EditProfileCubit>().state.file!);
+                    String token = StorageRepository.getString(StorageKeys.userToken);
+                    await context.read<AuthCubit>().completeRegistration(context: context, token: token,
+                        firstName: context.read<EditProfileCubit>().state.fullNameController.text,
+                        lastName: context.read<EditProfileCubit>().state.nicknameController.text,
+                        phoneNumber: context.read<EditProfileCubit>().state.phoneController.text,
+                        birthDay: context.read<EditProfileCubit>().state.dateOfBirthController.text,
+                        gender: context.read<EditProfileCubit>().state.gender,
+                        file: context.read<EditProfileCubit>().state.file!);
                     if(context.mounted){
-                      // context.read<EditProfileCubit>().clear();
+                      context.read<EditProfileCubit>().clear();
                       Navigator.pushNamed(context, RouteNames.getLocationScreen);
                     }
                   },
