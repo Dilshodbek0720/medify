@@ -7,6 +7,7 @@ import 'package:medify/blocs/email_message_file/email_message_file_bloc.dart';
 import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
+import 'package:medify/blocs/user_profile/user_profile_bloc.dart';
 import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/booking_info_detail/booking_info_detail_cubit.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
@@ -27,11 +28,13 @@ import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/data/repository/auth_repository.dart';
 import 'package:medify/data/repository/payment_repository.dart';
+import 'package:medify/data/repository/user_profile_repository.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/size/screen_size.dart';
 
 import 'blocs/todos/todo_message_bloc.dart';
+import 'data/repository/file_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,6 +58,8 @@ class MainApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => AuthRepository(apiService: apiService)),
+        RepositoryProvider(create: (context) => UserProfileRepository(apiService: apiService)),
+        RepositoryProvider(create: (context) => FileRepository(apiService: apiService)),
         RepositoryProvider(create: (context) => PaymentRepository(apiService: apiService)),
       ],
       child: MultiBlocProvider(
@@ -80,6 +85,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => CalendarHospitalsCubit()),
           BlocProvider(create: (context) => CalendarTodoCubit()),
           BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
+          BlocProvider(create: (context) => UserProfileBloc(userProfileRepository: context.read<UserProfileRepository>())),
         ],
         child: EasyLocalization(
             supportedLocales: const [

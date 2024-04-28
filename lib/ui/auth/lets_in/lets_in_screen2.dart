@@ -47,7 +47,7 @@ class LetsYouInScreen2 extends StatelessWidget {
               radius: 0,
               title: "ВОЙТИ",
               onTap: () {
-                Navigator.pushNamed(context, RouteNames.signUpScreen);
+                Navigator.pushNamed(context, RouteNames.signInScreen);
               },
               color: AppColors.primary,
               textColor: Colors.white,
@@ -58,7 +58,7 @@ class LetsYouInScreen2 extends StatelessWidget {
               radius: 0,
               title: "Нет учетной записи? Создайте ее.",
               onTap: () {
-                Navigator.pushNamed(context, RouteNames.signInScreen);
+                Navigator.pushNamed(context, RouteNames.signUpScreen);
               },
               color: AppColors.white,
               textColor: Colors.black,

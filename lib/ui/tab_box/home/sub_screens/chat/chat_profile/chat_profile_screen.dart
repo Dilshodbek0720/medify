@@ -41,9 +41,10 @@ class _ChatProfileScreenState extends State<ChatProfileScreen> {
           padding: EdgeInsets.zero,
           children: [
             ProfileImageCard(onTap: (){
-              Navigator.pop(context);
+
             },
             icon: const Icon(Icons.chat_outlined, color: AppColors.c_500,),
+              userName: "Dilshodbek Sayitqulov",
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),

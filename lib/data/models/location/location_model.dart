@@ -52,8 +52,8 @@ class LocationModel{
 }
 
 class PointModel {
-  final num lng;
-  final num lat;
+  final double lng;
+  final double lat;
 
   PointModel({
     required this.lng,
@@ -61,8 +61,8 @@ class PointModel {
   });
 
   PointModel copyWith({
-    num? lng,
-    num? lat,
+    double? lng,
+    double? lat,
   }) =>
       PointModel(
         lng: lng ?? this.lng,
@@ -70,8 +70,8 @@ class PointModel {
       );
 
   factory PointModel.fromJson(Map<String, dynamic> json) => PointModel(
-    lng: json["lng"] as num? ?? 0,
-    lat: json["lat"] as num? ?? 0,
+    lng: json["lng"] as double? ?? 0,
+    lat: json["lat"] as double? ?? 0,
   );
 
   Map<String, dynamic> toJson(){

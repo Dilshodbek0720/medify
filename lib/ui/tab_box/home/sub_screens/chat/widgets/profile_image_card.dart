@@ -5,9 +5,10 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class ProfileImageCard extends StatelessWidget {
-  const ProfileImageCard({super.key, required this.onTap, required this.icon});
+  const ProfileImageCard({super.key, required this.onTap, required this.icon, required this.userName});
   final VoidCallback onTap;
   final Icon icon;
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +35,20 @@ class ProfileImageCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Dilshodbek Sayitqulov",
+                    userName,
                     style: TextStyle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
                         color: AppColors.white),
                   ),
-                  5.ph,
-                  Text(
-                    "Yaqinda onlain edi",
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.white),
-                  ),
+                  // 5.ph,
+                  // Text(
+                  //   "Yaqinda onlain edi",
+                  //   style: TextStyle(
+                  //       fontSize: 14.sp,
+                  //       fontWeight: FontWeight.w500,
+                  //       color: AppColors.white),
+                  // ),
                 ],
               )
             ],
