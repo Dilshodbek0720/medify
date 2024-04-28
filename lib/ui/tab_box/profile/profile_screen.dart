@@ -1,6 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:medify/blocs/user_profile/user_profile_bloc.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/file_model/file_model.dart';
 import 'package:medify/data/models/universal_data.dart';
@@ -25,210 +29,169 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String address = '';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: ChatProfileAppBar(
-        onTap: ()async{
-          print(StorageRepository.getString(StorageKeys.userToken));
-          // ApiService apiService = ApiService();
-          // UniversalData data = await apiService.getInnerFolderFiles(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline");
-          // List<FileModel> model = data.data;
-          // print(model[0].toJson());
-        },
-        background: AppColors.primary400.withOpacity(0.8),
-        action: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
-        ],
-      ),
-      // AppBar(
-      //   backgroundColor: AppColors.white,
-      //   toolbarHeight: 95.h,
-      //   automaticallyImplyLeading: false,
-      //   title: Padding(
-      //     padding: EdgeInsets.symmetric(horizontal: 8.w),
-      //     child: Row(
-      //       children: [
-      //         SizedBox(
-      //           height: 48.w,
-      //           width: 48.w,
-      //           child: ClipRRect(
-      //               borderRadius: BorderRadius.circular(30.r),
-      //               child: Image.asset(AppIcons.drWatson)),
-      //         ),
-      //         16.pw,
-      //         Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             Text(
-      //               "Welcome",
-      //               style: TextStyle(
-      //                   color: AppColors.c_600,
-      //                   fontSize: 16.sp,
-      //                   fontFamily: 'Urbanist',
-      //                   fontWeight: FontWeight.w400,
-      //                   letterSpacing: 0.2),
-      //             ),
-      //             6.ph,
-      //             Text(
-      //               "Else Holmes",
-      //               style: TextStyle(
-      //                 color: AppColors.c_900,
-      //                 fontSize: 20.sp,
-      //                 fontFamily: 'Urbanist',
-      //                 fontWeight: FontWeight.w700,
-      //               ),
-      //             )
-      //           ],
-      //         ),
-      //         const Spacer(),
-      //         getIcon(AppIcons.notification, context: context, onTap: () {
-      //           Navigator.pushNamed(context, RouteNames.notificationScreen);
-      //         }),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-      body: ListView(
-        physics: const ScrollPhysics(),
-        children: [
-          ProfileImageCard(onTap: (){
-            // Navigator.pop(context);
-          },
-            icon: const Icon(Icons.camera_alt_outlined, color: AppColors.c_500,),
-          ),
-          // 24.ph,
-          // Padding(
-          //   padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
-          //   child: GlobalTextField(
-          //     borderColor: AppColors.c_300,
-          //     prefixIcon: Padding(
-          //       padding: EdgeInsets.only(left: 15.w, right: 10.w),
-          //       child: SvgPicture.asset(AppIcons.search,
-          //           colorFilter: const ColorFilter.mode(
-          //               AppColors.c_500, BlendMode.srcIn)),
-          //     ),
-          //     contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-          //     hintText: 'Search',
-          //     fillColor: AppColors.white,
-          //   ),
-          // ),
-          const ProfileDescriptionItem(title: "+998 909904044", description: "Mobile"),
-          16.ph,
-          const ProfileDescriptionItem(title: "@Ambition9X", description: "Username"),
-          16.ph,
-          const ProfileDescriptionItem(title: "Write 7275, Read 14450", description: "Bio"),
-          10.ph,
-          Container(
-            height: 12.h,
-            color: AppColors.c_200,
-          ),
-          12.ph,
-          ProfileButton(
-            text: tr('edit_profile'),
-            icon: AppIcons.profile,
-            onTap: () {
-              Navigator.pushNamed(context, RouteNames.editProfileScreen);
+    return BlocBuilder<UserProfileBloc, UserProfileState>(
+      builder: (context, userState){
+        return Scaffold(
+          backgroundColor: AppColors.white,
+          appBar: ChatProfileAppBar(
+            onTap: ()async{
+              print("token: ${StorageRepository.getString(StorageKeys.userToken)}");
+              ApiService apiService = ApiService();
+              UniversalData data = await apiService.getUserProfile(token: StorageRepository.getString(StorageKeys.userToken));
+              UserModel model = data.data;
+              print(model.profilePhotoFolder);
             },
+            background: AppColors.primary400.withOpacity(0.8),
+            action: [
+              IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),
+              IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
+            ],
           ),
-          ProfileButton(
-            text: tr('my_bookings'),
-            icon: AppIcons.calendar,
-            onTap: () {},
-          ),
-          ProfileButton(
-              text: tr('address'),
-              icon: AppIcons.location,
-              onTap: () {
-                Navigator.pushNamed(
-                    context, RouteNames.getLocationScreen);
-              }),
-          ProfileButton(
-              text: tr('notification'),
-              icon: AppIcons.notification,
-              onTap: () {
-                Navigator.pushNamed(
-                    context, RouteNames.controlNotification);
-              }),
-          ProfileButton(
-              text: tr('payment'),
-              icon: AppIcons.wallet,
-              onTap: () {
-                Navigator.pushNamed(
-                    context, RouteNames.paymentListScreen);
-              }),
-          ProfileButton(
-              text: tr('security'),
-              icon: AppIcons.shieldDone,
-              onTap: () {
-                Navigator.pushNamed(context, RouteNames.securityScreen);
-              }),
-          ProfileButton(
-            text: tr('language'),
-            icon: AppIcons.moreCircle,
-            onTap: () {
-              Navigator.pushNamed(context, RouteNames.languageScreen);
-            },
-            isLanguage: true,
-            language: tr("language_type"),
-          ),
-          ProfileButton(
-              text: tr('privacy_policy'),
-              icon: AppIcons.lock,
-              onTap: () {
-                // Navigator.pushNamed(context, RouteNames.privacyPolicy);
-              }),
-          ProfileButton(
-              text: tr('help_center'),
-              icon: AppIcons.infoSquare,
-              onTap: () {
-                // Navigator.pushNamed(context, RouteNames.helpCenterScreen);
-              }),
-          ProfileButton(
-              text: tr('invite_friends'),
-              icon: AppIcons.user3,
-              onTap: () {
-                // Navigator.pushNamed(context, RouteNames.inviteFriends);
-              }),
-          ProfileButton(
-              text: 'File Storage',
-              icon: AppIcons.download,
-              onTap: () {
-                Navigator.pushNamed(
-                    context, RouteNames.storageHomeScreen);
-              }),
-          ProfileButton(
-            text: 'Calendar',
-            icon: AppIcons.calendar,
-            onTap: () {
-              Navigator.pushNamed(context, RouteNames.calendarScreen);
-            },
-          ),
-          20.ph,
-          ProfileButton(
-            text: tr('log_out'),
-            icon: AppIcons.logOut,
-            onTap: () {
-              showModalBottomSheet(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(32.r),
-                  ),
-                ),
-                backgroundColor: Colors.white,
-                showDragHandle: true,
-                context: context,
-                builder: (context) {
-                  return const LogOutItem();
+          body: ListView(
+            physics: const ScrollPhysics(),
+            children: [
+              ProfileImageCard(onTap: ()async{
+                addressConvertor(LatLng(41.311081, 69.240562));
+                setState(() {
+
+                });
+                print("Address: $address");
+              },
+                icon: const Icon(Icons.camera_alt_outlined, color: AppColors.c_500,),
+                userName: '${userState.userModel.firstName} ${userState.userModel.lastName}',
+              ),
+              ProfileDescriptionItem(title: '+998 ${userState.userModel.phoneNumber}', description: "Mobile"),
+              16.ph,
+              ProfileDescriptionItem(title: userState.userModel.firstName, description: "Username"),
+              16.ph,
+              ProfileDescriptionItem(title: address, description: "Location"),
+              10.ph,
+              Container(
+                height: 12.h,
+                color: AppColors.c_200,
+              ),
+              12.ph,
+              ProfileButton(
+                text: tr('edit_profile'),
+                icon: AppIcons.profile,
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.editProfileScreen);
                 },
-              );
-            },
-            isLogOut: true,
+              ),
+              ProfileButton(
+                text: tr('my_bookings'),
+                icon: AppIcons.calendar,
+                onTap: () {},
+              ),
+              ProfileButton(
+                  text: tr('address'),
+                  icon: AppIcons.location,
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, RouteNames.getLocationScreen);
+                  }),
+              ProfileButton(
+                  text: tr('notification'),
+                  icon: AppIcons.notification,
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, RouteNames.controlNotification);
+                  }),
+              ProfileButton(
+                  text: tr('payment'),
+                  icon: AppIcons.wallet,
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, RouteNames.paymentListScreen);
+                  }),
+              ProfileButton(
+                  text: tr('security'),
+                  icon: AppIcons.shieldDone,
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.securityScreen);
+                  }),
+              ProfileButton(
+                text: tr('language'),
+                icon: AppIcons.moreCircle,
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.languageScreen);
+                },
+                isLanguage: true,
+                language: tr("language_type"),
+              ),
+              ProfileButton(
+                  text: tr('privacy_policy'),
+                  icon: AppIcons.lock,
+                  onTap: () {
+                    // Navigator.pushNamed(context, RouteNames.privacyPolicy);
+                  }),
+              ProfileButton(
+                  text: tr('help_center'),
+                  icon: AppIcons.infoSquare,
+                  onTap: () {
+                    // Navigator.pushNamed(context, RouteNames.helpCenterScreen);
+                  }),
+              ProfileButton(
+                  text: tr('invite_friends'),
+                  icon: AppIcons.user3,
+                  onTap: () {
+                    // Navigator.pushNamed(context, RouteNames.inviteFriends);
+                  }),
+              ProfileButton(
+                  text: 'File Storage',
+                  icon: AppIcons.download,
+                  onTap: () {
+                    Navigator.pushNamed(
+                        context, RouteNames.storageHomeScreen);
+                  }),
+              ProfileButton(
+                text: 'Calendar',
+                icon: AppIcons.calendar,
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.calendarScreen);
+                },
+              ),
+              20.ph,
+              ProfileButton(
+                text: tr('log_out'),
+                icon: AppIcons.logOut,
+                onTap: () {
+                  showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(32.r),
+                      ),
+                    ),
+                    backgroundColor: Colors.white,
+                    showDragHandle: true,
+                    context: context,
+                    builder: (context) {
+                      return const LogOutItem();
+                    },
+                  );
+                },
+                isLogOut: true,
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      }
     );
+  }
+
+  Future<void> addressConvertor(LatLng latLng) async{
+    String output = 'No results found.';
+    await placemarkFromCoordinates(latLng.latitude, latLng.longitude)
+        .then((addresses) {
+      if (addresses.isNotEmpty) {
+        address =  addresses[0].toString();
+      }else{
+        address = output;
+      }
+    });
   }
 }
