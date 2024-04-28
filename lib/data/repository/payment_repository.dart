@@ -11,4 +11,16 @@ class PaymentRepository {
     return apiService.addCreditCard(token: token, creditCardModel: creditCardModel);
   }
 
+  Future<UniversalData> verifyCreditCard({required String token, required int verificationToken}) async{
+    return apiService.verifyCreditCard(token: token, verificationToken: verificationToken);
+  }
+
+  Future<UniversalData> resendVerificationToken({required String token, required String verificationMethod}) async{
+    return apiService.resendVerificationToken(token: token, verificationMethod: verificationMethod);
+  }
+
+  Future<UniversalData> deleteCreditCard({required String token, required int cardId}) async{
+    return apiService.deleteCreditCard(token: token, cardId: cardId);
+  }
+
 }
