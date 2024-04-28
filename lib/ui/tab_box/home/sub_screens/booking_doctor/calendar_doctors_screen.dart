@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/booking_doctor/widgets/hours_button.dart';
 import 'package:medify/ui/tab_box/profile/widgets/select_photo.dart';
@@ -334,9 +336,12 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: GlobalButton(
                   title: tr("continue"),
-                  onTap: () {
-                    Navigator.pushNamed(
-                        context, RouteNames.bookingInfoDetailScreen);
+                  onTap: () async{
+                    ApiService apiService = ApiService();
+                    UniversalData data = await apiService.getInnerFolderFiles(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline");
+
+                    // Navigator.pushNamed(
+                    //     context, RouteNames.bookingInfoDetailScreen);
                   },
                   radius: 100.r,
                   color: AppColors.primary,
@@ -356,6 +361,11 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
       final result = await FilePicker.platform.pickFiles();
 
       if (result != null) {
+        print("RESULT: ${result.files.first.path}");
+        ApiService apiService = ApiService();
+        UniversalData data = await apiService.uploadToInnerFolder(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline", file: result.files.first);
+        String filesNa = data.data;
+        print("Data: $filesNa");
         // File picked successfully
         print('File picked: ${result.files.first.path?.split(".").last}');
         return result;

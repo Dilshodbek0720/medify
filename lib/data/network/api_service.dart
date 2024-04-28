@@ -1,15 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/credit_card/credit_card.dart';
+import 'package:medify/data/models/file_model/file_model.dart';
 import 'package:medify/data/models/geocoding/geocoding.dart';
 import 'package:medify/data/models/location/location_model.dart';
 import 'package:medify/data/models/resend_verification/resend_verification_model.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/models/user/user_model.dart';
-// import 'package:medify/data/models/user/user_model.dart';
-import 'package:medify/utils/constants/storage_keys.dart';
 import '../../utils/constants/constants.dart';
 import 'package:http_parser/http_parser.dart';
 
@@ -219,14 +218,13 @@ class ApiService {
 
     try {
       FormData formData = FormData();
-
       formData.fields.addAll({
         "firstName": firstName,
         "lastName": lastName,
         "phoneNumber": phoneNumber,
         "birthDay": birthDay,
         "gender": gender,
-      }.entries.map((entry) => MapEntry(entry.key, entry.value!)));
+      }.entries.map((entry) => MapEntry(entry.key, entry.value)));
       String fileName = file.path.split('/').last;
       String fileExtension = fileName.split('.').last.toLowerCase();
       String contentType = "image/$fileExtension";
@@ -238,15 +236,6 @@ class ApiService {
           contentType: MediaType.parse(contentType),
         ),
       ));
-      // FormData formData = FormData.fromMap({
-      //   "firstName": firstName,
-      //   "lastName": lastName,
-      //   "phoneNumber": phoneNumber,
-      //   "birthDay": birthDay,
-      //   "gender": gender,
-      //   "image": MultipartFile.fromFile(file.path, filename: file.name),
-      // });
-      //
       response = await _dio.patch(
         '/users/complete-registration',
         options: Options(
@@ -266,6 +255,7 @@ class ApiService {
       return UniversalData(error: 'ERROR');
     } on DioException catch (e) {
       if (e.response != null) {
+        print(e.response);
         return UniversalData(error: e.response!.data['message']);
       } else {
         return UniversalData(error: e.message!);
@@ -277,6 +267,7 @@ class ApiService {
   }
 
   // ------------------- UPDATE-LOCATION ----------------------
+
   Future<UniversalData> updateLocation(
       {required UserLocationModel userLocationModel,
       required String token}) async {
@@ -386,5 +377,152 @@ class ApiService {
 
   // ------------------------ DELETE-CREDIT-CARD ------------------------
 
+  Future<UniversalData> deleteCreditCard(
+      {required int cardId, required String token}) async {
+    Response response;
+    try {
+      response = await _dio.delete('/users/delete-credit-card',
+          options: Options(headers: {"Authorization": "Bearer $token"}),
+          queryParameters: {"card_id": cardId});
+      if (response.statusCode == 200) {
+        // return UniversalData(
+        //   data: UserModel.fromJson(response.data),
+        // );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // ------------------------ GET-CUSTOMER-FILES ---------------------
+
+  Future<UniversalData> getCustomerFiles(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-my-files',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: (response.data['files'] as List).map((e) => FileModel.fromJson(e)).toList(),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // ----------------------- CREATE-NEW-FOLDER -------------------------
+
+  Future<UniversalData> createNewFolder(
+      {required String token, required String folderName}) async {
+    Response response;
+    try {
+      response = await _dio.post('/users/create-folder',
+        data: {'folder_name': folderName},
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // ------------------- GET-INNER-FOLDER-FILES ---------------------
+
+  Future<UniversalData> getInnerFolderFiles(
+      {required String token, required String folderName}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-inner-folder-files',
+        queryParameters: {'folder_name':folderName},
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: (response.data['files'] as List).map((e) => FileModel.fromJson(e)).toList(),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------------- UPLOAD-TO-INNER-FOLDER --------------------------
+
+  Future<UniversalData> uploadToInnerFolder(
+      {required String token, required String folderName, required PlatformFile file}) async {
+    Response response;
+    try {
+      String fileName = file.path!.split('/').last;
+      String fileExtension = fileName.split('.').last.toLowerCase();
+      String contentType = "file/$fileExtension";
+      FormData formData = FormData.fromMap({
+        "file":
+        await MultipartFile.fromFile(
+          file.path!,
+          filename: fileName,
+          contentType: MediaType.parse(contentType),
+        ),
+      });
+      response = await _dio.post('/users/upload-inner-folder-file',
+        queryParameters: {'folder_name':folderName},
+        data: formData,
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
 
 }

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/file_model/file_model.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/data/network/api_service.dart';
@@ -31,10 +32,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: ChatProfileAppBar(
         onTap: ()async{
           ApiService apiService = ApiService();
-          print(StorageRepository.getString(StorageKeys.userToken));
-          UniversalData data = await apiService.getUserProfile(token: StorageRepository.getString(StorageKeys.userToken));
-          UserModel userModel = data.data;
-          print(userModel.phoneNumber);
+          UniversalData data = await apiService.getInnerFolderFiles(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline");
+          List<FileModel> model = data.data;
+          print(model[0].toJson());
         },
         background: AppColors.primary400.withOpacity(0.8),
         action: [
