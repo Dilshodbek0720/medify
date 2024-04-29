@@ -30,6 +30,13 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   String address = '';
+  @override
+  void initState() {
+    context.read<UserProfileBloc>().add(GetUserProfile());
+    UserModel userModel = context.read<UserProfileBloc>().state.userModel;
+    // addressConvertor(LatLng(userModel.location.pointModel.lat, userModel.location.pointModel.lng));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +61,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           body: ListView(
             physics: const ScrollPhysics(),
             children: [
-              ProfileImageCard(onTap: ()async{
-                addressConvertor(LatLng(41.311081, 69.240562));
-                setState(() {
+              ProfileImageCard(onTap: (){
 
-                });
-                print("Address: $address");
               },
                 icon: const Icon(Icons.camera_alt_outlined, color: AppColors.c_500,),
                 userName: '${userState.userModel.firstName} ${userState.userModel.lastName}',
