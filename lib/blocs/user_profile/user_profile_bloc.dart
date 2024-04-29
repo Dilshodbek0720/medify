@@ -16,7 +16,9 @@ part 'user_profile_event.dart';
 part 'user_profile_state.dart';
 
 class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
-  UserProfileBloc({required this.userProfileRepository}) : super(UserProfileState(userModel: UserModel(gender: '',birthDay: '',phoneNumber: '',lastName: '',firstName: '',accountVerificationOption: '',bookedDoctor: [],createdAt: '',creditCards: [],email: '',emailVerified: true,favoriteDoctors: [],favoriteHospitals: [],favoriteServices: [],id: '',password: '',profilePhotoFolder: '',profilePhotoNameId: '',resetPasswordToken: '',resetPasswordTokenTime: '',updatedAt: '',v: 0,verificationToken: 0,verificationTokenTime: '',location: LocationModel(pointModel: PointModel(lat: 0,lng: 0))))) {
+  UserProfileBloc({required this.userProfileRepository}) : super(UserProfileState(userModel: UserModel(gender: '',birthDay: '',phoneNumber: '',lastName: '',firstName: '',accountVerificationOption: '',bookedDoctor: [],createdAt: '',creditCards: [],email: '',emailVerified: true,favoriteDoctors: [],favoriteHospitals: [],favoriteServices: [],id: '',password: '',profilePhotoFolder: '',profilePhotoNameId: '',resetPasswordToken: '',resetPasswordTokenTime: '',updatedAt: '',v: 0,verificationToken: 0,verificationTokenTime: '',
+      // location: LocationModel(pointModel: PointModel(lat: 0,lng: 0))
+  ))) {
     on<GetUserProfile>(getUser);
     add(GetUserProfile());
   }
