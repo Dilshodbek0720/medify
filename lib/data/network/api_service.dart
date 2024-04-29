@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:medify/data/models/credit_card/credit_card.dart';
+import 'package:medify/data/models/add_credit_card/add_credit_card.dart';
 import 'package:medify/data/models/file_model/file_model.dart';
 import 'package:medify/data/models/geocoding/geocoding.dart';
 import 'package:medify/data/models/location/location_model.dart';
@@ -204,6 +204,32 @@ class ApiService {
     }
   }
 
+  // ------------------ VERIFY-NEW-ACCOUNT ----------------------
+
+  Future<UniversalData> login(
+      {required String email, required String password}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/login',
+          data: {"email": email, "password": password});
+      if (response.statusCode == 200) {
+        return UniversalData(
+          // data: UserModel.fromJson(response.data),
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
   // --------------- REGISTER-USER-INFORMATION ------------------
 
   Future<UniversalData> completeRegistration(
@@ -297,7 +323,7 @@ class ApiService {
   // ----------------- CREATE-CREDIT-CARD ------------------------
 
   Future<UniversalData> addCreditCard(
-      {required CreditCardModel creditCardModel, required String token}) async {
+      {required AddCreditCardModel creditCardModel, required String token}) async {
     Response response;
     try {
       response = await _dio.post('/users/add-credit-card',
@@ -358,9 +384,9 @@ class ApiService {
           options: Options(headers: {"Authorization": "Bearer $token"}),
           data: {"verification_token": verificationToken});
       if (response.statusCode == 200) {
-        // return UniversalData(
-        //   data: UserModel.fromJson(response.data),
-        // );
+        return UniversalData(
+          data: UserModel.fromJson(response.data["data"]),
+        );
       }
       return UniversalData(error: 'ERROR');
     } on DioException catch (e) {

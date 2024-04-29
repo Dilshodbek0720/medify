@@ -5,7 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/forgot_password/widgets/success_dialog.dart';
-import 'package:medify/ui/payments/widgets/payment_text_field.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/payments/widgets/payment_text_field.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -237,14 +237,7 @@ class PaymentAddCardScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             onTap: () async{
               context.read<PaymentBloc>().add(AddCard());
-              successDialog(
-                  image: AppIcons.successReg,
-                  title: "Congratulations",
-                  text: "Your account is ready to use. You will be redirected to the Home page in a few seconds..", context: context);
-              await Future.delayed(const Duration(seconds: 3));
-              if(context.mounted) {
-                Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-              }
+              Navigator.pushNamed(context, RouteNames.cardVerifyScreen);
             },
             title: 'Add New Card',
             radius: 100,

@@ -1,3 +1,4 @@
+import 'package:medify/data/models/credit_card/credit_card.dart';
 import 'package:medify/data/models/location/location_model.dart';
 
 class UserModel {
@@ -123,7 +124,7 @@ class UserModel {
     accountVerificationOption: json["accountVerificationOption"] as String? ?? "",
     profilePhotoFolder: json["profilePhotoFolder"] as String? ?? "",
     profilePhotoNameId: json["profilePhotoNameId"] as String? ?? "",
-    creditCards: json["creditCards"] as List? ?? [],
+    creditCards: (json["creditCards"] as List?)?.map((e) => CreditCardModel.fromJson(e)).toList() ?? [],
     favoriteDoctors: json["favoriteDoctors"] as List? ?? [],
     favoriteServices: json["favoriteServices"] as List? ?? [],
     favoriteHospitals: json["favoriteHospitals"] as List? ?? [],

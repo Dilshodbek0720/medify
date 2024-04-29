@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
-import 'package:medify/data/models/credit_card/credit_card.dart';
+import 'package:medify/data/models/add_credit_card/add_credit_card.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/repository/payment_repository.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
@@ -36,7 +36,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   void addCards(AddCard event, Emitter<PaymentState> emit) async{
     UniversalData data = await paymentRepository.addCreditCard(
       token: StorageRepository.getString(StorageKeys.userToken),
-      creditCardModel: CreditCardModel(
+      creditCardModel: AddCreditCardModel(
           cardName: state.cardName,
           cardNumber: state.cardNumber,
           cardHolderName: "Dilshodbek Sayitqulov",

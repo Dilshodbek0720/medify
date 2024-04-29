@@ -29,4 +29,8 @@ class AuthRepository{
   Future<UniversalData> updateLocation({required String token, required UserLocationModel userLocationModel}) async{
     return apiService.updateLocation(token: token, userLocationModel: userLocationModel);
   }
+
+  Future<UniversalData> verifyCreditCard({required String token, required int verificationToken}) async{
+    return apiService.verifyCreditCard(token: token, verificationToken: verificationToken);
+  }
 }

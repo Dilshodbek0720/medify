@@ -6,9 +6,9 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
 class PaymentContainer extends StatelessWidget {
-  const PaymentContainer({super.key, required this.icon, required this.title, required this.state, this.onTap, this.isSelect});
+  const PaymentContainer({super.key, required this.cardNumber, required this.title, required this.state, this.onTap, this.isSelect});
 
-  final String icon;
+  final String cardNumber;
   final String title;
   final String state;
   final bool? isSelect;
@@ -38,7 +38,18 @@ class PaymentContainer extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(24.r),
               child: Row(children: [
-                SvgPicture.asset(icon),
+                cardNumber.startsWith("8600")
+                    ? SizedBox(
+                  width: 55.w, height: 55.h,
+                  child: Image.asset(AppIcons.uzCardPng,),
+                )
+                    : cardNumber.startsWith("9860")
+                    ? SizedBox(
+                    width: 55.w, height: 55.h,
+                    child: Image.asset(AppIcons.humoPng))
+                    : SizedBox(
+                    width: 55.w, height: 55.h,
+                    child: const Icon(Icons.add_card, color: AppColors.c_700,)),
                 12.pw,
                 Text(
                   title,

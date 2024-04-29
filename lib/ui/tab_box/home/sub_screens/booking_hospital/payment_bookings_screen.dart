@@ -68,7 +68,7 @@ class _PaymentBookingsScreenState extends State<PaymentBookingsScreen> {
                       ...List.generate(
                           state.cards.length,
                           (index) => PaymentContainer(
-                              icon: state.cards[index].paymentIcon,
+                              cardNumber: "8600 8654 4574 5789",
                               title: state.cards[index].title,
                               onTap: () {
                                 selected = index;
