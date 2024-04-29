@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     context.read<UserProfileBloc>().add(GetUserProfile());
-    UserModel userModel = context.read<UserProfileBloc>().state.userModel;
+    // UserModel userModel = context.read<UserProfileBloc>().state.userModel;
     // addressConvertor(LatLng(userModel.location.pointModel.lat, userModel.location.pointModel.lng));
     super.initState();
   }

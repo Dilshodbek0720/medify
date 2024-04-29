@@ -5,7 +5,6 @@ import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
 import 'package:medify/ui/forgot_password/confirm_code/confirm_code_screen.dart';
 import 'package:medify/ui/forgot_password/create_password/create_password_screen.dart';
 import 'package:medify/ui/forgot_password/forgot_password_screen.dart';
-import 'package:medify/ui/payments/payment_add_card/payment_add_card_screen.dart';
 import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
@@ -41,6 +40,7 @@ import 'package:medify/ui/tab_box/profile/sub_screens/location/get_location.dart
 import 'package:medify/ui/tab_box/profile/sub_screens/location/search_location.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/payments/sub_screens/card_verify/card_verify_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_activity/storage_activity_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_detail/storage_detail_screen.dart';
@@ -56,6 +56,7 @@ import 'auth/register/verify/verify_screen.dart';
 import 'auth/register/verify/verify_with.dart';
 import 'auth/sign_in/sign_in_screen2.dart';
 import 'auth/sign_up/sign_up_screen2.dart';
+import 'tab_box/profile/sub_screens/payments/sub_screens/payment_add_card/payment_add_card_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
@@ -114,6 +115,7 @@ class RouteNames {
   static const String settingsWidget = "/settings_widget_screen";
   static const String aboutMedifyScreen = "/about_medify_screen";
   static const String meetScreen = "/meet_screen";
+  static const String cardVerifyScreen = "/card_verify_screen";
 }
 
 class AppRoutes {
@@ -347,6 +349,10 @@ class AppRoutes {
       case RouteNames.meetScreen:
         return MaterialPageRoute(
           builder: (context) => const MeetScreen(),
+        );
+        case RouteNames.cardVerifyScreen:
+        return MaterialPageRoute(
+          builder: (context) => const CardVerifyScreen(),
         );
       default:
         return MaterialPageRoute(
