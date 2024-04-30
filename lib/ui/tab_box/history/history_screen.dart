@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medify/ui/tab_box/history/widgets/create_folder_dialog.dart';
 import 'package:medify/ui/tab_box/history/widgets/history_appbar.dart';
 import 'package:medify/ui/tab_box/history/widgets/storage_drawer.dart';
 import 'package:medify/ui/tab_box/history/widgets/storage_file_item.dart';
@@ -88,6 +89,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 ],
               ))
             ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              createFolderDialog(context: context);
+            },
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
+            backgroundColor: AppColors.primary100,
+            child: const Icon(Icons.add, color: AppColors.c_900,),
           ),
         ),
       ),
