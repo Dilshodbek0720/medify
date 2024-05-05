@@ -7,7 +7,6 @@ class CreditCardModel{
   final int verificationToken;
   final String id;
 
-
   CreditCardModel({
     required this.cardName,
     required this.cardNumber,

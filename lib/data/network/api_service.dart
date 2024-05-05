@@ -214,7 +214,8 @@ class ApiService {
           data: {"email": email, "password": password});
       if (response.statusCode == 200) {
         return UniversalData(
-          // data: UserModel.fromJson(response.data),
+          token: response.data['token'],
+          data: UserModel.fromJson(response.data['user']),
         );
       }
       return UniversalData(error: 'ERROR');

@@ -151,6 +151,25 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       keyboardType: TextInputType.phone,
                       controller: state.phoneController,
                       maskFormatter: phoneFormatter,
+                      prefixIcon: SizedBox(
+                        width: 60.w,
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 6.h),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "+998",
+                                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                    height: 20 / 14,
+                                    color: AppColors.c_900,
+                                    fontSize: 17.sp, fontWeight: FontWeight.w400),
+                              ),
+                              6.pw,
+                            ],
+                          ),
+                        ),
+                      ),
                       onChanged: (phone) {
                         context.read<EditProfileCubit>().updatePhone(phone);
                       },

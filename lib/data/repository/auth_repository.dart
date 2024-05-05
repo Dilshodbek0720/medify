@@ -14,6 +14,10 @@ class AuthRepository{
     return apiService.signUp(email: email, password: password, phoneNumber: phoneNumber, verificationType: verificationType);
   }
 
+  Future<UniversalData> login({required String email, required String password}) async{
+    return apiService.login(email: email, password: password);
+  }
+
   Future<UniversalData> resendVerificationToken({required String token, required String verificationMethod}) async{
     return apiService.resendVerificationToken(token: token, verificationMethod: verificationMethod);
   }

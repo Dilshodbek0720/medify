@@ -3,12 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:medify/cubits/auth_cubit/auth_cubit.dart';
 import 'package:medify/cubits/sign_cubit/sign_cubit.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/universal_data.dart';
+import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -78,23 +83,26 @@ class _SignInScreenState extends State<SignInScreen2> {
                   30.ph,
                   GlobalTextField(
                     radius: 0,
-                    textInputAction: TextInputAction.done,
-                    keyboardType: TextInputType.phone,
-                    controller: state.phoneController,
-                    maskFormatter: phoneFormatter,
-                    onChanged: (phone) {},
-                    focusNode: state.phoneFocusNode,
-                    hintText: "Phone",
-                    suffixIcon: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: SvgPicture.asset(AppIcons.call,
-                          colorFilter: ColorFilter.mode(
-                              state.iconColor3, BlendMode.srcIn)),
-                    ),
+                    borderColor: AppColors.c_500,
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    controller: state.emailController,
+                    onChanged: (email) {
+                      context.read<SignUpCubit>().updateEmail(email);
+                    },
+                    focusNode: state.emailFocusNode,
+                    hintText: "Email",
+                    // suffixIcon: Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    //   child: SvgPicture.asset(AppIcons.message,
+                    //       colorFilter: ColorFilter.mode(
+                    //           state.iconColor3, BlendMode.srcIn)),
+                    // ),
                   ),
                   20.ph,
                   GlobalTextField(
                     radius: 0,
+                    borderColor: AppColors.c_500,
                     textInputAction: TextInputAction.done,
                     keyboardType: TextInputType.visiblePassword,
                     controller: state.passwordController,
@@ -109,7 +117,9 @@ class _SignInScreenState extends State<SignInScreen2> {
                             ColorFilter.mode(state.iconColor2, BlendMode.srcIn),
                       ),
                     ),
-                    onChanged: (password) {},
+                    onChanged: (password) {
+                      context.read<SignUpCubit>().updatePassword(password);
+                    },
                     focusNode: state.passwordFocusNode,
                     hintText: 'Password',
                     obscureText: state.isObscure,
@@ -134,19 +144,32 @@ class _SignInScreenState extends State<SignInScreen2> {
                             fontFamily: "Urbanist",
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600),
-                      )),
+                      ),),
                   40.ph,
                   GlobalButton(
                     title: "Sign in",
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteNames.tabBox);
+                    onTap: () async{
+                      UniversalData data = await context.read<AuthCubit>().login(context: context, password: state.passwordController.text, email: state.emailController.text);
+                      if(data.error.isEmpty){
+                        UserModel userModel = data.data;
+                        String token = data.token;
+                        await StorageRepository.putString(
+                          StorageKeys.userToken,
+                          token,
+                        );
+                        if(userModel.emailVerified && context.mounted){
+                          context.read<SignUpCubit>().clearTextFields();
+                          Navigator.pushNamed(context, RouteNames.successful, arguments: "sign_in");
+                        }else{
+
+                        }
+                      }
                     },
                     color: AppColors.primary,
                     textColor: Colors.white,
                     radius: 0,
                   ),
                   20.ph,
-                  // const Spacer()
                 ],
               )
             ],

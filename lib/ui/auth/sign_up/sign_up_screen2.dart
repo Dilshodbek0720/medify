@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,21 +108,12 @@ class _SignInScreenState extends State<SignUpScreen2> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    // IconButton(
-                                    //   onPressed: null,
-                                    //   icon: SvgPicture.asset(
-                                    //     AppIcons.call,
-                                    //     colorFilter: ColorFilter.mode(state.iconColor, BlendMode.srcIn),
-                                    //     semanticsLabel: "A grey color mode",
-                                    //     width: 24.w,
-                                    //   ),
-                                    // ),
                                     Text(
                                       "+998",
                                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                           height: 20 / 14,
                                           color: AppColors.c_900,
-                                          fontSize: 18.sp, fontWeight: FontWeight.w400),
+                                          fontSize: 17.sp, fontWeight: FontWeight.w400),
                                     ),
                                     6.pw,
                                   ],
@@ -163,14 +155,17 @@ class _SignInScreenState extends State<SignUpScreen2> {
                     ],
                   ),
                 ),
-                GlobalButton(
-                    radius: 0,
-                    color: AppColors.primary,
-                    textColor: Colors.white,
-                    title: "Нет учетной записи? Создайте ее.",
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteNames.selectContactScreen);
-                    }),
+                Padding(
+                  padding: EdgeInsets.only(left: 24.w, top: 24.h, right: 24.w, bottom: 36.h),
+                  child: GlobalButton(
+                      radius: 0,
+                      color: AppColors.primary,
+                      textColor: Colors.white,
+                      title: "Нет учетной записи? Создайте ее.",
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteNames.selectContactScreen);
+                      }),
+                ),
               ],
             ),
           );

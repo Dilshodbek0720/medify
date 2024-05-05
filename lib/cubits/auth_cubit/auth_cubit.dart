@@ -43,6 +43,32 @@ class AuthCubit extends Cubit<AuthState> {
     // emit(state.copyWith(status: FormStatus.pure));
   }
 
+  Future<UniversalData> login({required BuildContext context, required String email, required String password}) async {
+    emit(state.copyWith(status: FormStatus.loading));
+    showLoading(context: context);
+    print(context.read<SignUpCubit>().state.emailController.text);
+    UniversalData data = await authRepository.login(
+      email: context.read<SignUpCubit>().state.emailController.text,
+      password: context.read<SignUpCubit>().state.passwordController.text
+    );
+    if(context.mounted){
+      hideLoading(context: context);
+    }
+    if (data.error.isEmpty) {
+      emit(state.copyWith(status: FormStatus.authenticated));
+      return data;
+    } else {
+      emit(
+        state.copyWith(
+          status: FormStatus.failure,
+          statusMessage: data.error,
+        ),
+      );
+      return UniversalData(error: "Failed");
+    }
+    // emit(state.copyWith(status: FormStatus.pure));
+  }
+
   Future<UniversalData> resendVerificationToken({required BuildContext context, required String verificationMethod, required String token}) async {
     emit(state.copyWith(status: FormStatus.loading));
     showLoading(context: context);
