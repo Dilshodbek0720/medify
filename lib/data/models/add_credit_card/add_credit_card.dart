@@ -23,7 +23,6 @@ class AddCreditCardModel{
         cardNumber: cardNumber ?? this.cardNumber,
         cardHolderName: cardHolderName ?? this.cardHolderName,
         expireDate: expireDate ?? this.expireDate,
-
       );
 
   factory AddCreditCardModel.fromJson(Map<String, dynamic> json) => AddCreditCardModel(

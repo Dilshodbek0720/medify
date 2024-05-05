@@ -5,11 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:medify/blocs/user_profile/user_profile_bloc.dart';
-import 'package:medify/data/local/storage_repository/storage_repository.dart';
-import 'package:medify/data/models/file_model/file_model.dart';
-import 'package:medify/data/models/universal_data.dart';
-import 'package:medify/data/models/user/user_model.dart';
-import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_description_item.dart';
@@ -17,7 +12,6 @@ import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/profile_image_ca
 import 'package:medify/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:medify/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
-import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -45,13 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return Scaffold(
           backgroundColor: AppColors.white,
           appBar: ChatProfileAppBar(
-            onTap: ()async{
-              print("token: ${StorageRepository.getString(StorageKeys.userToken)}");
-              ApiService apiService = ApiService();
-              UniversalData data = await apiService.getUserProfile(token: StorageRepository.getString(StorageKeys.userToken));
-              UserModel model = data.data;
-              print(model.profilePhotoFolder);
-            },
+            automaticallyImplyLeading: false,
             background: AppColors.primary400.withOpacity(0.8),
             action: [
               IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),

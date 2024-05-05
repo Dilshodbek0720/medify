@@ -9,6 +9,7 @@ import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/review_screen/widgets/review_card.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_detail_widget.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_review_rating.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/review_search_input.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/working_hours_item.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/hospital_images_widget.dart';
@@ -326,6 +327,9 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                     },
                   ),
                 ),
+                20.ph,
+                const Divider(),
+                DoctorReviewRating(),
                 20.ph,
                 SeeAllItem(onTap: (){
                   Navigator.pushNamed(context, RouteNames.reviewScreen);

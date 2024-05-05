@@ -83,7 +83,10 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
                   Navigator.pushNamed(context, RouteNames.editProfileScreen);
                 }else if(widget.successSelectScreen == 'location'){
                   Navigator.pushNamed(context, RouteNames.tabBox);
-                } else{
+                }else if(widget.successSelectScreen == 'sign_in'){
+                  Navigator.pushNamed(context, RouteNames.tabBox);
+                }
+                else{
                   Navigator.pushNamed(context, RouteNames.tabBox);
                 }
               }),
