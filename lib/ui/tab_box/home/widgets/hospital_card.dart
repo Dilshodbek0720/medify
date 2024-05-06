@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
@@ -18,26 +19,29 @@ class _HospitalCardState extends State<HospitalCard> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           color: AppColors.white,
-          // borderRadius: BorderRadius.circular(24.r)
+          borderRadius: BorderRadius.circular(20.r)
         ),
       child: Material(
         color: AppColors.white,
-        // borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(20.r),
         child: InkWell(
-          // borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(20.r),
           onTap: (){
             Navigator.pushNamed(context, RouteNames.hospitalDetailScreen);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                AppIcons.hospital,
-                height: 150,
-                width: 400,
-                fit: BoxFit.cover,
+              ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),
+                child: Image.asset(
+                  AppIcons.hospital,
+                  height: 150,
+                  width: 400,
+                  fit: BoxFit.cover,
+                ),
               ),
               10.ph,
               Padding(

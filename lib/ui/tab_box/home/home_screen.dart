@@ -286,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ...List.generate(
                           10,
                           (index) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 0.w),
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
                             child: DoctorsCard(
                               length: 10,
                               index: index,
@@ -319,9 +319,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       items: [
                         ...List.generate(
                           10,
-                          (index) => const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 0),
-                            child: HospitalCard(),
+                          (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: const HospitalCard(),
                           ),
                         ),
                       ],
