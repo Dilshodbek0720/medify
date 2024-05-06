@@ -46,14 +46,14 @@ class _DoctorsCardState extends State<DoctorsCard> {
     return Container(
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(20.r),
         border: Border.all(width: 1, color: AppColors.c_200),
       ),
       child: Material(
         color: AppColors.white,
-        // borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(20.r),
         child: InkWell(
-          // borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(20.r),
           onTap: () {
             Navigator.pushNamed(context, RouteNames.doctorDetailScreen);
           },

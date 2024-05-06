@@ -329,7 +329,9 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                 ),
                 20.ph,
                 const Divider(),
-                DoctorReviewRating(),
+
+                const Divider(),
+                const DoctorReviewRating(),
                 20.ph,
                 SeeAllItem(onTap: (){
                   Navigator.pushNamed(context, RouteNames.reviewScreen);
