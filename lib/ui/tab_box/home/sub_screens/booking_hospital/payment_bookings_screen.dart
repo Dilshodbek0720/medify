@@ -75,7 +75,11 @@ class _PaymentBookingsScreenState extends State<PaymentBookingsScreen> {
                                 setState(() {});
                               },
                               isSelect: selected == index,
-                              state: 'Connected')),
+                              state: 'Connected',
+                            onTapCard: (){
+
+                            },
+                          ),),
                       12.ph,
                       GlobalButton(
                         padding: EdgeInsets.symmetric(horizontal: 24.w),

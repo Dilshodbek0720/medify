@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medify/data/models/credit_card/credit_card.dart';
 import 'package:medify/ui/auth/successful/successful_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
@@ -40,6 +41,7 @@ import 'package:medify/ui/tab_box/profile/sub_screens/location/get_location.dart
 import 'package:medify/ui/tab_box/profile/sub_screens/location/search_location.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/payments/sub_screens/card_detail/card_detail_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/sub_screens/card_verify/card_verify_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/security/security_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/storage/storage_activity/storage_activity_screen.dart';
@@ -116,6 +118,7 @@ class RouteNames {
   static const String aboutMedifyScreen = "/about_medify_screen";
   static const String meetScreen = "/meet_screen";
   static const String cardVerifyScreen = "/card_verify_screen";
+  static const String cardDetailScreen = "/card_detail_screen";
 }
 
 class AppRoutes {
@@ -268,7 +271,10 @@ class AppRoutes {
       case RouteNames.galleryDetailScreen:
         Map<Object, Object> maps = settings.arguments as Map<Object, Object>;
         return MaterialPageRoute(
-          builder: (context) => GalleryDetailScreen(images: maps['images'] as List<String>, selectedIndex: maps['selectedIndex'] as int,),
+          builder: (context) => GalleryDetailScreen(
+            images: maps['images'] as List<String>,
+            selectedIndex: maps['selectedIndex'] as int,
+          ),
         );
       case RouteNames.mailDetailScreen:
         return MaterialPageRoute(
@@ -283,9 +289,11 @@ class AppRoutes {
           builder: (context) => const StorageActivityScreen(),
         );
       case RouteNames.storageDetailScreen:
-        bool  isEmailFile = settings.arguments as bool;
+        bool isEmailFile = settings.arguments as bool;
         return MaterialPageRoute(
-          builder: (context) => StorageDetailScreen(isEmailSelectFile: isEmailFile,),
+          builder: (context) => StorageDetailScreen(
+            isEmailSelectFile: isEmailFile,
+          ),
         );
       case RouteNames.pdfViewerScreen:
         return MaterialPageRoute(
@@ -303,7 +311,7 @@ class AppRoutes {
       case RouteNames.chatListScreen:
         return MaterialPageRoute(
           builder: (context) => const ChatListScreen(),
-          );
+        );
       case RouteNames.chatScreen:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
@@ -319,7 +327,9 @@ class AppRoutes {
       case RouteNames.verifyScreen:
         String text = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => VerifyScreen(text: text,),
+          builder: (context) => VerifyScreen(
+            text: text,
+          ),
         );
       case RouteNames.answerMailScreen:
         return MaterialPageRoute(
@@ -328,7 +338,9 @@ class AppRoutes {
       case RouteNames.successful:
         String selectScreen = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => SuccessfulScreen(successSelectScreen: selectScreen,),
+          builder: (context) => SuccessfulScreen(
+            successSelectScreen: selectScreen,
+          ),
         );
       case RouteNames.calendarScreen:
         return MaterialPageRoute(
@@ -350,9 +362,13 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const MeetScreen(),
         );
-        case RouteNames.cardVerifyScreen:
+      case RouteNames.cardVerifyScreen:
         return MaterialPageRoute(
           builder: (context) => const CardVerifyScreen(),
+        );
+      case RouteNames.cardDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => CardDetailScreen(),
         );
       default:
         return MaterialPageRoute(

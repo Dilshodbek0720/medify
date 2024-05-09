@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/chat/widgets/chat_profile_appbar.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
@@ -15,10 +16,9 @@ class LetsYouInScreen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: GlobalAppBar(
-        onTap: () {
-          Navigator.pop(context);
-        },
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.white,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
