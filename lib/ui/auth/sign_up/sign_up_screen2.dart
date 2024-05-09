@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -151,7 +150,7 @@ class _SignInScreenState extends State<SignUpScreen2> {
                             hintText: "Password",
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -164,7 +163,8 @@ class _SignInScreenState extends State<SignUpScreen2> {
                       title: "Нет учетной записи? Создайте ее.",
                       onTap: () {
                         Navigator.pushNamed(context, RouteNames.selectContactScreen);
-                      }),
+                      },
+                  ),
                 ),
               ],
             ),

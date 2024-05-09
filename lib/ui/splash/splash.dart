@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _init()async{
     await Future.delayed(const Duration(seconds: 3));
     if(context.mounted){
-      // StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen) :
+      StorageRepository.getString(StorageKeys.userToken).isEmpty ? Navigator.pushReplacementNamed(context, RouteNames.welcomeScreen) :
       Navigator.pushReplacementNamed(context, RouteNames.tabBox);
     }
   }

@@ -26,6 +26,7 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
     context.read<UserProfileBloc>().add(GetUserProfile());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +78,11 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
                               return PaymentContainer(
                                   cardNumber: creditCard.cardNumber,
                                   title: creditCard.cardName,
-                                  state: 'Connected');
+                                  state: 'Connected',
+                                onTapCard: (){
+                                    Navigator.pushNamed(context, RouteNames.cardDetailScreen);
+                                },
+                              );
                                 }
                           )
                         ],
