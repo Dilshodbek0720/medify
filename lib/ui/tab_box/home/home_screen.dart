@@ -371,6 +371,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       settingsWidgetKeys[5]) {
                                     Navigator.pushNamed(
                                         context, RouteNames.storageHomeScreen);
+                                  } else if (state.settingsNames[index] ==
+                                      settingsWidgetKeys[6]) {
+                                    Navigator.pushNamed(
+                                        context, RouteNames.myFavoriteScreen);
                                   }
                                 },
                               ),

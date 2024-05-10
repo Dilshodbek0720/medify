@@ -42,7 +42,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             automaticallyImplyLeading: false,
             background: AppColors.primary400.withOpacity(0.8),
             action: [
-              IconButton(onPressed: (){}, icon: const Icon(Icons.search, color: AppColors.white,)),
+              IconButton(onPressed: ()async{
+
+              }, icon: const Icon(Icons.search, color: AppColors.white,)),
               IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
             ],
           ),
@@ -77,6 +79,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 text: tr('my_bookings'),
                 icon: AppIcons.calendar,
                 onTap: () {},
+              ),
+              ProfileButton(
+                text: 'My Favorite',
+                icon: AppIcons.heart,
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.myFavoriteScreen);
+                },
               ),
               ProfileButton(
                   text: tr('address'),

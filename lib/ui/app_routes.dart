@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medify/data/models/credit_card/credit_card.dart';
 import 'package:medify/ui/auth/successful/successful_screen.dart';
 import 'package:medify/ui/enterence/onboarding/onboarding_pages.dart';
 import 'package:medify/ui/enterence/welcome/welcome_screen.dart';
@@ -39,6 +38,7 @@ import 'package:medify/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_
 import 'package:medify/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/location/get_location.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/location/search_location.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/my_favorites/my_favorites_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
 import 'package:medify/ui/tab_box/profile/sub_screens/payments/sub_screens/card_detail/card_detail_screen.dart';
@@ -119,6 +119,7 @@ class RouteNames {
   static const String meetScreen = "/meet_screen";
   static const String cardVerifyScreen = "/card_verify_screen";
   static const String cardDetailScreen = "/card_detail_screen";
+  static const String myFavoriteScreen = "/my_favorite_screen";
 }
 
 class AppRoutes {
@@ -368,7 +369,11 @@ class AppRoutes {
         );
       case RouteNames.cardDetailScreen:
         return MaterialPageRoute(
-          builder: (context) => CardDetailScreen(),
+          builder: (context) => const CardDetailScreen(),
+        );
+      case RouteNames.myFavoriteScreen:
+        return MaterialPageRoute(
+          builder: (context) => const MyFavoritesScreen(),
         );
       default:
         return MaterialPageRoute(

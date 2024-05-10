@@ -9,10 +9,8 @@ import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/models/user/user_model.dart';
 import 'package:medify/data/repository/user_profile_repository.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
-import 'package:medify/utils/icons/app_icons.dart';
 
 part 'user_profile_event.dart';
-
 part 'user_profile_state.dart';
 
 class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
