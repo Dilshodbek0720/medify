@@ -552,4 +552,140 @@ class ApiService {
     }
   }
 
+  // -------------------- GET-ALL-FAVORITE-DOCTORS -------------------
+
+  Future<UniversalData> getAllFavoriteDoctors(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-all-favorite-doctors',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------------- GET-ALL-FAVORITE-SERVICES -------------------
+
+  Future<UniversalData> getAllFavoriteServices(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-all-favorite-services',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------------- GET-ALL-FAVORITE-HOSPITALS -------------------
+
+  Future<UniversalData> getAllFavoriteHospitals(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-all-favorite-hospitals',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------------- GET-BOOKED-DOCTORS-LIST -------------------
+
+  Future<UniversalData> getBookedDoctorsList(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-booked-doctors-list',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // -------------------- GET-BOOKED-DOCTORS-LIST -------------------
+
+  Future<UniversalData> getBookedServicesList(
+      {required String token}) async {
+    Response response;
+    try {
+      response = await _dio.get('/users/get-booked-services-list',
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      if (response.statusCode == 200) {
+        return UniversalData(
+          error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+
 }

@@ -31,6 +31,7 @@ class StorageKeys {
   static const String payment = "Оплата";
   static const String address = "Адрес";
   static const String fileStorage = "File Storage";
+  static const String myFavorites = "My Favorites";
 }
 
 

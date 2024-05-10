@@ -49,6 +49,7 @@ List<String> settingsWidgetKeys = [
   StorageKeys.payment,
   StorageKeys.address,
   StorageKeys.fileStorage,
+  StorageKeys.myFavorites,
 ];
 
 List<String> settingsIcons = [
@@ -58,12 +59,14 @@ List<String> settingsIcons = [
   AppIcons.wallet,
   AppIcons.location,
   AppIcons.download,
+  AppIcons.heart,
 ];
 
 List<bool> settingsWidgetValues = [
   true,
   true,
   true,
+  false,
   false,
   false,
   false,
