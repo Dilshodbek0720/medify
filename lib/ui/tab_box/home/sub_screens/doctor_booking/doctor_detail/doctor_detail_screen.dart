@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -328,9 +329,32 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                   ),
                 ),
                 20.ph,
-                const Divider(),
-
-                const Divider(),
+                Divider(height: 1.h,),
+                InkWell(
+                  onTap: (){
+                    Navigator.pushNamed(context, RouteNames.newCommentScreen);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                    child: Row(
+                      children: [
+                        Icon(Icons.edit, size: 24.w, color: AppColors.primary,),
+                        12.pw,
+                        Text(
+                          'Write new comment',
+                          style: TextStyle(
+                            color: AppColors.c_800,
+                            fontSize: 16.sp,
+                            fontFamily: 'Urbanist',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(height: 1.h,),
+                8.ph,
                 const DoctorReviewRating(),
                 20.ph,
                 SeeAllItem(onTap: (){

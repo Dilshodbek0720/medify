@@ -26,6 +26,7 @@ import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_detail/gallery_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/new_comment/new_comment_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/settings_widget/settings_widget_screen.dart';
 import 'package:medify/ui/tab_box/mailing/sub_screens/answer_mail/answer_mail_screen.dart';
@@ -120,6 +121,7 @@ class RouteNames {
   static const String cardVerifyScreen = "/card_verify_screen";
   static const String cardDetailScreen = "/card_detail_screen";
   static const String myFavoriteScreen = "/my_favorite_screen";
+  static const String newCommentScreen = "/new_comment_screen";
 }
 
 class AppRoutes {
@@ -374,6 +376,10 @@ class AppRoutes {
       case RouteNames.myFavoriteScreen:
         return MaterialPageRoute(
           builder: (context) => const MyFavoritesScreen(),
+        );
+      case RouteNames.newCommentScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NewCommentScreen(),
         );
       default:
         return MaterialPageRoute(
