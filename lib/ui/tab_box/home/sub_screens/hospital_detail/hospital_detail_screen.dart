@@ -5,6 +5,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/review_screen/widgets/review_card.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_review_rating.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/review_search_input.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/apartment_item.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/bed_count_item.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/hospital_images_widget.dart';
@@ -246,8 +248,55 @@ class _HospitalDetailScreenState extends State<HospitalDetailScreen> {
                         },
                       ),
                     ),
-                    24.ph,
+                    20.ph,
+                    Divider(height: 1.h,),
+                    InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, RouteNames.newCommentScreen);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                        child: Row(
+                          children: [
+                            Icon(Icons.edit, size: 24.w, color: AppColors.primary,),
+                            12.pw,
+                            Text(
+                              'Write new comment',
+                              style: TextStyle(
+                                color: AppColors.c_800,
+                                fontSize: 16.sp,
+                                fontFamily: 'Urbanist',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(height: 1.h,),
+                    8.ph,
+                    const DoctorReviewRating(),
+                    20.ph,
                     SeeAllItem(onTap: (){ }, title: '4.8 (1,275 reviews)'),
+                    4.ph,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: ReviewSearchInput(hintText: 'Search in reviews',
+                        prefixIcon:  Container(
+                        height: 10.sp,
+                        width: 10.sp,
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: SvgPicture.asset(AppIcons.search,
+                            colorFilter: const ColorFilter.mode(
+                                AppColors.primary500, BlendMode.srcIn)),
+                      ),),
+                    ),
+                    6.ph,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: const Divider(),
+                    ),
+                    4.ph,
                     const ReviewCard(index: 0),
                   ],
                 ),),
