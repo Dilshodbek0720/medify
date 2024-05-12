@@ -24,6 +24,7 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
   @override
   void initState() {
     context.read<UserProfileBloc>().add(GetUserProfile());
+    print('Print');
     super.initState();
   }
 
