@@ -113,7 +113,7 @@ class CardCodeInputFieldState extends State<CardCodeInputField> {
                             title: "Congratulations",
                             text: "Your credit card is ready to use. You will be redirected to the Home page in a few seconds..", context: context);
                         await Future.delayed(const Duration(seconds: 1));
-                        Navigator.pushNamed(context, RouteNames.paymentListScreen);
+                        Navigator.pushNamed(context, RouteNames.tabBox);
                       }
                     }
                   }
