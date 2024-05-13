@@ -1,19 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/review_screen/widgets/review_card.dart';
-import 'package:medify/ui/search/widgets/doctor_card.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_detail_widget.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/doctor_review_rating.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/review_search_input.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/working_hours_item.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/widgets/hospital_images_widget.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_detail/widgets/doctor_detail_widget.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_detail/widgets/doctor_review_rating.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_detail/widgets/working_hours_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/tab_box/mailing/widgets/answer_button.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
@@ -24,6 +20,8 @@ import 'package:medify/utils/size/screen_size.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:medify/utils/ui_utils/utility_function.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'widgets/review_search_input.dart';
 
 class DoctorDetailScreen extends StatefulWidget {
   const DoctorDetailScreen({super.key});
@@ -144,7 +142,7 @@ class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       AnswerButton(onTap: (){
-
+                        Navigator.pushNamed(context, RouteNames.askQuestionScreen);
                       }, title: 'Message', icon: AppIcons.send, color: AppColors.green, textColor: AppColors.green,),
                       12.pw,
                       AnswerButton(onTap: () => setState(() {

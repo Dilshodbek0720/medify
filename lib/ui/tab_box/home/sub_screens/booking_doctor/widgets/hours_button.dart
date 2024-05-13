@@ -25,7 +25,7 @@ class _HoursButtonState extends State<HoursButton> {
                 : Colors.white,
             borderRadius: BorderRadius.circular(50.r),
             border: Border.all(
-              color: widget.isSelect ? Colors.green : AppColors.c_700,
+              color: widget.isSelect ? Colors.green : AppColors.c_400,
             )),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),

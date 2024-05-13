@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/widgets/review_slider.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_detail/widgets/review_slider.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';

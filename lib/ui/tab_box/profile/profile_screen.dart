@@ -145,8 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: 'File Storage',
                   icon: AppIcons.download,
                   onTap: () {
-                    Navigator.pushNamed(
-                        context, RouteNames.storageHomeScreen);
+                    Navigator.pushNamed(context, RouteNames.storageHomeScreen);
                   }),
               ProfileButton(
                 text: 'Calendar',

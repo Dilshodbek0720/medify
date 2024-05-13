@@ -135,14 +135,17 @@ class _SearchScreenState extends State<SearchScreen> {
                       children: [
                         ...List.generate(
                             10,
-                            (index) => DoctorsCard(
-                                length: 10,
-                                index: index,
-                                name: "Ahmadjanova Nasibaxon Erkinovna",
-                                category: "Ginekolog",
-                                experience: "Tajriba: 29 yil",
-                                language: "uz | ru",
-                                rating: "4.4",),)
+                            (index) => Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6.h),
+                              child: DoctorsCard(
+                                  length: 10,
+                                  index: index,
+                                  name: "Ahmadjanova Nasibaxon Erkinovna",
+                                  category: "Ginekolog",
+                                  experience: "Tajriba: 29 yil",
+                                  language: "uz | ru",
+                                  rating: "4.4",),
+                            ),),
                       ],
                     )
                   : selectType == 1

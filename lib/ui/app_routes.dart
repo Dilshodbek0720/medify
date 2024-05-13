@@ -16,18 +16,21 @@ import 'package:medify/ui/tab_box/home/sub_screens/booking_hospital/calendar_scr
 import 'package:medify/ui/tab_box/home/sub_screens/booking_hospital/our_rec.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/booking_hospital/payment_bookings_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/booking_hospital/review_summary.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/booking_service/booking_service_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/category/category_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat_list_screen/chat_list_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat_profile/chat_profile_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/chat/chat_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/chat/meet/meet_screen.dart';
-import 'package:medify/ui/tab_box/home/sub_screens/doctor_booking/doctor_detail/doctor_detail_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/doctor_detail/doctor_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/favorite/favorite_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/hospital_detail_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/ask_question/ask_question_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_detail/gallery_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/gallery_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/hospital_detail/sub_screens/new_comment/new_comment_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/notification/notification_screen.dart';
+import 'package:medify/ui/tab_box/home/sub_screens/service_detail/service_detail_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/settings_widget/settings_widget_screen.dart';
 import 'package:medify/ui/tab_box/mailing/sub_screens/answer_mail/answer_mail_screen.dart';
 import 'package:medify/ui/tab_box/mailing/sub_screens/mail_detail/mail_detail_screen.dart';
@@ -122,6 +125,9 @@ class RouteNames {
   static const String cardDetailScreen = "/card_detail_screen";
   static const String myFavoriteScreen = "/my_favorite_screen";
   static const String newCommentScreen = "/new_comment_screen";
+  static const String askQuestionScreen = "/ask_question_screen";
+  static const String serviceDetailScreen = "/service_detail_screen";
+  static const String bookingServiceScreen = "/booking_service_screen";
 }
 
 class AppRoutes {
@@ -380,6 +386,18 @@ class AppRoutes {
       case RouteNames.newCommentScreen:
         return MaterialPageRoute(
           builder: (context) => const NewCommentScreen(),
+        );
+      case RouteNames.askQuestionScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AskQuestionScreen(),
+        );
+      case RouteNames.serviceDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ServiceDetailScreen(),
+        );
+      case RouteNames.bookingServiceScreen:
+        return MaterialPageRoute(
+          builder: (context) => const BookingServicesScreen(),
         );
       default:
         return MaterialPageRoute(
