@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
@@ -84,8 +85,10 @@ class _OwnerItemState extends State<OwnerItem> {
             ],
           ),
           const Spacer(),
-          getIcon(AppIcons.chat,
-              context: context, color: AppColors.primary500, onTap: () {}),
+          getIcon(AppIcons.chat, context: context, color: AppColors.primary500,
+              onTap: () {
+            Navigator.pushNamed(context, RouteNames.askQuestionScreen);
+          }),
           getIcon(AppIcons.call,
               context: context,
               color: AppColors.primary500,

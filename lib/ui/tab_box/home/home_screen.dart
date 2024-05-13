@@ -13,6 +13,7 @@ import 'package:medify/ui/tab_box/home/widgets/category_item2.dart';
 import 'package:medify/ui/tab_box/home/widgets/hospital_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/reklama_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
+import 'package:medify/ui/tab_box/home/widgets/service_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/service_category_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/setting_widget_item.dart';
 import 'package:medify/ui/widgets/global_input.dart';
@@ -295,6 +296,39 @@ class _HomeScreenState extends State<HomeScreen> {
                               experience: "Tajriba: 29 yil",
                               language: "uz | ru",
                               rating: "4.4",
+                            ),
+                          ),
+                        ),
+                      ],
+                      options: CarouselOptions(
+                        viewportFraction: 1,
+                        height: 155.h,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 3),
+                      ),
+                    ),
+                    SeeAllItem(
+                        onTap: () {
+
+                        },
+                        title: 'Top Services',
+                        backgroundColor: AppColors.c_50),
+                    CarouselSlider(
+                      items: [
+                        ...List.generate(
+                          10,
+                              (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: ServiceCard(
+                              length: 10,
+                              index: index,
+                              name: "Healthy Family Center",
+                              price: "Xizmat narxi: 99.9\$",
+                              language: "uz | ru",
+                              rating: "4.4",
+                              onTap: (){
+                                Navigator.pushNamed(context, RouteNames.serviceDetailScreen);
+                              },
                             ),
                           ),
                         ),

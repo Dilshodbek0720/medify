@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/cubits/calendar_doctors/calendar_doctors_cubit.dart';
+import 'package:medify/cubits/calendar_services/calendar_services_cubit.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/app_routes.dart';
@@ -18,23 +19,23 @@ import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarDoctorsScreen extends StatefulWidget {
-  const CalendarDoctorsScreen({super.key});
+class BookingServicesScreen extends StatefulWidget {
+  const BookingServicesScreen({super.key});
 
   @override
-  State<CalendarDoctorsScreen> createState() => _CalendarDoctorsScreenState();
+  State<BookingServicesScreen> createState() => _CalendarServicesScreenState();
 }
 
-class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
+class _CalendarServicesScreenState extends State<BookingServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-          title: "Book Real Estate",
+          title: "Booking Services Estate",
           onTap: () {
             Navigator.pop(context);
           }),
-      body: BlocBuilder<CalendarDoctorsCubit, CalendarDoctorsState>(
+      body: BlocBuilder<CalendarServicesCubit, CalendarServicesState>(
         builder: (context, state) {
           // print("${state.startDate} checkIn");
           return Column(
@@ -142,15 +143,15 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                         state.rangeSelectionMode,
                         onRangeSelected: (start, end, focusedDay) {
                           context
-                              .read<CalendarDoctorsCubit>()
+                              .read<CalendarServicesCubit>()
                               .initializeRanges(start, start);
                           context
-                              .read<CalendarDoctorsCubit>()
+                              .read<CalendarServicesCubit>()
                               .initializeRanges(end, start);
                         },
                         onPageChanged: (v) {
                           context
-                              .read<CalendarDoctorsCubit>()
+                              .read<CalendarServicesCubit>()
                               .changeFocusDay(v);
                         },
                       ),
@@ -163,92 +164,22 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                         children: [
                           ...List.generate(
                               9,
-                              (index) => Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 5.h),
-                                    child: HoursButton(
-                                        index: index + 1,
-                                        onTap: () {
-                                          context
-                                              .read<CalendarDoctorsCubit>()
-                                              .setSelectHour(index);
-                                        },
-                                        isSelect: state.selectHour == index),
-                                  ))
+                                  (index) => Padding(
+                                padding:
+                                EdgeInsets.symmetric(vertical: 5.h),
+                                child: HoursButton(
+                                    index: index + 1,
+                                    onTap: () {
+                                      context
+                                          .read<CalendarServicesCubit>()
+                                          .setSelectHour(index);
+                                    },
+                                    isSelect: state.selectHour == index),
+                              ))
                         ],
                       ),
                     ),
                     24.ph,
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
-                      leading: DecoratedBox(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.blueGrey),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.r),
-                          child: SvgPicture.asset(AppIcons.video,
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.white, BlendMode.srcIn)),
-                        ),
-                      ),
-                      title: Text(
-                        tr("video_conversation"),
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.c_900,
-                        ),
-                      ),
-                      subtitle: Text(
-                        "\$13.88 per 30 minutes",
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.c_700,
-                        ),
-                      ),
-                      trailing: state.selectCall == 1
-                          ? SvgPicture.asset(AppIcons.checked)
-                          : SvgPicture.asset(AppIcons.unchecked),
-                      onTap: () {
-                        context.read<CalendarDoctorsCubit>().setSelectCall(1);
-                      },
-                    ),
-                    ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
-                      leading: DecoratedBox(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.green),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.r),
-                          child: SvgPicture.asset(AppIcons.call,
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.white, BlendMode.srcIn)),
-                        ),
-                      ),
-                      title: Text(
-                        tr("audio_conversation"),
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.c_900,
-                        ),
-                      ),
-                      subtitle: Text("\$10.33 per 30 minutes",
-                          style: TextStyle(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.c_700,
-                          )),
-                      trailing: state.selectCall == 2
-                          ? SvgPicture.asset(AppIcons.checked)
-                          : SvgPicture.asset(AppIcons.unchecked),
-                      onTap: () {
-                        context.read<CalendarDoctorsCubit>().setSelectCall(2);
-                      },
-                    ),
                     ListTile(
                       contentPadding: EdgeInsets.symmetric(horizontal: 24.w),
                       leading: DecoratedBox(
@@ -272,13 +203,13 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                       ),
                       subtitle: state.image != null
                           ? Text(
-                              state.image!.substring(state.image!.length - 15),
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.c_700,
-                              ),
-                            )
+                        state.image!.substring(state.image!.length - 15),
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.c_700,
+                        ),
+                      )
                           : null,
                       trailing: state.image != null
                           ? SvgPicture.asset(AppIcons.checked)
@@ -287,7 +218,7 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                         showCameraAndGalleryDialog(context, (xfile) {
                           if (xfile != null) {
                             context
-                                .read<CalendarDoctorsCubit>()
+                                .read<CalendarServicesCubit>()
                                 .updateImage(xfile.path);
                             print(xfile.path.split(".").last);
                           }
@@ -317,20 +248,20 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                       ),
                       subtitle: state.file != null
                           ? Text(
-                              state.file!.paths.first!.split("/").last,
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.c_700,
-                              ),
-                            )
+                        state.file!.paths.first!.split("/").last,
+                        style: TextStyle(
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.c_700,
+                        ),
+                      )
                           : null,
                       trailing: state.file != null
                           ? SvgPicture.asset(AppIcons.checked)
                           : SvgPicture.asset(AppIcons.unchecked),
                       onTap: () async {
                         context
-                            .read<CalendarDoctorsCubit>()
+                            .read<CalendarServicesCubit>()
                             .updateFile(await _openFilePicker(context));
                         setState(() {});
                       },
