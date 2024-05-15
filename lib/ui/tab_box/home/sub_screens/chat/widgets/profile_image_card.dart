@@ -17,40 +17,55 @@ class ProfileImageCard extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(bottom: 28.r),
           color: AppColors.primary400.withOpacity(0.8),
-          padding: EdgeInsets.only(
-            left: 24.w,
-            right: 24.w,
-            bottom: 24.h,
-          ),
-          child: Row(
+          child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100.r),
-                child: SizedBox(
-                  width: 70.r,
-                  height: 70.r,
-                  child: Image.asset(AppIcons.profileChat, fit: BoxFit.cover),),),
-              24.pw,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    userName,
-                    style: TextStyle(
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.white),
-                  ),
-                  // 5.ph,
-                  // Text(
-                  //   "Yaqinda onlain edi",
-                  //   style: TextStyle(
-                  //       fontSize: 14.sp,
-                  //       fontWeight: FontWeight.w500,
-                  //       color: AppColors.white),
-                  // ),
+                  IconButton(onPressed: ()async{
+
+                  }, icon: const Icon(Icons.search, color: AppColors.white,)),
+                  IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,))
                 ],
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 24.w,
+                  right: 24.w,
+                  bottom: 24.h,
+                ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100.r),
+                      child: SizedBox(
+                        width: 70.r,
+                        height: 70.r,
+                        child: Image.asset(AppIcons.profileChat, fit: BoxFit.cover),),),
+                    24.pw,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          userName,
+                          style: TextStyle(
+                              fontSize: 22.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.white),
+                        ),
+                        // 5.ph,
+                        // Text(
+                        //   "Yaqinda onlain edi",
+                        //   style: TextStyle(
+                        //       fontSize: 14.sp,
+                        //       fontWeight: FontWeight.w500,
+                        //       color: AppColors.white),
+                        // ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
