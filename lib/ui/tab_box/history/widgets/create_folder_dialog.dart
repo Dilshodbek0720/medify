@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/blocs/get_files/get_files_bloc.dart';
+import 'package:medify/blocs/get_files/get_files_event.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
@@ -36,9 +39,8 @@ void createFolderDialog({required BuildContext context}) {
                       // FocusManager.instance.primaryFocus?.unfocus();
                     },
                     onChanged: (v){
-                      folderName = v;
-                      // state((){
-                      // });
+                      context.read<GetFilesBloc>().updateFolderName(v);
+                      print(context.read<GetFilesBloc>().state.folderName);
                     },
                     decoration: InputDecoration(
                       counterText: '',
@@ -98,6 +100,7 @@ void createFolderDialog({required BuildContext context}) {
               TextButton(
                 onPressed: ()async{
                   ApiService apiService = ApiService();
+                  context.read<GetFilesBloc>().add(AddFolder());
                   UniversalData data = await apiService.createNewFolder(token: StorageRepository.getString(StorageKeys.userToken), folderName: folderName);
                   String message = data.data;
                   if(message.isNotEmpty){

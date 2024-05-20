@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
 
@@ -21,5 +24,9 @@ class FileRepository {
 
   Future<UniversalData> uploadToInnerFolder({required String token, required String folderName, required PlatformFile file}) async{
     return apiService.uploadToInnerFolder(token: token, folderName: folderName, file: file);
+  }
+
+  Future<UniversalData> uploadFileToCloud({required String token, required XFile file}) async{
+    return apiService.uploadFileToCloud(token: token, file: file);
   }
 }

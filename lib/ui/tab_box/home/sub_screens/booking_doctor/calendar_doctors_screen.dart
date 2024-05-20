@@ -286,8 +286,7 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
                       onTap: () {
                         showCameraAndGalleryDialog(context, (xfile) {
                           if (xfile != null) {
-                            context
-                                .read<CalendarDoctorsCubit>()
+                            context.read<CalendarDoctorsCubit>()
                                 .updateImage(xfile.path);
                             print(xfile.path.split(".").last);
                           }
