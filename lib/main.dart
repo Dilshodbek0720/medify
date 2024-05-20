@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medify/blocs/connectivity/connectivity_bloc.dart';
 import 'package:medify/blocs/email_message_file/email_message_file_bloc.dart';
 import 'package:medify/blocs/favorite/favorite_bloc.dart';
+import 'package:medify/blocs/get_files/get_files_bloc.dart';
 import 'package:medify/blocs/messages/message_bloc.dart';
 import 'package:medify/blocs/payment_add_bloc/payment_add_bloc.dart';
 import 'package:medify/blocs/payment_bloc/payment_bloc.dart';
@@ -94,6 +95,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => LocationCubit(apiService: ApiService())),
           BlocProvider(create: (context) => UserProfileBloc(userProfileRepository: context.read<UserProfileRepository>())),
           BlocProvider(create: (context) => FavoriteBloc(favoriteRepository: context.read<FavoriteRepository>())),
+          BlocProvider(create: (context) => GetFilesBloc(fileRepository: context.read<FileRepository>())),
         ],
         child: EasyLocalization(
             supportedLocales: const [

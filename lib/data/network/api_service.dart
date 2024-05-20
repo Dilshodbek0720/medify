@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -440,7 +442,7 @@ class ApiService {
       );
       if (response.statusCode == 200) {
         return UniversalData(
-          data: (response.data['files'] as List).map((e) => FileModel.fromJson(e)).toList(),
+          data: response.data
         );
       }
       return UniversalData(error: 'ERROR');
@@ -672,6 +674,49 @@ class ApiService {
       if (response.statusCode == 200) {
         return UniversalData(
           error: response.data['message'],
+        );
+      }
+      return UniversalData(error: 'ERROR');
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return UniversalData(error: e.response!.data['message']);
+      } else {
+        return UniversalData(error: e.message!);
+      }
+    } catch (e) {
+      debugPrint("Caught: $e");
+      return UniversalData(error: e.toString());
+    }
+  }
+
+  // ------------------- UPLOAD-FILE-TO-CLOUD --------------------
+
+  Future<UniversalData> uploadFileToCloud(
+      {required String token, required XFile file}) async {
+    Response response;
+    try {
+      FormData formData = FormData();
+      String fileName = file.path.split('/').last;
+      String fileExtension = fileName.split('.').last.toLowerCase();
+      String contentType = "file/$fileExtension";
+      formData.files.add(MapEntry(
+        "file",
+        await MultipartFile.fromFile(
+          file.path,
+          filename: fileName,
+          contentType: MediaType.parse(contentType),
+        ),
+      ));
+      response = await _dio.post('/users/upload-to-disk',
+        data: formData,
+        options: Options(
+            contentType: "multipart/form-data",
+            headers: {"Authorization": "Bearer $token"}),
+      );
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        return UniversalData(
+          data: response.data['message'],
         );
       }
       return UniversalData(error: 'ERROR');

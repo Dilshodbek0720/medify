@@ -89,17 +89,17 @@ class HistoryAppbar extends StatelessWidget implements PreferredSize{
         tabAlignment: TabAlignment.center,
         indicatorColor: AppColors.primary,
         labelStyle: TextStyle(
-            fontSize: 14.sp,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w700,
             fontFamily: 'Urbanist'
         ),
         tabs: <Widget>[
           SizedBox(
               width: MediaQuery.of(context).size.width/2.5,
-              child: const Tab(text: "Рекомендуемые",)),
+              child: const Tab(text: "Folders",)),
           SizedBox(
               width: MediaQuery.of(context).size.width/2.5,
-              child: const Tab(text: "Действие")),
+              child: const Tab(text: "Files")),
         ],
       ),
     );

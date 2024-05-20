@@ -24,7 +24,7 @@ class StorageFileItem extends StatelessWidget {
             SizedBox(
               height: 28.w,
               width: 28.w,
-              child: isFile ? SvgPicture.asset(AppIcons.paper) : SvgPicture.asset(AppIcons.image, colorFilter: const ColorFilter.mode(AppColors.red, BlendMode.srcIn)),
+              child: isFile ? SvgPicture.asset(AppIcons.paper, colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),) : SvgPicture.asset(AppIcons.folder, colorFilter: const ColorFilter.mode(AppColors.orange, BlendMode.srcIn)),
             ),
             20.pw,
             Column(
