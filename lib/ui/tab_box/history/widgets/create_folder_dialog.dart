@@ -39,6 +39,7 @@ void createFolderDialog({required BuildContext context}) {
                       // FocusManager.instance.primaryFocus?.unfocus();
                     },
                     onChanged: (v){
+                      // folderName = v;
                       context.read<GetFilesBloc>().updateFolderName(v);
                       print(context.read<GetFilesBloc>().state.folderName);
                     },
@@ -99,14 +100,15 @@ void createFolderDialog({required BuildContext context}) {
               ),
               TextButton(
                 onPressed: ()async{
-                  ApiService apiService = ApiService();
+                  // print("Folder: $folderName");
+                  // if(folderName.isNotEmpty){
+                  //   // ApiService apiService = ApiService();
+                  //   // UniversalData data = await apiService.createNewFolder(token: StorageRepository.getString(StorageKeys.userToken), folderName: folderName);
+                  //   context.read<GetFilesBloc>().add(AddFolder());
+                  //   print(StorageRepository.getString(StorageKeys.userToken));
+                  // }
                   context.read<GetFilesBloc>().add(AddFolder());
-                  UniversalData data = await apiService.createNewFolder(token: StorageRepository.getString(StorageKeys.userToken), folderName: folderName);
-                  String message = data.data;
-                  if(message.isNotEmpty){
-                    print(message);
-                    print(StorageRepository.getString(StorageKeys.userToken));
-                  }
+                  print(StorageRepository.getString(StorageKeys.userToken));
                   Navigator.pop(context);
                 },
                 child: Text(
