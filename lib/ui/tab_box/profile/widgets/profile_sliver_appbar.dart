@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/utils/colors/app_colors.dart';
+import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
 
@@ -129,7 +131,7 @@ class _ProfileSliverAppBarDelegate extends SliverPersistentHeaderDelegate {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(onPressed: ()async{
-
+                  print(StorageRepository.getString(StorageKeys.userToken));
                 }, icon: const Icon(Icons.search, color: AppColors.white,),),
                 IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert, color: AppColors.white,),),
               ],

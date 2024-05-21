@@ -361,7 +361,7 @@ class ApiService {
       );
       if (response.statusCode == 200) {
         return UniversalData(
-          data: UserModel.fromJson(response.data['profile']),
+          data: UserModel.fromJson(response.data["data"]['profile']),
         );
       }
       return UniversalData(error: 'ERROR');

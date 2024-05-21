@@ -10,6 +10,7 @@ import 'package:medify/blocs/get_files/get_files_bloc.dart';
 import 'package:medify/blocs/get_files/get_files_event.dart';
 import 'package:medify/blocs/get_files/get_files_state.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
 import 'package:medify/ui/tab_box/history/widgets/create_folder_dialog.dart';
@@ -18,6 +19,7 @@ import 'package:medify/ui/tab_box/history/widgets/storage_drawer.dart';
 import 'package:medify/ui/tab_box/history/widgets/storage_file_item.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
+import 'package:medify/utils/ui_utils/loading_dialog.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -51,7 +53,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return SafeArea(
       child: DefaultTabController(
         length: 2,
-        child: BlocBuilder<GetFilesBloc, GetFilesState>(
+        child: BlocConsumer<GetFilesBloc, GetFilesState>(
             builder: (context, fileState) {
           return Scaffold(
             drawer: StorageDrawerWidget(
@@ -91,13 +93,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ],
                     ),
                   ),
-                  ...List.generate(fileState.folderData.length, (folderIndex) {
-                    return StorageFileItem(
-                      folderName: fileState.folderData[folderIndex],
-                      description: "Вы открывали * 12 нояр. 2023 г.",
-                      isFile: false,
-                    );
-                  })
+                  Expanded(child: ListView(
+                    children: [
+                      ...List.generate(fileState.folderData.length, (folderIndex) {
+                        return StorageFileItem(
+                          folderName: fileState.folderData[folderIndex],
+                          description: "Вы открывали * 12 нояр. 2023 г.",
+                          isFile: false,
+                        );
+                      })
+                    ],
+                  ))
                 ],
               ),
               Column(
@@ -115,13 +121,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       ],
                     ),
                   ),
-                  ...List.generate(fileState.fileData.length, (fileIndex) {
-                    return StorageFileItem(
-                      folderName: fileState.folderData[fileIndex],
-                      description: "Вы открывали * 12 нояр. 2023 г.",
-                      isFile: true,
-                    );
-                  }),
+                  Expanded(child: ListView(
+                    children: [
+                      ...List.generate(fileState.fileData.length, (fileIndex) {
+                        return StorageFileItem(
+                          folderName: fileState.folderData[fileIndex],
+                          description: "Вы открывали * 12 нояр. 2023 г.",
+                          isFile: true,
+                        );
+                      }),
+                    ],
+                  ))
                 ],
               ),
             ]),
@@ -179,7 +189,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
               ),
             ),
           );
-        }),
+        }, listener: (BuildContext context, GetFilesState state) {
+              if(state.status == FormStatus.loading){
+                const Center(child: CircularProgressIndicator(),);
+              }
+        },),
+
       ),
     );
   }
