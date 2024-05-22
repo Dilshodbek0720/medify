@@ -387,10 +387,6 @@ class _CalendarDoctorsScreenState extends State<CalendarDoctorsScreen> {
 
       if (result != null) {
         print("RESULT: ${result.files.first.path}");
-        ApiService apiService = ApiService();
-        UniversalData data = await apiService.uploadToInnerFolder(token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjJkZTliNGE2OTE4NzQyMzc4ZmYwYTEiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNDI4NDk4MSwiZXhwIjoxNzE0MzcxMzgxfQ.1V4Vh-0ro8iiCWB-aFn8U2PM1qnxbl7hJ17HEQN3EkM', folderName: "Sunnatilla-Akfa-Medline", file: result.files.first);
-        String filesNa = data.data;
-        print("Data: $filesNa");
         // File picked successfully
         print('File picked: ${result.files.first.path?.split(".").last}');
         return result;

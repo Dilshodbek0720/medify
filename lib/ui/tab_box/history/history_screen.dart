@@ -199,21 +199,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 
-  Future<File?> _openFilePicker(BuildContext context) async {
+  Future<XFile?> _openFilePicker(BuildContext context) async {
     try {
       final result = await FilePicker.platform.pickFiles();
 
       if (result != null) {
         ApiService apiService = ApiService();
-        XFile xFile = XFile(result.files.first.path!);
-        print("PATH: ${result.files.first.path}");
-        print(StorageRepository.getString(StorageKeys.userToken));
-        UniversalData data = await apiService.uploadFileToCloud(token: StorageRepository.getString(StorageKeys.userToken), file: xFile);
-        print('File picked: ${result.files.first.path?.split(".").last}');
-        setState(() {
-
-        });
-        return File(result.files.first.path!);
+        XFile xFile = result.files.first.xFile;
+        print("FILE Bytes: ${await xFile.readAsBytes()}");
+        print("FILE MIMETYPE: ${xFile.mimeType}");
+        UniversalData data = await apiService.completeRegistration(file: xFile, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjRlMDE2YzlhNWFjNWI3NDYyOTMwODIiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNjM4ODIwNSwiZXhwIjoxNzE2NDc0NjA1fQ.XwOkL6cVBPVKZwDfFeG9w1Czg8-RaUyCASOg-5eZhjo", firstName: "sjfds",lastName: "auifsj",phoneNumber: "usfhsk",birthDay: "suif",gender: "sif");
+        print('File picked: ${result.files.first.path}');
+        return result.files.first.xFile;
       } else {
         // User canceled the picker
         print('User canceled the picker');

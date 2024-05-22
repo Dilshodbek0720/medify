@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -256,7 +254,10 @@ class ApiService {
       }.entries.map((entry) => MapEntry(entry.key, entry.value)));
       String fileName = file.path.split('/').last;
       String fileExtension = fileName.split('.').last.toLowerCase();
-      String contentType = "image/$fileExtension";
+      String contentType = "file/$fileExtension";
+      print("FILE NAME: $fileName");
+      print("FIlE EXTENSION: $fileExtension}");
+      print("CONTENT TYPE: $contentType");
       formData.files.add(MapEntry(
         "image",
         await MultipartFile.fromFile(
@@ -517,21 +518,21 @@ class ApiService {
   // -------------------- UPLOAD-TO-INNER-FOLDER --------------------------
 
   Future<UniversalData> uploadToInnerFolder(
-      {required String token, required String folderName, required PlatformFile file}) async {
+      {required String token, required String folderName, required XFile file}) async {
     Response response;
     try {
-      String fileName = file.path!.split('/').last;
+      String fileName = file.path.split('/').last;
       String fileExtension = fileName.split('.').last.toLowerCase();
       String contentType = "file/$fileExtension";
       FormData formData = FormData.fromMap({
         "file":
         await MultipartFile.fromFile(
-          file.path!,
+          file.path,
           filename: fileName,
           contentType: MediaType.parse(contentType),
         ),
       });
-      response = await _dio.post('/users/upload-inner-folder-file',
+      response = await _dio.post('/users/upload-to-inner-folder',
         queryParameters: {'folder_name':folderName},
         data: formData,
         options: Options(headers: {"Authorization": "Bearer $token"}),
@@ -699,14 +700,17 @@ class ApiService {
       String fileName = file.path.split('/').last;
       String fileExtension = fileName.split('.').last.toLowerCase();
       String contentType = "file/$fileExtension";
-      formData.files.add(MapEntry(
-        "file",
+      print("FILE NAME: $fileName");
+      print(fileExtension);
+      print("Type: $contentType");
+      formData = FormData.fromMap({
+        "file":
         await MultipartFile.fromFile(
           file.path,
           filename: fileName,
           contentType: MediaType.parse(contentType),
         ),
-      ));
+      });
       response = await _dio.post('/users/upload-to-disk',
         data: formData,
         options: Options(
@@ -731,6 +735,66 @@ class ApiService {
       return UniversalData(error: e.toString());
     }
   }
+
+  // Future<UniversalData> completeRegistration(
+  //     {required String token,
+  //       required String firstName,
+  //       required String lastName,
+  //       required String phoneNumber,
+  //       required String birthDay,
+  //       required String gender,
+  //       required XFile file}) async {
+  //   Response response;
+  //
+  //   try {
+  //     FormData formData = FormData();
+  //     formData.fields.addAll({
+  //       "firstName": firstName,
+  //       "lastName": lastName,
+  //       "phoneNumber": phoneNumber,
+  //       "birthDay": birthDay,
+  //       "gender": gender,
+  //     }.entries.map((entry) => MapEntry(entry.key, entry.value)));
+  //     String fileName = file.path.split('/').last;
+  //     String fileExtension = fileName.split('.').last.toLowerCase();
+  //     String contentType = "image/$fileExtension";
+  //     formData.files.add(MapEntry(
+  //       "image",
+  //       await MultipartFile.fromFile(
+  //         file.path,
+  //         filename: fileName,
+  //         contentType: MediaType.parse(contentType),
+  //       ),
+  //     ));
+  //     response = await _dio.patch(
+  //       '/users/complete-registration',
+  //       options: Options(
+  //         contentType: "multipart/form-data",
+  //         headers: {
+  //           "Authorization":
+  //           "Bearer $token"
+  //         },
+  //       ),
+  //       data: formData,
+  //     );
+  //     if (response.statusCode == 200) {
+  //       return UniversalData(
+  //         data: UserModel.fromJson(response.data),
+  //       );
+  //     }
+  //     return UniversalData(error: 'ERROR');
+  //   } on DioException catch (e) {
+  //     if (e.response != null) {
+  //       print(e.response);
+  //       return UniversalData(error: e.response!.data['message']);
+  //     } else {
+  //       return UniversalData(error: e.message!);
+  //     }
+  //   } catch (e) {
+  //     debugPrint("Caught: $e");
+  //     return UniversalData(error: e.toString());
+  //   }
+  // }
 
 
 }

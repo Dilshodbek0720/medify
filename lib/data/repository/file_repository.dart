@@ -22,7 +22,7 @@ class FileRepository {
     return apiService.getInnerFolderFiles(token: token, folderName: folderName);
   }
 
-  Future<UniversalData> uploadToInnerFolder({required String token, required String folderName, required PlatformFile file}) async{
+  Future<UniversalData> uploadToInnerFolder({required String token, required String folderName, required XFile file}) async{
     return apiService.uploadToInnerFolder(token: token, folderName: folderName, file: file);
   }
 
