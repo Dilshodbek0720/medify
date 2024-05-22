@@ -39,7 +39,7 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
         state.copyWith(
           status: FormStatus.success,
           folderData: response.data['folder_data'],
-          fileData: response.data['file_data'],
+          // fileData: response.data['file_data'],
           filesMessage: response.data['files_message'],
           foldersMessage: response.data['folders_message']
         ),
