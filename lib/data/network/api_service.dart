@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medify/data/models/add_credit_card/add_credit_card.dart';
@@ -254,7 +253,7 @@ class ApiService {
       }.entries.map((entry) => MapEntry(entry.key, entry.value)));
       String fileName = file.path.split('/').last;
       String fileExtension = fileName.split('.').last.toLowerCase();
-      String contentType = "file/$fileExtension";
+      String contentType = "image/$fileExtension";
       print("FILE NAME: $fileName");
       print("FIlE EXTENSION: $fileExtension}");
       print("CONTENT TYPE: $contentType");
@@ -704,8 +703,7 @@ class ApiService {
       print(fileExtension);
       print("Type: $contentType");
       formData = FormData.fromMap({
-        "file":
-        await MultipartFile.fromFile(
+        "file": await MultipartFile.fromFile(
           file.path,
           filename: fileName,
           contentType: MediaType.parse(contentType),
@@ -795,6 +793,5 @@ class ApiService {
   //     return UniversalData(error: e.toString());
   //   }
   // }
-
 
 }
