@@ -21,7 +21,7 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
 
   ) {
     on<GetFilesEvent>(getCustomerFiles);
-    on<AddFiles>(addFiles);
+    on<AddFiles>(uploadFileToCloud);
     on<AddFolder>(addFolder);
     add(GetFilesEvent());
   }
@@ -61,12 +61,24 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
     emit(state.copyWith(file: file));
   }
 
-  void addFiles(AddFiles event, Emitter<GetFilesState> emit) async{
+  void uploadFileToCloud(AddFiles event, Emitter<GetFilesState> emit) async{
     print("file Name: ${state.file!.path}");
     UniversalData data = await fileRepository.uploadFileToCloud(
       token: StorageRepository.getString(StorageKeys.userToken),
       file: state.file!,
     );
+    add(GetFilesEvent());
+    emit(state);
+  }
+
+  void uploadToInnerFolder(AddFiles event, Emitter<GetFilesState> emit) async{
+    print("file Name: ${state.file!.path}");
+    UniversalData data = await fileRepository.uploadToInnerFolder(
+      token: StorageRepository.getString(StorageKeys.userToken),
+      folderName: "Sunnatilla-Akfa-Medline",
+      file: state.file!,
+    );
+    add(GetFilesEvent());
     emit(state);
   }
 

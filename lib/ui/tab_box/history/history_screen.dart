@@ -206,9 +206,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
       if (result != null) {
         ApiService apiService = ApiService();
         XFile xFile = result.files.first.xFile;
-        print("FILE Bytes: ${await xFile.readAsBytes()}");
         print("FILE MIMETYPE: ${xFile.mimeType}");
-        UniversalData data = await apiService.completeRegistration(file: xFile, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjRlMDE2YzlhNWFjNWI3NDYyOTMwODIiLCJlbWFpbCI6InNheWl0cXVsb3ZkaWxzaG9kYmVrQGdtYWlsLmNvbSIsImlhdCI6MTcxNjM4ODIwNSwiZXhwIjoxNzE2NDc0NjA1fQ.XwOkL6cVBPVKZwDfFeG9w1Czg8-RaUyCASOg-5eZhjo", firstName: "sjfds",lastName: "auifsj",phoneNumber: "usfhsk",birthDay: "suif",gender: "sif");
+        UniversalData data = await apiService.uploadFileToCloud(file: xFile, token: StorageRepository.getString(StorageKeys.userToken),);
         print('File picked: ${result.files.first.path}');
         return result.files.first.xFile;
       } else {
