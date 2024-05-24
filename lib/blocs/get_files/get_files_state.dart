@@ -2,11 +2,12 @@ import 'package:equatable/equatable.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:medify/data/models/file_url_model/file_url_model.dart';
 import 'package:medify/data/models/status/form_status.dart';
 
 // ignore: must_be_immutable
 class GetFilesState extends Equatable {
-  final List<dynamic> fileData;
+  final List<FileUrlModel> fileData;
   final List<dynamic> folderData;
   final String filesMessage;
   final String foldersMessage;
@@ -25,7 +26,7 @@ class GetFilesState extends Equatable {
   });
 
   GetFilesState copyWith({
-    List<dynamic>? fileData,
+    List<FileUrlModel>? fileData,
     List<dynamic>? folderData,
     String? filesMessage,
     String? foldersMessage,
@@ -40,7 +41,7 @@ class GetFilesState extends Equatable {
         foldersMessage: foldersMessage ?? this.foldersMessage,
         file: file ?? this.file,
         status: status ?? this.status,
-        folderName: folderName ?? folderName,
+        folderName: folderName ?? this.folderName,
       );
 
   @override
