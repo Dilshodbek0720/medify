@@ -4,10 +4,14 @@ abstract class FilesEvent {}
 
 class GetFilesEvent extends FilesEvent {}
 
-class UploadFile extends FilesEvent{
-  final PlatformFile file;
+class UploadFileToCloud extends FilesEvent{
 
-  UploadFile({required this.file});
+  UploadFileToCloud();
+}
+
+class UploadToInnerFolder extends FilesEvent{
+
+  UploadToInnerFolder();
 }
 
 class AddFiles extends FilesEvent{

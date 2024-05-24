@@ -13,10 +13,12 @@ import 'package:medify/data/local/storage_repository/storage_repository.dart';
 import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/network/api_service.dart';
+import 'package:medify/ui/app_routes.dart';
 import 'package:medify/ui/tab_box/history/widgets/create_folder_dialog.dart';
 import 'package:medify/ui/tab_box/history/widgets/history_appbar.dart';
 import 'package:medify/ui/tab_box/history/widgets/storage_drawer.dart';
 import 'package:medify/ui/tab_box/history/widgets/storage_file_item.dart';
+import 'package:medify/ui/tab_box/profile/sub_screens/storage/sub_screens/pdf_viewer_screen/pdf_viewer_screen.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/constants/storage_keys.dart';
 import 'package:medify/utils/ui_utils/loading_dialog.dart';
@@ -100,6 +102,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           folderName: fileState.folderData[folderIndex],
                           description: "Вы открывали * 12 нояр. 2023 г.",
                           isFile: false,
+                          onTap: () {
+                            Navigator.pushNamed(context, RouteNames.folderDetailScreen, arguments: fileState.folderData[folderIndex]);
+                          },
                         );
                       })
                     ],
@@ -125,8 +130,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     children: [
                       ...List.generate(fileState.fileData.length, (fileIndex) {
                         return StorageFileItem(
-                          folderName: fileState.folderData[fileIndex],
+                          folderName: fileState.fileData[fileIndex].filename,
                           description: "Вы открывали * 12 нояр. 2023 г.",
+                          onTap: (){
+                            String fileName = fileState.fileData[fileIndex].filename.split('/').last;
+                            String fileExtension = fileName.split('.').last.toLowerCase();
+                            if(fileExtension == "pdf") {
+                              Navigator.pushNamed(context, RouteNames.pdfViewerScreen, arguments: fileState.fileData[fileIndex].fileUrl);
+                            } else {
+                              Navigator.pushNamed(context, RouteNames.imageViewerScreen, arguments: fileState.fileData[fileIndex].fileUrl);
+                            }
+                          },
                           isFile: true,
                         );
                       }),
@@ -190,10 +204,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
             ),
           );
         }, listener: (BuildContext context, GetFilesState state) {
-              if(state.status == FormStatus.loading){
-                const Center(child: CircularProgressIndicator(),);
-              }
-        },),
+              // if(state.status == FormStatus.loading){
+              //   showDialog(
+              //       context: context,
+              //       barrierDismissible: false,
+              //       builder: (BuildContext context) {
+              //         return const Center(
+              //           child: CircularProgressIndicator(),
+              //         );
+              //       });             }
+                      },
+        ),
 
       ),
     );
@@ -203,11 +224,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
     try {
       final result = await FilePicker.platform.pickFiles();
 
-      if (result != null) {
-        ApiService apiService = ApiService();
+      if (result != null && context.mounted) {
         XFile xFile = result.files.first.xFile;
-        print("FILE MIMETYPE: ${xFile.mimeType}");
-        UniversalData data = await apiService.uploadFileToCloud(file: xFile, token: StorageRepository.getString(StorageKeys.userToken),);
+        context.read<GetFilesBloc>().updateFile(xFile);
+        print(xFile.path);
+        context.read<GetFilesBloc>().add(UploadToInnerFolder());
         print('File picked: ${result.files.first.path}');
         return result.files.first.xFile;
       } else {

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medify/blocs/get_files/get_files_state.dart';
 import 'package:medify/data/local/storage_repository/storage_repository.dart';
+import 'package:medify/data/models/file_url_model/file_url_model.dart';
 import 'package:medify/data/models/status/form_status.dart';
 import 'package:medify/data/models/universal_data.dart';
 import 'package:medify/data/repository/file_repository.dart';
@@ -21,7 +22,8 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
 
   ) {
     on<GetFilesEvent>(getCustomerFiles);
-    on<AddFiles>(uploadFileToCloud);
+    on<UploadFileToCloud>(uploadFileToCloud);
+    on<UploadToInnerFolder>(uploadToInnerFolder);
     on<AddFolder>(addFolder);
     add(GetFilesEvent());
   }
@@ -34,12 +36,12 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
     UniversalData response = await fileRepository.getCustomerFiles(token: StorageRepository.getString(StorageKeys.userToken),);
     print(response.data);
     if (response.error.isEmpty) {
-      print("succes");
+      List<FileUrlModel> filesModels = (response.data["files_url"] as List?)?.map((e) => FileUrlModel.fromJson(e)).toList() ?? [];
       emit(
         state.copyWith(
           status: FormStatus.success,
           folderData: response.data['folder_data'],
-          // fileData: response.data['file_data'],
+          fileData: filesModels,
           filesMessage: response.data['files_message'],
           foldersMessage: response.data['folders_message']
         ),
@@ -61,7 +63,8 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
     emit(state.copyWith(file: file));
   }
 
-  void uploadFileToCloud(AddFiles event, Emitter<GetFilesState> emit) async{
+  void uploadFileToCloud(UploadFileToCloud event, Emitter<GetFilesState> emit) async{
+    emit(state.copyWith(status: FormStatus.loading));
     print("file Name: ${state.file!.path}");
     UniversalData data = await fileRepository.uploadFileToCloud(
       token: StorageRepository.getString(StorageKeys.userToken),
@@ -71,7 +74,8 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
     emit(state);
   }
 
-  void uploadToInnerFolder(AddFiles event, Emitter<GetFilesState> emit) async{
+  void uploadToInnerFolder(UploadToInnerFolder event, Emitter<GetFilesState> emit) async{
+    emit(state.copyWith(status: FormStatus.loading));
     print("file Name: ${state.file!.path}");
     UniversalData data = await fileRepository.uploadToInnerFolder(
       token: StorageRepository.getString(StorageKeys.userToken),
@@ -83,6 +87,7 @@ class GetFilesBloc extends Bloc<FilesEvent, GetFilesState> {
   }
 
   void addFolder(AddFolder event, Emitter<GetFilesState> emit) async{
+    emit(state.copyWith(status: FormStatus.loading));
     UniversalData data = await fileRepository.createNewFolder(
       folderName: state.folderName!,
       token: StorageRepository.getString(StorageKeys.userToken),

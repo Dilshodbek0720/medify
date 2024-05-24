@@ -9,6 +9,8 @@ import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
+import 'package:medify/ui/tab_box/history/sub_screens/folder_detail/folder_detail_screen.dart';
+import 'package:medify/ui/tab_box/history/sub_screens/image_viewer/image_viewer_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/about_medify/about_medify_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/booking_doctor/booking_doctors_info_detail.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/booking_doctor/calendar_doctors_screen.dart';
@@ -128,6 +130,8 @@ class RouteNames {
   static const String askQuestionScreen = "/ask_question_screen";
   static const String serviceDetailScreen = "/service_detail_screen";
   static const String bookingServiceScreen = "/booking_service_screen";
+  static const String folderDetailScreen = "/folder_detail_screen";
+  static const String imageViewerScreen = "/image_viewer_screen";
 }
 
 class AppRoutes {
@@ -305,8 +309,9 @@ class AppRoutes {
           ),
         );
       case RouteNames.pdfViewerScreen:
+        String fileUrl = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const PdfViewerScreen(),
+          builder: (context) => PdfViewerScreen(fileUrl: fileUrl,),
         );
       case RouteNames.registerPage:
         return MaterialPageRoute(
@@ -398,6 +403,20 @@ class AppRoutes {
       case RouteNames.bookingServiceScreen:
         return MaterialPageRoute(
           builder: (context) => const BookingServicesScreen(),
+        );
+      case RouteNames.folderDetailScreen:
+        String folderName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => FolderDetailScreen(
+            folderName: folderName,
+          ),
+        );
+      case RouteNames.imageViewerScreen:
+        String imageUrl = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => ImageViewerScreen(
+            imageUrl: imageUrl,
+          ),
         );
       default:
         return MaterialPageRoute(
