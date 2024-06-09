@@ -4,12 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/forgot_password/widgets/success_dialog.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/widgets/global_appbar.dart';
 import 'package:medify/ui/widgets/global_button.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/icons/app_icons.dart';
 import 'package:medify/utils/size/size_extension.dart';
+import 'package:medify/utils/ui_utils/loading_dialog.dart';
 
 class ReviewSummaryScreen extends StatefulWidget {
   const ReviewSummaryScreen({super.key});
@@ -318,6 +320,8 @@ class _ReviewSummaryScreenState extends State<ReviewSummaryScreen> {
                 onTap: () {
                   // Navigator.pushNamed(context, RouteNames.ourRec);
                   print(DateTime.now());
+                  successDialog(context: context, title: "sf", image: AppIcons.success);
+                  // showLoading(context: context);
                 }),
           ),
           40.ph,

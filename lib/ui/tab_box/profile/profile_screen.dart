@@ -97,12 +97,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Navigator.pushNamed(
                                 context, RouteNames.paymentListScreen);
                           }),
-                      ProfileButton(
-                          text: tr('security'),
-                          icon: AppIcons.shieldDone,
-                          onTap: () {
-                            Navigator.pushNamed(context, RouteNames.securityScreen);
-                          }),
+                      // ProfileButton(
+                      //     text: tr('security'),
+                      //     icon: AppIcons.shieldDone,
+                      //     onTap: () {
+                      //       Navigator.pushNamed(context, RouteNames.securityScreen);
+                      //     }),
                       ProfileButton(
                         text: tr('language'),
                         icon: AppIcons.moreCircle,
@@ -112,30 +112,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         isLanguage: true,
                         language: tr("language_type"),
                       ),
-                      ProfileButton(
-                          text: tr('privacy_policy'),
-                          icon: AppIcons.lock,
-                          onTap: () {
-                            // Navigator.pushNamed(context, RouteNames.privacyPolicy);
-                          }),
+                      // ProfileButton(
+                      //     text: tr('privacy_policy'),
+                      //     icon: AppIcons.lock,
+                      //     onTap: () {
+                      //       // Navigator.pushNamed(context, RouteNames.privacyPolicy);
+                      //     }),
                       ProfileButton(
                           text: tr('help_center'),
                           icon: AppIcons.infoSquare,
                           onTap: () {
                             // Navigator.pushNamed(context, RouteNames.helpCenterScreen);
                           }),
-                      ProfileButton(
-                          text: tr('invite_friends'),
-                          icon: AppIcons.user3,
-                          onTap: () {
-                            // Navigator.pushNamed(context, RouteNames.inviteFriends);
-                          }),
-                      ProfileButton(
-                          text: 'File Storage',
-                          icon: AppIcons.download,
-                          onTap: () {
-                            Navigator.pushNamed(context, RouteNames.storageHomeScreen);
-                          }),
+                      // ProfileButton(
+                      //     text: tr('invite_friends'),
+                      //     icon: AppIcons.user3,
+                      //     onTap: () {
+                      //       // Navigator.pushNamed(context, RouteNames.inviteFriends);
+                      //     }),
+                      // ProfileButton(
+                      //     text: 'File Storage',
+                      //     icon: AppIcons.download,
+                      //     onTap: () {
+                      //       Navigator.pushNamed(context, RouteNames.storageHomeScreen);
+                      //     }),
                       ProfileButton(
                         text: 'Calendar',
                         icon: AppIcons.calendar,

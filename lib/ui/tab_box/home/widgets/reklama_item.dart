@@ -17,89 +17,103 @@ class ReklamaItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-          width: MediaQuery.of(context).size.width*0.9,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
               color: const Color(0xFFE1EEFE),
-              borderRadius: BorderRadius.circular(24.r)
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width*0.9-180*MediaQuery.of(context).size.height/926,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 30.h, left: 24.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: 'Medify ',
-                            style: TextStyle(
-                              color: AppColors.primary400,
-                              fontSize: 24.sp,
-                              fontFamily: 'Urbanist',
-                              fontWeight: FontWeight.w700,
+              borderRadius: BorderRadius.circular(24.r)),
+          child: Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9 -
+                    180 * MediaQuery.of(context).size.height / 926,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20.h, left: 24.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          text: 'Medify ',
+                          style: TextStyle(
+                            color: AppColors.primary400,
+                            fontSize: 24.sp,
+                            fontFamily: 'Urbanist',
+                            fontWeight: FontWeight.w700,
+                          ),
+                          children: const <TextSpan>[
+                            TextSpan(
+                              text: 'bu nima?',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.c_900),
                             ),
-                            children: const <TextSpan>[
-                              TextSpan(
-                                text: 'bu nima?',
-                                style: TextStyle(fontWeight: FontWeight.w700, color: AppColors.c_900),
-                              ),
-                            ],
+                          ],
+                        ),
+                      ),
+                      6.ph,
+                      Text(
+                        "Nega bizni tanlash kerak?",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: TextStyle(
+                            color: AppColors.c_900,
+                            fontSize: 16.sp,
+                            fontFamily: 'Urbanist',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 0.2),
+                      ),
+                      6.ph,
+                      Text(
+                        "Bizning xizmatlarimiz?",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
+                        style: TextStyle(
+                            color: AppColors.c_900,
+                            fontSize: 16.sp,
+                            fontFamily: 'Urbanist',
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: 0.2),
+                      ),
+                      const Spacer(),
+                      Container(
+                        padding: EdgeInsets.all(6.r),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.blue,
+                        ),
+                        child: SizedBox(
+                          width: 24.w,
+                          height: 24.w,
+                          child: SvgPicture.asset(
+                            AppIcons.arrowRight2,
+                            colorFilter: const ColorFilter.mode(
+                                AppColors.white, BlendMode.srcIn),
                           ),
                         ),
-                        12.ph,
-                        Text("Nega bizni tanlash kerak?",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 3,
-                          style: TextStyle(
-                              color: AppColors.c_900,
-                              fontSize: 16.sp,
-                              fontFamily: 'Urbanist',
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.2
-                          ),
-                        ),
-                        12.ph,
-                        Text("Bizning xizmatlarimiz?",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 3,
-                          style: TextStyle(
-                              color: AppColors.c_900,
-                              fontSize: 16.sp,
-                              fontFamily: 'Urbanist',
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.2
-                          ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          padding: EdgeInsets.all(6.r),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.blue,
-                          ),
-                          child: SizedBox(
-                            width: 24.w,
-                            height: 24.w,
-                            child: SvgPicture.asset(AppIcons.arrowRight2, colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),),
-                          ),
-                        ),
-                        24.ph,
-                      ],
-                    ),
+                      ),
+                      12.ph,
+                    ],
                   ),
                 ),
-                SizedBox(
-                  width: 180*MediaQuery.of(context).size.height/926,
-                  height: 220*MediaQuery.of(context).size.height/926,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(24.r), bottomRight: Radius.circular(24.r),),
-                      child: Image.asset(image, fit: BoxFit.cover,)),
-                )
-              ],),
+              ),
+              SizedBox(
+                width: 180 * MediaQuery.of(context).size.height / 926,
+                height: 220 * MediaQuery.of(context).size.height / 926,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(24.r),
+                    bottomRight: Radius.circular(24.r),
+                  ),
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
           ),
+        ),
       ),
     );
   }

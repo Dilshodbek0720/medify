@@ -9,6 +9,7 @@ import 'package:medify/ui/review_screen/review_screen.dart';
 import 'package:medify/ui/search/search_screen.dart';
 import 'package:medify/ui/search/sub_screens/symptoms_detail_screen.dart';
 import 'package:medify/ui/splash/splash.dart';
+import 'package:medify/ui/tab_box/appointment/sub_screens/chek_screen/chek_screen.dart';
 import 'package:medify/ui/tab_box/history/sub_screens/folder_detail/folder_detail_screen.dart';
 import 'package:medify/ui/tab_box/history/sub_screens/image_viewer/image_viewer_screen.dart';
 import 'package:medify/ui/tab_box/home/sub_screens/about_medify/about_medify_screen.dart';
@@ -132,6 +133,7 @@ class RouteNames {
   static const String bookingServiceScreen = "/booking_service_screen";
   static const String folderDetailScreen = "/folder_detail_screen";
   static const String imageViewerScreen = "/image_viewer_screen";
+  static const String chekScreen = "/chek_screen";
 }
 
 class AppRoutes {
@@ -417,6 +419,10 @@ class AppRoutes {
           builder: (context) => ImageViewerScreen(
             imageUrl: imageUrl,
           ),
+        );
+      case RouteNames.chekScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChekScreen(),
         );
       default:
         return MaterialPageRoute(
