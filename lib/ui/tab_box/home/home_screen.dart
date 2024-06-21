@@ -8,6 +8,7 @@ import 'package:medify/cubits/settings_widget/settings_widget_cubit.dart';
 import 'package:medify/cubits/tab/tab_cubit.dart';
 import 'package:medify/data/models/icon/icon_type.dart';
 import 'package:medify/ui/app_routes.dart';
+import 'package:medify/ui/forgot_password/widgets/success_dialog.dart';
 import 'package:medify/ui/search/widgets/doctor_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/category_item2.dart';
 import 'package:medify/ui/tab_box/home/widgets/hospital_card.dart';
@@ -16,6 +17,7 @@ import 'package:medify/ui/tab_box/home/widgets/see_all_item.dart';
 import 'package:medify/ui/tab_box/home/widgets/service_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/service_category_card.dart';
 import 'package:medify/ui/tab_box/home/widgets/setting_widget_item.dart';
+import 'package:medify/ui/tab_box/home/widgets/users_item.dart';
 import 'package:medify/ui/widgets/global_input.dart';
 import 'package:medify/utils/colors/app_colors.dart';
 import 'package:medify/utils/constants/constants.dart';
@@ -31,6 +33,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,58 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, state) {
           return Column(
             children: [
-              Padding(
-                padding: EdgeInsets.all(24.r),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 48.w,
-                      width: 48.w,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30.r),
-                          child: GestureDetector(
-                              onTap: () {
-                                context.read<TabCubit>().changeTabIndex(4);
-                              },
-                              child: Image.asset(AppIcons.drWatson))),
-                    ),
-                    16.pw,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Good Morning",
-                          style: TextStyle(
-                              color: AppColors.c_600,
-                              fontSize: 16.sp,
-                              fontFamily: 'Urbanist',
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.2),
-                        ),
-                        6.ph,
-                        Text(
-                          "Andrew Ainsley",
-                          style: TextStyle(
-                            color: AppColors.c_900,
-                            fontSize: 20.sp,
-                            fontFamily: 'Urbanist',
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )
-                      ],
-                    ),
-                    const Spacer(),
-                    getIcon(AppIcons.notification, context: context, onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.notificationScreen);
-                    }),
-                    // CHATS - SCREEN
-                    // getIcon(AppIcons.chat, context: context, onTap: () {
-                    //   Navigator.pushNamed(context, RouteNames.chatListScreen);
-                    // })
-                  ],
-                ),
-              ),
+              const UsersItem(),
               Expanded(
                 child: ListView(
                   children: [
